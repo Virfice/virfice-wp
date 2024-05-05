@@ -1,0 +1,22 @@
+@import '../../scss/variables';
+
+.virfice-preview-button {
+    display: flex;
+    padding: var(--v-Padding, 4px) var(--h-Padding, 8px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing, 4px);
+    color: rgba(47, 56, 11, 1);
+    text-wrap: nowrap;
+
+
+    border-radius: var(--radius, 999px);
+    border: 1px solid var(--border-button-border-btn-idle, #949494);
+    background: var(--bg-button-bg-btn-primary-idle, #C8E265);
+    /* shadow-button */
+    box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.20);
+
+    &:hover {
+        background: var(--bg-button-bg-btn-primary-hover, #A9C92C);
+    }
+}

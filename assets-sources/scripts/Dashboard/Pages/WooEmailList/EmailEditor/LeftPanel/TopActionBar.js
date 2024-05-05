@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import Button from "../../../../Molecules/Button";
+import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { useSelector } from "react-redux";
+import { MobileIcon, LaptopIcon } from "../../../../icons";
+import SendButton from "./SendButton";
+
+const TopActionBar = () => {
+  const [activeDevice, setActiveDevice] = useState('Laptop');
+
+  const changeIframeWidth = (deviceName) =>{
+    let iframe = document.getElementById(VIRFICE_APP_PREFIX+'-email-preview');
+
+    if(deviceName === 'Laptop'){
+        iframe.style.width = '100%';
+    }else if(deviceName === 'Mobile'){
+        iframe.style.width = '320px';
+        iframe.style.marginLeft = 'auto';
+        iframe.style.marginRight = 'auto';
+    }
+
+    setActiveDevice(deviceName);
+  }
+
+  return (
+    <div
+      className={`${VIRFICE_APP_PREFIX}-card-header ${VIRFICE_APP_PREFIX}-flex-space-between ${VIRFICE_APP_PREFIX}-w-100`}
+    >
+      <div className={`${VIRFICE_APP_PREFIX}-flex`}>
+        <Button
+          type={"tertiary"}
+          icon={<LaptopIcon />}
+          isActive={activeDevice === 'Laptop'}
+          onClick={() => {
+            changeIframeWidth('Laptop');
+          }}
+        />
+        <Button
+          type={"tertiary"}
+          icon={<MobileIcon />}
+          isActive={activeDevice === 'Mobile'}
+          onClick={() => {
+            changeIframeWidth('Mobile');
+          }}
+        />
+      </div>
+      <SendButton />
+    </div>
+  );
+};
+
+export default TopActionBar;
