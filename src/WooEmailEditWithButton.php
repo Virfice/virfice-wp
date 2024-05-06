@@ -1,12 +1,21 @@
 <?php
 namespace Virfice;
 
+// Security check to prevent direct access to the script
 if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
+    exit;
 }
 
-class WooEmailEditWithButton{
-
+/**
+ * Class WooEmailEditWithButton
+ * Adds a custom "Preview" button to WooCommerce email settings and handles script enqueuing.
+ */
+class WooEmailEditWithButton
+{
+    /**
+     * WooEmailEditWithButton constructor.
+     * Registers the necessary WordPress hooks for adding preview buttons and script enqueuing.
+     */
     public function __construct()
     {
         add_filter('woocommerce_email_setting_columns', [$this, 'add_email_preview_button']);
@@ -16,6 +25,13 @@ class WooEmailEditWithButton{
         add_action('admin_enqueue_scripts', [$this, 'my_plugin_enqueue_script']);
     }
 
+    /**
+     * Enqueues custom scripts for the WooCommerce email settings page.
+     *
+     * @param string $hook The current admin page hook.
+     *
+     * @return void
+     */
     public function my_plugin_enqueue_script($hook) {
         global $pagenow;
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -30,7 +46,13 @@ class WooEmailEditWithButton{
         }
     }
 
-    // Add preview button to WooCommerce email settings page
+    /**
+     * Adds a custom "Preview" column to the WooCommerce email settings page.
+     *
+     * @param array $columns The original WooCommerce email settings columns.
+     *
+     * @return array The modified WooCommerce email settings columns with the preview button.
+     */
     public function add_email_preview_button($columns) {
         $new_email_data = array();
         foreach ($columns as $key => $value) {
@@ -43,16 +65,27 @@ class WooEmailEditWithButton{
         return $new_email_data;
     }
 
-    // Render preview button
+    /**
+     * Renders the "Preview" button in the custom column on the WooCommerce email settings page.
+     *
+     * @param object $email The WooCommerce email object.
+     *
+     * @return void
+     */
     public function render_email_preview_button($email) {
+        // Get the email ID
         $email_id = $email->id;
-        // /wp-admin/admin.php?page=virfice&menu=woo-email-edit&email_id=customer_processing_order
-        $url = add_query_arg(array(
-            'page' => VIRFICE_APP_PREFIX,
-            'menu' => 'woo-email-edit',
-            'email_id' => $email_id
-        ));
+        
+        // Create a URL for editing the email with Virfice
+        $url = add_query_arg(
+            array(
+                'page' => VIRFICE_APP_PREFIX, // The Virfice plugin page
+                'menu' => 'woo-email-edit',  // The email editing menu
+                'email_id' => $email_id,    // The ID of the email to edit
+            )
+        );
 
+        // Render the "Edit with Virfice" link with a Dashicon
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         printf(
             '<td><a href="%s" class="%s-preview-button"><span class="dashicons dashicons-edit"></span> Edit with %s</a></td>',

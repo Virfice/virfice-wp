@@ -1,31 +1,51 @@
 <?php
-
 namespace Virfice;
 
+// Security check to ensure this file is not accessed directly
 if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit; 
 }
 
+/**
+ * Class Dashboard
+ * Handles the WordPress dashboard elements for the Virfice plugin.
+ * This class manages menu creation, script enqueueing, and other admin-related tasks.
+ */
 class Dashboard
 {
+    /**
+     * Dashboard constructor.
+     * Registers WordPress hooks for the plugin's admin-related features.
+     */
     public function __construct()
     {
+        // Add a custom menu to the admin sidebar
         add_action('admin_menu', [$this, 'my_plugin_menu']);
-        add_action('admin_head', array($this, 'admin_styles'));
 
-        // Define a function to enqueue your custom script
+        // Add custom styles to the admin header
+        add_action('admin_head', [$this, 'admin_styles']);
+
+        // Enqueue custom scripts and styles for the plugin's admin page
         add_action('admin_enqueue_scripts', [$this, 'my_plugin_enqueue_script']);
 
+        // Add a custom rewrite rule
         add_action('init', [$this, 'rewrite_route']);
     }
 
-    function rewrite_route()
+    /**
+     * Adds a custom rewrite rule to map a specific URL structure to the plugin's admin page.
+     * This can be used to create custom routes within the WordPress admin area.
+     *
+     * @return void
+     */
+    public function rewrite_route()
     {
         add_rewrite_rule('^(.+)', 'admin.php?page=' . VIRFICE_APP_PREFIX, 'top');
     }
 
     /**
-     * Droip Logo for droip menu
+     * Outputs custom styles in the WordPress admin header.
+     * This is used to add a custom icon to the plugin's menu item.
      *
      * @return void
      */
@@ -50,7 +70,12 @@ class Dashboard
         // add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Brand Settings', 'Brand Settings', 'manage_woocommerce', 'test&menu=brand-settings', [$this, 'my_plugin_page']);
     }
 
-    // Display plugin settings page
+    /**
+     * Adds a custom menu to the WordPress admin sidebar.
+     * The menu links to the plugin's settings page.
+     *
+     * @return void
+     */
     public function my_plugin_page()
     {
         if (!Utils::is_woocommerce_activated()) {
@@ -63,6 +88,13 @@ class Dashboard
         echo '<div id="' . VIRFICE_APP_PREFIX . '-dashboard"></div>';
     }
 
+    /**
+     * Enqueues custom scripts and styles for the plugin's admin page.
+     * This function ensures that scripts are only loaded when needed, to avoid unnecessary resource usage.
+     *
+     * @param string $hook The current admin page hook.
+     * @return void
+     */
     public function my_plugin_enqueue_script($hook)
     {
         // Enqueue the script only on your plugin's settings page

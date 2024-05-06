@@ -1,19 +1,32 @@
 <?php
-
 namespace Virfice\WooEmailPreview;
 
+// Security check to prevent direct access to the script
 if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit; 
 }
 
+/**
+ * Class Route
+ * Handles the routing and initialization for email previews in the Virfice plugin.
+ */
 class Route
 {
+
+    /**
+     * Route constructor.
+     * Initializes WordPress hooks for handling email previews.
+     */
     public function __construct()
     {
         add_action('init', [$this, 'handle_email_preview_generation']);
     }
 
-    // Handle preview button click
+    /**
+     * Handles the generation of email previews when the preview button is clicked.
+     *
+     * @return void
+     */
     public function handle_email_preview_generation()
     {
         if (!isset($_GET['email_id']) || !isset($_GET['woo_preview_nonce'])) {

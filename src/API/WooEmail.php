@@ -13,16 +13,15 @@ use WP_REST_Controller;
 use WP_REST_Server;
 
 /**
- * ContentManagerRest
- * 
+ * Class WooEmail
+ * Manages REST API endpoints for WooCommerce email customization in the Virfice plugin.
  */
 class WooEmail extends WP_REST_Controller
 {
 	/**
-	 * Initialize the media class
-	 *
-	 * @return void
-	 */
+     * WooEmail constructor.
+     * Initializes REST API namespace and base route.
+     */
 	public function __construct()
 	{
 		$this->namespace = VIRFICE_APP_PREFIX . '/v1';
@@ -30,12 +29,13 @@ class WooEmail extends WP_REST_Controller
 	}
 
 	/**
-	 * Register register
-	 *
-	 * @return void
-	 */
+     * Registers custom REST API routes for WooCommerce email-related functionality.
+     *
+     * @return void
+     */
 	public function register_routes()
 	{
+		// Register a REST API endpoint to get all email settings
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/all',
@@ -50,6 +50,7 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 		
+		// Register a REST API endpoint to get a single email's settings
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/single',
@@ -64,6 +65,7 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 
+		// Register a REST API endpoint to get WooCommerce brand settings
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/brand-settings',
@@ -77,6 +79,8 @@ class WooEmail extends WP_REST_Controller
 				'schema' => array($this, 'get_item_schema'),
 			)
 		);
+
+		// Register a REST API endpoint to update WooCommerce brand settings
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/brand-settings',
@@ -91,6 +95,7 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 		
+		// Register a REST API endpoint to save email settings
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/save-email-settings',
@@ -105,6 +110,7 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 		
+		// Register a REST API endpoint to send a test email
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/send-test-email',
@@ -120,6 +126,11 @@ class WooEmail extends WP_REST_Controller
 		);
 	}
 
+	/**
+     * Retrieves a list of all WooCommerce email templates.
+     *
+     * @return array List of email templates with metadata.
+     */
 	public function get_all_emails()
 	{
 		// Get all email lists using WooCommerce's email functionality
@@ -150,6 +161,11 @@ class WooEmail extends WP_REST_Controller
 		return $formatted_email_lists;
 	}
 	
+	/**
+     * Retrieves the settings for a specific WooCommerce email.
+     *
+     * @return array Metadata for the email.
+     */
 	public function get_single_email()
 	{
 		//verified in get_item_permissions_check method
@@ -166,6 +182,11 @@ class WooEmail extends WP_REST_Controller
 		return $email;
 	}
 
+	/**
+     * Retrieves the WooCommerce brand settings.
+     *
+     * @return array Brand settings for WooCommerce email templates.
+     */
 	public function get_brand_settings()
 	{
 		// Define an array to store email settings
@@ -183,6 +204,11 @@ class WooEmail extends WP_REST_Controller
 		return $email_settings;
 	}
 
+	/**
+     * Updates the WooCommerce brand settings with new values.
+     *
+     * @return bool True if successful.
+     */
 	public function save_brand_settings()
 	{
 		//verified in get_item_permissions_check method
@@ -217,9 +243,15 @@ class WooEmail extends WP_REST_Controller
 		}
 		return true;
 	}
+
+	/**
+     * Updates the settings for a specific WooCommerce email template.
+     *
+     * @return bool True if successful.
+     */
 	public function save_email_settings()
 	{
-		//verified in get_item_permissions_check method
+		// verified in get_item_permissions_check method
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
 		$email_id = sanitize_text_field($_REQUEST['email_id']);
 		//verified in get_item_permissions_check method
@@ -233,18 +265,23 @@ class WooEmail extends WP_REST_Controller
 		return true;
 	}
 	
+	/**
+     * Sends a test email based on a specific WooCommerce email template.
+     *
+     * @return bool True if the test email was successfully sent.
+     */
 	public function send_test_email() {
 		// Sanitize the email and preview URL inputs
-		//verified in get_item_permissions_check method
+		// verified in get_item_permissions_check method
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
 		$emails = sanitize_text_field($_REQUEST['emails']); // Comma-separated email addresses
-		//verified in get_item_permissions_check method
+		// verified in get_item_permissions_check method
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
 		$order_id = sanitize_text_field($_REQUEST['order_id']); // Comma-separated email addresses
-		//verified in get_item_permissions_check method
+		// verified in get_item_permissions_check method
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
 		$email_id = sanitize_text_field($_REQUEST['email_id']); // Email obj id.
-		//verified in get_item_permissions_check method
+		// verified in get_item_permissions_check method
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
 		$changedSettings = json_decode( stripslashes( $_REQUEST['changedSettings'] ), true );
 
@@ -255,21 +292,27 @@ class WooEmail extends WP_REST_Controller
 	}
 
 	/**
-	 * Checks if a given request has access to read contacts.
-	 *
-	 * @param \WP_REST_Request $request user request(not used right now).
-	 *
-	 * @return \WP_REST_Response
-	 */
+     * Checks if a given request has permission to access the endpoint.
+     *
+     * @param \WP_REST_Request $request The REST API request.
+     *
+     * @return bool|\WP_REST_Response True if the request has permissions; otherwise, a WP_REST_Response with an error.
+     */
 	public function get_item_permissions_check($request)
 	{
-		// Get the nonce from the request headers
-		$nonce = $request->get_header('X-WP-Nonce'); // Retrieve the nonce from the 'X-WP-Nonce' header
-		// Verify the nonce for a specific action
-		if (!wp_verify_nonce($nonce, 'wp_rest')) {
-			return new WP_Error('invalid_nonce', 'Invalid nonce provided.', array('status' => 403)); // Return error if nonce is invalid
-		}
-		// Only allow users with 'manage_woocommerce' capability to access the endpoint
+		// Retrieve the nonce from the request headers
+        $nonce = $request->get_header('X-WP-Nonce'); 
+        
+        // Verify the nonce to ensure security
+        if (!wp_verify_nonce($nonce, 'wp_rest')) {
+            return new WP_Error(
+                'invalid_nonce', 
+                'Invalid nonce provided.', 
+                array('status' => 403)
+            ); // Return an error if the nonce is invalid
+        }
+
+        // Check if the current user has the necessary capability
         return current_user_can('manage_woocommerce');
 	}
 }
