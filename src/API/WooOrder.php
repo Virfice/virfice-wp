@@ -1,24 +1,24 @@
 <?php
-
 namespace Virfice\API;
 
+// Exit if accessed directly for security
 if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
+    exit; 
 }
+
 use WP_REST_Controller;
 use WP_REST_Server;
 
 /**
- * ContentManagerRest
- * 
+ * Class WooOrder
+ * Handles REST API endpoints for retrieving WooCommerce orders in the Virfice plugin.
  */
 class WooOrder extends WP_REST_Controller
 {
 	/**
-	 * Initialize the media class
-	 *
-	 * @return void
-	 */
+     * WooOrder constructor.
+     * Sets up the namespace and REST base for the custom REST API endpoints.
+     */
 	public function __construct()
 	{
 		$this->namespace = VIRFICE_APP_PREFIX . '/v1';
@@ -26,12 +26,13 @@ class WooOrder extends WP_REST_Controller
 	}
 
 	/**
-	 * Register register
-	 *
-	 * @return void
-	 */
+     * Registers REST API routes for WooCommerce order-related functionality.
+     *
+     * @return void
+     */
 	public function register_routes()
 	{
+		// Register a REST API endpoint to retrieve all WooCommerce orders
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/all',
@@ -47,8 +48,13 @@ class WooOrder extends WP_REST_Controller
 		);
 	}
 
+	/**
+     * Retrieves a list of all WooCommerce orders.
+     *
+     * @return array An array of orders with metadata.
+     */
 	public function get_all_orders() {
-        // Define query arguments for WP_Query
+        // Define query arguments for retrieving WooCommerce orders
         $args = array(
             'post_type' => 'shop_order', // WooCommerce orders are of 'shop_order' type
             'posts_per_page' => 20, // Number of orders to retrieve
@@ -68,12 +74,12 @@ class WooOrder extends WP_REST_Controller
     }
 
 	/**
-	 * Checks if a given request has access to read contacts.
-	 *
-	 * @param \WP_REST_Request $request user request(not used right now).
-	 *
-	 * @return \WP_REST_Response
-	 */
+     * Checks if a given REST API request has permission to access the endpoint.
+     *
+     * @param \WP_REST_Request $request The REST API request.
+     *
+     * @return bool True if the request has the correct permissions; otherwise, a WP_REST_Response with an error.
+     */
 	public function get_item_permissions_check($request)
 	{
 		// Only allow users with 'manage_woocommerce' capability to access the endpoint

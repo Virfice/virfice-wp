@@ -1,32 +1,59 @@
 <?php
-
 namespace Virfice\WooEmailPreview;
 
-// use Virfice\API\WooOrder;
+// Security check to prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 use Virfice\API\WooOrder;
 use Virfice\Utils;
 
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
-}
-
+/**
+ * Class WooEmailPreview
+ * Handles the preview generation for WooCommerce email templates in the Virfice plugin.
+ */
 class WooEmailPreview
 {
 
+    /**
+     * @var array Email template settings.
+     */
     private $settings = array();
-    private $email_id = false;
-    private $send_test_email = false;
-    private $test_emails = ''; //comma seperated string
 
+    /**
+     * @var string|bool The ID of the email template to preview.
+     */
+    private $email_id = false;
+
+    /**
+     * @var bool Whether to send a test email.
+     */
+    private $send_test_email = false;
+
+    /**
+     * @var string Comma-separated string of test email recipients.
+     */
+    private $test_emails = '';
+
+    /**
+     * @var array List of WooCommerce brand option filters.
+     */
     private $brand_option_filters = array(
         'woocommerce_email_background_color',
         'woocommerce_email_body_background_color',
         'woocommerce_email_base_color',
         'woocommerce_email_text_color',
-        'woocommerce_email_header_image'
+        'woocommerce_email_header_image',
     );
 
+    /**
+     * WooEmailPreview constructor.
+     * Sets up the email preview settings and adds necessary option filters.
+     *
+     * @param string|bool $email_id The ID of the email template to preview.
+     * @param array       $settings Custom settings for the email template.
+     */
     public function __construct($email_id = false, $settings = [])
     {
         $this->settings = $settings;
@@ -37,6 +64,12 @@ class WooEmailPreview
         add_filter('woocommerce_email_footer_text', array($this, 'replace_placeholders'));
     }
 
+    /**
+     * Adds custom option filters for WooCommerce email templates.
+     * These filters modify WooCommerce brand options based on custom settings.
+     *
+     * @return void
+     */
     private function add_option_filters()
     {
         //single email related option value filters
@@ -63,12 +96,25 @@ class WooEmailPreview
         }
     }
 
+    /**
+     * Replaces placeholders in the WooCommerce email footer text.
+     *
+     * @param string $string The original email footer text.
+     *
+     * @return string The modified email footer text.
+     */
     public function replace_placeholders($string)
     {
         return  !empty($this->settings['woocommerce_email_footer_text']) ? sanitize_text_field($this->settings['woocommerce_email_footer_text']) : $string;
     }
 
-
+    /**
+     * Gets a WooCommerce order ID for the preview.
+     *
+     * @param array $options Additional options for retrieving the order ID.
+     *
+     * @return int The WooCommerce order ID.
+     */
     public function get_wc_order_id($options)
     {
         if (!empty($options['order_id'])) return $options['order_id'];
@@ -80,57 +126,75 @@ class WooEmailPreview
         return 25;
     }
 
+    /**
+     * Generates a preview of a WooCommerce email template.
+     * Optionally sends a test email to specified recipients.
+     *
+     * @param array $options Additional options for generating the preview.
+     *
+     * @return string The generated email preview content.
+     */
     public function generate_preview($options = [])
     {
+        // Determine if a test email should be sent
         if (isset($options['send_test_email'])) {
-            $this->send_test_email = sanitize_text_field($options['send_test_email']);
+            $this->send_test_email = (bool)sanitize_text_field($options['send_test_email']);
         }
+
+        // Set the test email recipients if provided
         if (isset($options['emails'])) {
             $this->test_emails = sanitize_text_field($options['emails']);
         }
 
+        // Get the email object based on the email ID
         $email = Utils::get_email_object_from_email_id($this->email_id);
 
         if (!$email) {
-            return "Email template not found!";
+            return "Email template not found!"; // Return an error message if the email template is not found
         }
+
+        // Get the WooCommerce email object and key
         $email_obj = $email['object'];
         $email_key = $email['key'];
 
-        $index = $email_key;
+        // Get a valid WooCommerce order ID for the email preview
         $order_id = $this->get_wc_order_id($options);
 
         if (!$order_id) {
-            return "Order not found!";
+            return "Order not found!"; // Return an error message if no order is found
         }
-        //needs to be called to get shipping and payment gateways data
+
+        // Ensure WooCommerce payment gateways and shipping methods are loaded
         WC()->payment_gateways();
         WC()->shipping();
 
-
+        // Modify email recipient if sending a test email
         add_filter('woocommerce_email_recipient_' . $email_obj->id, [$this, 'no_recipient']);
+
         if ($this->send_test_email) {
+            // Enable resending of new order emails
             add_filter('woocommerce_new_order_email_allows_resend', '__return_true');
         }
 
-
-        if ($index === 'WC_Email_Customer_Note') {
-            /* customer note needs to be added*/
-            $customer_note = 'This is customer note. Virfice test demo note.';
-            $args          = array(
-                'order_id'      => $order_id,
+        // Trigger the email based on its key and order ID
+        if ($email_key === 'WC_Email_Customer_Note') {
+            // Handle customer note email separately
+            $customer_note = 'This is a customer note. Virfice test demo note.';
+            $args = array(
+                'order_id' => $order_id,
                 'customer_note' => $customer_note,
             );
             $email_obj->trigger($args);
         } else {
             $email_obj->trigger($order_id);
         }
-        //set the type of email:
-        // $email_obj->email_type = $email_type;
-        $content                   = $email_obj->get_content();
-        $content                   = apply_filters('woocommerce_mail_content', $email_obj->style_inline($content));
 
-        ob_start();
+        // Get the styled email content
+        $content = $email_obj->get_content();
+        $content = apply_filters('woocommerce_mail_content', $email_obj->style_inline($content));
+
+        // Output the email preview as an HTML document
+        ob_start(); // Start output buffering
 ?>
         <!DOCTYPE html>
         <html lang="<?php echo esc_attr(get_locale()); ?>">
@@ -149,12 +213,19 @@ class WooEmailPreview
 
         </html>
 <?php
-        return ob_get_clean();
+        return ob_get_clean(); // Return the buffered HTML content
     }
 
-    public function no_recipient($recipient): string
+    /**
+     * Replaces email recipients with the test email addresses.
+     *
+     * @param string $recipient The original recipient.
+     *
+     * @return string The modified recipient with test email addresses.
+     */
+    public function no_recipient($recipient)
     {
-        return $this->test_emails;
+        return $this->test_emails; // Return the test email addresses
     }
 }
 ?>
