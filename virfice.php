@@ -2,9 +2,15 @@
 /*
 Plugin Name: Virfice
 Description: Preview WooCommerce email templates within WordPress admin.
-Version: 1.0.0
 Author: Virfice
+Author URI: https://virfice.com/
+Version: 1.0.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Requires at least: 5.2
+Requires PHP: 7.2
 */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
 use Virfice\API\API;
 use Virfice\Dashboard;
 use Virfice\WooEmailPreview\Route;

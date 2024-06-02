@@ -92,7 +92,7 @@ class WooEmailEditWithButton
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             esc_url($url),
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            VIRFICE_APP_PREFIX,
+            esc_html(VIRFICE_APP_PREFIX),
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             VIRFICE_APP_NAME
         );

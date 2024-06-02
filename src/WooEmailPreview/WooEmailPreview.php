@@ -6,6 +6,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+use DOMDocument;
+use DOMXPath;
 use Virfice\API\WooOrder;
 use Virfice\Utils;
 
@@ -193,6 +195,9 @@ class WooEmailPreview
         $content = $email_obj->get_content();
         $content = apply_filters('woocommerce_mail_content', $email_obj->style_inline($content));
 
+        //TODO:we need to check in future.
+        $style_and_html = $this->extract_styles($content);
+
         // Output the email preview as an HTML document
         ob_start(); // Start output buffering
 ?>
@@ -202,12 +207,16 @@ class WooEmailPreview
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+                <?php echo wp_kses($style_and_html['styles'], array( 'style' )); ?>
+            </style>
         </head>
 
         <body>
             <?php
             //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo $content;
+            echo wp_kses_post($style_and_html['html']);
+            // echo $content;
             ?>
         </body>
 
@@ -226,6 +235,26 @@ class WooEmailPreview
     public function no_recipient($recipient)
     {
         return $this->test_emails; // Return the test email addresses
+    }
+
+    private function extract_styles($html) {
+        $doc = new DOMDocument();
+        // Suppress errors due to invalid HTML, if any
+        @$doc->loadHTML($html);
+    
+        $styles = '';
+        $xpath = new DOMXPath($doc);
+    
+        // Get all style tags
+        foreach ($xpath->query('//style') as $style) {
+            $styles .= $doc->saveHTML($style);
+            $style->parentNode->removeChild($style); // Remove the style tag from the original HTML
+        }
+    
+        // Save the remaining HTML
+        $html = $doc->saveHTML();
+    
+        return array('styles' => $styles, 'html' => $html);
     }
 }
 ?>

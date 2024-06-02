@@ -284,7 +284,7 @@ class WooEmail extends WP_REST_Controller
 		// verified in get_item_permissions_check method
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
 		$changedSettings = json_decode( stripslashes( $_REQUEST['changedSettings'] ), true );
-
+		$changedSettings = Utils::sanitize_array($changedSettings);
 		$preview = new WooEmailPreview($email_id, $changedSettings);
 		$preview->generate_preview(['send_test_email'=>true, 'emails'=>$emails, 'order_id'=>$order_id]);
 

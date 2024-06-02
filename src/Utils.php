@@ -41,8 +41,11 @@ class Utils
      */
     public static function get_current_admin_url()
     {
-        // Returns the admin URL for the current request URI
-        return admin_url(basename($_SERVER['REQUEST_URI']));
+        // Sanitize the current request URI
+        $request_uri = isset($_SERVER['REQUEST_URI']) ? sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])) : '';
+
+        // Returns the admin URL for the sanitized request URI
+        return admin_url(basename($request_uri));
     }
 
     /**
@@ -57,5 +60,40 @@ class Utils
 
         // Check if WooCommerce is among the active plugins
         return in_array('woocommerce/woocommerce.php', $active_plugins);
+    }
+
+    /**
+     * Sanitizes each element in an array based on its type.
+     *
+     * - Strings are sanitized using sanitize_text_field.
+     * - Integers are cast to int.
+     * - Floats are cast to float.
+     * - Nested arrays are recursively sanitized.
+     * - All other types are sanitized as strings using sanitize_text_field.
+     *
+     * @param array $data The array to be sanitized.
+     *
+     * @return array The sanitized array.
+     */
+    public static function sanitize_array($data){
+        if (is_array($data)) {
+            $data = array_map(function($value) {
+                if (is_string($value)) {
+                    return sanitize_text_field($value);
+                } elseif (is_int($value)) {
+                    return intval($value);
+                } elseif (is_float($value)) {
+                    return floatval($value);
+                } elseif (is_array($value)) {
+                    return array_map(function($item) {
+                        return is_string($item) ? sanitize_text_field($item) : $item;
+                    }, $value);
+                } else {
+                    return sanitize_text_field($value); // Fallback for other types
+                }
+            }, $data);
+        }
+
+        return $data;
     }
 }
