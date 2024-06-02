@@ -125,7 +125,7 @@ class WooEmailPreview
         if (count($orders) > 0) {
             return $orders[0]['id'];
         }
-        return 25;
+        return '';
     }
 
     /**
