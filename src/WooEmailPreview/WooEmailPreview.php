@@ -207,9 +207,7 @@ class WooEmailPreview
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-                <?php echo wp_kses($style_and_html['styles'], array( 'style' )); ?>
-            </style>
+            <?php echo wp_kses('<style>' . $style_and_html['styles']. '</style>', array( 'style'=>array() ) ); ?>
         </head>
 
         <body>

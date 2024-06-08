@@ -78,9 +78,14 @@ Yes, please report any issues you face or request any features you may feel requ
 * WooCommerce 8.0 or greater
 * WordPress 5.0 or greater
 
+== Developement ==
+- **Developer Documentation:** Explore the [Virfice Github](https://github.com/Virfice/virfice-wp) for Developement.
+
+
 == Changelog ==
 = 1.0.0 =
 * Initial Release
+To read the changelog for the latest Virfice release, please navigate to the <a href="https://github.com/Virfice/virfice-wp">github page.</a>.
 
 == Upgrade Notice ==
 The plugin does not have any premium version yet. It will come soon.
