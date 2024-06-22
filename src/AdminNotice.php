@@ -43,7 +43,7 @@ class AdminNotice
             </div>
             <?php
             // Clear the flag so the message is only displayed once
-            delete_option('virfice_first_install');
+            // delete_option('virfice_first_install');
         }
     }
 

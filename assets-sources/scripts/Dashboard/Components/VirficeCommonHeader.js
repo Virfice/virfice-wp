@@ -18,7 +18,7 @@ const VirficeCommonHeader = () => {
             <Button
               type="plain"
               title="Explore guide!"
-              // link={addParams({ menu: "woo-email-list" })}
+              link={'https://www.virfice.com/customize-woocommerce-emails/'}
               leftIcon={<BookOpen />}
             />
           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../../Molecules/Button";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX, VIRFICE_RESPONSIVE_BREAKPOINTS } from "../../../../conf";
 import { useSelector } from "react-redux";
 import SendTestMailButton from "./SendTestMailButton";
 import { MobileIcon, LaptopIcon } from "../../../icons";
@@ -14,9 +14,9 @@ const TopActionBar = () => {
     let iframe = document.getElementById(VIRFICE_APP_PREFIX+'-email-preview');
 
     if(deviceName === 'Laptop'){
-        iframe.style.width = '100%';
+        iframe.style.width = VIRFICE_RESPONSIVE_BREAKPOINTS.desktop;
     }else if(deviceName === 'Mobile'){
-        iframe.style.width = '320px';
+        iframe.style.width = VIRFICE_RESPONSIVE_BREAKPOINTS.mobile
         iframe.style.marginLeft = 'auto';
         iframe.style.marginRight = 'auto';
     }

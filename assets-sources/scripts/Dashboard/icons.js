@@ -127,16 +127,16 @@ export const BookOpen = ({ type }) => {
       <path
         d="M6 4.125C6 3.72718 6.15804 3.34564 6.43934 3.06434C6.72064 2.78304 7.10218 2.625 7.5 2.625H10.875V9.375H7.5C7.10218 9.375 6.72064 9.53304 6.43934 9.81434C6.15804 10.0956 6 10.4772 6 10.875"
         stroke="#0066CC"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M1.125 9.375H4.5C4.89782 9.375 5.27936 9.53304 5.56066 9.81434C5.84196 10.0956 6 10.4772 6 10.875V4.125C6 3.72718 5.84196 3.34564 5.56066 3.06434C5.27936 2.78304 4.89782 2.625 4.5 2.625H1.125V9.375Z"
         stroke="#0066CC"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
