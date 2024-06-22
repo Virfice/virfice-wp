@@ -25,11 +25,7 @@ class AdminNotice
     public function virfice_show_congratulation_message() {
         // Check if it's the first installation
         if (get_option('virfice_first_install')) {
-            $url = add_query_arg(
-                array(
-                    'page' => VIRFICE_APP_PREFIX, // The Virfice plugin page
-                )
-            );
+            $url = Utils::get_plugin_home_url();
             ?>
             <div class="notice notice-success is-dismissible">
                 <div style="display: flex; gap: 40px; padding: 20px 32px;">

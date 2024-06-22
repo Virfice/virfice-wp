@@ -96,4 +96,8 @@ class Utils
 
         return $data;
     }
+
+    public static function get_plugin_home_url() {
+        return admin_url('admin.php?page=' . VIRFICE_APP_PREFIX);
+    }
 }

@@ -4,6 +4,7 @@ import { hasQueryParamValue } from "../../functions";
 import BrandSettings from "./BrandSettings";
 import WooEmailList from "./WooEmailList";
 import EmailEditor from "./WooEmailList/EmailEditor";
+import Settings from "./Settings";
 
 //Need to implement route for every dashboard menu
 const Pages = () => {
@@ -15,6 +16,9 @@ const Pages = () => {
     }
     if(hasQueryParamValue('menu','woo-email-edit')){
         return <EmailEditor />
+    }
+    if(hasQueryParamValue('menu','settings')){
+        return <Settings />
     }
     return <Landing />
 };
