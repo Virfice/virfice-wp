@@ -1,5 +1,6 @@
 vendor
 node_modules
-assets
+assets/*
+!assets/files
 build
 .DS_Store

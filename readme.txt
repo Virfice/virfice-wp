@@ -1,4 +1,4 @@
-=== Email Customizer for WooCommerce ===
+=== Email Customizer for WooCommerce - Virfice ===
 
 Contributors: Virfice
 Donate link: [https://www.virfice.com](https://www.virfice.com)
@@ -20,33 +20,33 @@ Do you want to edit WooCommerce email templates? Install **Email Customizer for 
 
 ## Feature Highlights
 
-- 📧 Customize WooCommerce transaction emails
-- 🗂️ Manage all default WooCommerce emails
-- 🌟 Add a logo to WooCommerce email templates
-- ✏️ Change the subject of WooCommerce emails
-- 📤 Add a sender email address
-- 📥 Include a "reply-to" email address in WooCommerce emails
-- 🎨 Customize email templates by changing the body background color
-- 🖋️ Modify WooCommerce email footer text
-- 📍 Automatically insert the store address in the footer
-- 👀 View live previews of WooCommerce emails
-- 🚀 Send test emails to your preferred email address
+📧 Customize WooCommerce transaction emails
+🗂️ Manage all default WooCommerce emails
+🌟 Add a logo to WooCommerce email templates
+✏️ Change the subject of WooCommerce emails
+📤 Add a sender email address
+📥 Include a "reply-to" email address in WooCommerce emails
+🎨 Customize email templates by changing the body background color
+🖋️ Modify WooCommerce email footer text
+📍 Automatically insert the store address in the footer
+👀 View live previews of WooCommerce emails
+🚀 Send test emails to your preferred email address
 
 Get easy options for customization and changing email content in real time. Edit order email content of your WooCommerce store without any hassle.
 
-## Customize the following WooCommerce Emails
+## Customize the Following WooCommerce Emails
 
-- 📦 **New Order Email** - Customize new order email sent to the store admin when a new order is placed.
-- ❌ **Cancelled Order Email** - Customize canceled order email sent to the store admin if an order is canceled.
-- ⚠️ **Failed Order Email** - Customize failed order email sent to the store admin when an order fails.
-- 🕒 **Order On-Hold Email** - Customize order on-hold email sent to customers when their order is on hold.
-- 🔄 **Order Processing Email** - Customize order processing email sent to customers after their order is paid and processed.
-- ✅ **Order Completed Email** - Customize order complete email sent to customers when their order is marked complete.
-- 💸 **Order Refunded Email** - Customize order refunded email sent to customers if their order is refunded.
-- 📄 **Customer Invoice Email** - Customize customer invoice email sent to customers, containing order information and payment links when applicable.
-- 📝 **Customer Note Email** - Customize customer note email sent to customers when a note is added to their order by the admin.
-- 🔒 **Reset Password Email** - Customize reset password email sent to customers when they request a password reset.
-- 🆕 **New Account Email** - Customize new account email sent to customers when they create a new account on the website.
+📦 **New Order Email** - Customize new order email sent to the store admin when a new order is placed.
+❌ **Cancelled Order Email** - Customize canceled order email sent to the store admin if an order is canceled.
+⚠️ **Failed Order Email** - Customize failed order email sent to the store admin when an order fails.
+🕒 **Order On-Hold Email** - Customize order on-hold email sent to customers when their order is on hold.
+🔄 **Order Processing Email** - Customize order processing email sent to customers after their order is paid and processed.
+✅ **Order Completed Email** - Customize order complete email sent to customers when their order is marked complete.
+💸 **Order Refunded Email** - Customize order refunded email sent to customers if their order is refunded.
+📄 **Customer Invoice Email** - Customize customer invoice email sent to customers, containing order information and payment links when applicable.
+📝 **Customer Note Email** - Customize customer note email sent to customers when a note is added to their order by the admin.
+🔒 **Reset Password Email** - Customize reset password email sent to customers when they request a password reset.
+🆕 **New Account Email** - Customize new account email sent to customers when they create a new account on the website.
 
 
 ## How to Customize WooCommerce Emails
