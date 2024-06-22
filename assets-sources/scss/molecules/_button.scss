@@ -14,17 +14,27 @@
 
     cursor: pointer;
 
+    &.#{$classPrefix}-btn-primary {
+        &:hover {
+            background: var(--bg-button-bg-btn-primary-hover, rgba(169, 201, 44, 1));
+        }
+    }
+
+
 
     &.#{$classPrefix}-small {
         padding: 4px 8px;
     }
+
     &.#{$classPrefix}-btn-danger {
         border: 1px solid var(--border-button-border-btn-error-idle, #FF0D00);
         background: var(--bg-button-bg-btn-error-inverse-idle, #FFE7E5);
+
         &:hover {
             border: 1px solid var(--border-button-border-btn-error-hover, #CC0A00);
             background: var(--bg-button-bg-btn-error-inverse-hover, #FFCFCC);
         }
+
         &:focus {
             border: 1px solid var(--border-button-border-btn-error-active, #990800);
             background: var(--Bg-button-bg-btn-error-inverse-idle, #FFE7E5);
@@ -42,6 +52,7 @@
             background: rgba(252, 252, 252, 1);
         }
     }
+
     &.#{$classPrefix}-btn-tertiary {
         border-radius: none;
         background: none;
@@ -52,6 +63,7 @@
         &:hover {
             background: rgba(242, 242, 242, 1) !important;
         }
+
         &:focus {
             background: rgba(252, 252, 252, 1);
         }
@@ -75,7 +87,7 @@
         }
     }
 
-    &.#{$classPrefix}-icon{
+    &.#{$classPrefix}-icon {
         padding: 6px !important;
     }
 }

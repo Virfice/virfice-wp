@@ -7,12 +7,6 @@ import Button from "../../Molecules/Button";
 import { addParams } from "../../../functions";
 
 const SingleItem = ({ email }) => {
-  const handleEditClick = () => {
-    window.location.href = addParams({
-      menu: "woo-email-edit",
-      email_id: email.id,
-    });
-  };
   return (
     <TableItem>
       <td>
@@ -35,7 +29,11 @@ const SingleItem = ({ email }) => {
             title="Edit"
             type="secondary"
             small
-            onClick={handleEditClick}
+            // onClick={handleEditClick}
+            link={addParams({
+              menu: "woo-email-edit",
+              email_id: email.id,
+            })}
           />
         </div>
       </td>

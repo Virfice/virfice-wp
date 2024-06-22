@@ -5,7 +5,6 @@ import Modal from "../../../Components/Modal";
 import Textfield from "../../../Molecules/Textfield";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { addParams } from "../../../../functions";
 
 const SendTestMailButton = () => {
   let currentEmail = useSelector((state) => state.brandSettings?.currentEmail);
@@ -13,7 +12,6 @@ const SendTestMailButton = () => {
   const changedSettings = useSelector(
     (state) => state.brandSettings.changedSettings
   );
-  // let previewUrl = addParams(changedSettings, currentEmail?.previewUrl);
 
   const [testMailPopupOpen, setTestMailPopupOpen] = useState(false);
   const [emails, setEmails] = useState("");

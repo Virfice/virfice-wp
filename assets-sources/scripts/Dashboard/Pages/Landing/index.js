@@ -4,7 +4,7 @@ import { VIRFICE_APP_PREFIX } from "../../../conf";
 import Container from "../../Molecules/Container";
 import CalloutCard from "../../Components/CalloutCard";
 import FeatureBanner from "./FeatureBanner";
-import { addParams, createAssetUrl } from "../../../functions";
+import {  addParams, createAssetUrl } from "../../../functions";
 import {useDispatch} from 'react-redux';
 import {  incrementAsync } from "./landingSlice";
 import brandCustomizeSRC from "./BrandCustomize.png";
@@ -13,13 +13,6 @@ import VirficeCommonHeader from "../../Components/VirficeCommonHeader";
 
 const Landing = () => {
   const dispatch = useDispatch();
-
-  const handleCustomizeClick = () => {
-    window.location.href = addParams({ menu:  "brand-settings" });
-  };
-  const handleCustomizeAndPreviewClick = () => {
-    window.location.href = addParams({ menu:  "woo-email-list" });
-  };
 
   dispatch(incrementAsync(200));
   
@@ -33,7 +26,7 @@ const Landing = () => {
           >
             <FeatureBanner />
             <CalloutCard
-              heading={"Your business your brand, customize now!"}
+              heading={"Customize WooCommerce email templates"}
               subHeading={
                 "Upload your store’s logo, change colors and fonts, and more."
               }
@@ -41,7 +34,8 @@ const Landing = () => {
                 <Button
                   type="secondary"
                   title="Customize now"
-                  onClick={handleCustomizeClick}
+                  link={addParams({ menu: "brand-settings" })}
+                  
                 />
               }
               Illustration={<img src={createAssetUrl(brandCustomizeSRC)} />}
@@ -53,7 +47,9 @@ const Landing = () => {
                 "Check WooCommerce email previews and send test emails"
               }
               ActionButton={
-                <Button type="secondary" title="Customize & preview" onClick={handleCustomizeAndPreviewClick}/>
+                <Button type="secondary" title="Customize & preview"
+                link={addParams({ menu: "woo-email-list" })}
+                />
               }
               Illustration={<img src={createAssetUrl(testMailSRC)} />}
             />

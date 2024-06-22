@@ -3,6 +3,7 @@ import Card from "../../Molecules/Card";
 import Button from "../../Molecules/Button";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 import FeatureListItem from "../../Molecules/FeatureListItem";
+import { addParams } from "../../../functions";
 
 const FeatureBanner = () => {
   return (
@@ -159,10 +160,9 @@ const FeatureBanner = () => {
         <div className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-gap-8`}>
           <h1 className={`${VIRFICE_APP_PREFIX}-heading`}>Howdy!</h1>
           <p className={`${VIRFICE_APP_PREFIX}-sub-heading`}>
-            <strong>Virfice</strong> is here, do more with WooCommerce emails at
-            ease.
+            <strong>Virfice</strong> is here, design, test, and preview WooCommerce emails effortlessly.
           </p>
-          <Button type="plain" title="Explore guide!" />
+          <Button type="primary" title="Customize now!" link={addParams({ menu:  "woo-email-list" })} />
           {/* https://www.virfice.com/docs */}
         </div>
       </div>

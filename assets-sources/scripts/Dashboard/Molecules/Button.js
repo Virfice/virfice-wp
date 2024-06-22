@@ -9,8 +9,18 @@ const Button = ({
     isActive,
     type="primary", // primary | outline | danger
     small,
-    onClick = () =>{}
+    onClick = () =>{},
+    link=false,
 }) =>{
+
+    const _onClick = () =>{
+        if(link !== false){
+            window.location.href = link;
+        }
+        if(onClick){
+            onClick();
+        }
+    }
     const className = classnames({
         [VIRFICE_APP_PREFIX + '-btn'] : true,
         [VIRFICE_APP_PREFIX + '-btn-primary'] : type === 'primary',
@@ -24,7 +34,7 @@ const Button = ({
         [VIRFICE_APP_PREFIX + '-small'] : small,
         ['label__mediumprominent']: true
     });
-    return <button className={className} onClick={onClick}>{leftIcon}{icon}{title}</button>
+    return <button className={className} onClick={_onClick}>{leftIcon}{icon}{title}</button>
 }
 
 export default Button;
