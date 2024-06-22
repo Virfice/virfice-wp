@@ -73,8 +73,11 @@ class Dashboard
             VIRFICE_APP_PREFIX,
             [$this, 'my_plugin_page'],
             'dashicons-' . VIRFICE_APP_PREFIX,
+            '55.55'// Position (this places it near WooCommerce which is at position 55)
         );
-        // add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Brand Settings', 'Brand Settings', 'manage_woocommerce', 'test&menu=brand-settings', [$this, 'my_plugin_page']);
+
+        // Emails
+        add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Emails', 'Emails', 'manage_woocommerce', 'virfice&menu=woo-email-list', [$this, 'my_plugin_page']);
     }
 
     /**
