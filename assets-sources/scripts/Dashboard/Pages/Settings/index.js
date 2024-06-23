@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import VirficeCommonHeader from "../../Components/VirficeCommonHeader";
 import Container from "../../Molecules/Container";
 import StickyTopNav from "../../Components/StickyTopNav";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
-import PageHeadingAndSubheading from "../../Components/PageHeadingAndSubheading";
 import Card from "../../Molecules/Card";
 import Menu from "./Menu";
 import Email from "./Email";
@@ -36,9 +34,7 @@ const Settings = () => {
             </Card>
             <div style={{ width: "100%" }}>
                 <h2 className="title__medium">{activeMenu}</h2>
-              <Card>
                 {activeMenu === "Email" && <Email/>}
-              </Card>
             </div>
           </div>
         </Container>

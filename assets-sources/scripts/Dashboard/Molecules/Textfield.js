@@ -17,7 +17,7 @@ const Textfield = ({ placeholder, label, value, helpText, onChange = () => {}, m
     <div className={`${VIRFICE_APP_PREFIX}-textfileld-wrapper`}>
       {label && <label className="body__medium">{label}</label>}
       {!multiline && <input placeholder={placeholder || label} value={v} onChange={handleOnChange} />}
-      {multiline && <textarea placeholder={placeholder || label} value={v} onChange={handleOnChange}></textarea>}
+      {multiline && <textarea placeholder={placeholder || label} value={v} onChange={handleOnChange} rows={multiline}></textarea>}
       {helpText && <HelpText text={helpText} />}
     </div>
   );
