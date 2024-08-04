@@ -24,7 +24,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Check if WooCommerce is installed and active during plugin activation
 function virfice_check_woocommerce_activation()
 {
-
     // Check if this is the first installation
     if (!get_option('virfice_first_install')) {
         // Set the flag in the database
