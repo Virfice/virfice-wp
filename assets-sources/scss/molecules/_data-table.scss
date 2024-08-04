@@ -1,0 +1,32 @@
+.#{$classPrefix}-data-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+    thead {
+        th {
+            border-bottom: 1px solid rgba(227, 227, 227, 1);
+            padding: 12px;
+        }
+    }
+
+    tbody {
+        .#{$classPrefix}-action-buttons {
+            visibility: hidden;
+        }
+
+        tr:hover {
+            cursor: pointer;
+            background-color: rgba(242, 242, 242, 1);
+
+            .#{$classPrefix}-action-buttons {
+                visibility: visible;
+            }
+        }
+
+        td {
+            border-bottom: 1px solid rgba(227, 227, 227, 1);
+            padding: 12px;
+        }
+    }
+}

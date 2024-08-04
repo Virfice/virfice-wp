@@ -1,0 +1,14 @@
+{
+    "name": "pay2fullstack/email-preview",
+    "autoload": {
+        "psr-4": {
+            "Virfice\\": "./src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pay2fullstack"
+        }
+    ],
+    "require": {}
+}

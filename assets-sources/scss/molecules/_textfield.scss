@@ -1,0 +1,27 @@
+.#{$classPrefix}-textfileld-wrapper{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    .body__medium{
+        color: var(--text-text-title);
+    }
+    input,textarea{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--p-sapce-100);
+        align-self: stretch;
+        padding: 8px 12px;
+
+        border-radius: var(--Radius-S, 4px);
+        border: 1px solid var(--Border-button-border-btn-idle, #949494);
+        background: var(--Bg-input-bg-input-idle, #FCFCFC);
+    }
+    textarea{
+
+    }
+}
+    

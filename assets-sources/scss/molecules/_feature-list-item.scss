@@ -1,0 +1,25 @@
+.#{$classPrefix}-feature-list-item {
+    width: 83px;
+
+    .#{$classPrefix}-illustration-wrapper {
+        background-color: #F4F9E1;
+        height: 80px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .#{$classPrefix}-title {
+        color: var(--Greyscale-Text-Title, #1A1A1A);
+        /* body/small */
+        font-family: Roboto;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        /* 133.333% */
+        margin: 0;
+    }
+
+}

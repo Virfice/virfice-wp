@@ -1,0 +1,33 @@
+.#{$classPrefix}-toggle-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .#{$classPrefix}-toggle-btn__wrapper {
+        display: flex;
+        width: 100%;
+        border: 1px solid var(--border-button-border-btn-idle, #949494);
+        border-radius: 4px;
+        overflow: hidden;
+
+        .#{$classPrefix}-toggle-btn__option {
+            width: 100%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &.#{$classPrefix}-toggle-btn__option--active {
+                background-color: #F2F2F2;
+            }
+
+            // notlast child 
+            &:not(:last-child) {
+                border-right: 1px solid var(--border-button-border-btn-idle, #949494);
+            }
+        }
+
+    }
+}

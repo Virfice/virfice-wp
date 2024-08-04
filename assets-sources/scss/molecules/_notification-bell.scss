@@ -1,0 +1,18 @@
+.#{$classPrefix}-notification-bell {
+    display: flex;
+    width: 300px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 10000;
+
+    &.#{$classPrefix}-success {
+        background: var(--bg-bg-success, #03C04A);
+        color: rgba(250, 255, 252, 1);
+    }
+    &.#{$classPrefix}-danger {
+        background: var(--bg-bg-error, #FF0D00);
+        color: rgba(250, 255, 252, 1);
+    }
+}

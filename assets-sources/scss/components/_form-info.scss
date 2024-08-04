@@ -1,0 +1,13 @@
+.#{$classPrefix}-form-info{
+    display: flex;
+    gap: 16px;
+    padding: 12px 8px;
+    border-radius: 7px 0px 0px 7px;
+    border-left: 2px solid var(--bg-bg-brand, #C8E265);
+    background: var(--bg-bg-canvas, #FFFAEB);
+
+    .body__large{
+        color: var(--text-text-subtitle, #616161);
+        
+    }
+}

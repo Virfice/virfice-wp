@@ -1,0 +1,15 @@
+.#{$classPrefix}-card{
+    background-color: rgba(255, 254, 250, 1);
+    display: flex;
+    padding: 16px 20px;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: var(--Radius-M, 6px);
+    // overflow: hidden;
+    border: 1px solid var(--Greyscale-Border-Idle, #C9C9C9);
+    background: var(--Colors-Card-idle, #FFFEFA);
+
+    &.#{$classPrefix}-padding-0{
+        padding: 0;
+    }
+}

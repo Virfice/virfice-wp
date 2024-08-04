@@ -1,0 +1,6 @@
+vendor
+node_modules
+assets/*
+!assets/files
+build
+.DS_Store

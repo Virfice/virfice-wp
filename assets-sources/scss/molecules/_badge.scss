@@ -1,0 +1,45 @@
+.#{$classPrefix}-badge {
+    background: var(--bg-button-bg-btn-secondary-idle, rgba(252, 252, 252, 1));
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-Full, 999px);
+    gap: 4px;
+
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    /* 133.333% */
+    letter-spacing: 0.5px;
+
+
+    &.#{$classPrefix}-active {
+        background: var(--bg-button-bg-btn-success-inverse-idle, rgba(225, 255, 236, 1));
+
+        svg {
+            color: #029C3D;
+        }
+    }
+
+    &.#{$classPrefix}-success {
+        background: var(--bg-button-bg-btn-success-idle, rgba(2, 156, 61, 1));
+    }
+
+    &.#{$classPrefix}-warning {
+        background: var(--bg-button-bg-btn-warning-idle, rgba(255, 235, 51, 1));
+    }
+
+    &.#{$classPrefix}-in-active {
+        background: var(--bg-button-bg-btn-disabled, rgba(230, 230, 230, 1));
+
+        svg {
+            color: #666666;
+        }
+    }
+}
