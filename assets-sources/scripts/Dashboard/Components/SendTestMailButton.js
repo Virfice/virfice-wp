@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../Molecules/Button";
 import { EnvelopIcon, FormInfoIllustration, PaperPlaneIcon } from "../icons";
 import Modal from "../Components/Modal";
@@ -9,12 +9,29 @@ import { showNotificationBell } from "./componentsSlice";
 import { validateCommaSeparatedEmails } from "../../functions";
 import FormInfo from "./FormInfo";
 import { VIRFICE_APP_PREFIX } from "../../conf";
+import { globalSettingsAsync } from "../Pages/Settings/globalSettingsSlice";
 
 const SendTestMailButton = ({ email_id, order_id, changedSettings }) => {
   const dispatch = useDispatch();
+  const globalEmailSettings = useSelector(
+    (state) => state.globalSettings["changedSettings-email"]
+  );
   const [testMailPopupOpen, setTestMailPopupOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [emails, setEmails] = useState("");
+
+  useEffect(() => {
+    dispatch(globalSettingsAsync(["email"]));
+  }, []);
+
+  useEffect(() => {
+    setEmails(
+      (globalEmailSettings &&
+        globalEmailSettings["woocommerce_email_from_address"] + ",") ||
+        ""
+    );
+  }, [globalEmailSettings]);
+
   const handlePopupClose = () => {
     setTestMailPopupOpen(false);
   };
@@ -93,6 +110,7 @@ const SendTestMailButton = ({ email_id, order_id, changedSettings }) => {
       >
         <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
           <TextField
+            value={emails}
             label={"Recipients"}
             multiline={3}
             onChange={handleEmailInput}
