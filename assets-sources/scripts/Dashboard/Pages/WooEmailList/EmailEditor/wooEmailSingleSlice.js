@@ -5,8 +5,8 @@ import { showNotificationBell } from "../../../Components/componentsSlice";
 
 const initialState = {
   email: { loaded: false, settings: {} },
-  changedSettings:{},
-  selectedOrder:{}
+  changedSettings: {},
+  selectedOrder: {},
 };
 
 export const wooEmailSingleSlice = createSlice({
@@ -24,7 +24,6 @@ export const wooEmailSingleSlice = createSlice({
   },
 });
 
-
 export const emailSingleAsync = (email_id) => (dispatch) => {
   let d = null;
   let apiSlug = "virfice/v1/woo-email/single";
@@ -34,14 +33,17 @@ export const emailSingleAsync = (email_id) => (dispatch) => {
       headers: {
         "X-WP-Nonce": virfice.nonce,
       },
-      params: {email_id},
+      params: { email_id },
     })
     .then((res) => {
       d = res.data;
       dispatch(
         setWooEmailSingleData({
           key: "email",
-          value: { loaded: true, settings: {...d.object, previewUrl: d.previewUrl} },
+          value: {
+            loaded: true,
+            settings: { ...d.object, previewUrl: d.previewUrl },
+          },
         })
       );
 
@@ -57,7 +59,6 @@ export const emailSingleAsync = (email_id) => (dispatch) => {
     });
 };
 
-
 export const saveWooEmailSettings = (email_id, settings) => (dispatch) => {
   let d = null;
   let apiSlug = "virfice/v1/woo-email/save-email-settings";
@@ -65,7 +66,6 @@ export const saveWooEmailSettings = (email_id, settings) => (dispatch) => {
   formData.append("settings", JSON.stringify(settings));
   formData.append("email_id", email_id);
 
-  console.log(settings)
   axios
     .post(`${virfice.restBase}${apiSlug}`, formData, {
       headers: {
@@ -76,16 +76,18 @@ export const saveWooEmailSettings = (email_id, settings) => (dispatch) => {
     .then((res) => {
       d = res.data;
       dispatch(setWooEmailSingleSettingsData({ settings: settings }));
-      dispatch(showNotificationBell({title: 'Settings saved'}));
+      dispatch(showNotificationBell({ title: "Settings saved" }));
     })
     .catch((error) => {
       console.log(error);
-      dispatch(showNotificationBell({title: 'Settings saved failed', type: 'danger'}));
+      dispatch(
+        showNotificationBell({ title: "Settings saved failed", type: "danger" })
+      );
     });
 };
 
-
 // Action creators are generated for each case reducer function
-export const { setWooEmailSingleData, setWooEmailSingleSettingsData } = wooEmailSingleSlice.actions;
+export const { setWooEmailSingleData, setWooEmailSingleSettingsData } =
+  wooEmailSingleSlice.actions;
 
 export default wooEmailSingleSlice.reducer;

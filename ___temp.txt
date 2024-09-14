@@ -1,0 +1,19 @@
+{
+    pageData:{
+        id_1:{
+            id: id_1,
+            name: 'name',
+            title: 'title',
+            settings:[
+                'background', 'padding'
+            ],
+            tabSettings: false,
+            childs:['id_2'],
+            status: 'active',
+        },
+        id_2:{
+
+        }
+    }
+    root: 'id_1',
+}

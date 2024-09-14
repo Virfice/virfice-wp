@@ -10,7 +10,7 @@ const ToggleButton = ({
   options = [],
 }) => {
   const _onClick = (value) => {
-    console.log(value);
+    // console.log(value);
     onChange(value);
   };
   const className = classnames({

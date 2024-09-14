@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-import landingReducer from '../Pages/Landing/landingSlice'
-import brandSettingsSlice from '../Pages/BrandSettings/brandSettingsSlice'
-import wooEmailListSlice from '../Pages/WooEmailList/wooEmailListSlice'
-import wooEmailSingleSlice from '../Pages/WooEmailList/EmailEditor/wooEmailSingleSlice'
-import globalSettingsSlice from '../Pages/Settings/globalSettingsSlice'
-import componentsSlice from '../Components/componentsSlice'
-
+import { configureStore } from "@reduxjs/toolkit";
+import landingReducer from "../Pages/Landing/landingSlice";
+import brandSettingsSlice from "../Pages/BrandSettings/brandSettingsSlice";
+import wooEmailListSlice from "../Pages/WooEmailList/wooEmailListSlice";
+import wooEmailSingleSlice from "../Pages/WooEmailList/EmailEditor/wooEmailSingleSlice";
+import globalSettingsSlice from "../Pages/Settings/globalSettingsSlice";
+import componentsSlice from "../Components/componentsSlice";
+import builderSlice from "../Pages/Builders/builderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +15,6 @@ export const store = configureStore({
     wooEmailSingle: wooEmailSingleSlice,
     components: componentsSlice,
     globalSettings: globalSettingsSlice,
+    builder: builderSlice,
   },
-})
-
+});
