@@ -1,13 +1,13 @@
 import React from "react";
-import { pageInitData } from "../../utils";
 import Elements from "./Elements";
+import { useSelector } from "react-redux";
 
-const pageData = pageInitData;
+const ReactPreview = ({ root }) => {
+  const pageData = useSelector((state) => state.builder.data?.pageData);
 
-const ReactPreview = ({ root = pageData.root }) => {
   return (
     <>
-      <Elements data={pageData.pageData[root]} />
+      <Elements data={pageData[root]} />
     </>
   );
 };

@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
-import { pageInitData } from "./EmailBuilder/utils";
 
-const initialState = pageInitData;
+const initialState = { data: {}, selectedElementId: false };
 
 export const builderSlice = createSlice({
   name: VIRFICE_APP_PREFIX,
   initialState,
   reducers: {
     setBuilderData: (state, action) => {
-      state = action.payload;
+      const { key, value } = action.payload;
+      console.log({ key, value });
+      state[key] = value;
     },
   },
 });

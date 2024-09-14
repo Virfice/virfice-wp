@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import StickyTopNav from "../../../Components/StickyTopNav";
 import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
 import Container from "../../../Molecules/Container";
-import Card from "../../../Molecules/Card";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
 import { pageInitData } from "./utils";
-import Settings from "./Settings";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 import { useDispatch } from "react-redux";
@@ -18,9 +16,12 @@ const EmailBuilder = () => {
   };
 
   useEffect(() => {
-    // console.log(pageInitData);
-    dispatch(setBuilderData(pageInitData));
-  }, []);
+    //TODO: need to collect page data from server => pageInitData
+    dispatch(setBuilderData({ key: "data", value: pageInitData }));
+    dispatch(
+      setBuilderData({ key: "selectedElementId", value: pageInitData?.root })
+    );
+  }, [pageInitData]);
 
   return (
     <>
