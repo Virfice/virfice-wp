@@ -3,6 +3,7 @@ import { VIRFICE_APP_PREFIX } from "../../../../../conf";
 import Heading from "./Heading";
 import Color from "./Color";
 import Divider from "../../../../Molecules/Divider";
+import TextField from "../../../../Molecules/TextField";
 
 const Settings = ({ data }) => {
   return (
@@ -23,6 +24,16 @@ const Settings = ({ data }) => {
             )}
             {type === "color" && (
               <Color
+                title={title}
+                value={defaultValue}
+                onChange={(v) => {
+                  console.log(v);
+                }}
+              />
+            )}
+
+            {type === "sliderWidth" && (
+              <TextField
                 title={title}
                 value={defaultValue}
                 onChange={(v) => {

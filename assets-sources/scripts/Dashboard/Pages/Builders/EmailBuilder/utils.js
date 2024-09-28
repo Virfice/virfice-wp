@@ -57,15 +57,15 @@ const spacerElement = {
     borderColor2: { ...settings.color, title: "Border color" },
   },
   tabSettings: false,
-  childs: ["id_2", "id_3"],
+  childs: [],
   status: "active",
 };
 
 export const pageInitData = {
   pageData: {
-    id_1: { ...spacerElement, id: "id_1" },
-    id_2: { ...spacerElement, id: "id_2", childs: [] },
-    id_3: { ...spacerElement, id: "id_3", childs: [] },
+    id_1: { ...spacerElement, id: "id_1", childs: ["id_2", "id_3"] },
+    id_2: { ...spacerElement, id: "id_2", childs: [], title: "Spacer 2" },
+    id_3: { ...spacerElement, id: "id_3", childs: [], title: "Spacer 3" },
   },
   root: "id_1",
   globalCSS: "",
