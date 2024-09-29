@@ -4,36 +4,68 @@ import RightControl from "./RightControls";
 
 const Border = ({ element }) => {
   const borderDiv = useRef(null);
+
   useEffect(() => {
-    const updatePosition = () => {
-      if (!element || !borderDiv.current) return;
+    if (!element) return;
 
-      // Get the bounding box of the target element
-      let rect = element.getBoundingClientRect();
-
-      // Set the borderDiv's position, width, and height to match the target element
-      borderDiv.current.style.left = rect.left + window.scrollX + "px";
-      borderDiv.current.style.top = rect.top + window.scrollY + "px";
-      borderDiv.current.style.width = rect.width + "px";
-      borderDiv.current.style.height = rect.height + "px";
-      borderDiv.current.style.position = "fixed"; // Use `absolute` or `fixed` based on your requirement
-    };
-
+    const parentElement = element.parentNode; // Get the parent of the target element
     // Initial update on component mount
     updatePosition();
 
     const virficeDashboard = document.querySelector("#virfice-dashboard");
 
-    // Add a scroll listener to update the position on scroll
-    virficeDashboard.addEventListener("scroll", updatePosition);
-    virficeDashboard.addEventListener("resize", updatePosition); // Also update on window resize
+    // Safely add scroll and resize listeners
+    if (virficeDashboard) {
+      virficeDashboard.addEventListener("scroll", updatePosition);
+    }
+    window.addEventListener("resize", updatePosition);
 
-    // Cleanup the event listeners on unmount
+    // Using ResizeObserver to track element resizing
+    const resizeObserver = new ResizeObserver(updatePosition);
+    resizeObserver.observe(element);
+
+    // Use MutationObserver to track changes in the parent element (e.g., reordering, moving up/down)
+    const mutationObserver = new MutationObserver(() => {
+      updatePosition();
+    });
+
+    // Observe the parent element to detect changes in its child nodes (e.g., element moves)
+    if (parentElement) {
+      mutationObserver.observe(parentElement, {
+        childList: true, // Detect changes in the parent's child elements
+        subtree: false, // No need to observe deeper in the DOM tree
+      });
+    }
+
+    // Cleanup the event listeners and observers on unmount
     return () => {
-      virficeDashboard.removeEventListener("scroll", updatePosition);
-      virficeDashboard.removeEventListener("resize", updatePosition);
+      if (virficeDashboard) {
+        virficeDashboard.removeEventListener("scroll", updatePosition);
+      }
+      window.removeEventListener("resize", updatePosition);
+
+      // Disconnect the observers
+      resizeObserver.disconnect();
+      if (parentElement) {
+        mutationObserver.disconnect();
+      }
     };
   }, [element]); // Re-run the effect when the `element` changes
+
+  // Function to update the border's position to match the element
+  const updatePosition = () => {
+    if (!borderDiv.current) return;
+
+    // Get the bounding box of the target element
+    const rect = element.getBoundingClientRect();
+
+    // Set the borderDiv's position, width, and height to match the target element
+    borderDiv.current.style.left = rect.left + window.scrollX + "px";
+    borderDiv.current.style.top = rect.top + window.scrollY + "px";
+    borderDiv.current.style.width = rect.width + "px";
+    borderDiv.current.style.height = rect.height + "px";
+    borderDiv.current.style.position = "fixed"; // Use `absolute` or `fixed` based on your requirement
+  };
 
   return (
     <div className={VIRFICE_APP_PREFIX + "-element-border"} ref={borderDiv}>
