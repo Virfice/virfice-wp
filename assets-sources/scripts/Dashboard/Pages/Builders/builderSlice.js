@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 
-const initialState = { data: {}, selectedElementId: false };
+const initialState = { html: ``, selectedElementId: false };
 
 export const builderSlice = createSlice({
   name: VIRFICE_APP_PREFIX,
@@ -9,11 +9,19 @@ export const builderSlice = createSlice({
   reducers: {
     setBuilderData: (state, action) => {
       const { key, value } = action.payload;
-      console.log({ key, value });
       state[key] = value;
     },
   },
 });
+
+export const onSelectElement = (elementId) => (dispatch) => {
+  dispatch(
+    setBuilderData({
+      key: "selectedElementId",
+      value: elementId,
+    })
+  );
+};
 
 // Action creators are generated for each case reducer function
 export const { setBuilderData } = builderSlice.actions;

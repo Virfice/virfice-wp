@@ -4,15 +4,14 @@ import { SketchPicker } from "react-color";
 import TextField from "./TextField";
 import useOutsideClick from "../../Hooks/useOutsideClick";
 
-const getColorCode = (color) =>{
-
-  if(color?.hex)return color.hex;
-    return (color?.rgb)
+const getColorCode = (color) => {
+  return color?.rgb
     ? `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
     : color;
-}
+  // if (color?.hex) return color.hex;
+};
 
-const Paintfield = ({ label, value = "#000000", onChange=()=>{} }) => {
+const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState(value);
 
@@ -20,8 +19,8 @@ const Paintfield = ({ label, value = "#000000", onChange=()=>{} }) => {
     if (open) setOpen(false);
   });
 
-  useEffect(()=>{
-    setColor(value)
+  useEffect(() => {
+    setColor(value);
   }, [value]);
 
   const handleClick = () => {
@@ -46,7 +45,7 @@ const Paintfield = ({ label, value = "#000000", onChange=()=>{} }) => {
       padding: "5px",
       background: "#fff",
       cursor: "pointer",
-      width: '100%'
+      width: "100%",
     },
     popover: {
       position: "absolute",
@@ -71,14 +70,17 @@ const Paintfield = ({ label, value = "#000000", onChange=()=>{} }) => {
           {open && (
             <div style={styles.popover} ref={ref}>
               {/* <div style={styles.cover} onClick={handleClose}/> */}
-              <SketchPicker color={getColorCode(color)} onChange={handleChange} />
+              <SketchPicker
+                color={getColorCode(color)}
+                onChange={handleChange}
+              />
             </div>
           )}
         </div>
-        <TextField placeholder={'code'} value={getColorCode(color)}/>
+        <TextField placeholder={"code"} value={getColorCode(color)} />
       </div>
     </div>
   );
 };
 
-export default Paintfield;
+export default PaintField;

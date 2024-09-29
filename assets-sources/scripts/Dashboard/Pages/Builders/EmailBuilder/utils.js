@@ -1,72 +1,102 @@
-const settings = {
-  heading: {
-    type: "heading",
-    title: "Settings Heading",
-    subTitle: false,
-  },
-  divider: {
-    type: "divider",
-  },
-  color: {
-    type: "color",
-    title: "Color",
-    defaultValue: "#000000",
-  },
-  sliderWidth: {
-    type: "sliderWidth",
-    title: "Width",
-    defaultValue: 100,
-    min: 10,
-    max: 400,
-  },
+import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import {
+  dispatchDashboardAction,
+  generateRandomId,
+} from "../../../../functions";
+import { onSelectElement, setBuilderData } from "../builderSlice";
+
+export const initEmailBuilder = () => {
+  const wrapper = document.getElementById(
+    VIRFICE_APP_PREFIX + "-email-preview"
+  );
+  setTimeout(() => {
+    initClickEvents(wrapper);
+    initHoverEvenets(wrapper);
+  }, 100);
 };
 
-const spacerElement = {
-  id: "RANDOM_ID",
-  name: "spacer",
-  title: "Spacer",
-  subTitle: "Edit the spacer element here",
-  settings: {
-    order: [
-      "backgroundHeading",
-      "fillColor",
-      "borderWidth",
-      "borderColor",
-      "divider",
-      "backgroundHeading2",
-      "fillColor2",
-      "borderWidth2",
-      "borderColor2",
-    ],
-    backgroundHeading: { ...settings.heading, title: "Style 1" },
-    fillColor: { ...settings.color, title: "Fill color" },
-    borderWidth: {
-      ...settings.sliderWidth,
-      defaultValue: 24,
-      title: "Height",
-    },
-    borderColor: { ...settings.color, title: "Border color" },
-    divider: { ...settings.divider },
-    backgroundHeading2: { ...settings.heading, title: "Style 2" },
-    fillColor2: { ...settings.color, title: "Fill color" },
-    borderWidth2: {
-      ...settings.sliderWidth,
-      defaultValue: 24,
-      title: "Height",
-    },
-    borderColor2: { ...settings.color, title: "Border color" },
-  },
-  tabSettings: false,
-  childs: [],
-  status: "active",
+const initClickEvents = (wrapper) => {
+  let allEle = wrapper.querySelectorAll(`[${VIRFICE_APP_PREFIX}-ele_type]`);
+
+  allEle.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dispatchDashboardAction(onSelectElement, getVirficeAttr(e.target, "id"));
+    });
+  });
 };
 
-export const pageInitData = {
-  pageData: {
-    id_1: { ...spacerElement, id: "id_1", childs: ["id_2", "id_3"] },
-    id_2: { ...spacerElement, id: "id_2", childs: [], title: "Spacer 2" },
-    id_3: { ...spacerElement, id: "id_3", childs: [], title: "Spacer 3" },
-  },
-  root: "id_1",
-  globalCSS: "",
+const initHoverEvenets = (wrapper) => {
+  let allEle = wrapper.querySelectorAll(`[${VIRFICE_APP_PREFIX}-ele_type]`);
+
+  allEle.forEach((ele) => {
+    ele.addEventListener("mouseover", (e) => {
+      e.stopPropagation();
+      e.target.classList.add(`${VIRFICE_APP_PREFIX}-hover-border`);
+    });
+    ele.addEventListener("mouseleave", (e) => {
+      e.stopPropagation();
+      e.target.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
+    });
+  });
+};
+
+export const getVirficeElementFromId = (elementId) => {
+  const wrapper = document.getElementById(
+    VIRFICE_APP_PREFIX + "-email-preview"
+  );
+  return wrapper.querySelector(`[${VIRFICE_APP_PREFIX}-id="${elementId}"]`);
+};
+
+export const getVirficeAttr = (element, attr) => {
+  if (!element) return;
+  return element.getAttribute(VIRFICE_APP_PREFIX + "-" + attr);
+};
+
+export const updateVirficeAttr = (element, attr, value) => {
+  element.setAttribute(VIRFICE_APP_PREFIX + "-" + attr, value);
+};
+
+export const cloneElement = (element) => {
+  let clone = element.cloneNode(true);
+
+  updateVirficeAttr(clone, "id", generateRandomId());
+  clone.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
+
+  let allEle = clone.querySelectorAll(`[${VIRFICE_APP_PREFIX}-ele_type]`);
+  console.log(allEle);
+  allEle.forEach((ele) => {
+    updateVirficeAttr(ele, "id", generateRandomId());
+    ele.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
+  });
+
+  return clone;
+};
+
+export const getParentElement = (element) => {
+  let parent = element;
+  let flag = true;
+  while (flag) {
+    parent = parent.parentNode;
+    let parent_atr = getVirficeAttr(parent, "ele_type");
+    if (parent_atr) {
+      return parent;
+    }
+
+    if (parent.id === VIRFICE_APP_PREFIX + "-email-preview") {
+      return false;
+    }
+  }
+
+  return false;
+};
+
+export const saveBuilderDataToRedux = (element) => {
+  const wrapper = document.getElementById(
+    VIRFICE_APP_PREFIX + "-email-preview"
+  );
+  dispatchDashboardAction(setBuilderData, {
+    key: "html",
+    value: wrapper.innerHTML,
+  });
 };

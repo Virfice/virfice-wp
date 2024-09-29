@@ -7,7 +7,8 @@ const path = require("path");
 module.exports = (env, argv) => {
   const baseConfig = {
     mode: argv.mode === "production" ? "production" : "development",
-    devtool: false,
+    // devtool: false,
+    devtool: "source-map",
     entry: {
       "js/virfice": "./assets-sources/scripts/index.js",
       "css/virfice-style": "./assets-sources/scss/style.scss",

@@ -1,4 +1,5 @@
 import { VIRFICE_PLUGIN_BASE } from "./conf";
+import { store } from "./Dashboard/store";
 
 export const hasQueryParamValue = (
   field,
@@ -49,4 +50,12 @@ export const validateCommaSeparatedEmails = (emailString) => {
   }
 
   return true; // All emails are valid or empty strings are ignored
+};
+
+export function dispatchDashboardAction(action, payload) {
+  store.dispatch(action(payload)); // Dispatch action using the store's dispatch method
+}
+
+export const generateRandomId = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
 };

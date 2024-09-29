@@ -23,22 +23,14 @@ const Settings = ({ data }) => {
               <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
             )}
             {type === "color" && (
-              <Color
-                title={title}
-                value={defaultValue}
-                onChange={(v) => {
-                  console.log(v);
-                }}
-              />
+              <Color title={title} value={defaultValue} onChange={(v) => {}} />
             )}
 
             {type === "sliderWidth" && (
               <TextField
                 title={title}
                 value={defaultValue}
-                onChange={(v) => {
-                  console.log(v);
-                }}
+                onChange={(v) => {}}
               />
             )}
           </Fragment>

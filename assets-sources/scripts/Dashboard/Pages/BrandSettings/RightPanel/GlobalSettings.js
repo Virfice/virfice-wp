@@ -1,6 +1,6 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import Paintfield from "../../../Molecules/Paintfield";
+import PaintField from "../../../Molecules/Paintfield";
 import { useDispatch, useSelector } from "react-redux";
 import { setBrandSettingsData } from "../brandSettingsSlice";
 import TextField from "../../../Molecules/TextField";
@@ -61,28 +61,28 @@ const GlobalSettings = () => {
         multiline={3}
       />
 
-      <Paintfield
+      <PaintField
         label={"Base color"}
         value={changedSettings.woocommerce_email_base_color}
         onChange={(v) => {
           settingsChange("woocommerce_email_base_color", v);
         }}
       />
-      <Paintfield
+      <PaintField
         label={"Background color"}
         value={changedSettings.woocommerce_email_background_color}
         onChange={(v) => {
           settingsChange("woocommerce_email_background_color", v);
         }}
       />
-      <Paintfield
+      <PaintField
         label={"Body background color"}
         value={changedSettings.woocommerce_email_body_background_color}
         onChange={(v) => {
           settingsChange("woocommerce_email_body_background_color", v);
         }}
       />
-      <Paintfield
+      <PaintField
         label={"Body text color"}
         value={changedSettings.woocommerce_email_text_color}
         onChange={(v) => {

@@ -1,14 +1,24 @@
-import React from "react";
-import Elements from "./Elements";
+import React, { useEffect } from "react";
+// import Elements from "./Elements";
 import { useSelector } from "react-redux";
+import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import EditorControls from "./EditorControls";
+import { initEmailBuilder } from "../../utils";
 
 const ReactPreview = ({ root }) => {
-  const pageData = useSelector((state) => state.builder.data?.pageData);
-
+  const html = useSelector((state) => state.builder.html);
+  useEffect(() => {
+    initEmailBuilder();
+  }, [html]);
   return (
-    <>
-      <Elements data={pageData[root]} />
-    </>
+    <div className={`${VIRFICE_APP_PREFIX}-editor-wrapper`}>
+      <div
+        className={`${VIRFICE_APP_PREFIX}-template-wrapper`}
+        id={VIRFICE_APP_PREFIX + "-email-preview"}
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></div>
+      <EditorControls />
+    </div>
   );
 };
 

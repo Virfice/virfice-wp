@@ -17,3 +17,10 @@
     }
     root: 'id_1',
 }
+
+<table>
+    <tr>
+        <td><img src="https://woo.test/wp-content/uploads/2024/04/MainAfter.webp" /></td>
+        <td><p>Lorem Ipsum</p></td>
+    </tr>
+</table>

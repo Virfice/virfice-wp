@@ -1,9 +1,9 @@
 import React from "react";
-import Paintfield from "../../../../Molecules/Paintfield";
+import PaintField from "../../../../Molecules/Paintfield";
 
 const Color = ({ title, value, onChange }) => {
   return (
-    <Paintfield
+    <PaintField
       label={title}
       value={value}
       onChange={(v) => {

@@ -1,0 +1,114 @@
+.#{$classPrefix}-template-wrapper {
+
+    * {
+        user-select: none;
+        cursor: default;
+    }
+
+    .#{$classPrefix}-hover-border {
+        box-shadow: 0 2px 0 0 #e4e4e4ac;
+        /* Border bottom */
+        box-shadow: 0 -2px 0 0 #e4e4e4ac;
+        /* Border top */
+        box-shadow: -2px 0 0 0 #e4e4e4ac;
+        /* Border left */
+        box-shadow: 2px 0 0 0 #e4e4e4ac;
+        /* Border right */
+        box-shadow: 0 0 0 2px #e4e4e4ac;
+        /* All the borders by using the spread properties */
+    }
+
+}
+
+.#{$classPrefix}-editor-wrapper {
+    position: relative;
+
+    .#{$classPrefix}-element-controls {
+        .#{$classPrefix}-element-border {
+            box-shadow: 0 2px 0 0 #DEEDA1;
+            /* Border bottom */
+            box-shadow: 0 -2px 0 0 #DEEDA1;
+            /* Border top */
+            box-shadow: -2px 0 0 0 #DEEDA1;
+            /* Border left */
+            box-shadow: 2px 0 0 0 #DEEDA1;
+            /* Border right */
+            box-shadow: 0 0 0 2px #DEEDA1;
+            /* All the borders by using the spread properties */
+            pointer-events: none;
+        }
+
+        .#{$classPrefix}-right-control {
+            pointer-events: all;
+            position: absolute;
+            right: -36px;
+            top: 0px;
+            border-radius: 99px;
+            border: 1px solid #C9C9C9;
+            width: 28px;
+            background: #fff;
+            box-shadow: 3px 4px 6px -3px rgba(10, 10, 10, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .#{$classPrefix}-item {
+                line-height: 0;
+                cursor: pointer;
+
+                &:hover {
+                    background: #F2F2F2
+                }
+
+            }
+        }
+    }
+}
+
+.#{$classPrefix}-settings-wrapper {
+
+    .#{$classPrefix}-child-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 4px;
+        user-select: none;
+        cursor: default;
+
+        align-self: stretch;
+
+        .#{$classPrefix}-item {
+            border-radius: 6px;
+            background: #FFF;
+            display: flex;
+            padding: 4px 8px;
+            align-items: center;
+            gap: 8px;
+            overflow: hidden;
+            justify-content: space-between;
+            width: 100%;
+
+            &:hover {
+                border-radius: 6px;
+                background: #F2F2F2;
+            }
+
+            .#{$classPrefix}-item-action-wrapper {
+                display: flex;
+                gap: 8px;
+                line-height: 0;
+
+                .#{$classPrefix}-item-action {
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #F2F2F2;
+                    }
+                }
+
+            }
+        }
+    }
+}
