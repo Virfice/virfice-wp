@@ -10,6 +10,7 @@ import { duplicateElement } from "./utils";
 import {
   getParentElement,
   getVirficeAttr,
+  // initEmptyElement,
   saveBuilderDataToRedux,
 } from "../../../utils";
 import { dispatchDashboardAction } from "../../../../../../../functions";
@@ -40,9 +41,14 @@ const RightControl = ({ element }) => {
     saveBuilderDataToRedux();
   };
   const handleDelete = () => {
+    if (element.id === VIRFICE_APP_PREFIX + "-root") {
+      return;
+    }
     const parentEle = getParentElement(element);
+
     element.remove();
     dispatchDashboardAction(onSelectElement, getVirficeAttr(parentEle, "id"));
+    // initEmptyElement(parentEle);
   };
 
   // Move element up by adjusting its position in the DOM

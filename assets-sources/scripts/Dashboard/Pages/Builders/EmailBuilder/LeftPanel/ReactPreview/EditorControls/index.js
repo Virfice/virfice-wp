@@ -5,16 +5,16 @@ import { getVirficeElementFromId } from "../../../utils";
 import Border from "./Border";
 
 const EditorControls = () => {
-  const selectedElementId = useSelector(
-    (state) => state.builder?.selectedElementId
+  const selectedSectionId = useSelector(
+    (state) => state.builder?.selectedSectionId
   );
   const [element, setElement] = useState(false);
 
   useEffect(() => {
-    if (selectedElementId) {
-      setElement(getVirficeElementFromId(selectedElementId));
+    if (selectedSectionId) {
+      setElement(getVirficeElementFromId(selectedSectionId));
     }
-  }, [selectedElementId]);
+  }, [selectedSectionId]);
 
   if (!element) return null;
 

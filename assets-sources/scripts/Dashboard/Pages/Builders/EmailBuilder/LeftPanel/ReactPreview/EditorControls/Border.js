@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
 import RightControl from "./RightControls";
+import AddSectionButton from "./AddSectionButton";
 
 const Border = ({ element }) => {
   const borderDiv = useRef(null);
@@ -70,6 +71,7 @@ const Border = ({ element }) => {
   return (
     <div className={VIRFICE_APP_PREFIX + "-element-border"} ref={borderDiv}>
       <RightControl element={element} />
+      <AddSectionButton element={element} />
     </div>
   );
 };

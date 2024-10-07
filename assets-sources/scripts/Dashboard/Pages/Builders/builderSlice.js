@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 
-const initialState = { html: ``, selectedElementId: false };
+const initialState = {
+  html: ``,
+  selectedElementId: false,
+  selectedSectionId: false,
+};
 
 export const builderSlice = createSlice({
   name: VIRFICE_APP_PREFIX,
@@ -18,6 +22,15 @@ export const onSelectElement = (elementId) => (dispatch) => {
   dispatch(
     setBuilderData({
       key: "selectedElementId",
+      value: elementId,
+    })
+  );
+};
+
+export const onSelectSection = (elementId) => (dispatch) => {
+  dispatch(
+    setBuilderData({
+      key: "selectedSectionId",
       value: elementId,
     })
   );

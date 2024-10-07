@@ -3,7 +3,6 @@ import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
 import SingleChild from "./SingleChild";
 
 const ChildList = ({ element }) => {
-  console.log(element);
   const getChildrens = () => {
     let childs = [];
     for (var i = 0; i < element.children.length; i++) {

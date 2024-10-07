@@ -16,6 +16,9 @@ body {
       width: 100%;
       border-collapse: collapse;
     }
+    td {
+      text-align: center;
+    }
     h2 {
       font-size: 20px;
       color: #333333;
