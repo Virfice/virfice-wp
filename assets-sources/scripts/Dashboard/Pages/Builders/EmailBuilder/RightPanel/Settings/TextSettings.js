@@ -8,6 +8,7 @@ import TextField from "../../../../../Molecules/TextField";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import PaintField from "../../../../../Molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
+import RangeField from "../../../../../Molecules/Rangefield";
 
 const TextSettings = ({ element }) => {
   return (
@@ -45,6 +46,19 @@ const TextSettings = ({ element }) => {
               onChange={(v) => {
                 element.style.backgroundColor = v;
               }}
+            />
+            <RangeField
+              label={"Font size"}
+              value={getElementComputedStyle(element, "font-size").replace(
+                "px",
+                ""
+              )}
+              onChange={(v) => {
+                element.style.fontSize = `${v}px`;
+              }}
+              min={8}
+              mix={100}
+              step={1}
             />
           </div>
         </TabContent>
