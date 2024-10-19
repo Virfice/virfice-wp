@@ -57,7 +57,7 @@ const TextSettings = ({ element }) => {
                 element.style.fontSize = `${v}px`;
               }}
               min={8}
-              mix={100}
+              max={100}
               step={1}
             />
           </div>

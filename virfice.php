@@ -1,4 +1,6 @@
 <?php
+
+use Virfice\MetaHelper;
 /*
 Plugin Name: Virfice
 Description: Customize WooCommerce emails easily. Ensure your emails represent your store brand.
@@ -10,6 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 7.2
 */
+
 if (!defined('ABSPATH')) exit; // Exit if accessed directly 
 
 use Virfice\AdminNotice;
@@ -63,6 +66,7 @@ define('VIRFICE_PLUGIN_BASE', plugin_dir_url(__FILE__)); // URL of the plugin di
 define('VIRFICE_STATIC_FILES_BASE', VIRFICE_PLUGIN_BASE . 'assets/files'); // URL of the plugin directory
 
 // Initialize the core components of the plugin
+new MetaHelper();
 new AdminNotice();
 new Dashboard(); // Initialize the Dashboard component
 new WooEmailPreviewRoute(); // Initialize routing for the plugin
