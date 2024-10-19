@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import MediaUploader from "../../../../../Molecules/MediaUploader";
 import PaintField from "../../../../../Molecules/Paintfield";
 import RangeField from "../../../../../Molecules/Rangefield";
-import Tab from "../../../../../Components/Tab";
-import TabHead from "../../../../../Components/Tab/TabHead";
-import TabHeader from "../../../../../Components/Tab/TabHeader";
+import Tab from "../../../../Tab";
+import TabHead from "../../../../Tab/TabHead";
+import TabHeader from "../../../../Tab/TabHeader";
 import Divider from "../../../../../Molecules/Divider";
-import TabContent from "../../../../../Components/Tab/TabContent";
+import TabContent from "../../../../Tab/TabContent";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import { getElementComputedStyle } from "./utils";
 import {

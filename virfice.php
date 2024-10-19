@@ -73,4 +73,5 @@ new WooEmailPreviewRoute(); // Initialize routing for the plugin
 new WooEmailEditWithButton(); // Initialize WooCommerce email editing with a button feature
 new API(); // Initialize API functionality for the plugin
 
+// update footer text
 new WooEmailHooks();

@@ -20,7 +20,12 @@ const CheckboxField = ({
   };
 
   return (
-    <div className={`${VIRFICE_APP_PREFIX}-checkbox-wrapper`}>
+    <div
+      className={`${VIRFICE_APP_PREFIX}-checkbox-wrapper`}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       {title && <label className="body__medium">{title}</label>}
       <div>
         <label className="body__medium">

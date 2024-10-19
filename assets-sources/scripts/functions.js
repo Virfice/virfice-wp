@@ -6,9 +6,14 @@ export const hasQueryParamValue = (
   value,
   url = window.location.href
 ) => {
-  if (url.indexOf("?" + field + "=" + value) != -1) return true;
-  else if (url.indexOf("&" + field + "=" + value) != -1) return true;
-  return false;
+  // Create a URL object and URLSearchParams instance
+  const urlParams = new URLSearchParams(new URL(url).search);
+
+  // Get the value of the query parameter for the given field
+  const paramValue = urlParams.get(field);
+
+  // Check if the value exists and matches exactly
+  return paramValue === value;
 };
 export const addParams = (paramsObj, url = window.location.href) => {
   let urlObj = new URL(url);

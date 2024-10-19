@@ -1,8 +1,8 @@
 import React from "react";
-import Tab from "../../../../../Components/Tab";
-import TabHeader from "../../../../../Components/Tab/TabHeader";
-import TabContent from "../../../../../Components/Tab/TabContent";
-import TabHead from "../../../../../Components/Tab/TabHead";
+import Tab from "../../../../Tab";
+import TabHeader from "../../../../Tab/TabHeader";
+import TabContent from "../../../../Tab/TabContent";
+import TabHead from "../../../../Tab/TabHead";
 import Divider from "../../../../../Molecules/Divider";
 import TextField from "../../../../../Molecules/TextField";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";

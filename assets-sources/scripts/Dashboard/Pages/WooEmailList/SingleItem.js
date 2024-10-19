@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import TableItem from "../../Molecules/DataTable/TableItem";
 import Badge from "../../Molecules/Badge";
 import { BadgeActiveIcon, EnvelopIcon, PencilIcon, WooIcon } from "../../icons";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 import Button from "../../Molecules/Button";
 import { addParams } from "../../../functions";
+import CheckboxField from "../../Molecules/CheckboxField";
+import SingleItemVirficeTemplateStatus from "./SingleItemVirficeTemplateStatus";
 
 const SingleItem = ({ email }) => {
-  console.log({ email });
+  const [virfice_template_status, setVirfice_template_status] = useState(
+    email.virfice_template_status || false
+  );
+
+  const menuUrl =
+    virfice_template_status === true
+      ? "woo-email-edit-virfice"
+      : "woo-email-edit";
   return (
     <TableItem
       link={addParams({
-        menu: "woo-email-edit",
+        menu: menuUrl,
         email_id: email.id,
       })}
     >
@@ -38,6 +47,12 @@ const SingleItem = ({ email }) => {
           <Badge type="active" title="Manual" leftIcon={<BadgeActiveIcon />} />
         )}
       </td>
+      <td>
+        <SingleItemVirficeTemplateStatus
+          email={email}
+          setVirfice_template_status={setVirfice_template_status}
+        />
+      </td>
       <td>{email.email_type === "html" ? "text/html" : "palin text"}</td>
       <td>{email.recipient || "Customer"}</td>
       <td>
@@ -49,7 +64,7 @@ const SingleItem = ({ email }) => {
             small
             // onClick={handleEditClick}
             link={addParams({
-              menu: "woo-email-edit",
+              menu: menuUrl,
               email_id: email.id,
             })}
           />

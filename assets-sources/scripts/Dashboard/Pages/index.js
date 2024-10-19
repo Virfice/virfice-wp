@@ -3,9 +3,9 @@ import Landing from "./Landing";
 import { hasQueryParamValue } from "../../functions";
 import BrandSettings from "./BrandSettings";
 import WooEmailList from "./WooEmailList";
-import EmailEditor from "./WooEmailList/EmailEditor";
 import Settings from "./Settings";
-import EmailBuilder from "./Builders/EmailBuilder";
+import EmailBuilder from "../Components/VirficeEmailBuilder/EmailBuilder";
+import EmailEditor from "./WooEmailList/EmailEditor";
 
 //Need to implement route for every dashboard menu
 const Pages = () => {
@@ -15,7 +15,10 @@ const Pages = () => {
   if (hasQueryParamValue("menu", "woo-email-list")) {
     return <WooEmailList />;
   }
-  if (hasQueryParamValue("menu", "woo-email-edit")) {
+  if (
+    hasQueryParamValue("menu", "woo-email-edit") ||
+    hasQueryParamValue("menu", "woo-email-edit-virfice")
+  ) {
     return <EmailEditor />;
   }
   if (hasQueryParamValue("menu", "settings")) {

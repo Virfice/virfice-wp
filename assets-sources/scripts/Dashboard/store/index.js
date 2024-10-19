@@ -5,7 +5,7 @@ import wooEmailListSlice from "../Pages/WooEmailList/wooEmailListSlice";
 import wooEmailSingleSlice from "../Pages/WooEmailList/EmailEditor/wooEmailSingleSlice";
 import globalSettingsSlice from "../Pages/Settings/globalSettingsSlice";
 import componentsSlice from "../Components/componentsSlice";
-import builderSlice from "../Pages/Builders/builderSlice";
+import builderSlice from "../Components/VirficeEmailBuilder/builderSlice";
 
 export const store = configureStore({
   reducer: {

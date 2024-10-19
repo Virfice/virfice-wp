@@ -18,12 +18,10 @@ class MetaHelper
 {
 
     private $db_charset_collate;
-    public $table_name = null;
 
     public function __construct()
     {
         global $wpdb;
-        $this->table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
         // Setting up charset collate (if not already done in your constructor)
         $this->db_charset_collate = $wpdb->get_charset_collate();
@@ -37,7 +35,7 @@ class MetaHelper
         global $wpdb;
 
         // Name of the meta table
-        $table_name = $this->table_name;
+        $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
         // SQL query to create the table if it doesn't exist
         $sql = "CREATE TABLE IF NOT EXISTS $table_name (
@@ -57,7 +55,7 @@ class MetaHelper
     public static function add_or_update_meta($parent_id, $parent, $meta_key, $meta_value)
     {
         global $wpdb;
-        $table_name = self::$table_name;
+        $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
         // Check if the meta already exists
         $meta_exists = $wpdb->get_var($wpdb->prepare(
@@ -95,7 +93,7 @@ class MetaHelper
     public static function get_meta($parent_id, $parent, $meta_key, $default = null)
     {
         global $wpdb;
-        $table_name = self::$table_name;
+        $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
         $meta_value = $wpdb->get_var($wpdb->prepare(
             "SELECT meta_value FROM $table_name WHERE parent_id = %d AND parent = %s AND meta_key = %s",
@@ -111,7 +109,7 @@ class MetaHelper
     public static function delete_meta($parent_id, $parent, $meta_key)
     {
         global $wpdb;
-        $table_name = self::$table_name;
+        $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
         $wpdb->delete(
             $table_name,

@@ -159,4 +159,12 @@ class Utils
         $social_icons_html = ob_get_clean();
         return $social_icons_html;
     }
+
+    /**
+     * Get boolean value
+     */
+    public static function get_boolean_value($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
 }

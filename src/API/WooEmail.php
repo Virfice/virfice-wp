@@ -2,6 +2,8 @@
 
 namespace Virfice\API;
 
+use Virfice\MetaHelper;
+
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
@@ -125,6 +127,20 @@ class WooEmail extends WP_REST_Controller
 				'schema' => array($this, 'get_item_schema'),
 			)
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/update-virfice-template-status',
+			array(
+				array(
+					'methods'             => 'POST',
+					'callback'            => array($this, 'update_virfice_template_status'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
 	}
 
 	/**
@@ -146,7 +162,6 @@ class WooEmail extends WP_REST_Controller
 				'woo_preview_nonce' => wp_create_nonce('email_id_' . $email_obj->id),
 			), home_url('/'));
 
-
 			$formatted_email_lists[] = array(
 				'id' => $email_obj->id,
 				'key' => $email_key,
@@ -154,7 +169,8 @@ class WooEmail extends WP_REST_Controller
 				'email_type' => $email_obj->get_email_type(),
 				'recipient' => $email_obj->get_recipient(),
 				'previewUrl' => $url,
-				'enabled' => $email_obj->enabled
+				'enabled' => $email_obj->enabled,
+				'virfice_template_status' => Utils::get_boolean_value(MetaHelper::get_meta(0, 'woo-email', $email_obj->id . '_virfice_template_status', false))
 				// You can add more data as needed
 			);
 		}
@@ -312,6 +328,15 @@ class WooEmail extends WP_REST_Controller
 		}
 
 		return $changedSettings;
+	}
+
+	public function update_virfice_template_status($changedSettings)
+	{
+		$email_id = sanitize_text_field($_REQUEST['email_id']);
+		$status = sanitize_text_field($_REQUEST['status']);
+
+		MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_status', $status);
+		return true;
 	}
 
 	/**

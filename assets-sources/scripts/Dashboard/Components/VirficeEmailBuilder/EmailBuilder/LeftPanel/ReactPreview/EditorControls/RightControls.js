@@ -16,7 +16,7 @@ import {
 import { dispatchDashboardAction } from "../../../../../../../functions";
 import { onSelectElement, setBuilderData } from "../../../../builderSlice";
 import { useDispatch } from "react-redux";
-import { showNotificationBell } from "../../../../../../Components/componentsSlice";
+import { showNotificationBell } from "../../../../../componentsSlice";
 
 const Divider = () => {
   return (
