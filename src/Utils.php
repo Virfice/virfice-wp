@@ -167,4 +167,46 @@ class Utils
     {
         return filter_var($value, FILTER_VALIDATE_BOOLEAN);
     }
+
+    public static function get_template_common_global_css()
+    {
+        return "
+        <style>
+        .virfice-template-wrapper *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            vertical-align: baseline;
+            cursor: default;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            text-align: center;
+        }
+        h2 {
+            font-size: 20px;
+            color: #333333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555555;
+        }
+        a{
+            display: inline-block;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 0;
+        } </style>";
+    }
 }

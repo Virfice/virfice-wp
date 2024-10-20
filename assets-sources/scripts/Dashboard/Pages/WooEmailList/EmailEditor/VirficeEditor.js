@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import VirficeEmailBuilder from "../../../Components/VirficeEmailBuilder";
 import { addParams, getParamValue } from "../../../../functions";
 import StickyTopNav from "../../../Components/StickyTopNav";
 import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
 import { showNotificationBell } from "../../../Components/componentsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { emailSingleVirficeAsync } from "./wooEmailSingleSlice";
+import { saveSingleTemplate } from "../../../Components/VirficeEmailBuilder/builderSlice";
 
 const VirficeEditor = () => {
   const email_id = getParamValue("email_id");
-  console.log(email_id);
-  //TODO: need to get html
+  const dispatch = useDispatch();
+  const virfice_template = useSelector(
+    (state) => state.wooEmailSingle?.virfice_template
+  );
+
+  useEffect(() => {
+    dispatch(emailSingleVirficeAsync(email_id));
+  }, []);
 
   const handleBackActionClick = () => {
     window.location.href = addParams({ menu: "woo-email-list" });
@@ -19,6 +28,15 @@ const VirficeEditor = () => {
   };
   const handleSaveClick = () => {
     console.log("save button click");
+    if (virfice_template.id) {
+      let templateWrapper = document.querySelector("#virfice-email-preview");
+
+      dispatch(
+        saveSingleTemplate(virfice_template.id, {
+          post_content: templateWrapper.innerHTML,
+        })
+      );
+    }
   };
 
   return (
@@ -33,7 +51,10 @@ const VirficeEditor = () => {
           heading={"New Order"}
           subHeading={"This is subheading"}
         />
-        <VirficeEmailBuilder template_id={0} />
+        {virfice_template.id && (
+          <VirficeEmailBuilder template_id={virfice_template.id} />
+        )}
+        {!virfice_template.id && "Template not found"}
       </section>
     </>
   );

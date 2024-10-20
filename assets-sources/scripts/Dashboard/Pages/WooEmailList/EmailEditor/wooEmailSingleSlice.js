@@ -7,6 +7,7 @@ const initialState = {
   email: { loaded: false, settings: {} },
   changedSettings: {},
   selectedOrder: {},
+  virfice_template: "",
 };
 
 export const wooEmailSingleSlice = createSlice({
@@ -51,6 +52,31 @@ export const emailSingleAsync = (email_id) => (dispatch) => {
         setWooEmailSingleData({
           key: "changedSettings",
           value: d.object.settings,
+        })
+      );
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const emailSingleVirficeAsync = (email_id) => (dispatch) => {
+  let d = null;
+  let apiSlug = "virfice/v1/woo-email/single-virfice";
+
+  axios
+    .get(`${virfice.restBase}${apiSlug}`, {
+      headers: {
+        "X-WP-Nonce": virfice.nonce,
+      },
+      params: { email_id },
+    })
+    .then((res) => {
+      d = res.data;
+      dispatch(
+        setWooEmailSingleData({
+          key: "virfice_template",
+          value: d,
         })
       );
     })

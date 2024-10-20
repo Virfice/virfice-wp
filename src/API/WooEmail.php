@@ -2,6 +2,7 @@
 
 namespace Virfice\API;
 
+use Virfice\Includes\Templates;
 use Virfice\MetaHelper;
 
 if (!defined('ABSPATH')) {
@@ -61,6 +62,21 @@ class WooEmail extends WP_REST_Controller
 				array(
 					'methods'             => 'GET',
 					'callback'            => array($this, 'get_single_email'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
+
+		// Register a REST API endpoint to get a single email's settings
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/single-virfice',
+			array(
+				array(
+					'methods'             => 'GET',
+					'callback'            => array($this, 'get_single_email_virfice'),
 					'permission_callback' => array($this, 'get_item_permissions_check'),
 					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
 				),
@@ -199,6 +215,24 @@ class WooEmail extends WP_REST_Controller
 		return $email;
 	}
 
+	public function get_single_email_virfice()
+	{
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
+		$email_id = sanitize_text_field($_REQUEST['email_id']); // Email obj id.
+
+		$_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
+
+		if ($_virfice_template_id) {
+			$template = get_post($_virfice_template_id);
+			if (!$template) {
+				return false;
+			}
+			return array('id' => $template->ID, 'title' => $template->post_title);
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * Retrieves the WooCommerce brand settings.
 	 *
@@ -333,10 +367,42 @@ class WooEmail extends WP_REST_Controller
 	public function update_virfice_template_status($changedSettings)
 	{
 		$email_id = sanitize_text_field($_REQUEST['email_id']);
-		$status = sanitize_text_field($_REQUEST['status']);
-
+		$status = Utils::get_boolean_value(sanitize_text_field($_REQUEST['status']));
 		MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_status', $status);
+
+		if ($status == true) {
+			//insert a template if not exists
+			$_virfice_template_id = MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
+			if ($_virfice_template_id == false) {
+				//TODO: get email id wise initial template data
+				$template_content = $this->get_woo_email_virfice_template_preset($email_id);
+				$template_id = Templates::insert_template($email_id . ' - Virfice', $template_content);
+				if ($template_id) {
+					MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_id', $template_id);
+				}
+			}
+		}
 		return true;
+	}
+
+	private function get_woo_email_virfice_template_preset($email_id)
+	{
+		$templateFilePath = VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/$email_id.php";
+		// Check if the template file exists
+		if (!file_exists($templateFilePath)) {
+			return false; // Handle error (e.g., file not found)
+		}
+
+		// Start output buffering
+		ob_start();
+
+		// Include the template file, and its output will be captured
+		include $templateFilePath;
+
+		// Get the content of the buffer and clean the buffer
+		$templateContent = ob_get_clean();
+
+		return $templateContent;
 	}
 
 	/**
