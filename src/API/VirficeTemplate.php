@@ -2,6 +2,8 @@
 
 namespace Virfice\API;
 
+use Virfice\Utils;
+
 // Exit if accessed directly for security
 if (!defined('ABSPATH')) {
     exit;
@@ -90,7 +92,7 @@ class VirficeTemplate extends WP_REST_Controller
 
     private function sanitize_html_template($string)
     {
-        return $string;
+        return Utils::virfice_wp_kses_allowed_html($string);
         //TODO: need to fix css 
         // Define allowed HTML tags and their attributes
         $allowed_html = array(

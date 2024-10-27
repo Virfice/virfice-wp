@@ -209,4 +209,9 @@ class Utils
             border: 0;
         } </style>";
     }
+
+    public static function virfice_wp_kses_allowed_html($html_string)
+    {
+        return wp_kses_post(html_entity_decode($html_string, ENT_COMPAT, 'UTF-8'));
+    }
 }
