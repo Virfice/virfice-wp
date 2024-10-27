@@ -93,6 +93,9 @@ Yes, please report any issues you face or request any features you may feel requ
 
 
 == Changelog ==
+= 1.0.2 =
+* Fix: Typos in the plugin
+
 = 1.0.1 =
 * New: Email configuration settings
 * New: Brand settings added
