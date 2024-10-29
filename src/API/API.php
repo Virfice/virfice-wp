@@ -36,5 +36,6 @@ class API
         (new WooOrder())->register_routes();
         (new Settings())->register_routes();
         (new VirficeTemplate())->register_routes();
+        (new VirficeTestEmailSend())->register_routes();
     }
 }
