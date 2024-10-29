@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Molecules/Button";
 import { EnvelopIcon, FormInfoIllustration, PaperPlaneIcon } from "../icons";
-import Modal from "../Components/Modal";
+import Modal from "./Modal";
 import TextField from "../Molecules/TextField";
 import axios from "axios";
 import { showNotificationBell } from "./componentsSlice";
@@ -11,7 +11,7 @@ import FormInfo from "./FormInfo";
 import { VIRFICE_APP_PREFIX } from "../../conf";
 import { globalSettingsAsync } from "../Pages/Settings/globalSettingsSlice";
 
-const SendTestMailButton = ({ email_id, order_id, changedSettings }) => {
+const SendWooTestMailButton = ({ email_id, order_id, changedSettings }) => {
   const dispatch = useDispatch();
   const globalEmailSettings = useSelector(
     (state) => state.globalSettings["changedSettings-email"]
@@ -128,4 +128,4 @@ const SendTestMailButton = ({ email_id, order_id, changedSettings }) => {
   );
 };
 
-export default SendTestMailButton;
+export default SendWooTestMailButton;

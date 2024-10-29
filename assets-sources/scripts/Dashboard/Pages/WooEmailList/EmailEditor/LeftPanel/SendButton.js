@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import SendTestMailButton from "../../../../Components/SendTestMailButton";
+import SendWooTestMailButton from "../../../../Components/SendWooTestMailButton";
 
 const SendButton = () => {
   let email_id = useSelector(
@@ -12,9 +12,13 @@ const SendButton = () => {
   const changedSettings = useSelector(
     (state) => state.wooEmailSingle.changedSettings
   );
-  
+
   return (
-    <SendTestMailButton email_id={email_id} order_id={selectedOrder?.id||''} changedSettings={changedSettings}/>
+    <SendWooTestMailButton
+      email_id={email_id}
+      order_id={selectedOrder?.id || ""}
+      changedSettings={changedSettings}
+    />
   );
 };
 
