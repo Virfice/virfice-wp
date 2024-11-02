@@ -214,4 +214,15 @@ class Utils
     {
         return wp_kses_post(html_entity_decode($html_string, ENT_COMPAT, 'UTF-8'));
     }
+
+    public static function string_to_dom($str)
+    {
+        require_once VIRFICE_PLUGIN_ROOT . '/src/Includes/simple_html_dom.php';
+        $dom = str_get_html($str);
+        return $dom;
+    }
+    public static function dom_to_string($dom)
+    {
+        return $dom->save();
+    }
 }

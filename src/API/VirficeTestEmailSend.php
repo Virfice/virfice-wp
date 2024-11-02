@@ -69,8 +69,8 @@ class VirficeTestEmailSend extends WP_REST_Controller
 		$template = Utils::virfice_wp_kses_allowed_html($_REQUEST['template']); // Comma-separated email addresses
 
 		if ($type === 'woo_test_email') {
-			$email_id = $_REQUEST['email_id'];
-			return $this->process_and_send_woo_test_email($email_id, $template);
+			$email_id = sanitize_text_field($_REQUEST['email_id']); // Comma-separated email addresses
+			return $this->process_and_send_woo_test_email($email_id, $template, $emails);
 		} else if ($type === 'test_email') {
 			//else send test email
 		}
@@ -78,14 +78,9 @@ class VirficeTestEmailSend extends WP_REST_Controller
 		return $_REQUEST;
 	}
 
-	private function process_and_send_woo_test_email($email_id, $template)
+	private function process_and_send_woo_test_email($email_id, $template, $emails)
 	{
-		// require_once VIRFICE_PLUGIN_ROOT . '/src/Includes/simple_html_dom.php';
-		// $html_obj = str_get_html($template);
-		// return $html_obj;
 		//woo send test email
-		$email_id = sanitize_text_field($email_id); // Comma-separated email addresses
-
 		$email_obj = Utils::get_email_object_from_email_id($email_id);
 		$email_obj = $email_obj['object'];
 		$subject = $email_obj->get_option('subject', $email_obj->subject);
