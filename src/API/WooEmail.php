@@ -186,7 +186,7 @@ class WooEmail extends WP_REST_Controller
 				'recipient' => $email_obj->get_recipient(),
 				'previewUrl' => $url,
 				'enabled' => $email_obj->enabled,
-				'virfice_template_status' => Utils::get_boolean_value(MetaHelper::get_meta(0, 'woo-email', $email_obj->id . '_virfice_template_status', false))
+				'virfice_template_status' => Utils::isVirficeTemplateEnabled($email_obj->id)
 				// You can add more data as needed
 			);
 		}

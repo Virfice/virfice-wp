@@ -35,6 +35,11 @@ class Utils
         return null; // Return null if no matching email is found
     }
 
+    public static function isVirficeTemplateEnabled($email_id)
+    {
+        return Utils::get_boolean_value(MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_status', false));
+    }
+
     /**
      * Gets the current admin URL based on the request URI.
      *
@@ -224,5 +229,12 @@ class Utils
     public static function dom_to_string($dom)
     {
         return $dom->save();
+    }
+
+    public static function get_template_content_from_woo_email_id($email_id)
+    {
+        $_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
+        $template = get_post($_virfice_template_id);
+        return $template->post_content;
     }
 }

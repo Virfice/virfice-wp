@@ -61,7 +61,7 @@ define('VIRFICE_VERISION', '1.0.1'); // Plugin version
 define('VIRFICE_APP_NAME', 'Virfice'); // Plugin name
 define('VIRFICE_APP_PREFIX', 'virfice'); // Prefix for naming consistency
 define('VIRFICE_PLUGIN_ROOT', plugin_dir_path(__FILE__)); // Path to the plugin directory
-define('VIRFICE_PLUGIN_VIEWS_ROOT', VIRFICE_PLUGIN_ROOT . '/src/views'); // Path to the plugin directory
+define('VIRFICE_PLUGIN_VIEWS_ROOT', VIRFICE_PLUGIN_ROOT . 'src/views'); // Path to the plugin directory
 define('VIRFICE_PLUGIN_BASE', plugin_dir_url(__FILE__)); // URL of the plugin directory
 define('VIRFICE_STATIC_FILES_BASE', VIRFICE_PLUGIN_BASE . 'assets/files'); // URL of the plugin directory
 
