@@ -173,6 +173,7 @@ class Utils
         return filter_var($value, FILTER_VALIDATE_BOOLEAN);
     }
 
+    //TODO: no one used this method. please check.
     public static function get_template_common_global_css()
     {
         return "
@@ -217,6 +218,7 @@ class Utils
 
     public static function virfice_wp_kses_allowed_html($html_string)
     {
+        return $html_string;
         return wp_kses_post(html_entity_decode($html_string, ENT_COMPAT, 'UTF-8'));
     }
 

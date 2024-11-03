@@ -1,9 +1,3 @@
-<?php
-
-use Virfice\Utils;
-
-echo Utils::get_template_common_global_css();
-?>
 <table virfice-title="Column" virfice-ele_type="section" virfice-id="m2gm3ri5wnwfwzmqh">
     <tbody>
         <tr virfice-title="Row 1" virfice-ele_type="row" virfice-id="m2gm3ri5slmes7vz6">

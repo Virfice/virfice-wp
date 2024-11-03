@@ -1,26 +1,77 @@
-{
-    pageData:{
-        id_1:{
-            id: id_1,
-            name: 'name',
-            title: 'title',
-            settings:[
-                'background', 'padding'
-            ],
-            tabSettings: false,
-            childs:['id_2'],
-            status: 'active',
-        },
-        id_2:{
+// Disable WooCommerce New Order Email
+add_filter('woocommerce_email_enabled_new_order', '__return_false');
 
+
+
+// if ($virfice_template_status && false) {
+
+//     // Disable WooCommerce New Order Email
+//     add_filter("woocommerce_email_enabled_$email_id", '__return_false');
+
+//     // Hook custom email sending function for specific email types
+//     switch ($email_id) {
+//         case 'new_order':
+//             add_action("woocommerce_$email_id", [$this, 'send_custom_new_order_email'], 10, 1);
+//             break;
+//         case 'customer_processing_order':
+//             add_action("woocommerce_$email_id", [$this, 'send_custom_customer_processing_order_email'], 10, 1);
+//             break;
+//         default:
+//             add_action("woocommerce_$email_id", [$this, 'send_custom_new_order_email'], 10, 1);
+//             break;
+//     }
+// }
+
+
+public function send_custom_customer_processing_order_email($order_id)
+    {
+        if (!$order_id) {
+            return;
+        }
+        $email_id = 'customer_processing_order';
+
+        $email_obj = Utils::get_email_object_from_email_id($email_id);
+        $email_obj = $email_obj['object'];
+
+        $email_obj->trigger($order_id);
+
+        $emails = $email_obj->get_recipient();
+        $subject = $email_obj->get_subject();
+        $headers      = $email_obj->get_headers();
+        $attachments      = $email_obj->get_attachments();
+
+        $template = Utils::get_template_content_from_woo_email_id($email_id);
+        //TODO: need to implement shortcode manager class for $type: woo_test_email. And applicable for $template, $subject; 
+
+        // $sendMail     = \WC_Emails::instance();
+        if (! empty($emails)) {
+            $email_obj->send($emails, $subject, $template, $headers, $attachments);
         }
     }
-    root: 'id_1',
-}
 
-<table>
-    <tr>
-        <td><img src="https://woo.test/wp-content/uploads/2024/04/MainAfter.webp" /></td>
-        <td><p>Lorem Ipsum</p></td>
-    </tr>
-</table>
+
+    public function send_custom_new_order_email($order_id)
+    {
+        if (!$order_id) {
+            return;
+        }
+        $email_id = 'new_order';
+
+        $email_obj = Utils::get_email_object_from_email_id($email_id);
+        $email_obj = $email_obj['object'];
+
+        $email_obj->trigger($order_id);
+
+        $emails = $email_obj->get_recipient();
+        $subject = $email_obj->get_subject();
+        $headers      = $email_obj->get_headers();
+        $attachments      = $email_obj->get_attachments();
+
+        $template = Utils::get_template_content_from_woo_email_id($email_id);
+        //TODO: need to implement shortcode manager class for $type: woo_test_email. And applicable for $template, $subject; 
+
+        // $sendMail     = \WC_Emails::instance();
+        if (! empty($emails)) {
+            $email_obj->send($emails, $subject, $template, $headers, $attachments);
+        }
+    }

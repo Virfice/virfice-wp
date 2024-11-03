@@ -26,6 +26,18 @@ class WooEmailHooks
         add_filter('woocommerce_email_footer_text', array($this, 'replace_woo_email_footer_text'));
     }
 
+
+    public function my_plugin_override_woocommerce_email_template($template, $template_name, $template_path)
+    {
+        $plugin_path = VIRFICE_PLUGIN_VIEWS_ROOT . "/woocommerce/$template_name";
+        // Return the custom template if it exists
+        if (file_exists($plugin_path)) {
+            return $plugin_path;
+        }
+        // Return the default template if no custom template found
+        return $template;
+    }
+
     public function disable_woo_emails_if_virfice_enabled()
     {
         // Get all email lists using WooCommerce's email functionality
@@ -34,76 +46,10 @@ class WooEmailHooks
         foreach ($email_lists as $email_key => $email_obj) {
             $email_id = $email_obj->id;
             $virfice_template_status = Utils::isVirficeTemplateEnabled($email_id);
+
             if ($virfice_template_status) {
-                // Disable WooCommerce New Order Email
-                add_filter("woocommerce_email_enabled_$email_id", '__return_false');
-
-                // Hook custom email sending function for specific email types
-                switch ($email_id) {
-                    case 'new_order':
-                        add_action("woocommerce_$email_id", [$this, 'send_custom_new_order_email'], 10, 1);
-                        break;
-                    case 'customer_processing_order':
-                        add_action("woocommerce_$email_id", [$this, 'send_custom_customer_processing_order_email'], 10, 1);
-                        break;
-                    default:
-                        break;
-                }
+                add_filter('woocommerce_locate_template', [$this, 'my_plugin_override_woocommerce_email_template'], 10, 3);
             }
-        }
-    }
-
-
-    public function send_custom_customer_processing_order_email($order_id)
-    {
-        if (!$order_id) {
-            return;
-        }
-        $email_id = 'customer_processing_order';
-
-        $email_obj = Utils::get_email_object_from_email_id($email_id);
-        $email_obj = $email_obj['object'];
-
-        $email_obj->trigger($order_id);
-
-        $emails = $email_obj->get_recipient();
-        $subject = $email_obj->get_subject();
-        $headers      = $email_obj->get_headers();
-        $attachments      = $email_obj->get_attachments();
-
-        $template = Utils::get_template_content_from_woo_email_id($email_id);
-        //TODO: need to implement shortcode manager class for $type: woo_test_email. And applicable for $template, $subject; 
-
-        // $sendMail     = \WC_Emails::instance();
-        if (! empty($emails)) {
-            $email_obj->send($emails, $subject, $template, $headers, $attachments);
-        }
-    }
-
-
-    public function send_custom_new_order_email($order_id)
-    {
-        if (!$order_id) {
-            return;
-        }
-        $email_id = 'new_order';
-
-        $email_obj = Utils::get_email_object_from_email_id($email_id);
-        $email_obj = $email_obj['object'];
-
-        $email_obj->trigger($order_id);
-
-        $emails = $email_obj->get_recipient();
-        $subject = $email_obj->get_subject();
-        $headers      = $email_obj->get_headers();
-        $attachments      = $email_obj->get_attachments();
-
-        $template = Utils::get_template_content_from_woo_email_id($email_id);
-        //TODO: need to implement shortcode manager class for $type: woo_test_email. And applicable for $template, $subject; 
-
-        // $sendMail     = \WC_Emails::instance();
-        if (! empty($emails)) {
-            $email_obj->send($emails, $subject, $template, $headers, $attachments);
         }
     }
 
