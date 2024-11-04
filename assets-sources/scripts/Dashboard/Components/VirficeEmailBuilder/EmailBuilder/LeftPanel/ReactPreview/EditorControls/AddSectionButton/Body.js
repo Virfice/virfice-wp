@@ -1,6 +1,7 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../../../../conf";
 import basicSections from "../../../../Assets/Sections/Basics";
+import wooSections from "../../../../Assets/Sections/Woo";
 import {
   cloneElement,
   cloneElementFromString,
@@ -25,6 +26,19 @@ const Body = ({ element, onAdd }) => {
   return (
     <div className={VIRFICE_APP_PREFIX + "-add-section-body"}>
       {basicSections.map((v, i) => (
+        <div
+          className={VIRFICE_APP_PREFIX + "-item"}
+          onClick={() => {
+            addSection(v);
+          }}
+          key={i}
+        >
+          <div>{v.icon}</div>
+          <div>{v.title}</div>
+        </div>
+      ))}
+
+      {wooSections.map((v, i) => (
         <div
           className={VIRFICE_APP_PREFIX + "-item"}
           onClick={() => {

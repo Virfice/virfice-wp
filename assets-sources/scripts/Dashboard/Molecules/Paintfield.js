@@ -5,10 +5,11 @@ import TextField from "./TextField";
 import useOutsideClick from "../../Hooks/useOutsideClick";
 
 const getColorCode = (color) => {
-  return color?.rgb
-    ? `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
-    : color;
-  // if (color?.hex) return color.hex;
+  // return color?.rgb
+  //   ? `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
+  //   : color;
+
+  return color?.hex ? color.hex : color;
 };
 
 const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {

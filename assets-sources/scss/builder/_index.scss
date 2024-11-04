@@ -1,24 +1,4 @@
-.#{$classPrefix}-template-wrapper {
-
-    * {
-        user-select: none;
-        cursor: default;
-    }
-
-    .#{$classPrefix}-hover-border {
-        box-shadow: 0 2px 0 0 #e4e4e4ac;
-        /* Border bottom */
-        box-shadow: 0 -2px 0 0 #e4e4e4ac;
-        /* Border top */
-        box-shadow: -2px 0 0 0 #e4e4e4ac;
-        /* Border left */
-        box-shadow: 2px 0 0 0 #e4e4e4ac;
-        /* Border right */
-        box-shadow: 0 0 0 2px #e4e4e4ac;
-        /* All the borders by using the spread properties */
-    }
-
-}
+@import 'global';
 
 .#{$classPrefix}-editor-wrapper {
     position: relative;
@@ -145,6 +125,28 @@
 
 
     }
+}
+
+.#{$classPrefix}-template-wrapper {
+
+    * {
+        user-select: none;
+        cursor: default;
+    }
+
+    .#{$classPrefix}-hover-border {
+        box-shadow: 0 2px 0 0 #e4e4e4ac;
+        /* Border bottom */
+        box-shadow: 0 -2px 0 0 #e4e4e4ac;
+        /* Border top */
+        box-shadow: -2px 0 0 0 #e4e4e4ac;
+        /* Border left */
+        box-shadow: 2px 0 0 0 #e4e4e4ac;
+        /* Border right */
+        box-shadow: 0 0 0 2px #e4e4e4ac;
+        /* All the borders by using the spread properties */
+    }
+
 }
 
 .#{$classPrefix}-settings-wrapper {
