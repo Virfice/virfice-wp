@@ -2,6 +2,9 @@
 
 namespace Virfice;
 
+use Exception;
+use Virfice\Includes\Logger;
+
 // Security check to prevent direct access
 if (!defined('ABSPATH')) {
     exit;
@@ -222,21 +225,23 @@ class Utils
         return wp_kses_post(html_entity_decode($html_string, ENT_COMPAT, 'UTF-8'));
     }
 
-    public static function string_to_dom($str)
-    {
-        require_once VIRFICE_PLUGIN_ROOT . '/src/Includes/simple_html_dom.php';
-        $dom = str_get_html($str);
-        return $dom;
-    }
-    public static function dom_to_string($dom)
-    {
-        return $dom->save();
-    }
-
     public static function get_template_content_from_woo_email_id($email_id)
     {
         $_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
         $template = get_post($_virfice_template_id);
         return $template->post_content;
+    }
+
+    public static function LOG($message)
+    {
+        // Initialize the logger with a custom log file (optional)
+        $logger = new Logger('___LOG.txt');
+
+        // Write an error to the log
+        try {
+            $logger->logError($message);
+        } catch (Exception $e) {
+            echo "Failed to write to log file: " . $e->getMessage();
+        }
     }
 }

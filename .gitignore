@@ -4,3 +4,6 @@ assets/*
 !assets/files
 build
 .DS_Store
+___LOG.txt
+__test.php
+.vscode
