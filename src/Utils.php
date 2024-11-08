@@ -179,15 +179,8 @@ class Utils
     //TODO: no one used this method. please check.
     public static function get_template_common_global_css()
     {
-        return "
+        return '
         <style>
-        .virfice-template-wrapper *{
-            margin: 0;
-            padding: 0;
-            border: 0;
-            vertical-align: baseline;
-            cursor: default;
-        }
         body {
             margin: 0;
             padding: 0;
@@ -216,7 +209,7 @@ class Utils
             height: auto;
             display: block;
             border: 0;
-        } </style>";
+        } </style>';
     }
 
     public static function virfice_wp_kses_allowed_html($html_string)

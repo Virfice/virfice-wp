@@ -372,9 +372,8 @@ class WooEmail extends WP_REST_Controller
 
 		if ($status == true) {
 			//insert a template if not exists
-			$_virfice_template_id = MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
+			$_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
 			if ($_virfice_template_id == false) {
-				//TODO: get email id wise initial template data
 				$template_content = $this->get_woo_email_virfice_template_preset($email_id);
 				$template_id = Templates::insert_template($email_id . ' - Virfice', $template_content);
 				if ($template_id) {

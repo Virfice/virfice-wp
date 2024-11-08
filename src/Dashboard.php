@@ -48,6 +48,7 @@ class Dashboard
                         $submenu_file = 'virfice&menu=dashboard';
                         break;
                     }
+                case 'woo-email-edit-virfice':
                 case 'woo-email-edit':
                 case 'woo-email-list': {
                         $submenu_file = 'virfice&menu=woo-email-list';
