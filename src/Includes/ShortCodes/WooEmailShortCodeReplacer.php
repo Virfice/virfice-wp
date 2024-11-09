@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class WooCommerceEmailShortcodeReplacer
+class WooEmailShortCodeReplacer
 {
     private $order;
     private $customer;
@@ -156,7 +156,7 @@ class WooCommerceEmailShortcodeReplacer
 // $order_id = 123; // Replace with the actual order ID
 // $content = "Thank you {customer_full_name} for your purchase on {order_date}. Your order number is {order_number} and total amount is {order_total}.";
 
-// $replacer = new WooCommerceEmailShortcodeReplacer($order_id);
+// $replacer = new WooEmailShortCodeReplacer($order_id);
 // $email_content = $replacer->replace_shortcodes($content);
 
 // echo $email_content;

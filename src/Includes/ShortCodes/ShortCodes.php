@@ -24,7 +24,7 @@ class ShortCodes
     {
         if ($this->context['type'] === 'woo_email') {
             $order_id = $this->context['order_id'];
-            $woo_replacer = new WooCommerceEmailShortcodeReplacer($order_id);
+            $woo_replacer = new WooEmailShortCodeReplacer($order_id);
             $this->string = $woo_replacer->replace_shortcodes($this->string);
         }
 
