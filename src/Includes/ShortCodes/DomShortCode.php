@@ -3,7 +3,6 @@
 namespace Virfice\Includes\ShortCodes;
 
 use Symfony\Component\DomCrawler\Crawler;
-use Virfice\Utils;
 
 // Security check to ensure this file is not accessed directly
 if (!defined('ABSPATH')) {
@@ -59,8 +58,6 @@ class DomShortCode
 
     private static function set_inner_html_using_ele_type($template, $ele_type, $value)
     {
-        Utils::LOG('____P2F2____');
-        Utils::LOG($value);
         // Use DomCrawler's filter method to locate the element by custom attribute
         $template->filter('[virfice-ele_type="' . $ele_type . '"]')
             ->each(function (Crawler $node) use ($value) {

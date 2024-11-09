@@ -39,7 +39,7 @@ export const getSingleColTable = (
           <tr>
               <td ${VIRFICE_APP_PREFIX}-title="Column" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-top: ${
     paddingTop || "0px"
-  };padding-bottom: ${paddingBottom || "0px"};">
+  };padding-bottom: ${paddingBottom || "0px"}; text-align:center;">
                   ${child}
               </td>
           </tr>

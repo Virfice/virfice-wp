@@ -8,10 +8,7 @@ import {
   TextIcon,
   TextOutdentIcon,
 } from "../../../../../../icons";
-import {
-  VIRFICE_APP_PREFIX,
-  VIRFICE_PLUGIN_BASE,
-} from "../../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
 import {
   getButtonString,
   getImageString,
@@ -70,10 +67,10 @@ const ImageWithText = {
   template: `<table ${VIRFICE_APP_PREFIX}-title="Image with Text" ${VIRFICE_APP_PREFIX}-ele_type="section">
     <tbody>
         <tr ${VIRFICE_APP_PREFIX}-title="Row 1" ${VIRFICE_APP_PREFIX}-ele_type="row">
-            <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column">
+            <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style"text-align: center;">
                 ${getImageString({ title: "Image" })}
             </td>
-            <td ${VIRFICE_APP_PREFIX}-title="Column 2" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding: 16px;">
+            <td ${VIRFICE_APP_PREFIX}-title="Column 2" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding: 16px;text-align: center;">
                 ${getTextString({
                   title: "Text",
                   content: "This is a text field. Add and edit content here.",
@@ -91,7 +88,7 @@ const Column = {
   template: `<table ${VIRFICE_APP_PREFIX}-title="Column" ${VIRFICE_APP_PREFIX}-ele_type="section">
     <tbody>
         <tr ${VIRFICE_APP_PREFIX}-title="Row 1" ${VIRFICE_APP_PREFIX}-ele_type="row">
-            <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-bottom: 16px;">
+            <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-bottom: 16px;text-align: center;">
                 ${getImageString({ title: "Image" })}
                 ${getTextString({
                   title: "Text",
@@ -99,7 +96,7 @@ const Column = {
                 })}
                 ${getButtonString({ title: "Button", content: "Button" })}
             </td>
-            <td ${VIRFICE_APP_PREFIX}-title="Column 2" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-bottom: 16px;">
+            <td ${VIRFICE_APP_PREFIX}-title="Column 2" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-bottom: 16px;text-align: center;">
                 ${getImageString({ title: "Image" })}
                 ${getTextString({
                   title: "Text",

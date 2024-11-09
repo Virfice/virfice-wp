@@ -54,6 +54,7 @@ class Dashboard
                         $submenu_file = 'virfice&menu=woo-email-list';
                         break;
                     }
+                case 'brand-settings':
                 case 'settings': {
                         $submenu_file = 'virfice&menu=settings';
                         break;

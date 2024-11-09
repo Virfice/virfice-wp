@@ -44,11 +44,11 @@ const initClickEvent = (ele) => {
 const initHoverEvent = (ele) => {
   ele.addEventListener("mouseover", (e) => {
     e.stopPropagation();
-    e.target.classList.add(`${VIRFICE_APP_PREFIX}-hover-border`);
+    ele.classList.add(`${VIRFICE_APP_PREFIX}-hover-border`);
   });
   ele.addEventListener("mouseleave", (e) => {
     e.stopPropagation();
-    e.target.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
+    ele.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
   });
 };
 
