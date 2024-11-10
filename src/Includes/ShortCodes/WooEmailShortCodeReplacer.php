@@ -2,6 +2,8 @@
 
 namespace Virfice\Includes\ShortCodes;
 
+use Virfice\Utils;
+
 // Security check to ensure this file is not accessed directly
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -19,52 +21,65 @@ class WooEmailShortCodeReplacer
 
     }
 
-    public function replace_shortcodes($content)
+    public function replace_short_codes($content)
     {
         if (!$this->order) {
             return $content;
         }
-
-        // Define the shortcodes and their replacements
-        $shortcodes = [
-            '{site_title}' => get_bloginfo('name'),
-            '{order_date}' => $this->order->get_date_created()->date('F j, Y'),
-            '{order_number}' => $this->order->get_order_number(),
-            '{order_total}' => \wc_price($this->order->get_total()),
-            '{order_subtotal}' => \wc_price($this->order->get_subtotal()),
-            '{order_payment_method}' => $this->order->get_payment_method_title(),
-            '{order_billing_address}' => $this->order->get_formatted_billing_address(),
-            '{order_shipping_address}' => $this->order->get_formatted_shipping_address(),
-            '{customer_first_name}' => $this->order->get_billing_first_name(),
-            '{customer_last_name}' => $this->order->get_billing_last_name(),
-            '{customer_full_name}' => $this->order->get_billing_first_name() . ' ' . $this->order->get_billing_last_name(),
-            '{customer_email}' => $this->order->get_billing_email(),
-            '{store_url}' => get_home_url(),
-            '{store_address}' => $this->get_store_address(),
-            '{store_phone}' => get_option('woocommerce_store_phone'),
-            '{discount_amount}' => \wc_price($this->get_order_discount()),
-            '{shipping_method}' => $this->order->get_shipping_method(),
-            '{tracking_number}' => $this->get_tracking_number(),
-            '{subscription_number}' => $this->get_subscription_number(),
-            '{subscription_date}' => $this->get_subscription_date(),
-            '{subscription_total}' => $this->get_subscription_total(),
-        ];
-
-        // Handle conditional shortcodes
-        $content = $this->replace_conditional_shortcodes($content);
-
-        // Replace simple shortcodes
-        foreach ($shortcodes as $shortcode => $value) {
-            $content = str_replace($shortcode, $value, $content);
+        // Handle conditional short_codes
+        $content = $this->replace_conditional_short_codes($content);
+        $short_codes = $this->get_short_codes();
+        // Replace simple short_codes
+        foreach ($short_codes as $short_code => $value) {
+            $content = str_replace("{" . $short_code . "}", $value, $content);
         }
 
+        $content = $this->replace_dom_short_code($content);
         // Replace item-specific shortcodes if applicable
-        $content = $this->replace_item_shortcodes($content);
+        $content = $this->replace_order_item_short_codes($content);
 
+        Utils::LOG($content);
         return $content;
     }
 
-    private function replace_conditional_shortcodes($content)
+    private function replace_dom_short_code($content)
+    {
+        $short_codes = $this->get_short_codes();
+        $content = DomShortCode::run($content, $short_codes);
+        return $content;
+    }
+
+    private function get_short_codes()
+    {
+        // Define the short_codes and their replacements
+        $short_codes = [
+            'site_title' => get_bloginfo('name'),
+            'order_date' => $this->order->get_date_created()->date('F j, Y'),
+            'order_number' => $this->order->get_order_number(),
+            'order_total' => \wc_price($this->order->get_total()),
+            'order_subtotal' => \wc_price($this->order->get_subtotal()),
+            'order_payment_method' => $this->order->get_payment_method_title(),
+            'order_billing_address' => $this->order->get_formatted_billing_address(),
+            'order_shipping_address' => $this->order->get_formatted_shipping_address(),
+            'customer_first_name' => $this->order->get_billing_first_name(),
+            'customer_last_name' => $this->order->get_billing_last_name(),
+            'customer_full_name' => $this->order->get_billing_first_name() . ' ' . $this->order->get_billing_last_name(),
+            'customer_email' => $this->order->get_billing_email(),
+            'store_url' => get_home_url(),
+            'store_address' => $this->get_store_address(),
+            'store_phone' => get_option('woocommerce_store_phone'),
+            'discount_amount' => \wc_price($this->get_order_discount()),
+            'shipping_method' => $this->order->get_shipping_method(),
+            'tracking_number' => $this->get_tracking_number(),
+            'subscription_number' => $this->get_subscription_number(),
+            'subscription_date' => $this->get_subscription_date(),
+            'subscription_total' => $this->get_subscription_total(),
+        ];
+
+        return $short_codes;
+    }
+
+    private function replace_conditional_short_codes($content)
     {
         // Handle [if_paid]content[/if_paid]
         if ($this->order->is_paid()) {
@@ -83,29 +98,19 @@ class WooEmailShortCodeReplacer
         return $content;
     }
 
-    private function replace_item_shortcodes($content)
+    private function replace_order_item_short_codes($template)
     {
-        // Find and replace item-specific shortcodes if applicable
-        if (strpos($content, '{item_') !== false) {
-            $items_content = '';
-            foreach ($this->order->get_items() as $item) {
-                $item_data = [
-                    '{item_name}' => $item->get_name(),
-                    '{item_quantity}' => $item->get_quantity(),
-                    '{item_price}' => \wc_price($item->get_total()),
-                    '{item_sku}' => $item->get_product() ? $item->get_product()->get_sku() : ''
-                ];
-
-                $item_content = $content;
-                foreach ($item_data as $shortcode => $value) {
-                    $item_content = str_replace($shortcode, $value, $item_content);
-                }
-
-                $items_content .= $item_content;
-            }
-            $content = $items_content;
+        $short_codes_arr = [];
+        foreach ($this->order->get_items() as $item) {
+            $item_data = [
+                'order_item_name' => $item->get_name(),
+                'order_item_quantity' => $item->get_quantity(),
+                'order_item_price' => \wc_price($item->get_total()),
+                'order_item_sku' => $item->get_product() ? $item->get_product()->get_sku() : ''
+            ];
+            $short_codes_arr[] = $item_data;
         }
-        return $content;
+        return DomShortCode::run_items('[virfice-short_code="order_items_wrapper"]', '[virfice-short_code="order_item_wrapper"]', $template, $short_codes_arr);
     }
 
     private function get_store_address()
@@ -157,6 +162,6 @@ class WooEmailShortCodeReplacer
 // $content = "Thank you {customer_full_name} for your purchase on {order_date}. Your order number is {order_number} and total amount is {order_total}.";
 
 // $replacer = new WooEmailShortCodeReplacer($order_id);
-// $email_content = $replacer->replace_shortcodes($content);
+// $email_content = $replacer->replace_short_codes($content);
 
 // echo $email_content;

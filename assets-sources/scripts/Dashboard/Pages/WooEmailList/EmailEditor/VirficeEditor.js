@@ -23,6 +23,8 @@ const VirficeEditor = () => {
   useEffect(() => {
     dispatch(emailSingleAsync(email_id));
     dispatch(emailSingleVirficeAsync(email_id));
+
+    //TODO: need to get all shortCode list from backend.
   }, []);
 
   const handleBackActionClick = () => {

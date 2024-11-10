@@ -189,17 +189,13 @@ class Utils
             width: 100%;
             border-collapse: collapse;
         }
-        td {
-            text-align: center;
-        }
         h2 {
             font-size: 20px;
-            color: #333333;
+            color: inherit;
         }
         p {
             font-size: 16px;
             line-height: 1.5;
-            color: #555555;
         }
         a{
             display: inline-block;
