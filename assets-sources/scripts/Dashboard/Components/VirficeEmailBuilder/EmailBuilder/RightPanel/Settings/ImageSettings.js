@@ -8,13 +8,17 @@ import TabHeader from "../../../../Tab/TabHeader";
 import Divider from "../../../../../Molecules/Divider";
 import TabContent from "../../../../Tab/TabContent";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import { getElementComputedStyle } from "./utils";
+import {
+  getElementComputedStyle,
+  getElementComputedStylePixelValue,
+} from "./utils";
 import {
   AlignCenterIcon,
   AlignLeftIcon,
   AlignRightIcon,
 } from "../../../../../icons";
 import ToggleButton from "../../../../../Molecules/ToggleButton";
+import Reusable from "./Reusable";
 
 const getPosition = (element) => {
   if (
@@ -35,8 +39,6 @@ const getPosition = (element) => {
 
 const ImageSettings = ({ element }) => {
   const [position, setPosition] = useState(getPosition(element));
-
-  let width = getElementComputedStyle(element, "width").replace("px", "");
 
   useEffect(() => {
     setPosition(getPosition(element));
@@ -83,9 +85,10 @@ const ImageSettings = ({ element }) => {
         </TabContent>
         <TabContent index={1}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
+            <div className="title__medium">Image Layout</div>
             <RangeField
               label={"Width"}
-              value={width}
+              value={getElementComputedStylePixelValue(element, "width")}
               onChange={(v) => {
                 element.style.width = `${v}px`;
               }}
@@ -103,6 +106,9 @@ const ImageSettings = ({ element }) => {
               ]}
               onChange={handleImagePosition}
             />
+
+            <Reusable element={element} type="background" />
+            <Reusable element={element} type="padding" />
           </div>
         </TabContent>
       </Tab>

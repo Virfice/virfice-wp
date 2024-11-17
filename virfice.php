@@ -75,3 +75,9 @@ new API(); // Initialize API functionality for the plugin
 
 // update footer text
 new WooEmailHooks();
+
+
+
+//TODO: need to remove in production
+// require_once __DIR__ . '/__test.php';
+// die();

@@ -9,6 +9,7 @@ import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import PaintField from "../../../../../Molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import RangeField from "../../../../../Molecules/Rangefield";
+import Reusable from "./Reusable";
 
 const TextSettings = ({ element }) => {
   return (
@@ -29,24 +30,6 @@ const TextSettings = ({ element }) => {
               }}
               multiline={6}
             />
-          </div>
-        </TabContent>
-        <TabContent index={1}>
-          <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <PaintField
-              label={"Text color"}
-              value={getElementComputedStyle(element, "color")}
-              onChange={(v) => {
-                element.style.color = v;
-              }}
-            />
-            <PaintField
-              label={"Background color"}
-              value={getElementComputedStyle(element, "background-color")}
-              onChange={(v) => {
-                element.style.backgroundColor = v;
-              }}
-            />
             <RangeField
               label={"Font size"}
               value={getElementComputedStyle(element, "font-size").replace(
@@ -60,6 +43,20 @@ const TextSettings = ({ element }) => {
               max={100}
               step={1}
             />
+          </div>
+        </TabContent>
+        <TabContent index={1}>
+          <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
+            <PaintField
+              label={"Text color"}
+              value={getElementComputedStyle(element, "color")}
+              onChange={(v) => {
+                element.style.color = v;
+              }}
+            />
+
+            <Reusable element={element} type="background" />
+            <Reusable element={element} type="padding" />
           </div>
         </TabContent>
       </Tab>

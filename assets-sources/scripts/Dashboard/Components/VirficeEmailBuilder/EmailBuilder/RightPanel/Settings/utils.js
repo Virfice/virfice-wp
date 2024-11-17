@@ -14,3 +14,7 @@ export const getElementComputedStyle = (element, key) => {
   const computedStyle = window.getComputedStyle(element);
   return computedStyle[key];
 };
+
+export const getElementComputedStylePixelValue = (element, key) => {
+  return getElementComputedStyle(element, key).replace("px", "");
+};

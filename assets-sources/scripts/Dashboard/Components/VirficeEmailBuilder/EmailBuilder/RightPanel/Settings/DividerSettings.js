@@ -4,43 +4,25 @@ import TabHeader from "../../../../Tab/TabHeader";
 import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
 import Divider from "../../../../../Molecules/Divider";
-import TextField from "../../../../../Molecules/TextField";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import PaintField from "../../../../../Molecules/Paintfield";
-import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
 
-const LinkSettings = ({ element }) => {
+const DividerSettings = ({ element }) => {
   return (
     <>
       <Tab>
         <TabHead>
-          <TabHeader index={0}>Content</TabHeader>
+          <TabHeader index={0}>Format</TabHeader>
           <TabHeader index={1}>Design</TabHeader>
         </TabHead>
         <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
         <TabContent index={0}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <TextField
-              label={"Text"}
-              value={element.innerText}
-              onChange={(v) => {
-                element.innerText = v;
-              }}
-              multiline={6}
-            />
+            content settings
           </div>
         </TabContent>
         <TabContent index={1}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <PaintField
-              label={"Text color"}
-              value={getElementComputedStyle(element, "color")}
-              onChange={(v) => {
-                element.style.color = v;
-              }}
-            />
-
             <Reusable element={element} type="background" />
             <Reusable element={element} type="padding" />
           </div>
@@ -50,4 +32,4 @@ const LinkSettings = ({ element }) => {
   );
 };
 
-export default LinkSettings;
+export default DividerSettings;

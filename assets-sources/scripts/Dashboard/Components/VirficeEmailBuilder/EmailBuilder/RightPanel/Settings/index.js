@@ -7,6 +7,7 @@ import RowSettings from "./RowSettings";
 import LinkSettings from "./LinkSettings";
 import ColumnSettings from "./ColumnSettings";
 import SectionSettings from "./SectionSettings";
+import DividerSettings from "./DividerSettings";
 
 const Settings = ({ element }) => {
   const [eleInfo, setEleInfo] = useState({});
@@ -21,6 +22,7 @@ const Settings = ({ element }) => {
       {eleInfo?.type === "text" && <TextSettings element={element} />}
       {eleInfo?.type === "image" && <ImageSettings element={element} />}
       {eleInfo?.type === "link" && <LinkSettings element={element} />}
+      {eleInfo?.type === "divider" && <DividerSettings element={element} />}
       {eleInfo?.type === "row" && <RowSettings element={element} />}
       {eleInfo?.type === "column" && <ColumnSettings element={element} />}
       {eleInfo?.type === "section" && <SectionSettings element={element} />}
