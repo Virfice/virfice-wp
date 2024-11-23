@@ -5,7 +5,7 @@ import {
 } from "../utils";
 import RangeField from "@molecules/Rangefield";
 import SelectField from "@molecules/SelectField";
-import { getSelectOptionsValueFromOptions } from "../../../../../../../functions";
+import { getSelectOptionsValueFromOptions } from "@functions";
 
 const FontAndSize = ({ element }) => {
   return (

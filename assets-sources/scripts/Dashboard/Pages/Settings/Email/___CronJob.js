@@ -7,7 +7,7 @@ import Card from "@molecules/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalSettingsData } from "../globalSettingsSlice";
 import SelectField from "@molecules/SelectField";
-import { getSelectOptionsValueFromOptions } from "../../../../functions";
+import { getSelectOptionsValueFromOptions } from "@functions";
 
 const frequency_email_options = [
   { value: 10, title: "10 Emails" },

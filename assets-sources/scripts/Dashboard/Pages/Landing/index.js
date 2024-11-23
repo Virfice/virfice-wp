@@ -4,7 +4,7 @@ import { VIRFICE_APP_PREFIX } from "../../../conf";
 import Container from "@molecules/Container";
 import CalloutCard from "../../Components/CalloutCard";
 import FeatureBanner from "./FeatureBanner";
-import { addParams, createAssetUrl } from "../../../functions";
+import { addParams, createAssetUrl } from "@functions";
 import { useDispatch } from "react-redux";
 import { incrementAsync } from "./landingSlice";
 import brandCustomizeSRC from "./BrandCustomize.png";

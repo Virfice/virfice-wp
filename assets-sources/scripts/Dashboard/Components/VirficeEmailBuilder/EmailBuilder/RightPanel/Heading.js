@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { BackIcon } from "../../../../icons";
 import { getParentElement, getVirficeAttr } from "../utils";
 import { VIRFICE_APP_PREFIX } from "../../../../../conf";
-import { dispatchDashboardAction } from "../../../../../functions";
+import { dispatchDashboardAction } from "@functions";
 import { onSelectElement } from "../../builderSlice";
 
 const Heading = ({ element }) => {

@@ -3,7 +3,7 @@ import StickyTopNav from "../../../Components/StickyTopNav";
 import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
 import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import { addParams, getParamValue } from "../../../../functions";
+import { addParams, getParamValue } from "@functions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   emailSingleAsync,

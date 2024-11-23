@@ -4,7 +4,7 @@ import { VIRFICE_APP_PREFIX } from "../../../../../conf";
 import { useSelector, useDispatch } from "react-redux";
 import SelectField from "@molecules/SelectField";
 import { setWooEmailSingleData } from "../wooEmailSingleSlice";
-import { getSelectOptionsValueFromOptions } from "../../../../../functions";
+import { getSelectOptionsValueFromOptions } from "@functions";
 const escapedHtmlToOriginal = (text) => {
   if (!text) return "";
   return text

@@ -4,7 +4,7 @@ import Badge from "@molecules/Badge";
 import { BadgeActiveIcon, EnvelopIcon, PencilIcon, WooIcon } from "../../icons";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 import Button from "@molecules/Button";
-import { addParams } from "../../../functions";
+import { addParams } from "@functions";
 import CheckboxField from "@molecules/CheckboxField";
 import SingleItemVirficeTemplateStatus from "./SingleItemVirficeTemplateStatus";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import DefalutEditor from "./DefaultEditor";
-import { hasQueryParamValue } from "../../../../functions";
+import { hasQueryParamValue } from "@functions";
 import VirficeEditor from "./VirficeEditor";
 
 const EmailEditor = () => {

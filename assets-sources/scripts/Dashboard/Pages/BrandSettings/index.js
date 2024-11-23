@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import StickyTopNav from "../../Components/StickyTopNav";
 import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
-import { addParams } from "../../../functions";
+import { addParams } from "@functions";
 import RightPanel from "./RightPanel";
 import { useDispatch, useSelector } from "react-redux";
 import {

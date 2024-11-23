@@ -2,7 +2,7 @@ import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
 import { getVirficeAttr } from "../../../utils";
 import { ChevronRightIcon, EyeIcon, GrabIcon } from "../../../../../../icons";
-import { dispatchDashboardAction } from "../../../../../../../functions";
+import { dispatchDashboardAction } from "@functions";
 import { onSelectElement } from "../../../../builderSlice";
 
 const SingleChild = ({ element }) => {

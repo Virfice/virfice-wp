@@ -13,7 +13,7 @@ import {
   // initEmptyElement,
   saveBuilderDataToRedux,
 } from "../../../utils";
-import { dispatchDashboardAction } from "../../../../../../../functions";
+import { dispatchDashboardAction } from "@functions";
 import { onSelectElement, setBuilderData } from "../../../../builderSlice";
 import { useDispatch } from "react-redux";
 import { showNotificationBell } from "../../../../../componentsSlice";

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import VirficeEmailBuilder from "../../../Components/VirficeEmailBuilder";
-import { addParams, getParamValue } from "../../../../functions";
+import { addParams, getParamValue } from "@functions";
 import StickyTopNav from "../../../Components/StickyTopNav";
 import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
 import { useDispatch, useSelector } from "react-redux";

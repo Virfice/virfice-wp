@@ -6,7 +6,7 @@ import Modal from "./Modal";
 import TextField from "@molecules/TextField";
 import axios from "axios";
 import { showNotificationBell } from "./componentsSlice";
-import { validateCommaSeparatedEmails } from "../../functions";
+import { validateCommaSeparatedEmails } from "@functions";
 import FormInfo from "./FormInfo";
 import { VIRFICE_APP_PREFIX } from "../../conf";
 import { globalSettingsAsync } from "../Pages/Settings/globalSettingsSlice";

@@ -4,7 +4,7 @@ import {
   getParamValue,
   hasQueryParamValue,
   validateCommaSeparatedEmails,
-} from "../../../../../functions";
+} from "@functions";
 import {
   EnvelopIcon,
   FormInfoIllustration,

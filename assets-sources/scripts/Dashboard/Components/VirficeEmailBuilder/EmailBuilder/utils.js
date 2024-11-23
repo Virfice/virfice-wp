@@ -1,8 +1,5 @@
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import {
-  dispatchDashboardAction,
-  generateRandomId,
-} from "../../../../functions";
+import { dispatchDashboardAction, generateRandomId } from "@functions";
 import {
   onSelectElement,
   onSelectSection,

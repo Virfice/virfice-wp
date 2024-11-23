@@ -6,7 +6,7 @@ import Card from "@molecules/Card";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 import Table from "./Table";
 import StickyTopNav from "../../Components/StickyTopNav";
-import { addParams } from "../../../functions";
+import { addParams } from "@functions";
 
 const WooEmailList = () => {
   const handleBackActionClick = () => {

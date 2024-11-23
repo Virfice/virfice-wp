@@ -7,7 +7,7 @@ import TextField from "@molecules/TextField";
 import MediaUploader from "@molecules/MediaUploader";
 import CheckboxField from "@molecules/CheckboxField";
 import FormInfo from "../../../Components/FormInfo";
-import { addParams } from "../../../../functions";
+import { addParams } from "@functions";
 // import ToggleButton from "@molecules/ToggleButton";
 // import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "../../../icons";
 

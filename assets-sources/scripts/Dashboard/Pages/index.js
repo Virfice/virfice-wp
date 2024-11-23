@@ -1,6 +1,6 @@
 import React from "react";
 import Landing from "./Landing";
-import { hasQueryParamValue } from "../../functions";
+import { hasQueryParamValue } from "@functions";
 import BrandSettings from "./BrandSettings";
 import WooEmailList from "./WooEmailList";
 import Settings from "./Settings";
