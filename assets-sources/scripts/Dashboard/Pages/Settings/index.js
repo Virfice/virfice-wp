@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Container from "@molecules/Container";
-import StickyTopNav from "../../Components/StickyTopNav";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import StickyTopNav from "@components/StickyTopNav";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import Menu from "./Menu";
 import Email from "./Email";
-import { ColorPalateIcon, EnvelopIcon } from "../../icons";
+import { ColorPalateIcon, EnvelopIcon } from "@svg-icons";
 import {
   discardGlobalSettings,
   saveGlobalSettings,

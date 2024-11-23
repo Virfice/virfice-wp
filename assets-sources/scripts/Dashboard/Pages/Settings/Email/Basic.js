@@ -1,8 +1,8 @@
 import React from "react";
 import TextField from "@molecules/TextField";
-import FormInfo from "../../../Components/FormInfo";
-import { FormInfoIllustration } from "../../../icons";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import FormInfo from "@components/FormInfo";
+import { FormInfoIllustration } from "@svg-icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalSettingsData } from "../globalSettingsSlice";

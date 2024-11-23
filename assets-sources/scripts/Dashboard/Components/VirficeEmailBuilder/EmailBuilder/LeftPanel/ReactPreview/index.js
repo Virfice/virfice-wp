@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // import Elements from "./Elements";
 import { useSelector } from "react-redux";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import EditorControls from "./EditorControls";
 import { initEmailBuilder } from "../../utils";
 

@@ -4,7 +4,7 @@ import TabHeader from "../../../../Tab/TabHeader";
 import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
 import Divider from "@molecules/Divider";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import RangeField from "@molecules/Rangefield";
 import {
   getElementComputedStyle,

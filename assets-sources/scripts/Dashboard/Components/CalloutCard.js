@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "@molecules/Card";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const CalloutCard = ({ heading, subHeading, ActionButton, Illustration }) => {
   return (

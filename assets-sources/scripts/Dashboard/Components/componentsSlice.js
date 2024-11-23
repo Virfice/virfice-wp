@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const initialState = {
   notificationBell: {
-    open: false, 
-  }
+    open: false,
+  },
 };
 
 export const componentsSlice = createSlice({
@@ -19,27 +19,33 @@ export const componentsSlice = createSlice({
 });
 
 /**
- * 
+ *
  * type: success | danger
  */
-export const showNotificationBell = ({title, type='success', duration=3000}) => (dispatch) => {
-  dispatch(setComponentsStateData({
-    key: "notificationBell",
-    value: { open: true, title, type, duration },
-  }))
+export const showNotificationBell =
+  ({ title, type = "success", duration = 3000 }) =>
+  (dispatch) => {
+    dispatch(
+      setComponentsStateData({
+        key: "notificationBell",
+        value: { open: true, title, type, duration },
+      })
+    );
 
-  if(duration){
-    setTimeout(() => {
-      dispatch(closeNotificationBell());
-    }, duration); 
-  }
-};
+    if (duration) {
+      setTimeout(() => {
+        dispatch(closeNotificationBell());
+      }, duration);
+    }
+  };
 
 export const closeNotificationBell = () => (dispatch) => {
-  dispatch(setComponentsStateData({
-    key: "notificationBell",
-    value: { open: false},
-  }))
+  dispatch(
+    setComponentsStateData({
+      key: "notificationBell",
+      value: { open: false },
+    })
+  );
 };
 
 // Action creators are generated for each case reducer function

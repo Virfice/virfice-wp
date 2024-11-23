@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@molecules/Button";
-import { EnvelopIcon, FormInfoIllustration, PaperPlaneIcon } from "../icons";
+import { EnvelopIcon, FormInfoIllustration, PaperPlaneIcon } from "@svg-icons";
 import Modal from "./Modal";
 import TextField from "@molecules/TextField";
 import axios from "axios";
 import { showNotificationBell } from "./componentsSlice";
 import { validateCommaSeparatedEmails } from "@functions";
 import FormInfo from "./FormInfo";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { globalSettingsAsync } from "../Pages/Settings/globalSettingsSlice";
 
 const SendWooTestMailButton = ({ email_id, order_id, changedSettings }) => {

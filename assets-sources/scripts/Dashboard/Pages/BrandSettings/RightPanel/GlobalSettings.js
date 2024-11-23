@@ -1,15 +1,15 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import PaintField from "@molecules/Paintfield";
 import { useDispatch, useSelector } from "react-redux";
 import { setBrandSettingsData } from "../brandSettingsSlice";
 import TextField from "@molecules/TextField";
 import MediaUploader from "@molecules/MediaUploader";
 import CheckboxField from "@molecules/CheckboxField";
-import FormInfo from "../../../Components/FormInfo";
+import FormInfo from "@components/FormInfo";
 import { addParams } from "@functions";
 // import ToggleButton from "@molecules/ToggleButton";
-// import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "../../../icons";
+// import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 
 const GlobalSettings = () => {
   const settings = useSelector((state) => state.brandSettings.settings.data);

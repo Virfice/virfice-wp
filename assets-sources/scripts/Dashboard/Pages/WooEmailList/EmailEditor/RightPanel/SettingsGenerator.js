@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@molecules/TextField";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { useSelector, useDispatch } from "react-redux";
 import SelectField from "@molecules/SelectField";
 import { setWooEmailSingleData } from "../wooEmailSingleSlice";

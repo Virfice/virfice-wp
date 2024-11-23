@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "@molecules/Button";
-import { AddIcon } from "../../../../../../../icons";
-import { VIRFICE_APP_PREFIX } from "../../../../../../../../conf";
+import { AddIcon } from "@svg-icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Header from "./Header";
 import Body from "./Body";
 

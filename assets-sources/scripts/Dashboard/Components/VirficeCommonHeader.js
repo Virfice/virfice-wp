@@ -1,7 +1,7 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Container from "@molecules/Container";
-import { BookOpen, EnvelopIcon, VirficeIcon } from "../icons";
+import { BookOpen, EnvelopIcon, VirficeIcon } from "@svg-icons";
 import Button from "@molecules/Button";
 import { addParams } from "@functions";
 

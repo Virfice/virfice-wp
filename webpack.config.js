@@ -61,9 +61,18 @@ module.exports = (env, argv) => {
           __dirname,
           "./assets-sources/scripts/Dashboard/Molecules"
         ),
+        "@components": path.resolve(
+          __dirname,
+          "./assets-sources/scripts/Dashboard/Components"
+        ),
         "@functions": path.resolve(
           __dirname,
           "assets-sources/scripts/functions"
+        ),
+        "@conf": path.resolve(__dirname, "assets-sources/scripts/conf"),
+        "@svg-icons": path.resolve(
+          __dirname,
+          "assets-sources/scripts/Dashboard/icons"
         ),
       },
     },

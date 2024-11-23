@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getElementBasicSettings } from "./utils";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import TextSettings from "./TextSettings";
 import ImageSettings from "./ImageSettings";
 import RowSettings from "./RowSettings";

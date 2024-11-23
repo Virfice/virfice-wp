@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
-import { showNotificationBell } from "../../Components/componentsSlice";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { showNotificationBell } from "@components/componentsSlice";
 
 const initialState = {
   emailList: { loaded: false, data: [] },
@@ -73,11 +73,13 @@ export const saveBrandSettings = (data) => (dispatch) => {
           value: { loaded: true, data: data },
         })
       );
-      dispatch(showNotificationBell({title: 'Settings saved'}));
+      dispatch(showNotificationBell({ title: "Settings saved" }));
     })
     .catch((error) => {
       console.log(error);
-      dispatch(showNotificationBell({title: 'Settings saved failed', type: 'danger'}));
+      dispatch(
+        showNotificationBell({ title: "Settings saved failed", type: "danger" })
+      );
     });
 };
 
@@ -100,9 +102,18 @@ export const emailListAsync = () => (dispatch) => {
           value: { loaded: true, data: d },
         })
       );
-      if(d.length > 0){
+      if (d.length > 0) {
         let singleEmail = d[0];
-        dispatch(setBrandSettingsData({key:'currentEmail', value:{value:singleEmail.id, title:singleEmail.title, ...singleEmail}}));
+        dispatch(
+          setBrandSettingsData({
+            key: "currentEmail",
+            value: {
+              value: singleEmail.id,
+              title: singleEmail.title,
+              ...singleEmail,
+            },
+          })
+        );
       }
     })
     .catch((error) => {

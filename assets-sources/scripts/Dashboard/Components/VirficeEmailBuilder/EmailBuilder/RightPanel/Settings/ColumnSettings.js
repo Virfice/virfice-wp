@@ -1,5 +1,5 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import ChildList from "./Components/ChildList";
 import Reusable from "./Reusable";
 import Divider from "@molecules/Divider";

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Basic from "./Basic";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { useDispatch, useSelector } from "react-redux";
 import { globalSettingsAsync } from "../globalSettingsSlice";
 import Loading from "@molecules/Loading";

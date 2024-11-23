@@ -1,5 +1,5 @@
 import React from "react";
-import { HandTapIcon } from "../../../../../../icons";
+import { HandTapIcon } from "@svg-icons";
 import { getSingleColTable } from "../core-ele";
 import { getOrderDetailsString } from "./woo-core-ele";
 

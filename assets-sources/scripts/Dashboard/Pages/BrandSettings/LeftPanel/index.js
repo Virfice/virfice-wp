@@ -2,7 +2,7 @@ import React from "react";
 import Card from "@molecules/Card";
 import TopActionBar from "./TopActionBar";
 import Preview from "./Preview";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const LeftPanel = () => {
   return (

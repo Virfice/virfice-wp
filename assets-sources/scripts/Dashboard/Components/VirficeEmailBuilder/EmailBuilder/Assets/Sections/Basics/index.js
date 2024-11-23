@@ -7,8 +7,8 @@ import {
   MonitorPlayIcon,
   TextIcon,
   TextOutdentIcon,
-} from "../../../../../../icons";
-import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
+} from "@svg-icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import {
   getButtonString,
   getImageString,

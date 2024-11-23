@@ -1,6 +1,6 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../../../../conf";
-import { CloseIcon } from "../../../../../../../icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { CloseIcon } from "@svg-icons";
 
 const Header = ({ onClose }) => {
   return (

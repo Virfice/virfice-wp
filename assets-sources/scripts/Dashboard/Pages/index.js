@@ -4,7 +4,7 @@ import { hasQueryParamValue } from "@functions";
 import BrandSettings from "./BrandSettings";
 import WooEmailList from "./WooEmailList";
 import Settings from "./Settings";
-import EmailBuilder from "../Components/VirficeEmailBuilder/EmailBuilder";
+import EmailBuilder from "@components/VirficeEmailBuilder/EmailBuilder";
 import EmailEditor from "./WooEmailList/EmailEditor";
 
 //Need to implement route for every dashboard menu

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TableItem from "@molecules/DataTable/TableItem";
 import Badge from "@molecules/Badge";
-import { BadgeActiveIcon, EnvelopIcon, PencilIcon, WooIcon } from "../../icons";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { BadgeActiveIcon, EnvelopIcon, PencilIcon, WooIcon } from "@svg-icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Button from "@molecules/Button";
 import { addParams } from "@functions";
 import CheckboxField from "@molecules/CheckboxField";

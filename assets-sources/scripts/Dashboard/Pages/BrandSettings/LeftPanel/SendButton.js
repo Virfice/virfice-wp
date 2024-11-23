@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import SendWooTestMailButton from "../../../Components/SendWooTestMailButton";
+import SendWooTestMailButton from "@components/SendWooTestMailButton";
 
 const SendButton = () => {
   let currentEmail = useSelector((state) => state.brandSettings?.currentEmail);

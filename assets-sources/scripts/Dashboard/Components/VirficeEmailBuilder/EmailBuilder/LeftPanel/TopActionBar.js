@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Button from "@molecules/Button";
-import {
-  VIRFICE_APP_PREFIX,
-  VIRFICE_RESPONSIVE_BREAKPOINTS,
-} from "../../../../../conf";
-import { LaptopIcon, MobileIcon } from "../../../../icons";
+import { VIRFICE_APP_PREFIX, VIRFICE_RESPONSIVE_BREAKPOINTS } from "@conf";
+import { LaptopIcon, MobileIcon } from "@svg-icons";
 import SendButtonRecipientsPopup from "./SendButtonRecipientsPopup";
 
 const TopActionBar = () => {

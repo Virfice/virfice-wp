@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
-import { showNotificationBell } from "../../Components/componentsSlice";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { showNotificationBell } from "@components/componentsSlice";
 
 const initialState = {
   emailList: { loaded: false, data: [] },

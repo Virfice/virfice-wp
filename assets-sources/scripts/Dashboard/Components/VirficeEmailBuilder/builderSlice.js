@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import axios from "axios";
 import { showNotificationBell } from "../componentsSlice";
 

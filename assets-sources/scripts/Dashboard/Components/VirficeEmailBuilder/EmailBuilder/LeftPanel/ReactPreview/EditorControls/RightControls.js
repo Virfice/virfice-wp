@@ -1,11 +1,6 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
-import {
-  DeleteIcon,
-  DownIcon,
-  DuplicateIcon,
-  UpIcon,
-} from "../../../../../../icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { DeleteIcon, DownIcon, DuplicateIcon, UpIcon } from "@svg-icons";
 import { duplicateElement } from "./utils";
 import {
   getParentElement,

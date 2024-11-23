@@ -1,4 +1,4 @@
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { getVirficeAttr } from "../../utils";
 
 export const getElementBasicSettings = (element) => {

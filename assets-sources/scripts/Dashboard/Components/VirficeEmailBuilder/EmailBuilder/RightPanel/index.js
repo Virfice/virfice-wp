@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import { useSelector } from "react-redux";
 import Loading from "@molecules/Loading";

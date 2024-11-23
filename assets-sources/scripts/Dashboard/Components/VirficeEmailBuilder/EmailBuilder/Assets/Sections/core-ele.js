@@ -1,7 +1,4 @@
-import {
-  VIRFICE_APP_PREFIX,
-  VIRFICE_PLUGIN_BASE,
-} from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX, VIRFICE_PLUGIN_BASE } from "@conf";
 
 export const getTextString = ({ title, content }) =>
   `<p ${VIRFICE_APP_PREFIX}-title="${

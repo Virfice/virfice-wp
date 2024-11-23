@@ -1,5 +1,5 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import OrderSelection from "./OrderSelection";
 import SettingsGenerator from "./SettingsGenerator";

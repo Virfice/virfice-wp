@@ -2,7 +2,7 @@ import React from "react";
 import Iframe from "@molecules/Iframe";
 import { useSelector } from "react-redux";
 import { addParams } from "@functions";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const Preview = () => {
   let previewUrl = useSelector(

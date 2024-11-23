@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { useSelector } from "react-redux";
 import { getVirficeElementFromId } from "../../../utils";
 import Border from "./Border";

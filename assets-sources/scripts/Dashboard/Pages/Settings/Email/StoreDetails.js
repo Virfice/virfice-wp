@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@molecules/TextField";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalSettingsData } from "../globalSettingsSlice";

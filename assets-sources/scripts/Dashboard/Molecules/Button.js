@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const Button = ({
   title = "",

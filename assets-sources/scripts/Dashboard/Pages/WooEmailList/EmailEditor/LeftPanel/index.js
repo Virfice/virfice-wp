@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "@molecules/Card";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import TopActionBar from "./TopActionBar";
 import Preview from "./Preview";
 

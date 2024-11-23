@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import RightControl from "./RightControls";
 import AddSectionButton from "./AddSectionButton";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@molecules/Container";
-import { VIRFICE_APP_PREFIX } from "../../conf";
-import { BackIcon } from "../icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { BackIcon } from "@svg-icons";
 import Button from "@molecules/Button";
 
 const StickyTopNav = ({ backAction, discardAction, saveAction }) => {

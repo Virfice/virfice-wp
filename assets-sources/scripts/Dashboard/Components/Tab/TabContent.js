@@ -1,6 +1,6 @@
 import React from "react";
 import { useTabContext } from "./TabContext";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 // TabContent.js
 const TabContent = ({ index, children }) => {

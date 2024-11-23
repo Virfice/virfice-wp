@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "@molecules/Container";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import Button from "@molecules/Button";
 import { addParams } from "@functions";

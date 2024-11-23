@@ -1,5 +1,5 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import PaintField from "@molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import ChildList from "./Components/ChildList";

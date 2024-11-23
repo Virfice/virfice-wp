@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import VirficeEmailBuilder from "../../../Components/VirficeEmailBuilder";
+import VirficeEmailBuilder from "@components/VirficeEmailBuilder";
 import { addParams, getParamValue } from "@functions";
-import StickyTopNav from "../../../Components/StickyTopNav";
-import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
+import StickyTopNav from "@components/StickyTopNav";
+import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import { useDispatch, useSelector } from "react-redux";
 import {
   emailSingleAsync,
   emailSingleVirficeAsync,
 } from "./wooEmailSingleSlice";
-import { saveSingleTemplate } from "../../../Components/VirficeEmailBuilder/builderSlice";
+import { saveSingleTemplate } from "@components/VirficeEmailBuilder/builderSlice";
 
 const VirficeEditor = () => {
   const email_id = getParamValue("email_id");

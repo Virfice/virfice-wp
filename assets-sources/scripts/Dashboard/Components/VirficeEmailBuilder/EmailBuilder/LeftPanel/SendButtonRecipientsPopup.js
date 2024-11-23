@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import {
   getParamValue,
   hasQueryParamValue,
   validateCommaSeparatedEmails,
 } from "@functions";
-import {
-  EnvelopIcon,
-  FormInfoIllustration,
-  PaperPlaneIcon,
-} from "../../../../icons";
+import { EnvelopIcon, FormInfoIllustration, PaperPlaneIcon } from "@svg-icons";
 import TextField from "@molecules/TextField";
 import Button from "@molecules/Button";
 import Modal from "../../../Modal";

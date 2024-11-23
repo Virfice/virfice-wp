@@ -1,4 +1,4 @@
-import { VIRFICE_PLUGIN_BASE } from "./conf";
+import { VIRFICE_PLUGIN_BASE } from "@conf";
 import { store } from "./Dashboard/store";
 
 export const hasQueryParamValue = (

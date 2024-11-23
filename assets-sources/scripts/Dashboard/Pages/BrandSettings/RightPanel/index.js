@@ -1,7 +1,7 @@
 import React from "react";
 // import TextField from "@molecules/TextField";
 import EmailSelection from "./EmailSelection";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import GlobalSettings from "./GlobalSettings";
 // import EmailSenderOptions from "./EmailSenderOptions";

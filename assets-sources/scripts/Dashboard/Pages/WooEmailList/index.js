@@ -1,11 +1,11 @@
 import React from "react";
-import VirficeCommonHeader from "../../Components/VirficeCommonHeader";
+import VirficeCommonHeader from "@components/VirficeCommonHeader";
 import Container from "@molecules/Container";
-import PageHeadingAndSubheading from "../../Components/PageHeadingAndSubheading";
+import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import Card from "@molecules/Card";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Table from "./Table";
-import StickyTopNav from "../../Components/StickyTopNav";
+import StickyTopNav from "@components/StickyTopNav";
 import { addParams } from "@functions";
 
 const WooEmailList = () => {

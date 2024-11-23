@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import StickyTopNav from "../../Components/StickyTopNav";
+import StickyTopNav from "@components/StickyTopNav";
 import Container from "@molecules/Container";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { addParams } from "@functions";
 import RightPanel from "./RightPanel";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,9 +12,9 @@ import {
   setBrandSettingsData,
 } from "./brandSettingsSlice";
 import LeftPanel from "./LeftPanel";
-import PageHeadingAndSubheading from "../../Components/PageHeadingAndSubheading";
+import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import Loading from "@molecules/Loading";
-import { showNotificationBell } from "../../Components/componentsSlice";
+import { showNotificationBell } from "@components/componentsSlice";
 
 const BrandSettings = () => {
   const dispatch = useDispatch();

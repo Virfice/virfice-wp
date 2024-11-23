@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { VIRFICE_APP_PREFIX } from "../../conf";
-import { CloseIcon } from "../icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { CloseIcon } from "@svg-icons";
 import Button from "@molecules/Button";
 
 const Modal = ({

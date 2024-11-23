@@ -6,13 +6,9 @@ import TabHead from "../../../../Tab/TabHead";
 import TabHeader from "../../../../Tab/TabHeader";
 import Divider from "@molecules/Divider";
 import TabContent from "../../../../Tab/TabContent";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { getElementComputedStylePercentageValue } from "./utils";
-import {
-  AlignCenterIcon,
-  AlignLeftIcon,
-  AlignRightIcon,
-} from "../../../../../icons";
+import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 import ToggleButton from "@molecules/ToggleButton";
 import Reusable from "./Reusable";
 import TextField from "@molecules/TextField";

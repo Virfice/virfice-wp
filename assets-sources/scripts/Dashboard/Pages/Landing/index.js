@@ -1,15 +1,15 @@
 import React from "react";
 import Button from "@molecules/Button";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import Container from "@molecules/Container";
-import CalloutCard from "../../Components/CalloutCard";
+import CalloutCard from "@components/CalloutCard";
 import FeatureBanner from "./FeatureBanner";
 import { addParams, createAssetUrl } from "@functions";
 import { useDispatch } from "react-redux";
 import { incrementAsync } from "./landingSlice";
 import brandCustomizeSRC from "./BrandCustomize.png";
 import testMailSRC from "./Testmail.png";
-import VirficeCommonHeader from "../../Components/VirficeCommonHeader";
+import VirficeCommonHeader from "@components/VirficeCommonHeader";
 
 const Landing = () => {
   const dispatch = useDispatch();

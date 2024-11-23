@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import StickyTopNav from "../../../Components/StickyTopNav";
-import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
+import StickyTopNav from "@components/StickyTopNav";
+import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import Container from "@molecules/Container";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { addParams, getParamValue } from "@functions";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,7 +13,7 @@ import {
 import Card from "@molecules/Card";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
-import { showNotificationBell } from "../../../Components/componentsSlice";
+import { showNotificationBell } from "@components/componentsSlice";
 
 const DefalutEditor = () => {
   const email_id = getParamValue("email_id");

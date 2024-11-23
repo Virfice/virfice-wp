@@ -1,9 +1,9 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import SelectField from "@molecules/SelectField";
 import { useDispatch, useSelector } from "react-redux";
 import { setBrandSettingsData } from "../brandSettingsSlice";
-import OrderSearch from "../../../Components/OrderSearch";
+import OrderSearch from "@components/OrderSearch";
 
 const EmailSelection = () => {
   const emailList = useSelector((state) => state.brandSettings.emailList.data);

@@ -5,7 +5,7 @@ import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
 import Divider from "@molecules/Divider";
 import TextField from "@molecules/TextField";
-import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import PaintField from "@molecules/Paintfield";
 import {
   getElementComputedStyle,
@@ -14,11 +14,7 @@ import {
 import RangeField from "@molecules/Rangefield";
 import Reusable from "./Reusable";
 import ToggleButton from "@molecules/ToggleButton";
-import {
-  AlignCenterIcon,
-  AlignLeftIcon,
-  AlignRightIcon,
-} from "../../../../../icons";
+import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 
 const TextSettings = ({ element }) => {
   return (

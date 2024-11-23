@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@molecules/Card";
 import Button from "@molecules/Button";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import FeatureListItem from "@molecules/FeatureListItem";
 import { addParams } from "@functions";
 

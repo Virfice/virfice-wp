@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { SketchPicker } from "react-color";
 import TextField from "./TextField";
 import useOutsideClick from "../../Hooks/useOutsideClick";
