@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../Molecules/Container";
+import Container from "@molecules/Container";
 
 const PageHeadingAndSubheading = ({ heading, subHeading }) => {
   return (

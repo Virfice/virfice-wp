@@ -3,17 +3,17 @@ import Tab from "../../../../Tab";
 import TabHeader from "../../../../Tab/TabHeader";
 import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
-import Divider from "../../../../../Molecules/Divider";
-import TextField from "../../../../../Molecules/TextField";
+import Divider from "@molecules/Divider";
+import TextField from "@molecules/TextField";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import PaintField from "../../../../../Molecules/Paintfield";
+import PaintField from "@molecules/Paintfield";
 import {
   getElementComputedStyle,
   getElementComputedStylePixelValue,
 } from "./utils";
-import RangeField from "../../../../../Molecules/Rangefield";
+import RangeField from "@molecules/Rangefield";
 import Reusable from "./Reusable";
-import ToggleButton from "../../../../../Molecules/ToggleButton";
+import ToggleButton from "@molecules/ToggleButton";
 import {
   AlignCenterIcon,
   AlignLeftIcon,

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import StickyTopNav from "../../../Components/StickyTopNav";
 import PageHeadingAndSubheading from "../../../Components/PageHeadingAndSubheading";
-import Container from "../../../Molecules/Container";
+import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
 import { addParams, getParamValue } from "../../../../functions";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import {
   saveWooEmailSettings,
   setWooEmailSingleData,
 } from "./wooEmailSingleSlice";
-import Card from "../../../Molecules/Card";
+import Card from "@molecules/Card";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 import { showNotificationBell } from "../../../Components/componentsSlice";

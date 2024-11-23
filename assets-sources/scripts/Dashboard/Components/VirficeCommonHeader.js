@@ -1,8 +1,8 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../conf";
-import Container from "../Molecules/Container";
+import Container from "@molecules/Container";
 import { BookOpen, EnvelopIcon, VirficeIcon } from "../icons";
-import Button from "../Molecules/Button";
+import Button from "@molecules/Button";
 import { addParams } from "../../functions";
 
 const VirficeCommonHeader = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../../Molecules/Button";
+import Button from "@molecules/Button";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
-import Container from "../../Molecules/Container";
+import Container from "@molecules/Container";
 import CalloutCard from "../../Components/CalloutCard";
 import FeatureBanner from "./FeatureBanner";
 import { addParams, createAssetUrl } from "../../../functions";

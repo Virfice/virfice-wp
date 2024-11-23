@@ -10,8 +10,8 @@ import {
   FormInfoIllustration,
   PaperPlaneIcon,
 } from "../../../../icons";
-import TextField from "../../../../Molecules/TextField";
-import Button from "../../../../Molecules/Button";
+import TextField from "@molecules/TextField";
+import Button from "@molecules/Button";
 import Modal from "../../../Modal";
 import FormInfo from "../../../FormInfo";
 import { useDispatch, useSelector } from "react-redux";

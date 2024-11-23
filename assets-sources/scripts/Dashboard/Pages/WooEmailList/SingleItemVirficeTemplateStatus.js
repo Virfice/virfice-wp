@@ -1,5 +1,5 @@
 import React from "react";
-import CheckboxField from "../../Molecules/CheckboxField";
+import CheckboxField from "@molecules/CheckboxField";
 import { useDispatch } from "react-redux";
 import { updateVirficeTemplateStatus } from "./wooEmailListSlice";
 

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import TableItem from "../../Molecules/DataTable/TableItem";
-import Badge from "../../Molecules/Badge";
+import TableItem from "@molecules/DataTable/TableItem";
+import Badge from "@molecules/Badge";
 import { BadgeActiveIcon, EnvelopIcon, PencilIcon, WooIcon } from "../../icons";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
-import Button from "../../Molecules/Button";
+import Button from "@molecules/Button";
 import { addParams } from "../../../functions";
-import CheckboxField from "../../Molecules/CheckboxField";
+import CheckboxField from "@molecules/CheckboxField";
 import SingleItemVirficeTemplateStatus from "./SingleItemVirficeTemplateStatus";
 
 const SingleItem = ({ email }) => {

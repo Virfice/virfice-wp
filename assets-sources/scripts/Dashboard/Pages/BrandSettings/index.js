@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import StickyTopNav from "../../Components/StickyTopNav";
-import Container from "../../Molecules/Container";
+import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "../../../conf";
 import { addParams } from "../../../functions";
 import RightPanel from "./RightPanel";
@@ -13,7 +13,7 @@ import {
 } from "./brandSettingsSlice";
 import LeftPanel from "./LeftPanel";
 import PageHeadingAndSubheading from "../../Components/PageHeadingAndSubheading";
-import Loading from "../../Molecules/Loading";
+import Loading from "@molecules/Loading";
 import { showNotificationBell } from "../../Components/componentsSlice";
 
 const BrandSettings = () => {
@@ -35,14 +35,17 @@ const BrandSettings = () => {
     dispatch(brandSettingsAsync());
   }, []);
 
-  
   const handleBackActionClick = () => {
     window.location.href = addParams({ menu: "" });
   };
 
   const handleDiscardClick = () => {
-    dispatch(setBrandSettingsData({ key: "changedSettings", value: settingsData }));
-    dispatch(showNotificationBell({title: 'Settings discarded', type:'danger'}));
+    dispatch(
+      setBrandSettingsData({ key: "changedSettings", value: settingsData })
+    );
+    dispatch(
+      showNotificationBell({ title: "Settings discarded", type: "danger" })
+    );
   };
   const handleSaveClick = () => {
     dispatch(saveBrandSettings(changedSettings));
@@ -58,7 +61,12 @@ const BrandSettings = () => {
         saveAction={handleSaveClick}
       />
       <section>
-        <PageHeadingAndSubheading heading={'Email brand settings'} subHeading={'Customize the look and feel of all WooCommerce emails globally. Let your emails represent your store.'}/>
+        <PageHeadingAndSubheading
+          heading={"Email brand settings"}
+          subHeading={
+            "Customize the look and feel of all WooCommerce emails globally. Let your emails represent your store."
+          }
+        />
         <Container>
           <div
             className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-20`}

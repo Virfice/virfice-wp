@@ -1,9 +1,9 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import PaintField from "../../../../../Molecules/Paintfield";
+import PaintField from "@molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import ChildList from "./Components/ChildList";
-import Divider from "../../../../../Molecules/Divider";
+import Divider from "@molecules/Divider";
 import Reusable from "./Reusable";
 
 const RowSettings = ({ element }) => {

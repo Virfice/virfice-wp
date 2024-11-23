@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import DataTable from "../../Molecules/DataTable";
-import TableHeader from "../../Molecules/DataTable/TableHeader";
-import TableBody from "../../Molecules/DataTable/TableBody";
+import DataTable from "@molecules/DataTable";
+import TableHeader from "@molecules/DataTable/TableHeader";
+import TableBody from "@molecules/DataTable/TableBody";
 import SingleItem from "./SingleItem";
 import { useDispatch, useSelector } from "react-redux";
 import { emailListAsync } from "./wooEmailListSlice";
-import Loading from "../../Molecules/Loading";
+import Loading from "@molecules/Loading";
 
 const Table = () => {
   const emailList = useSelector((state) => state.wooEmailList.emailList);

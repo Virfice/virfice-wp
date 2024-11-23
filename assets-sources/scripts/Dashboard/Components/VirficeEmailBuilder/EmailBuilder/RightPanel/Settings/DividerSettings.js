@@ -3,14 +3,14 @@ import Tab from "../../../../Tab";
 import TabHeader from "../../../../Tab/TabHeader";
 import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
-import Divider from "../../../../../Molecules/Divider";
+import Divider from "@molecules/Divider";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import RangeField from "../../../../../Molecules/Rangefield";
+import RangeField from "@molecules/Rangefield";
 import {
   getElementComputedStyle,
   getElementComputedStylePixelValue,
 } from "./utils";
-import PaintField from "../../../../../Molecules/Paintfield";
+import PaintField from "@molecules/Paintfield";
 
 const DividerSettings = ({ element }) => {
   return (

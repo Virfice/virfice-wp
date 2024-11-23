@@ -1,6 +1,6 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import SelectField from "../../../Molecules/SelectField";
+import SelectField from "@molecules/SelectField";
 import { useDispatch, useSelector } from "react-redux";
 import { setBrandSettingsData } from "../brandSettingsSlice";
 import OrderSearch from "../../../Components/OrderSearch";
@@ -15,20 +15,24 @@ const EmailSelection = () => {
   });
 
   const handleOnChange = (value) => {
-    dispatch(setBrandSettingsData({key:'currentEmail', value}));
+    dispatch(setBrandSettingsData({ key: "currentEmail", value }));
   };
   return (
     <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-        <div className={`title__medium`}>WooCommerce email templates</div>
-        <SelectField
-            label={"Template type"}
-            value={{value: '', title: 'New order'}}
-            options={options}
-            onChange={handleOnChange}
-        />
-        <OrderSearch onOrderSelect={(order)=>{
-          dispatch(setBrandSettingsData({key: 'selectedOrder', value: order}));
-        }} />
+      <div className={`title__medium`}>WooCommerce email templates</div>
+      <SelectField
+        label={"Template type"}
+        value={{ value: "", title: "New order" }}
+        options={options}
+        onChange={handleOnChange}
+      />
+      <OrderSearch
+        onOrderSelect={(order) => {
+          dispatch(
+            setBrandSettingsData({ key: "selectedOrder", value: order })
+          );
+        }}
+      />
     </div>
   );
 };

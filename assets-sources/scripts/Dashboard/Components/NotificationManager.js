@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import NotificationBell from "../Molecules/NotificationBell";
+import NotificationBell from "@molecules/NotificationBell";
 import { useSelector } from "react-redux";
 
 const NotificationManager = () => {

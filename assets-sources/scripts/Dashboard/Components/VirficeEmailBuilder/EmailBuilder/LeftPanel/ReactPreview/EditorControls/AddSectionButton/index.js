@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../../../../../../Molecules/Button";
+import Button from "@molecules/Button";
 import { AddIcon } from "../../../../../../../icons";
 import { VIRFICE_APP_PREFIX } from "../../../../../../../../conf";
 import Header from "./Header";

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { VIRFICE_APP_PREFIX } from "../../conf";
 import { CloseIcon } from "../icons";
-import Button from "../Molecules/Button";
+import Button from "@molecules/Button";
 
 const Modal = ({
   children,
@@ -22,14 +22,14 @@ const Modal = ({
 
   const handleBackdropClick = () => {
     if (closeOnBackdropClick) {
-        closeModal();
+      closeModal();
     }
   };
 
-  const closeModal = () =>{
+  const closeModal = () => {
     setShow(false);
     onClose();
-  }
+  };
 
   if (!show) return null;
   return createPortal(
@@ -62,10 +62,10 @@ const Modal = ({
                 title={secondaryActionProps.title}
                 leftIcon={secondaryActionProps.leftIcon}
                 type="secondary"
-                onClick={()=>{
-                    if(!secondaryActionProps.onClick)return;
-                    closeModal();
-                    secondaryActionProps.onClick();
+                onClick={() => {
+                  if (!secondaryActionProps.onClick) return;
+                  closeModal();
+                  secondaryActionProps.onClick();
                 }}
               />
             )}
@@ -74,9 +74,9 @@ const Modal = ({
                 title={primaryActionProps.title}
                 leftIcon={primaryActionProps.leftIcon}
                 type="primary"
-                onClick={()=>{
-                    if(!primaryActionProps.onClick)return;
-                    primaryActionProps.onClick();
+                onClick={() => {
+                  if (!primaryActionProps.onClick) return;
+                  primaryActionProps.onClick();
                 }}
               />
             )}

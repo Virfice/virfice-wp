@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../../../Molecules/Button";
+import Button from "@molecules/Button";
 import {
   VIRFICE_APP_PREFIX,
   VIRFICE_RESPONSIVE_BREAKPOINTS,

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../conf";
-import Card from "../../../../Molecules/Card";
+import Card from "@molecules/Card";
 import { useSelector } from "react-redux";
-import Loading from "../../../../Molecules/Loading";
+import Loading from "@molecules/Loading";
 import { getVirficeElementFromId } from "../utils";
 import Heading from "./Heading";
-import Divider from "../../../../Molecules/Divider";
+import Divider from "@molecules/Divider";
 import Settings from "./Settings";
 
 const RightPanel = () => {

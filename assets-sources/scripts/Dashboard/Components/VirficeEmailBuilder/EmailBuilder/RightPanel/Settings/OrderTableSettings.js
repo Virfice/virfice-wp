@@ -3,9 +3,9 @@ import Tab from "../../../../Tab";
 import TabHeader from "../../../../Tab/TabHeader";
 import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
-import Divider from "../../../../../Molecules/Divider";
+import Divider from "@molecules/Divider";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import PaintField from "../../../../../Molecules/Paintfield";
+import PaintField from "@molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
 

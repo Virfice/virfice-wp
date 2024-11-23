@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "../Molecules/Container";
+import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "../../conf";
 import { BackIcon } from "../icons";
-import Button from "../Molecules/Button";
+import Button from "@molecules/Button";
 
 const StickyTopNav = ({ backAction, discardAction, saveAction }) => {
   return (
@@ -21,19 +21,25 @@ const StickyTopNav = ({ backAction, discardAction, saveAction }) => {
               <span className={`${VIRFICE_APP_PREFIX}-back`}>Back</span>
             </div>
           )}
-          {(discardAction || saveAction) && <div>
-            <div
-              className={`${VIRFICE_APP_PREFIX}-flex-center-center ${VIRFICE_APP_PREFIX}-gap-6`}
-              style={{ width: "max-content" }}
-            >
-              {discardAction && <Button
-                type="secondary"
-                title="Discard"
-                onClick={discardAction}
-              />}
-              {saveAction && <Button type="primary" title="Save" onClick={saveAction} />}
+          {(discardAction || saveAction) && (
+            <div>
+              <div
+                className={`${VIRFICE_APP_PREFIX}-flex-center-center ${VIRFICE_APP_PREFIX}-gap-6`}
+                style={{ width: "max-content" }}
+              >
+                {discardAction && (
+                  <Button
+                    type="secondary"
+                    title="Discard"
+                    onClick={discardAction}
+                  />
+                )}
+                {saveAction && (
+                  <Button type="primary" title="Save" onClick={saveAction} />
+                )}
+              </div>
             </div>
-          </div>}
+          )}
         </div>
       </Container>
     </section>

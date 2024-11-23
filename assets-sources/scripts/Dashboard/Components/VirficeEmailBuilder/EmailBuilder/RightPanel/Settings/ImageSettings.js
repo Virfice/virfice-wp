@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import MediaUploader from "../../../../../Molecules/MediaUploader";
-import RangeField from "../../../../../Molecules/Rangefield";
+import MediaUploader from "@molecules/MediaUploader";
+import RangeField from "@molecules/Rangefield";
 import Tab from "../../../../Tab";
 import TabHead from "../../../../Tab/TabHead";
 import TabHeader from "../../../../Tab/TabHeader";
-import Divider from "../../../../../Molecules/Divider";
+import Divider from "@molecules/Divider";
 import TabContent from "../../../../Tab/TabContent";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import { getElementComputedStylePercentageValue } from "./utils";
@@ -13,10 +13,10 @@ import {
   AlignLeftIcon,
   AlignRightIcon,
 } from "../../../../../icons";
-import ToggleButton from "../../../../../Molecules/ToggleButton";
+import ToggleButton from "@molecules/ToggleButton";
 import Reusable from "./Reusable";
-import TextField from "../../../../../Molecules/TextField";
-import CheckboxField from "../../../../../Molecules/CheckboxField";
+import TextField from "@molecules/TextField";
+import CheckboxField from "@molecules/CheckboxField";
 
 const getPosition = (element) => {
   if (

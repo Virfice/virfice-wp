@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../Molecules/Button";
+import Button from "@molecules/Button";
 import { EnvelopIcon, FormInfoIllustration, PaperPlaneIcon } from "../icons";
 import Modal from "./Modal";
-import TextField from "../Molecules/TextField";
+import TextField from "@molecules/TextField";
 import axios from "axios";
 import { showNotificationBell } from "./componentsSlice";
 import { validateCommaSeparatedEmails } from "../../functions";

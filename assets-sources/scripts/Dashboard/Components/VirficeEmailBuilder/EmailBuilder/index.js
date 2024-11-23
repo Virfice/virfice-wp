@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../Molecules/Container";
+import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";

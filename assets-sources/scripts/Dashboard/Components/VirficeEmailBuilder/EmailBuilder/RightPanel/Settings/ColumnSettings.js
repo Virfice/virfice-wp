@@ -2,7 +2,7 @@ import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import ChildList from "./Components/ChildList";
 import Reusable from "./Reusable";
-import Divider from "../../../../../Molecules/Divider";
+import Divider from "@molecules/Divider";
 
 const ColumnSettings = ({ element }) => {
   return (

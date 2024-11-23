@@ -3,8 +3,8 @@ import {
   getElementComputedStyle,
   getElementComputedStylePixelValue,
 } from "../utils";
-import RangeField from "../../../../../../Molecules/Rangefield";
-import SelectField from "../../../../../../Molecules/SelectField";
+import RangeField from "@molecules/Rangefield";
+import SelectField from "@molecules/SelectField";
 import { getSelectOptionsValueFromOptions } from "../../../../../../../functions";
 
 const FontAndSize = ({ element }) => {

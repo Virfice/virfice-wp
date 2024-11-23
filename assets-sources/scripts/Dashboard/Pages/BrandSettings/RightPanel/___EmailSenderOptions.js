@@ -1,7 +1,7 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../conf";
 import { useDispatch, useSelector } from "react-redux";
-import TextField from "../../../Molecules/TextField";
+import TextField from "@molecules/TextField";
 import { setBrandSettingsData } from "../brandSettingsSlice";
 
 const EmailSenderOptions = () => {

@@ -54,7 +54,20 @@ module.exports = (env, argv) => {
         },
       ],
     },
-    resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },
+    resolve: {
+      extensions: [".tsx", ".ts", ".jsx", ".js"],
+      alias: {
+        "@molecules": path.resolve(
+          __dirname,
+          "./assets-sources/scripts/Dashboard/Molecules"
+        ),
+        "@functions": path.resolve(
+          __dirname,
+          "assets-sources/scripts/functions"
+        ),
+      },
+    },
+
     output: {
       path: path.resolve(__dirname, "assets"),
       filename: "[name].min.js",

@@ -3,8 +3,8 @@ import {
   getElementComputedStyle,
   getElementComputedStylePixelValue,
 } from "../utils";
-import PaintField from "../../../../../../Molecules/Paintfield";
-import RangeField from "../../../../../../Molecules/Rangefield";
+import PaintField from "@molecules/Paintfield";
+import RangeField from "@molecules/Rangefield";
 
 const Background = ({ element }) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { getElementComputedStylePixelValue } from "../utils";
-import RangeField from "../../../../../../Molecules/Rangefield";
+import RangeField from "@molecules/Rangefield";
 
 const BorderRadius = ({ element }) => {
   return (

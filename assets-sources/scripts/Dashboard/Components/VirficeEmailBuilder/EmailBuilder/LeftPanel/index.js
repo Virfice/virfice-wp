@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../../../Molecules/Card";
+import Card from "@molecules/Card";
 import { VIRFICE_APP_PREFIX } from "../../../../../conf";
 import ReactPreview from "./ReactPreview";
 import TopActionBar from "./TopActionBar";
