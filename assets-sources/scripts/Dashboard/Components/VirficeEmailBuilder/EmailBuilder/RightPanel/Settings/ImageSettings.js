@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MediaUploader from "../../../../../Molecules/MediaUploader";
-import PaintField from "../../../../../Molecules/Paintfield";
 import RangeField from "../../../../../Molecules/Rangefield";
 import Tab from "../../../../Tab";
 import TabHead from "../../../../Tab/TabHead";
@@ -8,10 +7,7 @@ import TabHeader from "../../../../Tab/TabHeader";
 import Divider from "../../../../../Molecules/Divider";
 import TabContent from "../../../../Tab/TabContent";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import {
-  getElementComputedStyle,
-  getElementComputedStylePixelValue,
-} from "./utils";
+import { getElementComputedStylePercentageValue } from "./utils";
 import {
   AlignCenterIcon,
   AlignLeftIcon,
@@ -19,6 +15,8 @@ import {
 } from "../../../../../icons";
 import ToggleButton from "../../../../../Molecules/ToggleButton";
 import Reusable from "./Reusable";
+import TextField from "../../../../../Molecules/TextField";
+import CheckboxField from "../../../../../Molecules/CheckboxField";
 
 const getPosition = (element) => {
   if (
@@ -81,6 +79,21 @@ const ImageSettings = ({ element }) => {
               }}
               info={"An image you want to show in the email header."}
             />
+
+            <TextField
+              label={"URL"}
+              value={element.parentElement.href}
+              onChange={(v) => {
+                element.parentElement.href = v;
+              }}
+            />
+            <CheckboxField
+              label={"Open in a new tab"}
+              value={element.parentElement.target || false}
+              onChange={(v) => {
+                element.parentElement.target = v ? "_blank" : "";
+              }}
+            />
           </div>
         </TabContent>
         <TabContent index={1}>
@@ -88,12 +101,12 @@ const ImageSettings = ({ element }) => {
             <div className="title__medium">Image Layout</div>
             <RangeField
               label={"Width"}
-              value={getElementComputedStylePixelValue(element, "width")}
+              value={getElementComputedStylePercentageValue(element, "width")}
               onChange={(v) => {
-                element.style.width = `${v}px`;
+                element.style.width = `${v}%`;
               }}
-              min={10}
-              max={700}
+              min={1}
+              max={100}
               step={1}
             />
             <ToggleButton
@@ -108,6 +121,8 @@ const ImageSettings = ({ element }) => {
             />
 
             <Reusable element={element} type="background" />
+            <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
+            <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
           </div>
         </TabContent>

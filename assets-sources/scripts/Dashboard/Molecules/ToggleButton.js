@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import { VIRFICE_APP_PREFIX } from "../../conf";
 import classNames from "classnames";
@@ -9,8 +9,14 @@ const ToggleButton = ({
   onChange = () => {},
   options = [],
 }) => {
+  const [v, setV] = useState(value);
+
+  useEffect(() => {
+    setV(value);
+  }, [value]);
   const _onClick = (value) => {
     // console.log(value);
+    setV(value);
     onChange(value);
   };
   const className = classnames({
@@ -27,7 +33,7 @@ const ToggleButton = ({
               className={classNames({
                 [VIRFICE_APP_PREFIX + "-toggle-btn__option"]: true,
                 [VIRFICE_APP_PREFIX + "-toggle-btn__option--active"]:
-                  value === option.value,
+                  v === option.value,
               })}
               onClick={() => {
                 _onClick(option.value);

@@ -4,23 +4,12 @@ import TabHeader from "../../../../Tab/TabHeader";
 import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
 import Divider from "../../../../../Molecules/Divider";
-import TextField from "../../../../../Molecules/TextField";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import PaintField from "../../../../../Molecules/Paintfield";
-import {
-  getElementComputedStyle,
-  getElementComputedStylePixelValue,
-} from "./utils";
-import RangeField from "../../../../../Molecules/Rangefield";
+import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
-import ToggleButton from "../../../../../Molecules/ToggleButton";
-import {
-  AlignCenterIcon,
-  AlignLeftIcon,
-  AlignRightIcon,
-} from "../../../../../icons";
 
-const TextSettings = ({ element }) => {
+const OrderTableSettings = ({ element }) => {
   return (
     <>
       <Tab>
@@ -31,27 +20,8 @@ const TextSettings = ({ element }) => {
         <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
         <TabContent index={0}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <TextField
-              label={"Text"}
-              value={element.innerText}
-              onChange={(v) => {
-                element.innerText = v;
-              }}
-              multiline={6}
-            />
+            <div className="title__medium">Order table item</div>
             <Reusable element={element} type="font-and-size" />
-            <ToggleButton
-              label={"Alignment"}
-              value={getElementComputedStyle(element, "text-align")}
-              options={[
-                { value: "left", component: <AlignLeftIcon /> },
-                { value: "center", component: <AlignCenterIcon /> },
-                { value: "right", component: <AlignRightIcon /> },
-              ]}
-              onChange={(v) => {
-                element.style.textAlign = v;
-              }}
-            />
           </div>
         </TabContent>
         <TabContent index={1}>
@@ -65,6 +35,7 @@ const TextSettings = ({ element }) => {
             />
 
             <Reusable element={element} type="background" />
+            <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
           </div>
         </TabContent>
@@ -73,4 +44,4 @@ const TextSettings = ({ element }) => {
   );
 };
 
-export default TextSettings;
+export default OrderTableSettings;

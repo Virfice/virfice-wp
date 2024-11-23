@@ -17,6 +17,8 @@ const RightPanel = () => {
   useEffect(() => {
     if (selectedElementId) {
       setElement(getVirficeElementFromId(selectedElementId));
+    } else {
+      setElement(false);
     }
   }, [selectedElementId]);
 

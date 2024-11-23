@@ -12,9 +12,9 @@ export const getTextString = ({ title, content }) =>
   }</p>`;
 
 export const getImageString = ({ title }) =>
-  `<img ${VIRFICE_APP_PREFIX}-title="${
+  `<a style="width:100%;"><img ${VIRFICE_APP_PREFIX}-title="${
     title || "Image"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="image" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-image.jpg" />`;
+  }" ${VIRFICE_APP_PREFIX}-ele_type="image" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-image.jpg" /></a>`;
 
 export const getVideoString = ({ title }) =>
   `<img ${VIRFICE_APP_PREFIX}-title="${

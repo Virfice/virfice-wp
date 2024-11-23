@@ -9,6 +9,7 @@ import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
 import PaintField from "../../../../../Molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
+import CheckboxField from "../../../../../Molecules/CheckboxField";
 
 const LinkSettings = ({ element }) => {
   return (
@@ -29,6 +30,20 @@ const LinkSettings = ({ element }) => {
               }}
               multiline={6}
             />
+            <TextField
+              label={"URL"}
+              value={element.href}
+              onChange={(v) => {
+                element.href = v;
+              }}
+            />
+            <CheckboxField
+              label={"Open in a new tab"}
+              value={element.target || false}
+              onChange={(v) => {
+                element.target = v ? "_blank" : "";
+              }}
+            />
           </div>
         </TabContent>
         <TabContent index={1}>
@@ -42,6 +57,7 @@ const LinkSettings = ({ element }) => {
             />
 
             <Reusable element={element} type="background" />
+            <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
           </div>
         </TabContent>

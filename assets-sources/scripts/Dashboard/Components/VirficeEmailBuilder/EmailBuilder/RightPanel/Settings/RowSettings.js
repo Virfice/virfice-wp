@@ -4,6 +4,7 @@ import PaintField from "../../../../../Molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import ChildList from "./Components/ChildList";
 import Divider from "../../../../../Molecules/Divider";
+import Reusable from "./Reusable";
 
 const RowSettings = ({ element }) => {
   return (
@@ -18,13 +19,8 @@ const RowSettings = ({ element }) => {
             element.style.color = v;
           }}
         />
-        <PaintField
-          label={"Background color"}
-          value={getElementComputedStyle(element, "background-color")}
-          onChange={(v) => {
-            element.style.backgroundColor = v;
-          }}
-        />
+        <Reusable element={element} type="background" />
+        <Reusable element={element} type="padding" />
       </div>
     </>
   );

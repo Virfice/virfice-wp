@@ -21,6 +21,21 @@ const TextField = ({
     onChange(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    let v = value * 1;
+    if (!Number.isInteger(v)) {
+      console.error("The value is not an integer.", v);
+      return;
+    }
+    if (e.key === "ArrowUp") {
+      v += 1; // Increment the v
+    } else if (e.key === "ArrowDown") {
+      v -= 1; // Decrement the v
+    }
+    setV(v);
+    onChange(v);
+  };
+
   return (
     <div className={`${VIRFICE_APP_PREFIX}-textfileld-wrapper`}>
       {label && <label className="body__medium">{label}</label>}
@@ -29,6 +44,7 @@ const TextField = ({
           placeholder={placeholder || label}
           value={v}
           onChange={handleOnChange}
+          onKeyDown={handleKeyDown}
         />
       )}
       {multiline && (
@@ -40,7 +56,14 @@ const TextField = ({
         ></textarea>
       )}
       {error && (
-        <span style={{ color: "var(--text-text-error)", display:'flex', alignItems:'center', gap:4 }}>
+        <span
+          style={{
+            color: "var(--text-text-error)",
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+          }}
+        >
           <svg
             width="16"
             height="16"

@@ -31,7 +31,13 @@ const initClickEvent = (ele) => {
   ele.addEventListener("click", (e) => {
     e.stopPropagation();
     console.log(e.target.tagName);
-    dispatchDashboardAction(onSelectElement, getVirficeAttr(e.target, "id"));
+    let validEle = e.target;
+    let vID = getVirficeAttr(validEle, "id");
+    if (!vID) {
+      validEle = getParentElement(ele);
+    }
+
+    dispatchDashboardAction(onSelectElement, getVirficeAttr(validEle, "id"));
 
     let sectionEle = ele;
     if (sectionEle.tagName !== "TABLE") {
@@ -134,6 +140,35 @@ export const getParentElement = (element) => {
   }
 
   return false;
+};
+
+export const getChildElements = (element) => {
+  if (!element) {
+    console.error("Element is null or undefined.");
+    return [];
+  }
+
+  const traverseChildren = (parent) => {
+    const children = Array.from(parent.children);
+
+    for (const child of children) {
+      const childAttr = getVirficeAttr(child, "ele_type");
+      if (childAttr) {
+        // If `ele_type` is found, return siblings including this child
+        return Array.from(child.parentNode.children);
+      } else {
+        // If not found, traverse deeper into this child's children
+        const deeperResult = traverseChildren(child);
+        if (deeperResult) {
+          return deeperResult;
+        }
+      }
+    }
+
+    return []; // No matching child found
+  };
+
+  return traverseChildren(element);
 };
 
 export const getParentSection = (element) => {

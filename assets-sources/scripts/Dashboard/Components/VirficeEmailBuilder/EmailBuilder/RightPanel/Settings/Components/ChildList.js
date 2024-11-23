@@ -1,12 +1,14 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "../../../../../../../conf";
 import SingleChild from "./SingleChild";
+import { getChildElements } from "../../../utils";
 
 const ChildList = ({ element }) => {
   const getChildrens = () => {
     let childs = [];
-    for (var i = 0; i < element.children.length; i++) {
-      let child = element.children[i];
+    const childList = getChildElements(element);
+    for (var i = 0; i < childList.length; i++) {
+      let child = childList[i];
       childs.push(<SingleChild element={child} key={i} />);
     }
 

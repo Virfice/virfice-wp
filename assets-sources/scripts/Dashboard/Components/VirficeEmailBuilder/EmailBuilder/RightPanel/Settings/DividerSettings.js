@@ -5,7 +5,12 @@ import TabContent from "../../../../Tab/TabContent";
 import TabHead from "../../../../Tab/TabHead";
 import Divider from "../../../../../Molecules/Divider";
 import { VIRFICE_APP_PREFIX } from "../../../../../../conf";
-import Reusable from "./Reusable";
+import RangeField from "../../../../../Molecules/Rangefield";
+import {
+  getElementComputedStyle,
+  getElementComputedStylePixelValue,
+} from "./utils";
+import PaintField from "../../../../../Molecules/Paintfield";
 
 const DividerSettings = ({ element }) => {
   return (
@@ -23,8 +28,23 @@ const DividerSettings = ({ element }) => {
         </TabContent>
         <TabContent index={1}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <Reusable element={element} type="background" />
-            <Reusable element={element} type="padding" />
+            <PaintField
+              label={"Fill"}
+              value={getElementComputedStyle(element, "background-color")}
+              onChange={(v) => {
+                element.style.backgroundColor = v;
+              }}
+            />
+            <RangeField
+              label={"Size"}
+              value={getElementComputedStylePixelValue(element, "height")}
+              onChange={(v) => {
+                element.style.height = `${v}px`;
+              }}
+              min={0}
+              max={300}
+              step={1}
+            />
           </div>
         </TabContent>
       </Tab>
