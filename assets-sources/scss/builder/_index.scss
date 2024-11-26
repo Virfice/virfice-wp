@@ -1,5 +1,17 @@
 @import 'global';
 
+.#{$classPrefix}-builder-left-panel-wrapper {
+    width: 900px;
+    height: calc(-156px + 100vh);
+    overflow: scroll;
+}
+
+.#{$classPrefix}-builder-right-panel-wrapper {
+    width: 380px;
+    height: calc(-156px + 100vh);
+    overflow: scroll;
+}
+
 .#{$classPrefix}-editor-wrapper {
     position: relative;
     padding-bottom: 460px;

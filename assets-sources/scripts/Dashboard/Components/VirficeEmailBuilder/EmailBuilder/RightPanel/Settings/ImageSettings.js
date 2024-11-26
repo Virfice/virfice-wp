@@ -13,6 +13,7 @@ import ToggleButton from "@molecules/ToggleButton";
 import Reusable from "./Reusable";
 import TextField from "@molecules/TextField";
 import CheckboxField from "@molecules/CheckboxField";
+import DisabledParentSettings from "./DisabledParentSettings";
 
 const getPosition = (element) => {
   if (
@@ -120,6 +121,8 @@ const ImageSettings = ({ element }) => {
             <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
             <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
+
+            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

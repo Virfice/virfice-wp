@@ -11,6 +11,7 @@ import {
   getElementComputedStylePixelValue,
 } from "./utils";
 import PaintField from "@molecules/Paintfield";
+import DisabledParentSettings from "./DisabledParentSettings";
 
 const DividerSettings = ({ element }) => {
   return (
@@ -45,6 +46,8 @@ const DividerSettings = ({ element }) => {
               max={300}
               step={1}
             />
+
+            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

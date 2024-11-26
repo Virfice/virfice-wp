@@ -15,6 +15,7 @@ import RangeField from "@molecules/Rangefield";
 import Reusable from "./Reusable";
 import ToggleButton from "@molecules/ToggleButton";
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
+import DisabledParentSettings from "./DisabledParentSettings";
 
 const TextSettings = ({ element }) => {
   return (
@@ -62,6 +63,8 @@ const TextSettings = ({ element }) => {
 
             <Reusable element={element} type="background" />
             <Reusable element={element} type="padding" />
+
+            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

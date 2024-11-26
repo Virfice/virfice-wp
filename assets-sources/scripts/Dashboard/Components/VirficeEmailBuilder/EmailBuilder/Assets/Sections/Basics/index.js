@@ -10,6 +10,7 @@ import {
 } from "@svg-icons";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import {
+  getBasicEleWrapper,
   getButtonString,
   getImageString,
   getSingleColTable,
@@ -20,41 +21,45 @@ import {
 const Text = {
   title: "Text",
   icon: <TextIcon />,
-  template: getSingleColTable(
+  template: getBasicEleWrapper(
     getTextString({
       title: "Text",
       content:
         "Add your text here. Edit to add dynamic values like name, email and more.",
     }),
-    { title: "Text", paddingTop: "16px", paddingBottom: "16px" }
+    {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    }
   ),
 };
 const Image = {
   title: "Image",
   icon: <ImageIcon />,
-  template: getSingleColTable(getImageString({ title: "Image" }), {
-    title: "Image",
+  template: getBasicEleWrapper(getImageString({ title: "Image" }), {
+    paddingTop: "16px",
+    paddingBottom: "16px",
   }),
 };
 
 const Video = {
   title: "Video",
   icon: <MonitorPlayIcon />,
-  template: getSingleColTable(getVideoString({ title: "Video" }), {
-    title: "Video",
+  template: getBasicEleWrapper(getVideoString({ title: "Video" }), {
+    paddingTop: "16px",
+    paddingBottom: "16px",
   }),
 };
 
 const Button = {
   title: "Button",
   icon: <HandTapIcon />,
-  template: getSingleColTable(
+  template: getBasicEleWrapper(
     getButtonString({
       title: "Button",
       content: "Button",
     }),
     {
-      title: "Button",
       paddingTop: "16px",
       paddingBottom: "16px",
     }

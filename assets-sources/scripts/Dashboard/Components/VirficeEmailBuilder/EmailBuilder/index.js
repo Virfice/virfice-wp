@@ -6,7 +6,7 @@ import RightPanel from "./RightPanel";
 
 const EmailBuilder = () => {
   return (
-    <Container>
+    <Container size1280>
       <div
         className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-20`}
       >

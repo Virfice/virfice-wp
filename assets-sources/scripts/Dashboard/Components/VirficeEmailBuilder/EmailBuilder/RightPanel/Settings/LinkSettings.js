@@ -10,6 +10,7 @@ import PaintField from "@molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
 import CheckboxField from "@molecules/CheckboxField";
+import DisabledParentSettings from "./DisabledParentSettings";
 
 const LinkSettings = ({ element }) => {
   return (
@@ -59,6 +60,8 @@ const LinkSettings = ({ element }) => {
             <Reusable element={element} type="background" />
             <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
+
+            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

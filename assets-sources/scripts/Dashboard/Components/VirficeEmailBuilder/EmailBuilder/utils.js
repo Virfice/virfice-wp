@@ -34,10 +34,16 @@ const initClickEvent = (ele) => {
       validEle = getParentElement(ele);
     }
 
+    if (!isSettingsEnabled(validEle)) {
+      //thats mean single basic element selected. like: image, text, button
+      validEle = validEle.querySelector(`[${VIRFICE_APP_PREFIX}-ele_type]`);
+    }
+
     dispatchDashboardAction(onSelectElement, getVirficeAttr(validEle, "id"));
 
     let sectionEle = ele;
-    if (sectionEle.tagName !== "TABLE") {
+
+    if (getVirficeAttr(sectionEle, "ele_type") !== "section") {
       sectionEle = getParentSection(sectionEle);
     }
     dispatchDashboardAction(onSelectSection, getVirficeAttr(sectionEle, "id"));
@@ -100,6 +106,13 @@ export const updateVirficeAttr = (element, attr, value) => {
   element.setAttribute(VIRFICE_APP_PREFIX + "-" + attr, value);
 };
 
+export const isSettingsEnabled = (element) => {
+  const settings = getVirficeAttr(element, "settings");
+  if (settings === "disabled") {
+    return false;
+  }
+  return true;
+};
 export const cloneElementFromString = (elementString) => {
   let div = document.createElement("div");
   div.innerHTML = elementString;
@@ -172,7 +185,8 @@ export const getParentSection = (element) => {
   let parent = element;
   let flag = true;
   while (flag) {
-    if (parent.tagName === "TABLE") {
+    if (!parent) return false;
+    if (getVirficeAttr(parent, "ele_type") === "section") {
       return parent;
     } else {
       parent = parent.parentNode;

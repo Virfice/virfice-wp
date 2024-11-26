@@ -8,6 +8,7 @@ import { VIRFICE_APP_PREFIX } from "@conf";
 import PaintField from "@molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
+import DisabledParentSettings from "./DisabledParentSettings";
 
 const OrderTableSettings = ({ element }) => {
   return (
@@ -37,6 +38,8 @@ const OrderTableSettings = ({ element }) => {
             <Reusable element={element} type="background" />
             <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
+
+            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

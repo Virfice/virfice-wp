@@ -6,7 +6,10 @@ import TopActionBar from "./TopActionBar";
 
 const LeftPanel = () => {
   return (
-    <div style={{ width: 638 }}>
+    <div
+      className={`${VIRFICE_APP_PREFIX}-builder-left-panel-wrapper`}
+      id={`${VIRFICE_APP_PREFIX}-builder-left-panel-wrapper`}
+    >
       <Card>
         <div
           className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-w-100`}

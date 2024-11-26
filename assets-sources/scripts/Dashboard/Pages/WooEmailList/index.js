@@ -1,5 +1,4 @@
 import React from "react";
-import VirficeCommonHeader from "@components/VirficeCommonHeader";
 import Container from "@molecules/Container";
 import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import Card from "@molecules/Card";

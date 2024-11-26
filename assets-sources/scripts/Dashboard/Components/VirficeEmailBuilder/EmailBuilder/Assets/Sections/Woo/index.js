@@ -1,17 +1,16 @@
 import React from "react";
 import { HandTapIcon } from "@svg-icons";
-import { getSingleColTable } from "../core-ele";
+import { getBasicEleWrapper } from "../core-ele";
 import { getOrderDetailsString } from "./woo-core-ele";
 
 const OrderTable = {
   title: "Order Table",
   icon: <HandTapIcon />,
-  template: getSingleColTable(
+  template: getBasicEleWrapper(
     getOrderDetailsString({
       title: "Order Table",
     }),
     {
-      title: "Order Details",
       paddingTop: "16px",
       paddingBottom: "16px",
     }

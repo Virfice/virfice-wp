@@ -4,10 +4,21 @@ import { VIRFICE_APP_PREFIX } from "@conf";
 import { BackIcon } from "@svg-icons";
 import Button from "@molecules/Button";
 
-const StickyTopNav = ({ backAction, discardAction, saveAction }) => {
+const StickyTopNav = ({
+  backAction,
+  discardAction,
+  saveAction,
+  size1280,
+  marginBottom = true,
+}) => {
+  let styles = {};
+
+  if (!marginBottom) {
+    styles.marginBottom = 0;
+  }
   return (
-    <section className={`${VIRFICE_APP_PREFIX}-stickty-top-nav`}>
-      <Container>
+    <section className={`${VIRFICE_APP_PREFIX}-stickty-top-nav`} style={styles}>
+      <Container size1280={size1280}>
         <div
           className={`${VIRFICE_APP_PREFIX}-action-wrapper ${VIRFICE_APP_PREFIX}-flex-space-between ${VIRFICE_APP_PREFIX}-flex-align-center`}
         >

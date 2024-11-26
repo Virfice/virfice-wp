@@ -1,4 +1,5 @@
 import { VIRFICE_APP_PREFIX } from "@conf";
+import { getTextString } from "../core-ele";
 
 export const getOrderDetailsString = ({ title }) =>
   `<div ${VIRFICE_APP_PREFIX}-title="${
@@ -8,9 +9,21 @@ export const getOrderDetailsString = ({ title }) =>
   <table>
     <thead>
 			<tr>
-				<th>Product</th>
-				<th>Quantity</th>
-				<th>Price</th>
+				<th>${getTextString({
+          title: "Product",
+          content: "Product",
+          tag: "span",
+        })}</th>
+				<th>${getTextString({
+          title: "Quantity",
+          content: "Quantity",
+          tag: "span",
+        })}</th>
+				<th>${getTextString({
+          title: "Price",
+          content: "Price",
+          tag: "span",
+        })}</th>
 			</tr>
 		</thead>
     <tbody ${VIRFICE_APP_PREFIX}-short_code="order_items_wrapper">
@@ -22,19 +35,35 @@ export const getOrderDetailsString = ({ title }) =>
 		</tbody>
     <tfoot>
 			<tr>
-				<th>Subtotal:</th>
+				<th>${getTextString({
+          title: "Subtotal",
+          content: "Subtotal:",
+          tag: "span",
+        })}Subtotal:</th>
 					<td ${VIRFICE_APP_PREFIX}-short_code="order_subtotal">200.00$</td>
 			</tr>
 			<tr>
-        <th>Shipping:</th>
+        <th>${getTextString({
+          title: "Shipping",
+          content: "Shipping:",
+          tag: "span",
+        })}</th>
         <td ${VIRFICE_APP_PREFIX}-short_code="shipping_method">Free shipping</td>
         </tr>
         <tr>
-        <th>Payment method:</th>
+        <th>${getTextString({
+          title: "Payment method",
+          content: "Payment method:",
+          tag: "span",
+        })}</th>
         <td ${VIRFICE_APP_PREFIX}-short_code="order_payment_method">Cash on delivery</td>
       </tr>
       <tr>
-        <th>Total:</th>
+        <th>${getTextString({
+          title: "Total",
+          content: "Total:",
+          tag: "span",
+        })}</th>
         <td ${VIRFICE_APP_PREFIX}-short_code="order_total">200.00$</td>
       </tr>
     </tfoot>

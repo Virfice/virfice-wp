@@ -53,12 +53,15 @@ const VirficeEditor = () => {
         backAction={handleBackActionClick}
         discardAction={handleDiscardClick}
         saveAction={handleSaveClick}
+        size1280
+        marginBottom={false}
       />
-      <section>
-        <PageHeadingAndSubheading
+      <section style={{ position: "relative", top: 64 }}>
+        {/* <PageHeadingAndSubheading
           heading={emailSettings?.title}
           subHeading={emailSettings?.description}
-        />
+          size1280
+        /> */}
         {virfice_template.id && (
           <VirficeEmailBuilder template_id={virfice_template.id} />
         )}

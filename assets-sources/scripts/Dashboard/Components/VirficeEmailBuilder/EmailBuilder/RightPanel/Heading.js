@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { BackIcon } from "@svg-icons";
-import { getParentElement, getVirficeAttr } from "../utils";
+import { isSettingsEnabled, getParentElement, getVirficeAttr } from "../utils";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { dispatchDashboardAction } from "@functions";
 import { onSelectElement } from "../../builderSlice";
@@ -16,7 +16,9 @@ const Heading = ({ element }) => {
     }
   };
 
-  const hasBack = getVirficeAttr(element, "ele_type") !== "section";
+  // const hasBack = getVirficeAttr(element, "ele_type") !== "section";
+  const parentEle = getParentElement(element);
+  const hasBack = parentEle && isSettingsEnabled(parentEle);
 
   return (
     <Fragment>

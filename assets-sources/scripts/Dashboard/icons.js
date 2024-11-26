@@ -1,5 +1,4 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "@conf";
 export const BackIcon = () => {
   return (
     <svg
@@ -922,6 +921,51 @@ export const AddIcon = () => {
         d="M8.5 3.33325V12.6666M3.83333 7.99992H13.1667"
         stroke="#666666"
         strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const RadiusFull = () => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.33333 2H5.2C4.0799 2 3.51984 2 3.09202 2.21799C2.71569 2.40973 2.40973 2.71569 2.21799 3.09202C2 3.51984 2 4.0799 2 5.2V5.33333M5.33333 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V10.6667M14 5.33333V5.2C14 4.07989 14 3.51984 13.782 3.09202C13.5903 2.71569 13.2843 2.40973 12.908 2.21799C12.4802 2 11.9201 2 10.8 2H10.6667M14 10.6667V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H10.6667"
+        stroke="#171717"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const ReadyBlocks = () => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13 9H3C2.72386 9 2.5 9.22386 2.5 9.5V12C2.5 12.2761 2.72386 12.5 3 12.5H13C13.2761 12.5 13.5 12.2761 13.5 12V9.5C13.5 9.22386 13.2761 9 13 9Z"
+        stroke="#666666"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13 3.5H3C2.72386 3.5 2.5 3.72386 2.5 4V6.5C2.5 6.77614 2.72386 7 3 7H13C13.2761 7 13.5 6.77614 13.5 6.5V4C13.5 3.72386 13.2761 3.5 13 3.5Z"
+        stroke="#666666"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

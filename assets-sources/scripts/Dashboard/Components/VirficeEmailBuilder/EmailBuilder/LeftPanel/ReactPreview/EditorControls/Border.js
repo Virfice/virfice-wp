@@ -14,11 +14,19 @@ const Border = ({ element }) => {
     updatePosition();
 
     const virficeDashboard = document.querySelector("#virfice-dashboard");
-
     // Safely add scroll and resize listeners
     if (virficeDashboard) {
       virficeDashboard.addEventListener("scroll", updatePosition);
     }
+
+    const leftPanelWrapper = document.querySelector(
+      `#${VIRFICE_APP_PREFIX}-builder-left-panel-wrapper`
+    );
+    // Safely add scroll and resize listeners
+    if (leftPanelWrapper) {
+      leftPanelWrapper.addEventListener("scroll", updatePosition);
+    }
+
     window.addEventListener("resize", updatePosition);
 
     // Using ResizeObserver to track element resizing
@@ -42,6 +50,9 @@ const Border = ({ element }) => {
     return () => {
       if (virficeDashboard) {
         virficeDashboard.removeEventListener("scroll", updatePosition);
+      }
+      if (leftPanelWrapper) {
+        leftPanelWrapper.removeEventListener("scroll", updatePosition);
       }
       window.removeEventListener("resize", updatePosition);
 

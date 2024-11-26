@@ -23,11 +23,11 @@ const RightPanel = () => {
   }, [selectedElementId]);
 
   return (
-    <div style={{ width: 380 }}>
+    <div className={`${VIRFICE_APP_PREFIX}-builder-right-panel-wrapper`}>
       {/* {!selectedElementId && <Loading />} */}
 
       <div
-        className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-gap-20 ${VIRFICE_APP_PREFIX}-sticky-top-110`}
+        className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-gap-20`}
       >
         <Card className={`${VIRFICE_APP_PREFIX}-flex-col`} style={{ gap: 0 }}>
           {!selectedElementId && "Select an element"}
