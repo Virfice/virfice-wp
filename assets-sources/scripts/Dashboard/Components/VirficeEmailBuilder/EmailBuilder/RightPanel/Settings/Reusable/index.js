@@ -4,7 +4,7 @@ import Padding from "./Padding";
 import BorderRadius from "./BorderRadius";
 import FontAndSize from "./FontAndSize";
 
-const Reusable = ({ element, type }) => {
+const Reusable = ({ element, type, eleArr }) => {
   switch (type) {
     case "background": {
       return <Background element={element} />;
@@ -19,7 +19,7 @@ const Reusable = ({ element, type }) => {
     }
 
     case "font-and-size": {
-      return <FontAndSize element={element} />;
+      return <FontAndSize element={element} eleArr={eleArr} />;
     }
 
     default:

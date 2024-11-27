@@ -1,28 +1,28 @@
 import { VIRFICE_APP_PREFIX } from "@conf";
-import { getTextString } from "../core-ele";
+import { getOnlyEditableTextString, getTextString } from "../core-ele";
 
 export const getOrderDetailsString = ({ title }) =>
   `<div ${VIRFICE_APP_PREFIX}-title="${
     title || "Order details"
   }" ${VIRFICE_APP_PREFIX}-ele_type="woocommerce_email_order_details" style="text-align: left;">
-  <h2>[Order #<span ${VIRFICE_APP_PREFIX}-short_code="order_number">208</span>] (<span ${VIRFICE_APP_PREFIX}-short_code="order_date">November 8, 2024</span>)</h2>
+  <h2 ${VIRFICE_APP_PREFIX}-selector="order_details_title">[Order #<span ${VIRFICE_APP_PREFIX}-short_code="order_number">208</span>] (<span ${VIRFICE_APP_PREFIX}-short_code="order_date">November 8, 2024</span>)</h2>
   <table>
-    <thead>
+    <thead ${VIRFICE_APP_PREFIX}-selector="order_table_thead">
 			<tr>
-				<th>${getTextString({
-          title: "Product",
+				<th>${getOnlyEditableTextString({
           content: "Product",
           tag: "span",
+          selector: "order_table_header",
         })}</th>
-				<th>${getTextString({
-          title: "Quantity",
+				<th>${getOnlyEditableTextString({
           content: "Quantity",
           tag: "span",
+          selector: "order_table_header",
         })}</th>
-				<th>${getTextString({
-          title: "Price",
+				<th>${getOnlyEditableTextString({
           content: "Price",
           tag: "span",
+          selector: "order_table_header",
         })}</th>
 			</tr>
 		</thead>
@@ -35,34 +35,34 @@ export const getOrderDetailsString = ({ title }) =>
 		</tbody>
     <tfoot>
 			<tr>
-				<th>${getTextString({
-          title: "Subtotal",
+				<th>${getOnlyEditableTextString({
           content: "Subtotal:",
           tag: "span",
-        })}Subtotal:</th>
+          selector: "order_table_header",
+        })}</th>
 					<td ${VIRFICE_APP_PREFIX}-short_code="order_subtotal">200.00$</td>
 			</tr>
 			<tr>
-        <th>${getTextString({
-          title: "Shipping",
+        <th>${getOnlyEditableTextString({
           content: "Shipping:",
           tag: "span",
+          selector: "order_table_header",
         })}</th>
         <td ${VIRFICE_APP_PREFIX}-short_code="shipping_method">Free shipping</td>
         </tr>
         <tr>
-        <th>${getTextString({
-          title: "Payment method",
+        <th>${getOnlyEditableTextString({
           content: "Payment method:",
           tag: "span",
+          selector: "order_table_header",
         })}</th>
         <td ${VIRFICE_APP_PREFIX}-short_code="order_payment_method">Cash on delivery</td>
       </tr>
       <tr>
-        <th>${getTextString({
-          title: "Total",
+        <th>${getOnlyEditableTextString({
           content: "Total:",
           tag: "span",
+          selector: "order_table_header",
         })}</th>
         <td ${VIRFICE_APP_PREFIX}-short_code="order_total">200.00$</td>
       </tr>

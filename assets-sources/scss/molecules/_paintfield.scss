@@ -1,11 +1,11 @@
-.#{$classPrefix}-paintfield-wrapper{
+.#{$classPrefix}-paintfield-wrapper {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
 
-    input{
+    input {
         width: 100%;
         padding: 8px 12px;
         margin-left: 0;
@@ -13,12 +13,13 @@
         border-radius: 0px 4px 4px 0px;
         border: 1px solid var(--Border-button-border-btn-idle, #949494);
         background: var(--Bg-input-bg-input-idle, #FCFCFC);
-        &:focus{
+
+        &:focus {
             border-radius: 0px 4px 4px 0px;
         }
     }
 
-    .#{$classPrefix}-color-code{
+    .#{$classPrefix}-color-code {
         display: flex;
         width: 100%;
         border-radius: 4px 0px 0px 4px;
@@ -26,11 +27,12 @@
         border-bottom: var(--Number-1px, 1px) solid var(--Border-button-border-btn-idle, #949494);
         border-left: var(--Number-1px, 1px) solid var(--Border-button-border-btn-idle, #949494);
         background: var(--Bg-input-bg-input-idle, #FCFCFC);
-        overflow: hidden;
+        // overflow: hidden;
+        position: relative;
     }
-    .sketch-picker{
+
+    .sketch-picker {
         position: relative;
         top: 34px;
     }
 }
-    

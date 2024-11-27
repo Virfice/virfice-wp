@@ -1,10 +1,15 @@
 .virfice-editor-wrapper {
     background-color: #FFE60033;
+
+    [contenteditable] {
+        outline: 0px solid transparent;
+    }
 }
 
 .virfice-template-wrapper {
     max-width: 600px;
     margin: auto;
+    background-color: white;
 
     * {
         margin: 0;

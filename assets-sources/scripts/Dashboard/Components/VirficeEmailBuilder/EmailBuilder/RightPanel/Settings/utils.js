@@ -3,10 +3,11 @@ import { getVirficeAttr } from "../../utils";
 
 export const getElementBasicSettings = (element) => {
   let obj = {};
-  const type = getVirficeAttr(element, "ele_type");
   obj.title = getVirficeAttr(element, "title");
-  obj.type = type;
-
+  obj.type = getVirficeAttr(element, "ele_type");
+  obj.short_code = getVirficeAttr(element, "short_code");
+  obj.selector = getVirficeAttr(element, "selector");
+  obj.settings_status = getVirficeAttr(element, "settings_status");
   return obj;
 };
 

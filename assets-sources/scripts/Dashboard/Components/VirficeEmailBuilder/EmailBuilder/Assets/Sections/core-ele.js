@@ -1,9 +1,19 @@
 import { VIRFICE_APP_PREFIX, VIRFICE_PLUGIN_BASE } from "@conf";
 
-export const getTextString = ({ title, content, tag = "p" }) =>
+export const getTextString = ({ title, content, tag = "p", selector = "" }) =>
   `<${tag} ${VIRFICE_APP_PREFIX}-title="${
     title || "Text"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="text">${
+  }" ${VIRFICE_APP_PREFIX}-ele_type="text" ${VIRFICE_APP_PREFIX}-selector="${selector}" contentEditable>${
+    content ||
+    "Add your text here. Edit to add dynamic values like name, email and more."
+  }</${tag}>`;
+
+export const getOnlyEditableTextString = ({
+  content,
+  tag = "p",
+  selector = "",
+}) =>
+  `<${tag} ${VIRFICE_APP_PREFIX}-selector="${selector}" contentEditable>${
     content ||
     "Add your text here. Edit to add dynamic values like name, email and more."
   }</${tag}>`;
@@ -21,7 +31,7 @@ export const getVideoString = ({ title }) =>
 export const getButtonString = ({ title, content }) =>
   `<a ${VIRFICE_APP_PREFIX}-title="${
     title || "Button"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="link" style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px; background-color: #161A05; color: #F9FCEE;">${
+  }" ${VIRFICE_APP_PREFIX}-ele_type="link" style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px; background-color: #161A05; color: #F9FCEE;" contentEditable>${
     content || "Button"
   }</a>`;
 
@@ -45,7 +55,7 @@ export const getSingleColTable = (
 };
 
 export const getBasicEleWrapper = (child, { paddingTop, paddingBottom }) => {
-  return `<div ${VIRFICE_APP_PREFIX}-ele_type="section" ${VIRFICE_APP_PREFIX}-settings="disabled"  style="padding-top: ${
+  return `<div ${VIRFICE_APP_PREFIX}-ele_type="section" ${VIRFICE_APP_PREFIX}-settings_status="disabled"  style="padding-top: ${
     paddingTop || "16px"
   };padding-bottom: ${paddingBottom || "16px"}; text-align:center;">
   ${child}

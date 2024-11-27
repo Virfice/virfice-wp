@@ -107,11 +107,17 @@ export const updateVirficeAttr = (element, attr, value) => {
 };
 
 export const isSettingsEnabled = (element) => {
-  const settings = getVirficeAttr(element, "settings");
-  if (settings === "disabled") {
+  const settings_status = getVirficeAttr(element, "settings_status");
+  if (settings_status === "disabled") {
     return false;
   }
   return true;
+};
+
+export const getAllElementsUsingSelector = (parent, selector) => {
+  return parent.querySelectorAll(
+    `[${VIRFICE_APP_PREFIX}-selector="${selector}"]`
+  );
 };
 export const cloneElementFromString = (elementString) => {
   let div = document.createElement("div");

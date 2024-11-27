@@ -7,7 +7,7 @@ import RangeField from "@molecules/Rangefield";
 import SelectField from "@molecules/SelectField";
 import { getSelectOptionsValueFromOptions } from "@functions";
 
-const FontAndSize = ({ element }) => {
+const FontAndSize = ({ element, eleArr }) => {
   return (
     <>
       <SelectField
@@ -24,14 +24,26 @@ const FontAndSize = ({ element }) => {
           { value: "inter", title: "Inter" },
         ]}
         onChange={(v) => {
-          element.style.fontFamily = v.value;
+          if (eleArr) {
+            eleArr.forEach((ele) => {
+              ele.style.fontFamily = v.value;
+            });
+          } else {
+            element.style.fontFamily = v.value;
+          }
         }}
       />
       <RangeField
         label={"Size"}
         value={getElementComputedStylePixelValue(element, "font-size")}
         onChange={(v) => {
-          element.style.fontSize = `${v}px`;
+          if (eleArr) {
+            eleArr.forEach((ele) => {
+              ele.style.fontSize = `${v}px`;
+            });
+          } else {
+            element.style.fontSize = `${v}px`;
+          }
         }}
         min={6}
         max={200}
