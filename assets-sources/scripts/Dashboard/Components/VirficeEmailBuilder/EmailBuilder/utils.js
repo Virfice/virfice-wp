@@ -22,6 +22,10 @@ const initAllElementsCommonEvents = (wrapper) => {
     initHoverEvent(ele);
     // initEmptyElement(ele);//not used
   });
+  const editorWrapper = document.getElementById("virfice-editor-wrapper");
+  editorWrapper.addEventListener("click", () => {
+    dispatchDashboardAction(onSelectElement, null);
+  });
 };
 
 const initClickEvent = (ele) => {

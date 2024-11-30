@@ -21,7 +21,9 @@ const Accordion = ({ open, title, className = false, children }) => {
   return (
     <div className={cn}>
       <div
-        className={VIRFICE_APP_PREFIX + "-accordion-header"}
+        className={`${VIRFICE_APP_PREFIX}-accordion-header ${
+          stateOpen ? ` ${VIRFICE_APP_PREFIX}-active` : ""
+        }`}
         onClick={() => {
           setStateOpen(!stateOpen);
         }}
@@ -31,7 +33,7 @@ const Accordion = ({ open, title, className = false, children }) => {
       </div>
 
       {stateOpen && (
-        <div classNames={VIRFICE_APP_PREFIX + "-accordion-content"}>
+        <div className={VIRFICE_APP_PREFIX + "-accordion-content"}>
           {children}
         </div>
       )}

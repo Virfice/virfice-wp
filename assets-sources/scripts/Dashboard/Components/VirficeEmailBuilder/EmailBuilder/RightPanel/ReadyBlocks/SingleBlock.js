@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   cloneElementFromString,
   getVirficeElementFromId,
   initEmailBuilder,
 } from "../../utils";
 import { useSelector } from "react-redux";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const SingleBlock = ({ title, html }) => {
+  const wrapperRef = useRef(null);
   const selectedSectionId = useSelector(
     (state) => state.builder?.selectedSectionId
   );
+
+  useEffect(() => {
+    //TODO: need to set height
+    // wrapperRef.current.height =
+  }, []);
   const handleAddReadyBlock = () => {
     console.log(html);
     const element = cloneElementFromString(html); // This creates the new DOM element.
@@ -29,10 +36,13 @@ const SingleBlock = ({ title, html }) => {
     }
   };
   return (
-    <div
-      onClick={handleAddReadyBlock}
-      dangerouslySetInnerHTML={{ __html: html }}
-    ></div>
+    <div className={VIRFICE_APP_PREFIX + "-single-ready-block"}>
+      <div
+        className={VIRFICE_APP_PREFIX + "-single-ready-block-html-wrapper"}
+        onClick={handleAddReadyBlock}
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></div>
+    </div>
   );
 };
 

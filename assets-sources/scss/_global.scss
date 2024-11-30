@@ -308,3 +308,24 @@ a {
         }
     }
 }
+
+.#{$classPrefix}-ready-blocks-wrapper {
+    width: 100%;
+
+    .#{$classPrefix}-single-ready-block {
+        border-radius: var(--radius-m, 6px);
+        border: 1px solid var(--border-border-card, #C9C9C9);
+        background: var(--bg-bg-soul, #FFF);
+        margin-bottom: 12px;
+
+        .#{$classPrefix}-single-ready-block-html-wrapper {
+            width: 600px;
+            transform: scale(0.46333333333); //278/600
+            transform-origin: top left;
+        }
+    }
+
+    .#{$classPrefix}-single-ready-block:last-child {
+        margin-bottom: -12px;
+    }
+}

@@ -2,6 +2,7 @@
 
 
     .#{$classPrefix}-accordion-header {
+        cursor: pointer;
         color: var(--text-text-body, #303030);
         /* title/medium */
         font-family: Roboto;
@@ -16,5 +17,20 @@
         padding: 4px 8px 4px 0px;
         justify-content: space-between;
         align-items: center;
+
+        &.#{$classPrefix}-active {
+            border-radius: 6px;
+            background: #F2F2F2;
+            padding-left: 8px;
+        }
+
+        svg {
+            margin-right: -8px;
+        }
+    }
+
+    .#{$classPrefix}-accordion-content {
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 }

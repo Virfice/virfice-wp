@@ -8,6 +8,7 @@ import Heading from "./Heading";
 import Divider from "@molecules/Divider";
 import Settings from "./Settings";
 import ReadyBlocks from "./ReadyBlocks";
+import EmailBGSettings from "./EmailBGSettings";
 
 const RightPanel = () => {
   const selectedElementId = useSelector(
@@ -34,11 +35,14 @@ const RightPanel = () => {
         className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-gap-20`}
       >
         <Card className={`${VIRFICE_APP_PREFIX}-flex-col`} style={{ gap: 0 }}>
-          {showReadyBlocks ? (
-            <ReadyBlocks category="*" />
-          ) : (
+          {showReadyBlocks && <ReadyBlocks category="*" />}
+          {!showReadyBlocks && (
             <>
-              {!selectedElementId && "Select an element"}
+              {!selectedElementId && (
+                <>
+                  <EmailBGSettings />
+                </>
+              )}
               {element && (
                 <>
                   <Heading element={element} />
