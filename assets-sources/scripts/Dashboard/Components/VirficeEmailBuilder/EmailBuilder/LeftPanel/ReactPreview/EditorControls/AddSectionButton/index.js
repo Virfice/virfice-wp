@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "@molecules/Button";
+import { dispatchDashboardAction } from "@functions";
 import { AddIcon, ReadyBlocks } from "@svg-icons";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import Header from "./Header";
 import Body from "./Body";
+import { setBuilderData } from "../../../../../builderSlice";
 
 const AddSectionButton = ({ element }) => {
   const [open, setOpen] = useState(false);
@@ -29,7 +31,11 @@ const AddSectionButton = ({ element }) => {
             leftIcon={<ReadyBlocks />}
             title={"Ready blocks"}
             onClick={() => {
-              setOpen(true);
+              // setOpen(true);
+              dispatchDashboardAction(setBuilderData, {
+                key: "showReadyBlocks",
+                value: true,
+              });
             }}
           />
         </div>

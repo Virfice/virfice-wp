@@ -7,10 +7,14 @@ import { getVirficeElementFromId } from "../utils";
 import Heading from "./Heading";
 import Divider from "@molecules/Divider";
 import Settings from "./Settings";
+import ReadyBlocks from "./ReadyBlocks";
 
 const RightPanel = () => {
   const selectedElementId = useSelector(
     (state) => state.builder?.selectedElementId
+  );
+  const showReadyBlocks = useSelector(
+    (state) => state.builder?.showReadyBlocks
   );
   const [element, setElement] = useState(false);
 
@@ -30,14 +34,20 @@ const RightPanel = () => {
         className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-gap-20`}
       >
         <Card className={`${VIRFICE_APP_PREFIX}-flex-col`} style={{ gap: 0 }}>
-          {!selectedElementId && "Select an element"}
-          {element && (
+          {showReadyBlocks ? (
+            <ReadyBlocks category="*" />
+          ) : (
             <>
-              <Heading element={element} />
-              <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
-              <Settings element={element} />
+              {!selectedElementId && "Select an element"}
+              {element && (
+                <>
+                  <Heading element={element} />
+                  <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
+                  <Settings element={element} />
+                </>
+              )}
             </>
-          )}{" "}
+          )}
         </Card>
       </div>
     </div>

@@ -8,6 +8,7 @@ const initialState = {
   selectedElementId: false,
   selectedSectionId: false,
   post: {},
+  showReadyBlocks: false,
 };
 
 export const builderSlice = createSlice({
@@ -91,6 +92,12 @@ export const onSelectElement = (elementId) => (dispatch) => {
     setBuilderData({
       key: "selectedElementId",
       value: elementId,
+    })
+  );
+  dispatch(
+    setBuilderData({
+      key: "showReadyBlocks",
+      value: false,
     })
   );
 };
