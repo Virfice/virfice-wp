@@ -16,8 +16,6 @@ const Accordion = ({ open, title, className = false, children }) => {
     className
   );
 
-  console.log(children);
-
   return (
     <div className={cn}>
       <div

@@ -16,7 +16,7 @@ const BrandSettings = () => {
           <Button
             type="secondary"
             title="Customize"
-            link={addParams({ menu: "brand-settings" })}
+            link={addParams({ menu: "virfice-brand-settings" })}
           />
         </div>
       </div>

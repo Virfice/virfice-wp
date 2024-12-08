@@ -71,7 +71,6 @@ const ImageSettings = ({ element }) => {
               }}
               onSelect={(media) => {
                 // settingsChange("woocommerce_email_header_image", media.url);
-                console.log(media);
                 element.src = media.url;
               }}
               info={"An image you want to show in the email header."}

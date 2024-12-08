@@ -27,7 +27,6 @@ const OrderTableSettings = ({ element }) => {
     element,
     "order_table_thead"
   );
-  console.log({ order_table_headers });
   return (
     <>
       <Tab>

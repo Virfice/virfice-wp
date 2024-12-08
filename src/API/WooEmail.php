@@ -99,6 +99,20 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/virfice-brand-settings',
+			array(
+				array(
+					'methods'             => 'GET',
+					'callback'            => array($this, 'get_virfice_brand_settings'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
+
 		// Register a REST API endpoint to update WooCommerce brand settings
 		register_rest_route(
 			$this->namespace,
@@ -107,6 +121,21 @@ class WooEmail extends WP_REST_Controller
 				array(
 					'methods'             => 'POST',
 					'callback'            => array($this, 'save_brand_settings'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
+
+		// Register a REST API endpoint to update WooCommerce brand settings
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/virfice-brand-settings',
+			array(
+				array(
+					'methods'             => 'POST',
+					'callback'            => array($this, 'save_virfice_brand_settings'),
 					'permission_callback' => array($this, 'get_item_permissions_check'),
 					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
 				),
@@ -244,6 +273,16 @@ class WooEmail extends WP_REST_Controller
 	}
 
 	/**
+	 * Retrieves the WooCommerce brand settings.
+	 *
+	 * @return array Brand settings for WooCommerce email templates.
+	 */
+	public function get_virfice_brand_settings()
+	{
+		return Utils::get_virfice_brand_settings();
+	}
+
+	/**
 	 * Updates the WooCommerce brand settings with new values.
 	 *
 	 * @return bool True if successful.
@@ -286,6 +325,70 @@ class WooEmail extends WP_REST_Controller
 		}
 		if (isset($data['virfice_social_icons_heading'])) {
 			update_option('virfice_social_icons_heading', sanitize_text_field($data['virfice_social_icons_heading']), false);
+		}
+		return true;
+	}
+
+	/**
+	 * Updates the WooCommerce brand settings with new values.
+	 *
+	 * @return bool True if successful.
+	 */
+	public function save_virfice_brand_settings()
+	{
+		//verified in get_item_permissions_check method
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
+		$data = json_decode(stripslashes($_REQUEST['data']), true);
+
+		if (!empty($data['email_body_width'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_width', $data['email_body_width']);
+		}
+
+		if (!empty($data['logo'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'logo', $data['logo']);
+		}
+
+		if (!empty($data['store_name'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'store_name', $data['store_name']);
+		}
+		if (!empty($data['email_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_background_color', $data['email_background_color']);
+		}
+		if (!empty($data['email_outer_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_outer_background_color', $data['email_outer_background_color']);
+		}
+		if (!empty($data['email_body_text'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_text', $data['email_body_text']);
+		}
+		if (!empty($data['email_body_button_bg'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_button_bg', $data['email_body_button_bg']);
+		}
+		if (!empty($data['email_body_button_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_button_color', $data['email_body_button_color']);
+		}
+		if (!empty($data['email_link_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_link_color', $data['email_link_color']);
+		}
+		if (!empty($data['header_text_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_text_color', $data['header_text_color']);
+		}
+		if (!empty($data['header_icons_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_icons_color', $data['header_icons_color']);
+		}
+		if (!empty($data['header_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_background_color', $data['header_background_color']);
+		}
+		if (!empty($data['footer_text_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_text_color', $data['footer_text_color']);
+		}
+		if (!empty($data['footer_icons_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_icons_color', $data['footer_icons_color']);
+		}
+		if (!empty($data['footer_link_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_link_color', $data['footer_link_color']);
+		}
+		if (!empty($data['footer_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_background_color', $data['footer_background_color']);
 		}
 		return true;
 	}

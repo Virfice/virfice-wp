@@ -1,16 +1,20 @@
 import React from "react";
 import Landing from "./Landing";
 import { hasQueryParamValue } from "@functions";
-import BrandSettings from "./BrandSettings";
+// import BrandSettings from "./BrandSettings";
 import WooEmailList from "./WooEmailList";
 import Settings from "./Settings";
 import EmailBuilder from "@components/VirficeEmailBuilder/EmailBuilder";
 import EmailEditor from "./WooEmailList/EmailEditor";
+import VirficeBrandSettings from "./VirficeBrandSettings";
 
 //Need to implement route for every dashboard menu
 const Pages = () => {
-  if (hasQueryParamValue("menu", "brand-settings")) {
-    return <BrandSettings />;
+  // if (hasQueryParamValue("menu", "brand-settings")) {
+  //   return <BrandSettings />;
+  // }
+  if (hasQueryParamValue("menu", "virfice-brand-settings")) {
+    return <VirficeBrandSettings />;
   }
   if (hasQueryParamValue("menu", "woo-email-list")) {
     return <WooEmailList />;

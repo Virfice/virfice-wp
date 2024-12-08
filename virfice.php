@@ -18,6 +18,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 use Virfice\AdminNotice;
 use Virfice\API\API;
 use Virfice\Dashboard;
+use Virfice\InitTask;
 use Virfice\WooEmailPreview\Route as WooEmailPreviewRoute;
 use Virfice\WooEmailEditWithButton;
 use Virfice\WooEmailHooks;
@@ -67,6 +68,7 @@ define('VIRFICE_STATIC_FILES_BASE', VIRFICE_PLUGIN_BASE . 'assets/files'); // UR
 
 // Initialize the core components of the plugin
 new MetaHelper();
+new InitTask();
 new AdminNotice();
 new Dashboard(); // Initialize the Dashboard component
 new WooEmailPreviewRoute(); // Initialize routing for the plugin

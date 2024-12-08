@@ -18,7 +18,6 @@ const SingleBlock = ({ title, html }) => {
     // wrapperRef.current.height =
   }, []);
   const handleAddReadyBlock = () => {
-    console.log(html);
     const element = cloneElementFromString(html); // This creates the new DOM element.
     const selected_section = getVirficeElementFromId(selectedSectionId); // Retrieve the selected section.
 

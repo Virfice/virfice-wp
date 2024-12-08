@@ -3,6 +3,7 @@
 namespace Virfice;
 
 use Exception;
+use Virfice\API\Settings;
 use Virfice\Includes\Logger;
 
 // Security check to prevent direct access
@@ -136,6 +137,49 @@ class Utils
         $email_settings['woocommerce_merchant_email_notifications'] = get_option('woocommerce_merchant_email_notifications');
         $email_settings['virfice_show_social_icons'] = get_option('virfice_show_social_icons');
         $email_settings['virfice_social_icons_heading'] = get_option('virfice_social_icons_heading', 'Follow us on');
+
+        return $email_settings;
+    }
+
+    /**
+     * Retrieves the WooCommerce brand settings.
+     *
+     * @return array Brand settings for WooCommerce email templates.
+     */
+    public static function get_virfice_brand_settings()
+    {
+        // Define an array to store email settings
+        $email_settings = array();
+
+        $brand_settings = self::get_brand_settings();
+        $settings = Settings::get_email_settings();
+
+        $email_settings['template_id'] = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
+
+        $email_settings['email_body_width'] = MetaHelper::get_meta(0, 'brand-settings', 'email_body_width', 600);
+        $email_settings['logo'] = MetaHelper::get_meta(0, 'brand-settings', 'logo', $brand_settings['woocommerce_email_header_image']);
+        $email_settings['store_name'] = MetaHelper::get_meta(0, 'brand-settings', 'store_name', $settings['virfice_store_name']);
+
+        $email_settings['email_background_color'] = MetaHelper::get_meta(0, 'brand-settings', 'email_background_color', $brand_settings['woocommerce_email_body_background_color']);
+
+        $email_settings['email_outer_background_color'] = MetaHelper::get_meta(0, 'brand-settings', 'email_outer_background_color', $brand_settings['woocommerce_email_background_color']);
+
+        $email_settings['email_body_text'] = MetaHelper::get_meta(0, 'brand-settings', 'email_body_text', $brand_settings['woocommerce_email_text_color']);
+
+        $email_settings['email_body_button_bg'] = MetaHelper::get_meta(0, 'brand-settings', 'email_body_button_bg', $brand_settings['woocommerce_email_base_color']);
+        $email_settings['email_body_button_color'] = MetaHelper::get_meta(0, 'brand-settings', 'email_body_button_color', $brand_settings['woocommerce_email_text_color']);
+
+        $email_settings['email_link_color'] = MetaHelper::get_meta(0, 'brand-settings', 'email_link_color', $brand_settings['woocommerce_email_base_color']);
+
+        $email_settings['header_text_color'] = MetaHelper::get_meta(0, 'brand-settings', 'header_text_color', $brand_settings['woocommerce_email_text_color']);
+        $email_settings['header_icons_color'] = MetaHelper::get_meta(0, 'brand-settings', 'header_icons_color', $brand_settings['woocommerce_email_text_color']);
+        $email_settings['header_background_color'] = MetaHelper::get_meta(0, 'brand-settings', 'header_background_color', $brand_settings['woocommerce_email_base_color']);
+
+
+        $email_settings['footer_text_color'] = MetaHelper::get_meta(0, 'brand-settings', 'footer_text_color', $brand_settings['woocommerce_email_text_color']);
+        $email_settings['footer_icons_color'] = MetaHelper::get_meta(0, 'brand-settings', 'footer_icons_color', $brand_settings['woocommerce_email_text_color']);
+        $email_settings['footer_link_color'] = MetaHelper::get_meta(0, 'brand-settings', 'footer_link_color', $brand_settings['woocommerce_email_base_color']);
+        $email_settings['footer_background_color'] = MetaHelper::get_meta(0, 'brand-settings', 'footer_background_color', $brand_settings['woocommerce_email_base_color']);
 
         return $email_settings;
     }

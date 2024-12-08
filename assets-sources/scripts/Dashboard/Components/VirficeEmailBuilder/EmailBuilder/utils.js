@@ -117,6 +117,14 @@ export const isSettingsEnabled = (element) => {
   }
   return true;
 };
+export const isBrandSettingsElementSelected = (element) => {
+  if (!element) return null;
+  const ele_type = getVirficeAttr(element, "ele_type");
+  if (ele_type === "brand-settings") {
+    return true;
+  }
+  return false;
+};
 
 export const getAllElementsUsingSelector = (parent, selector) => {
   return parent.querySelectorAll(

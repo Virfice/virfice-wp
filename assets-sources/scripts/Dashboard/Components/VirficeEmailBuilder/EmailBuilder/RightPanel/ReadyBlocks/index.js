@@ -10,8 +10,6 @@ const ReadyBlocks = ({ category = "*" }) => {
     category === "*"
       ? allBlocks
       : allBlocks.filter((v) => category.includes(v.id));
-
-  console.log(filterData);
   return (
     <div className={VIRFICE_APP_PREFIX + "-ready-blocks-wrapper"}>
       {filterData.map((v, i) => (
