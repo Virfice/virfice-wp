@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import VirficeEmailBuilder from "@components/VirficeEmailBuilder";
 import { addParams, getParamValue } from "@functions";
 import StickyTopNav from "@components/StickyTopNav";
-import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import { useDispatch, useSelector } from "react-redux";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import {
   emailSingleAsync,
   emailSingleVirficeAsync,
@@ -37,11 +37,22 @@ const VirficeEditor = () => {
   const handleSaveClick = () => {
     console.log("save button click");
     if (virfice_template.id) {
-      let templateWrapper = document.querySelector("#virfice-email-preview");
+      const templateWrapper = document.querySelector("#virfice-email-preview");
+
+      // Create a clone of the wrapper's content
+      const templateContent = templateWrapper.cloneNode(true);
+
+      // Remove the specific style node from the cloned content
+      const clonedStyleElement = templateContent.querySelector(
+        `#${VIRFICE_APP_PREFIX}-global-style`
+      );
+      if (clonedStyleElement) {
+        clonedStyleElement.remove();
+      }
 
       dispatch(
         saveSingleTemplate(virfice_template.id, {
-          post_content: templateWrapper.innerHTML,
+          post_content: templateContent.innerHTML,
         })
       );
     }

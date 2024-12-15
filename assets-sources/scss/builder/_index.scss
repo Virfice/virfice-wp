@@ -1,209 +1,201 @@
-@import 'global';
+@import "global";
 
 .#{$classPrefix}-builder-left-panel-wrapper {
-    width: 900px;
-    height: calc(-156px + 100vh);
-    overflow: scroll;
+  width: 900px;
+  height: calc(-156px + 100vh);
+  overflow: scroll;
 }
 
 .#{$classPrefix}-builder-right-panel-wrapper {
-    width: 380px;
-    height: calc(-156px + 100vh);
-    overflow: scroll;
+  width: 380px;
+  height: calc(-156px + 100vh);
+  overflow: scroll;
 }
 
 .#{$classPrefix}-editor-wrapper {
-    position: relative;
-    padding-bottom: 460px;
+  position: relative;
+  padding-bottom: 460px !important;
 
-    .#{$classPrefix}-element-controls {
-        .#{$classPrefix}-element-border {
-            box-shadow: 0 2px 0 0 #DEEDA1;
-            /* Border bottom */
-            box-shadow: 0 -2px 0 0 #DEEDA1;
-            /* Border top */
-            box-shadow: -2px 0 0 0 #DEEDA1;
-            /* Border left */
-            box-shadow: 2px 0 0 0 #DEEDA1;
-            /* Border right */
-            box-shadow: 0 0 0 2px #DEEDA1;
-            /* All the borders by using the spread properties */
-            pointer-events: none;
-        }
-
-        .#{$classPrefix}-right-control {
-            pointer-events: all;
-            position: absolute;
-            right: -36px;
-            top: 0px;
-            border-radius: 99px;
-            border: 1px solid #C9C9C9;
-            width: 28px;
-            background: #fff;
-            box-shadow: 3px 4px 6px -3px rgba(10, 10, 10, 0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .#{$classPrefix}-item {
-                line-height: 0;
-                cursor: pointer;
-
-                &:hover {
-                    background: #F2F2F2
-                }
-
-            }
-        }
-
-        .#{$classPrefix}-add-section-button-wrapper {
-            position: absolute;
-            bottom: -16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-
-            .#{$classPrefix}-btn {
-                pointer-events: all;
-            }
-
-
-            .#{$classPrefix}-add-section-items-wrapper {
-                position: absolute;
-                background: #F4F9E1;
-                width: 100%;
-                top: -14px;
-                border: 1px dashed #89A31F;
-            }
-
-            .#{$classPrefix}-add-section-header {
-                display: flex;
-                width: 594px;
-                padding: 12px 16px 12px 40px;
-                align-items: center;
-                gap: 8px;
-                justify-content: space-between;
-                border-bottom: 1px solid #C9C9C9;
-
-                .#{$classPrefix}-title {
-                    color: var(--text-text-headline, #1A1A1A);
-                    /* title/medium */
-                    font-family: Roboto;
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 24px;
-                    /* 150% */
-                    letter-spacing: 0.15px;
-                }
-            }
-
-            .#{$classPrefix}-add-section-body {
-                padding: 20px 40px;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-                gap: 16px;
-
-                .#{$classPrefix}-item {
-                    pointer-events: all;
-                    display: flex;
-                    width: 116px;
-                    height: 92px;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: var(--spacing, 4px);
-                    flex-shrink: 0;
-
-                    border-radius: 16px;
-
-                    border: var(--size-0, 1px) solid var(--border-button-border-btn-idle, #949494);
-
-                    background: var(--bg-button-bg-btn-secondary-idle, #FCFCFC);
-                    /* shadow-button */
-                    box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.20);
-
-                    cursor: pointer;
-
-                    &:hover {
-                        background: var(--bg-button-bg-btn-secondary-hover, #F2F2F2);
-
-                    }
-                }
-            }
-        }
-
-
+  .#{$classPrefix}-element-controls {
+    .#{$classPrefix}-element-border {
+      box-shadow: 0 2px 0 0 #deeda1;
+      /* Border bottom */
+      box-shadow: 0 -2px 0 0 #deeda1;
+      /* Border top */
+      box-shadow: -2px 0 0 0 #deeda1;
+      /* Border left */
+      box-shadow: 2px 0 0 0 #deeda1;
+      /* Border right */
+      box-shadow: 0 0 0 2px #deeda1;
+      /* All the borders by using the spread properties */
+      pointer-events: none;
     }
+
+    .#{$classPrefix}-right-control {
+      pointer-events: all;
+      position: absolute;
+      right: -36px;
+      top: 0px;
+      border-radius: 99px;
+      border: 1px solid #c9c9c9;
+      width: 28px;
+      background: #fff;
+      box-shadow: 3px 4px 6px -3px rgba(10, 10, 10, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .#{$classPrefix}-item {
+        line-height: 0;
+        cursor: pointer;
+
+        &:hover {
+          background: #f2f2f2;
+        }
+      }
+    }
+
+    .#{$classPrefix}-add-section-button-wrapper {
+      position: absolute;
+      bottom: -16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      .#{$classPrefix}-btn {
+        pointer-events: all;
+      }
+
+      .#{$classPrefix}-add-section-items-wrapper {
+        position: absolute;
+        background: #f4f9e1;
+        width: 100%;
+        top: -14px;
+        border: 1px dashed #89a31f;
+      }
+
+      .#{$classPrefix}-add-section-header {
+        display: flex;
+        width: 594px;
+        padding: 12px 16px 12px 40px;
+        align-items: center;
+        gap: 8px;
+        justify-content: space-between;
+        border-bottom: 1px solid #c9c9c9;
+
+        .#{$classPrefix}-title {
+          color: var(--text-text-headline, #1a1a1a);
+          /* title/medium */
+          font-family: Roboto;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 24px;
+          /* 150% */
+          letter-spacing: 0.15px;
+        }
+      }
+
+      .#{$classPrefix}-add-section-body {
+        padding: 20px 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+
+        .#{$classPrefix}-item {
+          pointer-events: all;
+          display: flex;
+          width: 116px;
+          height: 92px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: var(--spacing, 4px);
+          flex-shrink: 0;
+
+          border-radius: 16px;
+
+          border: var(--size-0, 1px) solid
+            var(--border-button-border-btn-idle, #949494);
+
+          background: var(--bg-button-bg-btn-secondary-idle, #fcfcfc);
+          /* shadow-button */
+          box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.2);
+
+          cursor: pointer;
+
+          &:hover {
+            background: var(--bg-button-bg-btn-secondary-hover, #f2f2f2);
+          }
+        }
+      }
+    }
+  }
 }
 
 .#{$classPrefix}-template-wrapper {
+  * {
+    user-select: none;
+    cursor: default;
+  }
 
-    * {
-        user-select: none;
-        cursor: default;
-    }
-
-    .#{$classPrefix}-hover-border {
-        box-shadow: 0 2px 0 0 #e4e4e4ac;
-        /* Border bottom */
-        box-shadow: 0 -2px 0 0 #e4e4e4ac;
-        /* Border top */
-        box-shadow: -2px 0 0 0 #e4e4e4ac;
-        /* Border left */
-        box-shadow: 2px 0 0 0 #e4e4e4ac;
-        /* Border right */
-        box-shadow: 0 0 0 2px #e4e4e4ac;
-        /* All the borders by using the spread properties */
-    }
-
+  .#{$classPrefix}-hover-border {
+    box-shadow: 0 2px 0 0 #e4e4e4ac;
+    /* Border bottom */
+    box-shadow: 0 -2px 0 0 #e4e4e4ac;
+    /* Border top */
+    box-shadow: -2px 0 0 0 #e4e4e4ac;
+    /* Border left */
+    box-shadow: 2px 0 0 0 #e4e4e4ac;
+    /* Border right */
+    box-shadow: 0 0 0 2px #e4e4e4ac;
+    /* All the borders by using the spread properties */
+  }
 }
 
 .#{$classPrefix}-settings-wrapper {
+  .#{$classPrefix}-child-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    user-select: none;
+    cursor: default;
 
-    .#{$classPrefix}-child-list {
+    align-self: stretch;
+
+    .#{$classPrefix}-item {
+      border-radius: 6px;
+      background: #fff;
+      display: flex;
+      padding: 4px 8px;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      justify-content: space-between;
+      width: 100%;
+
+      &:hover {
+        border-radius: 6px;
+        background: #f2f2f2;
+      }
+
+      .#{$classPrefix}-item-action-wrapper {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 4px;
-        user-select: none;
-        cursor: default;
+        gap: 8px;
+        line-height: 0;
 
-        align-self: stretch;
+        .#{$classPrefix}-item-action {
+          cursor: pointer;
 
-        .#{$classPrefix}-item {
-            border-radius: 6px;
-            background: #FFF;
-            display: flex;
-            padding: 4px 8px;
-            align-items: center;
-            gap: 8px;
-            overflow: hidden;
-            justify-content: space-between;
-            width: 100%;
-
-            &:hover {
-                border-radius: 6px;
-                background: #F2F2F2;
-            }
-
-            .#{$classPrefix}-item-action-wrapper {
-                display: flex;
-                gap: 8px;
-                line-height: 0;
-
-                .#{$classPrefix}-item-action {
-                    cursor: pointer;
-
-                    &:hover {
-                        background: #F2F2F2;
-                    }
-                }
-
-            }
+          &:hover {
+            background: #f2f2f2;
+          }
         }
+      }
     }
+  }
 }
