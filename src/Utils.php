@@ -223,11 +223,30 @@ class Utils
     //TODO: no one used this method. please check.
     public static function get_template_common_global_css()
     {
-        return '
+
+        $global_settings = self::get_virfice_brand_settings();
+        $email_outer_background_color = $global_settings['email_outer_background_color'];
+        $email_background_color = $global_settings['email_background_color'];
+        $email_body_width = $global_settings['email_body_width'];
+        $email_body_text = $global_settings['email_body_text'];
+
+        $email_body_button_bg = $global_settings['email_body_button_bg'];
+        $email_body_button_color = $global_settings['email_body_button_color'];
+        $email_link_color = $global_settings['email_link_color'];
+        $header_text_color = $global_settings['header_text_color'];
+        $header_icons_color = $global_settings['header_icons_color'];
+        $header_background_color = $global_settings['header_background_color'];
+        $footer_text_color = $global_settings['footer_text_color'];
+        $footer_icons_color = $global_settings['footer_icons_color'];
+        $footer_link_color = $global_settings['footer_link_color'];
+        $footer_background_color = $global_settings['footer_background_color'];
+        return "
         <style>
-        body {
+        .virfice-editor-wrapper {
             margin: 0;
             padding: 0;
+            background-color: $email_outer_background_color;
+            color: $email_body_text;
         }
         table {
             width: 100%;
@@ -249,7 +268,13 @@ class Utils
             height: auto;
             display: block;
             border: 0;
-        } </style>';
+        } 
+        .virfice-template-wrapper{
+            width: " . $email_body_width . "px;
+            margin: auto;
+            background-color: $email_background_color;
+        }    
+        </style>";
     }
 
     public static function virfice_wp_kses_allowed_html($html_string)
@@ -264,6 +289,34 @@ class Utils
         $template = get_post($_virfice_template_id);
         return $template->post_content;
     }
+
+    public static function wrap_template_with_html_tag($template)
+    {
+        // Ensure the template is stripped of unnecessary slashes
+        $template = stripslashes($template);
+
+        $common_css = self::get_template_common_global_css();
+
+        // Wrap the template in standard HTML structure
+        $html_template = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    $common_css
+</head>
+<body class="virfice-editor-wrapper">
+    <div class="virfice-template-wrapper">
+        $template
+    </div>
+</body>
+</html>
+HTML;
+
+        return $html_template;
+    }
+
 
     public static function LOG($message)
     {

@@ -57,6 +57,7 @@ const TextSettings = ({ element }) => {
               label={"Text color"}
               value={getElementComputedStyle(element, "color")}
               onChange={(v) => {
+                console.log(v);
                 element.style.color = v;
               }}
             />

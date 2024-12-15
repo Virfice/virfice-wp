@@ -56,6 +56,8 @@ const SendButtonRecipientsPopup = () => {
       ""
     );
 
+    // const htmlWithoutStyle = emailWrapper.innerHTML;
+
     let apiSlug = "virfice/v1/virfice-test-email-send/send-test-email";
     const formData = new FormData();
     formData.append("emails", emails);

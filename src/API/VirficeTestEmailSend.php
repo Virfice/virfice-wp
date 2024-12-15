@@ -86,12 +86,17 @@ class VirficeTestEmailSend extends WP_REST_Controller
 		$subject = $email_obj->get_option('subject', $email_obj->subject);
 		$subject = apply_filters('woocommerce_email_subject_' . $email_id, $subject, $email_obj);
 
+		// Clean up slashes in the template
+		$template = Utils::wrap_template_with_html_tag($template);
+
 		//TODO: need to implement shortcode manager class for $type: woo_test_email. And applicable for $template, $subject; 
 
 		$headers      = "Content-Type: text/html\r\n";
 		// $sendMail     = \WC_Emails::instance();
 		if (! empty($emails)) {
 			$sendMailSucc = $email_obj->send($emails, $subject, $template, $headers, array());
+
+			// wp_mail($emails, $subject, $template, $headers);
 
 			return $sendMailSucc;
 		}

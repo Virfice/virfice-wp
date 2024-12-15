@@ -9,7 +9,10 @@ const getColorCode = (color) => {
   //   ? `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
   //   : color;
 
-  return color?.hex ? color.hex : color;
+  let c = color?.hex ? color.hex : color;
+
+  console.log(c);
+  return c;
 };
 
 const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {
@@ -74,6 +77,7 @@ const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {
               <SketchPicker
                 color={getColorCode(color)}
                 onChange={handleChange}
+                disableAlpha
               />
             </div>
           )}
