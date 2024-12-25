@@ -273,7 +273,15 @@ class Utils
             width: " . $email_body_width . "px;
             margin: auto;
             background-color: $email_background_color;
-        }    
+        }
+        .virfice-email-header{
+            color: $$header_text_color;
+            background-color: $header_background_color;
+        }
+        .virfice-email-footer{
+            color: $$footer_text_color;
+            background-color: $footer_background_color;
+        }
         </style>";
     }
 

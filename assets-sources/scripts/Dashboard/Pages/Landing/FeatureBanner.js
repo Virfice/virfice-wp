@@ -168,7 +168,7 @@ const FeatureBanner = () => {
           <Button
             type="primary"
             title="Customize now!"
-            link={addParams({ menu: "brand-settings" })}
+            link={addParams({ menu: "virfice-brand-settings" })}
           />
           {/* https://www.virfice.com/docs */}
         </div>

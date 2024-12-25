@@ -52,6 +52,19 @@ class InitTask
             //create brand settings dummy template
             $this->create_template_for_brand_settings();
         }
+
+
+        /**
+         * dummy code start
+         */
+        $brand_settings_template_id = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
+        if ($brand_settings_template_id) {
+            $template_content = $this->get_virfice_brand_settings_template_preset();
+            Templates::update_template($brand_settings_template_id, 'Virfice - Brand settings', $template_content);
+        }
+        /**
+         * dummy code end
+         */
     }
 
     /**
@@ -79,7 +92,7 @@ class InitTask
      */
     private function get_virfice_brand_settings_template_preset()
     {
-        $templateFilePath = VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/dummy_email_template_for_brandh_settings.php";
+        $templateFilePath = VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/dummy_email_template_for_brand_settings.php";
         // Check if the template file exists
         if (!file_exists($templateFilePath)) {
             return false; // Handle error (e.g., file not found)
