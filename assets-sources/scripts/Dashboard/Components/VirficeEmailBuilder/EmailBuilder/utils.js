@@ -131,6 +131,12 @@ export const getAllElementsUsingSelector = (parent, selector) => {
     `[${VIRFICE_APP_PREFIX}-selector="${selector}"]`
   );
 };
+
+export const getElementUsingMySelector = (parent, selector) => {
+  return parent.querySelector(
+    `[${VIRFICE_APP_PREFIX}-my_selector="${selector}"]`
+  );
+};
 export const cloneElementFromString = (elementString) => {
   let div = document.createElement("div");
   div.innerHTML = elementString;

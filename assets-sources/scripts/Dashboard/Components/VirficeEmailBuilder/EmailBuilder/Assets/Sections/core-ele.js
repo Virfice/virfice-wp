@@ -12,8 +12,9 @@ export const getOnlyEditableTextString = ({
   content,
   tag = "p",
   selector = "",
+  mySelector = "",
 }) =>
-  `<${tag} ${VIRFICE_APP_PREFIX}-selector="${selector}" contentEditable>${
+  `<${tag} ${VIRFICE_APP_PREFIX}-selector="${selector}" ${VIRFICE_APP_PREFIX}-my_selector="${mySelector}" contentEditable>${
     content ||
     "Add your text here. Edit to add dynamic values like name, email and more."
   }</${tag}>`;

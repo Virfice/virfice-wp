@@ -36,7 +36,10 @@ $template = Utils::get_template_content_from_woo_email_id($email_id);
 
 $short_codes = new ShortCodes($template, ['type' => 'woo_email', 'order_id' => $order->get_id()]);
 $template = $short_codes->do_short_code();
-
-
 echo Utils::get_template_common_global_css();
-echo $template;
+?>
+<div class="virfice-template-wrapper">
+    <?php
+    echo $template;
+    ?>
+</div>
