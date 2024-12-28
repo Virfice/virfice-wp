@@ -282,6 +282,35 @@ class Utils
             color: $$footer_text_color;
             background-color: $footer_background_color;
         }
+
+        .virfice-columns {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .virfice-column {
+            box-sizing: border-box;
+        }
+        .virfice-column-25 {
+            flex: 0 0 25%;
+        }
+        .virfice-column-30 {
+            flex: 0 0 30%;   
+        }
+        .virfice-column-40 {
+            flex: 0 0 40%;
+        }
+        .virfice-column-50 {
+            flex: 0 0 50%;
+        }
+        .virfice-column-60 {
+            flex: 0 0 60%;
+        }
+        .virfice-column-70 {
+            flex: 0 0 70%;
+        }
         </style>";
     }
 
