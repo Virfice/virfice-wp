@@ -5,7 +5,7 @@ export const getOrderDetailsString = ({ title }) =>
   `<div ${VIRFICE_APP_PREFIX}-title="${
     title || "Order details"
   }" ${VIRFICE_APP_PREFIX}-ele_type="woocommerce_email_order_details" style="text-align: left;">
-  <h2 ${VIRFICE_APP_PREFIX}-selector="order_details_title">[Order #{order_number}] ({order_date})</h2>
+  <span ${VIRFICE_APP_PREFIX}-selector="order_details_title" style="font-size: 18px;">[Order #{order_number}] ({order_date})</span>
   <table ${VIRFICE_APP_PREFIX}-selector="order_table">
     <thead ${VIRFICE_APP_PREFIX}-selector="order_table_thead">
 			<tr>
@@ -36,6 +36,9 @@ export const getOrderDetailsString = ({ title }) =>
         <td ${VIRFICE_APP_PREFIX}-short_code="order_item_price">200.00$</td>
 	    </tr>
 		</tbody>
+  </table>
+
+  <table ${VIRFICE_APP_PREFIX}-selector="order_table">
     <tfoot>
 			<tr>
 				<th>${getOnlyEditableTextString({

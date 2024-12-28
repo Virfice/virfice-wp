@@ -1,28 +1,41 @@
-<table virfice-title="Column" virfice-ele_type="section" virfice-id="m2gm3ri5wnwfwzmqh">
-    <tbody>
-        <tr virfice-title="Row 1" virfice-ele_type="row" virfice-id="m2gm3ri5slmes7vz6">
-            <td virfice-title="Column 1" virfice-ele_type="column" style="padding-bottom: 16px;"
-                virfice-id="m2gm3ri5iwbhdcder" class="">
-                <img virfice-title="Image" virfice-ele_type="image"
-                    src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" virfice-id="m2gm3ri5d7760wn4d"
-                    class="" />
-                <p virfice-title="Text" virfice-ele_type="text" virfice-id="m2gm3ri53fwl2gxha" class="">This is a text
-                    field. Add and edit content here.</p>
-                <a virfice-title="Button" virfice-ele_type="link"
-                    style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px; background-color: #161A05; color: #F9FCEE;"
-                    virfice-id="m2gm3ri5yotl6f2ub">New Order</a>
-            </td>
-            <td virfice-title="Column 2" virfice-ele_type="column" style="padding-bottom: 16px;"
-                virfice-id="m2gm3ri5j1cb9ldi6" class="">
-                <img virfice-title="Image" virfice-ele_type="image"
-                    src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" virfice-id="m2gm3ri5wzt86gz7h"
-                    class="" />
-                <p virfice-title="Text" virfice-ele_type="text" virfice-id="m2gm3ri5wiunrwvm4" class="">This is a text
-                    field. Add and edit content here.</p>
-                <a virfice-title="Button" virfice-ele_type="link"
-                    style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px; background-color: #161A05; color: #F9FCEE;"
-                    virfice-id="m2gm3ri5c168g81wd">New Order 2</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding-top: 8px; padding-bottom: 8px; text-align: center; background-color: rgb(255, 255, 255);"
+    virfice-id="m58dqps4iddto8bco" class="">
+    <a style="width:100%;"><img virfice-title="Image" virfice-ele_type="image"
+            src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" virfice-id="m58dqps4zo12nl185"
+            style="width: 16%; margin-left: auto; margin-right: auto;" class=""></a>
+</div>
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding-top: 0px; padding-bottom: 0px; text-align: center;" virfice-id="m58e705klg2ri1fb7" class="">
+    <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+        virfice-id="m58e705kkmilhca7o" class=""
+        style="text-align: left; padding: 32px; background-color: rgb(37, 182, 255); color: rgb(0, 0, 0);">New Order:
+        #{order_number}</p>
+</div>
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding-top: 16px; padding-bottom: 16px; text-align: center; background-color: rgb(255, 255, 255);"
+    virfice-id="m58eb6h3vr06jp91u" class="">
+    <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+        virfice-id="m58eb6h3jyujcybha" class=""
+        style="text-align: left; padding-left: 32px; padding-right: 32px; color: rgb(0, 0, 0);">Hi,</p>
+</div>
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding-top: 0px; padding-bottom: 0px; text-align: center; background-color: rgb(255, 255, 255);"
+    virfice-id="m58ecekylibqn8uut" class="">
+    <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+        virfice-id="m58ecekypyfxmxhnm" class=""
+        style="text-align: left; padding-left: 32px; padding-right: 32px; color: rgb(0, 0, 0);">We are excited to inform
+        you that a new order has been placed! Below are the order details for you immediate reference and
+        processing:&nbsp;</p>
+</div>
+<?php
+include './Reusable/order-details.php';
+?>
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding-top: 0px; padding-bottom: 32px; text-align: center; background-color: rgb(255, 255, 255);"
+    virfice-id="m58emmrg1dtgwk8mo" class="">
+    <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+        virfice-id="m58emmrhncpatby6y" class=""
+        style="text-align: left; padding-left: 32px; padding-right: 32px; color: rgb(0, 0, 0);">Congratulations on your
+        new sale!</p>
+</div>

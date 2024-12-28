@@ -237,27 +237,62 @@ const OrderTableSettings = ({ element }) => {
           </div>
         </TabContent>
         <TabContent index={1}>
+          <div className="title__medium">Order title</div>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <PaintField
-              label={"Background color"}
-              value={getElementComputedStyle(element, "background-color")}
-              onChange={(v) => {
-                element.style.backgroundColor = v;
-              }}
-            />
-
             {order_details_title.length > 0 && (
-              <PaintField
-                label={"Order table title"}
-                value={getElementComputedStyle(order_details_title[0], "color")}
-                onChange={(v) => {
-                  order_details_title.forEach((ele) => {
-                    ele.style.color = v;
-                  });
-                }}
-              />
+              <>
+                <PaintField
+                  label={"Order title font color"}
+                  value={getElementComputedStyle(
+                    order_details_title[0],
+                    "color"
+                  )}
+                  onChange={(v) => {
+                    order_details_title.forEach((ele) => {
+                      ele.style.color = v;
+                    });
+                  }}
+                />
+                <PaintField
+                  label={"Order title background color"}
+                  value={getElementComputedStyle(
+                    order_details_title[0],
+                    "background-color"
+                  )}
+                  onChange={(v) => {
+                    order_details_title[0].style.backgroundColor = v;
+                  }}
+                />
+              </>
             )}
 
+            {order_table_thead.length > 0 && (
+              <>
+                <div className="title__medium">Table header</div>
+                <PaintField
+                  label={"Table header font color"}
+                  value={getElementComputedStyle(order_table_thead[0], "color")}
+                  onChange={(v) => {
+                    order_table_thead.forEach((ele) => {
+                      ele.style.color = v;
+                    });
+                  }}
+                />
+                <PaintField
+                  label={"Table header background color"}
+                  value={getElementComputedStyle(
+                    order_table_thead[0],
+                    "background-color"
+                  )}
+                  onChange={(v) => {
+                    order_table_thead.forEach((ele) => {
+                      ele.style.backgroundColor = v;
+                    });
+                  }}
+                />
+              </>
+            )}
+            <div className="title__medium">Table data</div>
             <PaintField
               label={"Order table item color"}
               value={getElementComputedStyle(element, "color")}
@@ -266,37 +301,8 @@ const OrderTableSettings = ({ element }) => {
               }}
             />
 
-            {order_table_thead.length > 0 && (
-              <PaintField
-                label={"Table headers background color"}
-                value={getElementComputedStyle(
-                  order_table_thead[0],
-                  "background-color"
-                )}
-                onChange={(v) => {
-                  order_table_thead.forEach((ele) => {
-                    ele.style.backgroundColor = v;
-                  });
-                }}
-              />
-            )}
-
-            {order_table_headers.length > 0 && (
-              <PaintField
-                label={"Table headers font color"}
-                value={getElementComputedStyle(order_table_headers[0], "color")}
-                onChange={(v) => {
-                  order_table_headers.forEach((ele) => {
-                    ele.style.color = v;
-                  });
-                }}
-              />
-            )}
-
             <Reusable element={element} type="border-radius" />
             <Reusable element={element} type="padding" />
-
-            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

@@ -139,6 +139,7 @@
   * {
     user-select: none;
     cursor: default;
+    line-height: 1 !important;
   }
 
   .#{$classPrefix}-hover-border {
