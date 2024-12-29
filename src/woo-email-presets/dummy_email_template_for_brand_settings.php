@@ -1,76 +1,46 @@
-<?php
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding-top: 0px; padding-bottom: 0px; text-align: center;" virfice-id="m58e705klg2ri1fb7" class="">
+    <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+        virfice-id="m58e705kkmilhca7o" class=""
+        style="text-align: left; padding: 36px 48px 36px 48px; background-color: #FFC900; color: #000000;font-size: 30px;">
+        A note has been added to your order</div>
+</div>
 
-use Virfice\API\Settings;
-use Virfice\Utils;
 
-$social_icons_html = Utils::get_social_icons_html('');
-$store_address_html = Utils::get_store_address_html();
-$settings = Settings::get_email_settings();
-?>
-<div virfice-ele_type="section" virfice-settings_status="disabled" virfice-id="m4e94we0e01ydsfn">
-    <div virfice-ele_type="brand-settings" style="text-align:center;" virfice-id="m4e94we0e0192jpyn" class="">
-        <div style="padding-top: 26px;padding-bottom: 26px;" class="virfice-email-header">
-            <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/virfice.png" style="width: 90px;margin:auto;">
+<div virfice-ele_type="section" virfice-settings_status="disabled"
+    style="padding: 36px 48px 36px 48px; text-align:left;" virfice-id="m58eqnj78lwhy96tx" class="">
+    <div virfice-title="Order Table" virfice-ele_type="woocommerce_email_order_details" style="text-align: left;"
+        virfice-id="m58eqnj8nye46vhyg" class="">
+        <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+            virfice-id="m58e705kkmilhca7" class="" style="text-align: left;font-size: 14px;margin-bottom:8px;">
+            The following note has been added to your order.</div>
+
+        <div virfice-short_code="order_note" style="text-align: left;font-size: 14px;margin-bottom:8px;">
+            This is the note</div>
+
+        <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+            virfice-id="m58e705kkmi" class="" style="text-align: left;font-size: 14px;margin-bottom:8px;">
+            As a reminder, here are your order details.</div>
+        <div virfice-selector="order_details_title" style="font-size: 18px;text-decoration: underline;">
+            Order #{order_number}
         </div>
 
-        <table>
-            <tbody>
-                <tr>
-                    <td style="width: 50%;">
-                        <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg">
-                    </td>
-                    <td style="width: 50%;padding: 16px;text-align: center;">
-                        <h1
-                            style="text-align: center;font-size: 20px; font-style: normal; line-height: 26px;letter-spacing: 0.4px;">
-                            See it, make it<br>try it, do it</h1>
-                        <p
-                            style=" text-align: center; font-size: 12px; font-style: normal; font-weight: 400; line-height: normal;">
-                            A creative who loves to create<br>
-                            online spaces powered by<br>
-                            WordPress</p>
-                        <a
-                            style="border-radius: 36px; padding: 8px 16px;background: #014B1E; margin-top: 16px;">Explore</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div style="padding: 32px; display: flex; gap: 60px; background: white;">
-            <div>
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg"
-                    style="border-radius: 999px 999px 0px 0px; height: 238px;">
-                <p>Orchid Drop</p>
-                <p><strong>$30.00</strong></p>
-            </div>
-
-            <div>
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg"
-                    style="border-radius: 999px 999px 0px 0px; height: 238px;">
-                <p>Orchid Drop</p>
-                <p><strong>$30.00</strong></p>
-            </div>
-        </div>
-
-        <div style="padding: 24px; display: flex; gap: 60px;">
-            <div style="width: 150px;display: flex; flex-direction:column; justify-content:space-between;">
-                <h1 style="font-size: 24px; font-style: normal; line-height: normal;">Free Worldwide Shipping</h1>
-                <a style="border-radius: 36px; padding: 8px 16px;background: #014B1E;">Explore</a>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" style="width: 100%; height: 180px;">
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" style="width: 100%; height: 180px;">
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" style="width: 100%; height: 180px;">
-            </div>
-        </div>
-
-
-        <div style="padding-top: 26px;padding-bottom: 26px;" class="virfice-email-footer">
-            <?php echo $social_icons_html; ?>
-            <p><?php echo $settings['virfice_website_url']; ?></p>
-            <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/virfice.png" style="width: 90px;margin:auto;">
-            <?php echo $store_address_html; ?>
-        </div>
-
+        <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
+            virfice-id="m58e705kkmilhca" class="" style="text-align: left;font-size: 14px;">
+            {order_date}</div>
+        <?php include VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/Reusable/order-details.php"; ?>
     </div>
+</div>
+
+
+<div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 0px 40px 36px 40px; text-align:left;"
+    virfice-id="m58eqnj78lwhy96t" class="">
+    <?php include VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/Reusable/shipping-details.php"; ?>
+</div>
+
+
+<div virfice-ele_type="section" virfice-settings_status="disabled" virfice-id="m58e705klg2ri1fb" class="">
+    <div virfice-title="Text" virfice-ele_type="text" contenteditable="" virfice-id="m58e705kkmilhc" class=""
+        style="text-align: left; padding: 0px 48px 36px 48px; font-size: 14px;">
+        We hope to see you again.</div>
 </div>

@@ -15,8 +15,8 @@
             virfice-id="m58e705kkmilhca7" class="" style="text-align: left;font-size: 14px;margin-bottom:8px;">
             You’ve received the following order from virfice</div>
 
-        <div virfice-selector="order_details_title" style="font-size: 18px;">
-            [Order #{order_number}]
+        <div virfice-selector="order_details_title" style="font-size: 18px;text-decoration: underline;">
+            Order #{order_number}
         </div>
 
         <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
@@ -24,4 +24,10 @@
             {order_date}</div>
         <?php include VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/Reusable/order-details.php"; ?>
     </div>
+</div>
+
+
+<div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 0px 40px 36px 40px; text-align:left;"
+    virfice-id="m58eqnj78lwhy96t" class="">
+    <?php include VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/Reusable/shipping-details.php"; ?>
 </div>
