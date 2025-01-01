@@ -11,8 +11,11 @@ const OrderTable = {
       title: "Order Table",
     }),
     {
-      paddingTop: "16px",
-      paddingBottom: "16px",
+      paddingTop: "36px",
+      paddingBottom: "36px",
+      paddingLeft: "48px",
+      paddingRight: "48px",
+      textAlign: "left",
     }
   ),
 };

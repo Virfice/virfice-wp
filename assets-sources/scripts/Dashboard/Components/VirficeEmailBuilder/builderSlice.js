@@ -56,7 +56,6 @@ export const getSingleTemplate = (template_id) => (dispatch) => {
           value: d,
         })
       );
-      console.log(d);
     })
     .catch((error) => {
       console.log(error);
@@ -81,7 +80,6 @@ export const saveSingleTemplate =
       })
       .then((res) => {
         d = res.data;
-        console.log(d);
         dispatch(showNotificationBell({ title: "Template saved" }));
       })
       .catch((error) => {

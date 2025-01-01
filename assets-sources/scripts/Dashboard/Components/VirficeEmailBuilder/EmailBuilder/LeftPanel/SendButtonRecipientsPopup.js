@@ -87,7 +87,6 @@ const SendButtonRecipientsPopup = () => {
         //     type: "success",
         //   })
         // );
-        console.log(d);
       })
       .catch((error) => {
         console.log(error);

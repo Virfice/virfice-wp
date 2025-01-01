@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import VirficeEmailBuilder from "@components/VirficeEmailBuilder";
-import { addParams, getParamValue } from "@functions";
+import {
+  addParams,
+  getParamValue,
+  saveEmailOuterAndInnerBGColor,
+} from "@functions";
 import StickyTopNav from "@components/StickyTopNav";
 import { useDispatch, useSelector } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
@@ -55,6 +59,8 @@ const VirficeEditor = () => {
           post_content: templateContent.innerHTML,
         })
       );
+
+      saveEmailOuterAndInnerBGColor();
     }
   };
 

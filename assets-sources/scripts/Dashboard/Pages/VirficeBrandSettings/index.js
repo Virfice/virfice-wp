@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import StickyTopNav from "@components/StickyTopNav";
 import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "@conf";
-import { addParams } from "@functions";
+import { addParams, saveEmailOuterAndInnerBGColor } from "@functions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   virficeBrandSettingsAsync,
@@ -46,6 +46,7 @@ const VirficeBrandSettings = () => {
   };
   const handleSaveClick = () => {
     dispatch(saveVirficeBrandSettings(changedSettings));
+    saveEmailOuterAndInnerBGColor();
   };
 
   const template_id = settingsData?.template_id || false;

@@ -55,10 +55,17 @@ export const getSingleColTable = (
   </table>`;
 };
 
-export const getBasicEleWrapper = (child, { paddingTop, paddingBottom }) => {
+export const getBasicEleWrapper = (
+  child,
+  { paddingTop, paddingBottom, paddingLeft, paddingRight, textAlign }
+) => {
   return `<div ${VIRFICE_APP_PREFIX}-ele_type="section" ${VIRFICE_APP_PREFIX}-settings_status="disabled"  style="padding-top: ${
     paddingTop || "16px"
-  };padding-bottom: ${paddingBottom || "16px"}; text-align:center;">
+  };padding-bottom: ${paddingBottom || "16px"}; padding-left: ${
+    paddingLeft || "0px"
+  }; padding-right: ${paddingRight || "0px"}; text-align:${
+    textAlign || "center"
+  };">
   ${child}
   </div>`;
 };

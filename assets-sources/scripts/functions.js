@@ -1,5 +1,8 @@
 import { VIRFICE_PLUGIN_BASE } from "@conf";
 import { store } from "./Dashboard/store";
+import { getElementComputedStyle } from "./Dashboard/Components/VirficeEmailBuilder/EmailBuilder/RightPanel/Settings/utils";
+import { saveVirficeBrandSettings } from "./Dashboard/Pages/VirficeBrandSettings/virficeBrandSettingsSlice";
+import { rgbToHex } from "./Dashboard/Molecules/Paintfield";
 
 export const hasQueryParamValue = (
   field,
@@ -63,4 +66,21 @@ export function dispatchDashboardAction(action, payload) {
 
 export const generateRandomId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+};
+
+export const saveEmailOuterAndInnerBGColor = () => {
+  const outerPreviewWrapper = document.querySelector("#virfice-editor-wrapper");
+  const emailPreviewWrapper = document.querySelector("#virfice-email-preview");
+  const outerBgColor = getElementComputedStyle(
+    outerPreviewWrapper,
+    "background-color"
+  );
+  const innerBgColor = getElementComputedStyle(
+    emailPreviewWrapper,
+    "background-color"
+  );
+  dispatchDashboardAction(saveVirficeBrandSettings, {
+    email_outer_background_color: rgbToHex(outerBgColor),
+    email_background_color: rgbToHex(innerBgColor),
+  });
 };
