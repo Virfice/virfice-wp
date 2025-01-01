@@ -2,13 +2,13 @@
 
 .#{$classPrefix}-builder-left-panel-wrapper {
   width: 900px;
-  height: calc(-156px + 100vh);
+  height: calc(-120px + 100vh);
   overflow: scroll;
 }
 
 .#{$classPrefix}-builder-right-panel-wrapper {
   width: 380px;
-  height: calc(-156px + 100vh);
+  height: calc(-120px + 100vh);
   overflow: scroll;
 }
 

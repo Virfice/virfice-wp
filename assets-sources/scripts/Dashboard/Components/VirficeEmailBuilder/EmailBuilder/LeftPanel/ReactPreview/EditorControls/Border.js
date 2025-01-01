@@ -5,7 +5,9 @@ import AddSectionButton from "./AddSectionButton";
 
 const Border = ({ element }) => {
   const borderDiv = useRef(null);
-
+  const leftPanelWrapper = document.querySelector(
+    `#${VIRFICE_APP_PREFIX}-builder-left-panel-wrapper`
+  );
   useEffect(() => {
     if (!element) return;
 
@@ -19,9 +21,6 @@ const Border = ({ element }) => {
       virficeDashboard.addEventListener("scroll", updatePosition);
     }
 
-    const leftPanelWrapper = document.querySelector(
-      `#${VIRFICE_APP_PREFIX}-builder-left-panel-wrapper`
-    );
     // Safely add scroll and resize listeners
     if (leftPanelWrapper) {
       leftPanelWrapper.addEventListener("scroll", updatePosition);
