@@ -115,6 +115,9 @@ class Settings extends WP_REST_Controller
 			'virfice_pinterest_url' => get_option('virfice_pinterest_url', false),
 			'virfice_tumblr_url' => get_option('virfice_tumblr_url', false),
 			'virfice_vimeo_url' => get_option('virfice_vimeo_url', false),
+			'virfice_telegram_url' => get_option('virfice_telegram_url', false),
+			'virfice_vk_url' => get_option('virfice_vk_url', false),
+			'virfice_phone_url' => get_option('virfice_phone_url', false),
 		];
 	}
 
@@ -189,6 +192,12 @@ class Settings extends WP_REST_Controller
 					}
 					if (isset($settings['virfice_vimeo_url'])) {
 						update_option('virfice_vimeo_url', $settings['virfice_vimeo_url'], false);
+					}if (isset($settings['virfice_telegram_url'])) {
+						update_option('virfice_telegram_url', $settings['virfice_telegram_url'], false);
+					}if (isset($settings['virfice_vk_url'])) {
+						update_option('virfice_vk_url', $settings['virfice_vk_url'], false);
+					}if (isset($settings['virfice_phone_url'])) {
+						update_option('virfice_phone_url', $settings['virfice_phone_url'], false);
 					}
 
 					return true;

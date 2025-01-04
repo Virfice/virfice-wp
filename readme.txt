@@ -5,7 +5,7 @@ Donate link: [https://www.virfice.com](https://www.virfice.com)
 Tags: Email Customizer for WooCommerce, Email editor, WooCommerce emails, WooCommerce Email Template Customizer, WooCommerce Email Customizer
 Requires at least: WordPress 5.5
 Tested up to: 6.6
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
@@ -93,6 +93,10 @@ Yes, please report any issues you face or request any features you may feel requ
 
 
 == Changelog ==
+= 1.0.3 =
+* Fix: Disable add_rewrite_rule method
+* Update: Added Telegram, VK, and phone as social links
+
 = 1.0.2 =
 * Fix: Typos in the plugin
 

@@ -48,7 +48,22 @@ $icons = [
     [
         'name' => 'vimeo',
         'key' => 'virfice_vimeo_url',
-        'icon' => 'vimeo'
+        'icon' => 'vimeo-icon'
+    ],
+    [
+        'name' => 'telegram',
+        'key' => 'virfice_telegram_url',
+        'icon' => 'telegram'
+    ],
+    [
+        'name' => 'vk',
+        'key' => 'virfice_vk_url',
+        'icon' => 'vk'
+    ],
+    [
+        'name' => 'phone',
+        'key' => 'virfice_phone_url',
+        'icon' => 'phone'
     ]
 ];
 ?>
@@ -59,12 +74,17 @@ $icons = [
         <tr>
             <?php
             foreach ($icons as $key => $value) {
-                if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
-                    <td>
-                        <a href="<?php echo esc_url($virfice_social_links[$value['key']]); ?>" target="_blank">
-                            <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.png'); ?>" alt="Hello Virfice" style="object-fit: contain;margin-right: 16px;" />
-                        </a>
-                    </td>
+                if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { 
+                    $href = esc_url($virfice_social_links[$value['key']]);
+                    if($value['name'] === 'phone'){
+                        $href= "tel:" . $virfice_social_links[$value['key']];
+                    }
+                    ?>
+            <td>
+                <a href="<?php echo $href; ?>" target="_blank" rel="noopener">
+                    <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.png'); ?>"
+                        alt="<?php echo $value['name'];?>" style="object-fit: contain;margin-right: 16px;" /></a>
+            </td>
             <?php
                 }
             }

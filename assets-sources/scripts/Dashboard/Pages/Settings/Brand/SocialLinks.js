@@ -99,10 +99,30 @@ const SocialLinks = () => {
               settingsChange("virfice_vimeo_url", v);
             }}
           />
+          <TextField
+            label={"Telegram"}
+            value={changedSettings["virfice_telegram_url"] || ""}
+            onChange={(v) => {
+              settingsChange("virfice_telegram_url", v);
+            }}
+          />
+          <TextField
+            label={"VK"}
+            value={changedSettings["virfice_vk_url"] || ""}
+            onChange={(v) => {
+              settingsChange("virfice_vk_url", v);
+            }}
+          />
+          <TextField
+            label={"Phone"}
+            value={changedSettings["virfice_phone_url"] || ""}
+            onChange={(v) => {
+              settingsChange("virfice_phone_url", v);
+            }}
+          />
         </div>
       </div>
     </Card>
   );
 };
-
 export default SocialLinks;

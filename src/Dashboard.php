@@ -30,7 +30,7 @@ class Dashboard
         add_action( 'admin_print_styles', [$this, 'my_plugin_admin_inline_css'] );
 
         // Add a custom rewrite rule
-        add_action('init', [$this, 'rewrite_route']);
+        // add_action('init', [$this, 'rewrite_route']);
         add_action('admin_head', [$this, 'my_plugin_highlight_submenu']);
         add_action('admin_footer', [$this, 'my_plugin_custom_script']);
 
@@ -65,32 +65,32 @@ class Dashboard
 
     public function my_plugin_custom_script() {
         ?>
-        <script type="text/javascript">
-            (function($){
-                var currentUrl = window.location.href;
+<script type="text/javascript">
+(function($) {
+    var currentUrl = window.location.href;
 
-                $('#toplevel_page_<?php echo VIRFICE_APP_PREFIX; ?> .wp-submenu .wp-first-item').remove();
-                $('#toplevel_page_<?php echo VIRFICE_APP_PREFIX; ?> .wp-submenu a').each(function() {
-                    if(currentUrl.indexOf($(this).attr('href')) !== -1) {
-                        $(this).parent().addClass('current');
-                        $(this).closest('.wp-has-submenu').addClass('current wp-menu-open');
-                    }
-                });
-            })(jQuery);
-        </script>
-        <?php
+    $('#toplevel_page_<?php echo VIRFICE_APP_PREFIX; ?> .wp-submenu .wp-first-item').remove();
+    $('#toplevel_page_<?php echo VIRFICE_APP_PREFIX; ?> .wp-submenu a').each(function() {
+        if (currentUrl.indexOf($(this).attr('href')) !== -1) {
+            $(this).parent().addClass('current');
+            $(this).closest('.wp-has-submenu').addClass('current wp-menu-open');
+        }
+    });
+})(jQuery);
+</script>
+<?php
     }
 
-    /**
-     * Adds a custom rewrite rule to map a specific URL structure to the plugin's admin page.
-     * This can be used to create custom routes within the WordPress admin area.
-     *
-     * @return void
-     */
-    public function rewrite_route()
-    {
-        add_rewrite_rule('^(.+)', 'admin.php?page=' . VIRFICE_APP_PREFIX, 'top');
-    }
+    // /**
+    //  * Adds a custom rewrite rule to map a specific URL structure to the plugin's admin page.
+    //  * This can be used to create custom routes within the WordPress admin area.
+    //  *
+    //  * @return void
+    //  */
+    // public function rewrite_route()
+    // {
+    //     add_rewrite_rule('^(.+)', 'admin.php?page=' . VIRFICE_APP_PREFIX, 'top');
+    // }
 
     /**
      * Outputs custom styles in the WordPress admin header.
