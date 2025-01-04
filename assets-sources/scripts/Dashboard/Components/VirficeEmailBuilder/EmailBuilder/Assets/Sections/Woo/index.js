@@ -1,7 +1,7 @@
 import React from "react";
 import { HandTapIcon } from "@svg-icons";
 import { getBasicEleWrapper } from "../core-ele";
-import { getOrderDetailsString } from "./woo-core-ele";
+import { getOrderAddressString, getOrderDetailsString } from "./woo-core-ele";
 
 const OrderTable = {
   title: "Order Table",
@@ -19,5 +19,21 @@ const OrderTable = {
     }
   ),
 };
+const OrderAddress = {
+  title: "Order Address",
+  icon: <HandTapIcon />,
+  template: getBasicEleWrapper(
+    getOrderAddressString({
+      title: "Order Address",
+    }),
+    {
+      paddingTop: "0",
+      paddingBottom: "36px",
+      paddingLeft: "40px",
+      paddingRight: "40px",
+      textAlign: "left",
+    }
+  ),
+};
 
-export default [OrderTable];
+export default [OrderTable, OrderAddress];

@@ -9,6 +9,7 @@ import ColumnSettings from "./ColumnSettings";
 import SectionSettings from "./SectionSettings";
 import DividerSettings from "./DividerSettings";
 import OrderTableSettings from "./OrderTableSettings";
+import OrderAddressSettings from "./OrderAddressSettings";
 
 const Settings = ({ element }) => {
   const [eleInfo, setEleInfo] = useState({});
@@ -29,6 +30,9 @@ const Settings = ({ element }) => {
       {eleInfo?.type === "section" && <SectionSettings element={element} />}
       {eleInfo?.type === "woocommerce_email_order_details" && (
         <OrderTableSettings element={element} />
+      )}
+      {eleInfo?.type === "woocommerce_email_order_address" && (
+        <OrderAddressSettings element={element} />
       )}
     </div>
   );

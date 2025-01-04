@@ -57,11 +57,11 @@ class InitTask
         /**
          * dummy code start
          */
-        $brand_settings_template_id = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
-        if ($brand_settings_template_id) {
-            $template_content = $this->get_virfice_brand_settings_template_preset();
-            Templates::update_template($brand_settings_template_id, 'Virfice - Brand settings', $template_content);
-        }
+        // $brand_settings_template_id = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
+        // if ($brand_settings_template_id) {
+        //     $template_content = $this->get_virfice_brand_settings_template_preset();
+        //     Templates::update_template($brand_settings_template_id, 'Virfice - Brand settings', $template_content);
+        // }
         /**
          * dummy code end
          */

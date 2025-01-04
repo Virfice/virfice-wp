@@ -482,6 +482,9 @@ class WooEmail extends WP_REST_Controller
 				if ($template_id) {
 					MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_id', $template_id);
 				}
+			} else {
+				$template_content = $this->get_woo_email_virfice_template_preset($email_id);
+				Templates::update_template($_virfice_template_id, $email_id . ' - Virfice', $template_content);
 			}
 		}
 		return true;
