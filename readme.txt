@@ -95,6 +95,7 @@ Yes, please report any issues you face or request any features you may feel requ
 == Changelog ==
 = 1.0.3 =
 * Fix: Disable add_rewrite_rule method
+* Update: Added Telegram, VK, and phone as social links
 
 = 1.0.2 =
 * Fix: Typos in the plugin
