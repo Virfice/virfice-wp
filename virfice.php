@@ -48,10 +48,32 @@ function virfice_check_woocommerce_activation()
             )
         );
     }
+
+    // if (is_admin()) { // Check if in the admin area
+    //     add_rewrite_rule(
+    //         '^virfice$', // Custom URL: https://wordpress.test/virfice
+    //         'wp-admin/admin.php?page=virfice', // Redirect target
+    //         'top'
+    //     );
+    // }
+    // flush_rewrite_rules(); // Saves changes to .htaccess
+    
 }
+
+/**
+ * Deactivates the plugin and removes rewrite rules.
+ */
+// function virfice_deactivation_plugin()
+// {
+//     flush_rewrite_rules(); // Removes changes from .htaccess
+// }
 
 // Register the activation hook to check WooCommerce before activating the plugin
 register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
+// Plugin deactivation hook to clean up
+// register_deactivation_hook(__FILE__, 'deactivate_plugin');
+
+
 
 // Define plugin constants for easier reference
 define('VIRFICE_VERISION', '1.0.1'); // Plugin version
