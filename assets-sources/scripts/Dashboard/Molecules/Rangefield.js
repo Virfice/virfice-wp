@@ -13,6 +13,7 @@ const RangeField = ({
   max = 100,
   step = 1,
   onChange = () => {},
+  icon = null,
 }) => {
   const [values, setValues] = useState([value]);
   useEffect(() => {
@@ -29,7 +30,13 @@ const RangeField = ({
 
   return (
     <div className={`${VIRFICE_APP_PREFIX}-rangefield-wrapper`}>
-      {label && <label className="body__medium">{label}</label>}
+      <div
+        className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-4`}
+        style={{ alignItems: "center" }}
+      >
+        {icon && icon}
+        {label && <label className="body__medium">{label}</label>}
+      </div>
 
       <div className={`${VIRFICE_APP_PREFIX}-range-and-input-wrapper`}>
         <Range

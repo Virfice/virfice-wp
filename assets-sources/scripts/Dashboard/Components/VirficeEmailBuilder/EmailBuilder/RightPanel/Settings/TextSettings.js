@@ -64,7 +64,7 @@ const TextSettings = ({ element }) => {
             <Reusable element={element} type="background" />
             <Reusable element={element} type="padding" />
 
-            <DisabledParentSettings element={element} />
+            {/* <DisabledParentSettings element={element} /> */}
           </div>
         </TabContent>
       </Tab>

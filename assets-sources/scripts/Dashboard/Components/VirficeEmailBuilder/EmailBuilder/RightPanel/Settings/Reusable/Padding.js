@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getElementComputedStylePixelValue } from "../utils";
 import RangeField from "@molecules/Rangefield";
 import Button from "@molecules/Button";
-import { RadiusFull } from "@svg-icons";
+import { RadiusFull, PaddingIcon } from "@svg-icons";
 import { VIRFICE_APP_PREFIX } from "@conf";
 
 const Padding = ({ element }) => {
@@ -68,6 +68,7 @@ const Padding = ({ element }) => {
         <>
           <RangeField
             label={"Top-Bottom"}
+            icon={<PaddingIcon />}
             value={getElementComputedStylePixelValue(element, "padding-top")}
             onChange={(v) => {
               element.style.paddingTop = `${v}px`;
@@ -79,6 +80,11 @@ const Padding = ({ element }) => {
           />
           <RangeField
             label={"Left-Right"}
+            icon={
+              <span style={{ transform: "rotate(90deg)" }}>
+                <PaddingIcon />
+              </span>
+            }
             value={getElementComputedStylePixelValue(element, "padding-left")}
             onChange={(v) => {
               element.style.paddingLeft = `${v}px`;
