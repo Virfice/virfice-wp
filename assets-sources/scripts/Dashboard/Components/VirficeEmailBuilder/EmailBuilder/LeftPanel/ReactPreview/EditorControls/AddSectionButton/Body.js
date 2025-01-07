@@ -34,7 +34,7 @@ const Body = ({ element, onAdd }) => {
           key={i}
         >
           <div>{v.icon}</div>
-          <div>{v.title}</div>
+          <div className={VIRFICE_APP_PREFIX + "-item-title"}>{v.title}</div>
         </div>
       ))}
 
@@ -47,7 +47,7 @@ const Body = ({ element, onAdd }) => {
           key={i}
         >
           <div>{v.icon}</div>
-          <div>{v.title}</div>
+          <div className={VIRFICE_APP_PREFIX + "-item-title"}>{v.title}</div>
         </div>
       ))}
     </div>

@@ -60,10 +60,10 @@ class Dashboard
                         $submenu_file = 'virfice&menu=settings';
                         break;
                     }
-                case 'builder': {
-                        $submenu_file = 'virfice&menu=builder';
-                        break;
-                    }
+                    // case 'builder': {
+                    //         $submenu_file = 'virfice&menu=builder';
+                    //         break;
+                    //     }
             }
         } else {
             // Default to dashboard if no menu parameter is set
@@ -137,7 +137,7 @@ class Dashboard
         add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Dashboard', 'Dashboard', 'manage_woocommerce', 'virfice&menu=dashboard', [$this, 'my_plugin_page']);
         add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Emails', 'Emails', 'manage_woocommerce', 'virfice&menu=woo-email-list', [$this, 'my_plugin_page']);
         add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Settings', 'Settings', 'manage_woocommerce', 'virfice&menu=settings', [$this, 'my_plugin_page']);
-        add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Builder', 'Builder', 'manage_woocommerce', 'virfice&menu=builder', [$this, 'my_plugin_page']);
+        // add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Builder', 'Builder', 'manage_woocommerce', 'virfice&menu=builder', [$this, 'my_plugin_page']);
     }
 
     /**

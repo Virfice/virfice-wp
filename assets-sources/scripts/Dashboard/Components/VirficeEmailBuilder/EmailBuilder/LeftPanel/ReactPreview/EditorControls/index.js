@@ -6,6 +6,7 @@ import {
   isBrandSettingsElementSelected,
 } from "../../../utils";
 import Border from "./Border";
+import { hasQueryParamValue } from "@functions";
 
 const EditorControls = () => {
   const selectedSectionId = useSelector(
@@ -24,7 +25,10 @@ const EditorControls = () => {
 
   if (
     !element ||
-    isBrandSettingsElementSelected(getVirficeElementFromId(selectedElementId))
+    isBrandSettingsElementSelected(
+      getVirficeElementFromId(selectedElementId)
+    ) ||
+    hasQueryParamValue("menu", "virfice-brand-settings")
   ) {
     return null;
   }

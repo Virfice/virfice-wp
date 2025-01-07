@@ -1,10 +1,8 @@
 import React from "react";
 import Landing from "./Landing";
 import { hasQueryParamValue } from "@functions";
-// import BrandSettings from "./BrandSettings";
 import WooEmailList from "./WooEmailList";
 import Settings from "./Settings";
-import EmailBuilder from "@components/VirficeEmailBuilder/EmailBuilder";
 import EmailEditor from "./WooEmailList/EmailEditor";
 import VirficeBrandSettings from "./VirficeBrandSettings";
 
@@ -27,9 +25,6 @@ const Pages = () => {
   }
   if (hasQueryParamValue("menu", "settings")) {
     return <Settings />;
-  }
-  if (hasQueryParamValue("menu", "builder")) {
-    return <EmailBuilder />;
   }
   return <Landing />;
 };

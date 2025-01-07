@@ -26,8 +26,8 @@ export const getOrderDetailsString = ({ title }) =>
     </tr>
 </tbody></table>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" virfice-short_code="order_items_wrapper" style="font-size: 14px;">
-    <tbody><tr virfice-short_code="order_item_wrapper" style="border-bottom: 1px solid #E5E5E5; padding: 12px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  style="font-size: 14px;">
+    <tbody virfice-short_code="order_items_wrapper"><tr virfice-short_code="order_item_wrapper" style="border-bottom: 1px solid #E5E5E5; padding: 12px;">
         <td width="50%" style="padding: 12px 16px;">
             <div virfice-short_code="order_item_name">Product title</div>
         </td>

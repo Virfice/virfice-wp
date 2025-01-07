@@ -73,6 +73,9 @@ class VirficeTestEmailSend extends WP_REST_Controller
 			return $this->process_and_send_woo_test_email($email_id, $template, $emails);
 		} else if ($type === 'test_email') {
 			//else send test email
+			$template = Utils::wrap_template_with_html_tag($template);
+			$headers      = "Content-Type: text/html\r\n";
+			wp_mail($emails, 'Test Email from Virfice - Brand Settings', $template, $headers);
 		}
 
 		return $_REQUEST;

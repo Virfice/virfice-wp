@@ -12,6 +12,7 @@ import Settings from "./Settings";
 import ReadyBlocks from "./ReadyBlocks";
 import EmailBGSettings from "./EmailBGSettings";
 import BrandSettings from "./Settings/BrandSettings";
+import { hasQueryParamValue } from "@functions";
 
 const RightPanel = () => {
   const selectedElementId = useSelector(
@@ -37,7 +38,8 @@ const RightPanel = () => {
       <div
         className={`${VIRFICE_APP_PREFIX}-flex-col ${VIRFICE_APP_PREFIX}-gap-20`}
       >
-        {isBrandSettingsElementSelected(element) ? (
+        {isBrandSettingsElementSelected(element) ||
+        hasQueryParamValue("menu", "virfice-brand-settings") ? (
           <BrandSettings element={element} />
         ) : (
           <Card className={`${VIRFICE_APP_PREFIX}-flex-col`} style={{ gap: 0 }}>

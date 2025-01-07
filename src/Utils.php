@@ -5,7 +5,7 @@ namespace Virfice;
 use Exception;
 use Virfice\API\Settings;
 use Virfice\Includes\Logger;
-
+use WC_Email;
 // Security check to prevent direct access
 if (!defined('ABSPATH')) {
     exit;
@@ -321,6 +321,11 @@ class Utils
 </body>
 </html>
 HTML;
+
+        // Create an instance of WC_Email
+        $email = new WC_Email();
+        // Apply custom CSS to the email template
+        $html_template = $email->style_inline($html_template);
 
         return $html_template;
     }

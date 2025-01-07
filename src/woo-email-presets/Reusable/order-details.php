@@ -18,23 +18,21 @@
         </td>
     </tr>
 </table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" virfice-short_code="order_items_wrapper"
-    style="font-size: 14px;">
-    <tr virfice-short_code="order_item_wrapper" style="border-bottom: 1px solid #E5E5E5; padding: 12px;">
-        <td width="50%" style="padding: 12px 16px;">
-            <div virfice-short_code="order_item_name">Product title</div>
-        </td>
-        <td width="25%" style="padding: 12px 16px;">
-            <div virfice-short_code="order_item_quantity">1</div>
-        </td>
-        <td width="25%" style="padding: 12px 16px;">
-            <div virfice-short_code="order_item_price">200.00$</div>
-        </td>
-    </tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 14px;">
+    <tbody virfice-short_code="order_items_wrapper">
+        <tr virfice-short_code="order_item_wrapper" style="border-bottom: 1px solid #E5E5E5; padding: 12px;">
+            <td width="50%" style="padding: 12px 16px;">
+                <div virfice-short_code="order_item_name">Product title</div>
+            </td>
+            <td width="25%" style="padding: 12px 16px;">
+                <div virfice-short_code="order_item_quantity">1</div>
+            </td>
+            <td width="25%" style="padding: 12px 16px;">
+                <div virfice-short_code="order_item_price">200.00$</div>
+            </td>
+        </tr>
+    </tbody>
 </table>
-
-
 <table width="100%" border="0" cellspacing="0" cellpadding="0"
     style="max-width: 317px; border: 1px solid #E5E5E5; margin-left: auto; margin-top: 32px; font-size: 13px;">
     <tr style="padding: 12px;">
