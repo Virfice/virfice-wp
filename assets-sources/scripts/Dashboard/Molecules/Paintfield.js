@@ -63,14 +63,16 @@ const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {
   const styles = {
     color: {
       width: "100%",
-      height: "22px",
+      height: "24px",
       background: getColorCode(color),
+      borderRadius: "3px",
     },
     swatch: {
       padding: "5px",
       background: "#fff",
       cursor: "pointer",
       width: "100%",
+      borderRadius: "4px",
     },
     popover: {
       position: "absolute",

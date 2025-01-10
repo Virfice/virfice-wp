@@ -1,55 +1,63 @@
 .#{$classPrefix}-selectfileld-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  .body__medium {
+    color: var(--text-text-title);
+  }
+
+  input {
+    cursor: pointer;
     display: flex;
-    width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: var(--p-sapce-100);
+    align-self: stretch;
+    padding: 7px 12px;
+    padding-right: 36px;
+    border-radius: var(--Radius-S, 4px);
+    border: 1px solid var(--border-input-border-input-idle, #c9c9c9);
+    background: var(--Bg-input-bg-input-idle, #fcfcfc);
+    line-height: 20px;
+  }
 
-    .body__medium {
-        color: var(--text-text-title);
+  .#{$classPrefix}-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1a1a1a15;
+  }
+
+  ul {
+    position: absolute;
+    z-index: 2;
+    background: white;
+    width: 100%;
+    top: 23px;
+
+    border-radius: var(--radius-S, 4px);
+    border: 1px solid var(--border-input-border-input-idle, #c9c9c9);
+    background: var(--bg-bg-soul, #fff);
+
+    /* shadow-pop */
+    box-shadow: 3px 3px 0px 0px #c1c1c1;
+
+    li {
+      cursor: pointer;
+      cursor: pointer;
+      padding-left: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 0;
+
+      &:hover {
+        background-color: #b0b0b024;
+      }
     }
-
-    input {
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--p-sapce-100);
-        align-self: stretch;
-        padding: 8px 12px;
-        padding-right: 36px;
-        border-radius: var(--Radius-S, 4px);
-        border: 1px solid var(--Border-button-border-btn-idle, #949494);
-        background: var(--Bg-input-bg-input-idle, #FCFCFC);
-    }
-
-    .#{$classPrefix}-backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: #1a1a1a15;
-    }
-
-    ul {
-        position: absolute;
-        z-index: 2;
-        background: white;
-        width: 100%;
-        top: 22px;
-
-        li {
-            cursor: pointer;
-            cursor: pointer;
-            padding-left: 16px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            margin-bottom: 0;
-
-            &:hover {
-                background-color: #b0b0b024;
-            }
-        }
-    }
+  }
 }

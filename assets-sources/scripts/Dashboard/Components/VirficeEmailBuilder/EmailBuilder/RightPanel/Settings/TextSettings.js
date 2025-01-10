@@ -53,6 +53,7 @@ const TextSettings = ({ element }) => {
         </TabContent>
         <TabContent index={1}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
+            <div className="title__medium">Text</div>
             <PaintField
               label={"Text color"}
               value={getElementComputedStyle(element, "color")}
@@ -60,11 +61,11 @@ const TextSettings = ({ element }) => {
                 element.style.color = v;
               }}
             />
-
-            <Reusable element={element} type="background" />
-            <Reusable element={element} type="padding" />
-
-            {/* <DisabledParentSettings element={element} /> */}
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
+            <DisabledParentSettings element={element} />
           </div>
         </TabContent>
       </Tab>

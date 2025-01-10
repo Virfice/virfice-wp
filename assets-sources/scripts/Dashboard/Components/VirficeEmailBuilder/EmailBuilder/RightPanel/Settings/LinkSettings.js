@@ -10,9 +10,13 @@ import PaintField from "@molecules/Paintfield";
 import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
 import CheckboxField from "@molecules/CheckboxField";
+import ToggleButton from "@molecules/ToggleButton";
 import DisabledParentSettings from "./DisabledParentSettings";
+import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
+import { getParentElement } from "../../utils";
 
 const LinkSettings = ({ element }) => {
+  const parent = getParentElement(element);
   return (
     <>
       <Tab>
@@ -45,9 +49,11 @@ const LinkSettings = ({ element }) => {
                 element.target = v ? "_blank" : "";
               }}
             />
+            <Reusable element={element} type="font-and-size" />
           </div>
         </TabContent>
         <TabContent index={1}>
+          <div className="title__medium">Button</div>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
             <PaintField
               label={"Text color"}
@@ -57,10 +63,40 @@ const LinkSettings = ({ element }) => {
               }}
             />
 
-            <Reusable element={element} type="background" />
-            <Reusable element={element} type="border-radius" />
-            <Reusable element={element} type="padding" />
+            <Reusable element={element} type="background" disableTitle />
+            <ToggleButton
+              label={"Position"}
+              value={getElementComputedStyle(parent, "text-align")}
+              options={[
+                { value: "left", component: <AlignLeftIcon /> },
+                { value: "center", component: <AlignCenterIcon /> },
+                { value: "right", component: <AlignRightIcon /> },
+              ]}
+              onChange={(v) => {
+                parent.style.textAlign = v;
+              }}
+            />
 
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
+
+            <Reusable
+              element={element}
+              type="border-radius"
+              borderRadiusConf={{ min: 0, max: 100 }}
+              title="Button radius"
+            />
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
+            <Reusable element={element} type="padding" title="Button padding" />
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
             <DisabledParentSettings element={element} />
           </div>
         </TabContent>

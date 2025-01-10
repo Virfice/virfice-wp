@@ -53,6 +53,8 @@ const ImageSettings = ({ element }) => {
     }
     setPosition(getPosition(element));
   };
+
+  console.log(element, element.getAttribute("alt"));
   return (
     <>
       <Tab>
@@ -77,6 +79,15 @@ const ImageSettings = ({ element }) => {
             />
 
             <TextField
+              label={"Alt text"}
+              value={element.alt || ""}
+              onChange={(v) => {
+                console.log(v);
+                element.alt = v;
+              }}
+            />
+
+            <TextField
               label={"URL"}
               value={element.parentElement.href}
               onChange={(v) => {
@@ -94,9 +105,9 @@ const ImageSettings = ({ element }) => {
         </TabContent>
         <TabContent index={1}>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
-            <div className="title__medium">Image Layout</div>
+            <div className="title__medium">Layout</div>
             <RangeField
-              label={"Width"}
+              label={"Image size"}
               value={getElementComputedStylePercentageValue(element, "width")}
               onChange={(v) => {
                 element.style.width = `${v}%`;
@@ -116,10 +127,27 @@ const ImageSettings = ({ element }) => {
               onChange={handleImagePosition}
             />
 
-            <Reusable element={element} type="background" />
-            <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
-            <Reusable element={element} type="border-radius" />
-            <Reusable element={element} type="padding" />
+            <Reusable
+              element={element}
+              type="border"
+              borderConf={{
+                widthTitle: "Image border width",
+                colorTitle: "Image border color",
+              }}
+            />
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
+            <Reusable
+              element={element}
+              type="border-radius"
+              title="Image radius"
+            />
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
 
             <DisabledParentSettings element={element} />
           </div>

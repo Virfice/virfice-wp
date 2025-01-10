@@ -5,38 +5,22 @@ import {
 } from "../utils";
 import PaintField from "@molecules/Paintfield";
 import RangeField from "@molecules/Rangefield";
+import Border from "./Border";
 
-const Background = ({ element }) => {
+const Background = ({ element, disableTitle = false }) => {
   return (
     <>
-      <div className="title__medium">Background</div>
+      {!disableTitle && <div className="title__medium">Background</div>}
 
       <PaintField
-        label={"Background color"}
+        label={"Fill color"}
         value={getElementComputedStyle(element, "background-color")}
         onChange={(v) => {
           element.style.backgroundColor = v;
         }}
       />
 
-      <RangeField
-        label={"Border Width"}
-        value={getElementComputedStylePixelValue(element, "border-width")}
-        onChange={(v) => {
-          element.style.borderWidth = `${v}px`;
-          element.style.borderStyle = `solid`;
-        }}
-        min={0}
-        max={50}
-        step={1}
-      />
-      <PaintField
-        label={"Border color"}
-        value={getElementComputedStyle(element, "border-color")}
-        onChange={(v) => {
-          element.style.borderColor = v;
-        }}
-      />
+      <Border element={element} />
     </>
   );
 };

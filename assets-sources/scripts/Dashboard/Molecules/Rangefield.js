@@ -31,7 +31,7 @@ const RangeField = ({
   return (
     <div className={`${VIRFICE_APP_PREFIX}-rangefield-wrapper`}>
       <div
-        className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-4`}
+        className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-8`}
         style={{ alignItems: "center" }}
       >
         {icon && icon}

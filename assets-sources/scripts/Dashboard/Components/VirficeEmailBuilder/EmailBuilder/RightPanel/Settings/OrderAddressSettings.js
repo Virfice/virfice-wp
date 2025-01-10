@@ -46,7 +46,7 @@ const OrderAddressSettings = ({ element }) => {
           </div>
         </TabContent>
         <TabContent index={1}>
-          <div className="title__medium">Order title</div>
+          <div className="title__medium">Colors</div>
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
             <PaintField
               label={"Text color"}

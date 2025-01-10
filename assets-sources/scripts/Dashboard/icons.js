@@ -948,6 +948,198 @@ export const RadiusFull = () => {
   );
 };
 
+export const PaddingFull = () => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 11.3333L2 4.66667M14 11.3333V4.66667M4.66667 14H11.3333M4.66667 2L11.3333 2"
+        stroke="#171717"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+export const PaddingTopIcon = () => {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="0.5" y="0.745117" width="14" height="4" stroke="#666666" />
+      <path
+        d="M14.504 7.28027V13.7549H0.514893V7.28027"
+        stroke="#666666"
+        strokeDasharray="4 2"
+      />
+    </svg>
+  );
+};
+export const PaddingBottomIcon = () => {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0.5"
+        y="-0.5"
+        width="14"
+        height="4"
+        transform="matrix(1 0 0 -1 0 13.7549)"
+        stroke="#666666"
+      />
+      <path
+        d="M14.504 7.71973V1.24512H0.514893V7.71973"
+        stroke="#666666"
+        strokeDasharray="4 2"
+      />
+    </svg>
+  );
+};
+export const PaddingLeftIcon = () => {
+  return (
+    <svg
+      width="15"
+      height="16"
+      viewBox="0 0 15 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="1.24512"
+        y="15"
+        width="14"
+        height="4"
+        transform="rotate(-90 1.24512 15)"
+        stroke="#666666"
+      />
+      <path
+        d="M7.78027 0.995987H14.2549V14.9851H7.78027"
+        stroke="#666666"
+        strokeDasharray="4 2"
+      />
+    </svg>
+  );
+};
+
+export const PaddingRightIcon = () => {
+  return (
+    <svg
+      width="15"
+      height="16"
+      viewBox="0 0 15 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="-0.5"
+        y="-0.5"
+        width="14"
+        height="4"
+        transform="matrix(0 -1 -1 0 13.2549 14.5)"
+        stroke="#666666"
+      />
+      <path
+        d="M7.21973 0.995987H0.745117L0.745117 14.9851H7.21973"
+        stroke="#666666"
+        strokeDasharray="4 2"
+      />
+    </svg>
+  );
+};
+
+export const RadiusTopLeftIcon = () => {
+  return (
+    <svg
+      width="21"
+      height="20"
+      viewBox="0 0 21 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.5 4H16.02C11.9876 4 9.97143 4 8.43127 4.78475C7.0765 5.47504 5.97504 6.5765 5.28475 7.93127C4.5 9.47143 4.5 11.4876 4.5 15.52V16"
+        stroke="#171717"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+export const RadiusTopRightIcon = () => {
+  return (
+    <svg
+      width="21"
+      height="20"
+      viewBox="0 0 21 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.5 4H4.98C9.01238 4 11.0286 4 12.5687 4.78475C13.9235 5.47504 15.025 6.5765 15.7152 7.93127C16.5 9.47143 16.5 11.4876 16.5 15.52V16"
+        stroke="#171717"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+export const RadiusBottomLeftIcon = () => {
+  return (
+    <svg
+      width="21"
+      height="20"
+      viewBox="0 0 21 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.5 16H16.02C11.9876 16 9.97143 16 8.43127 15.2152C7.0765 14.525 5.97504 13.4235 5.28475 12.0687C4.5 10.5286 4.5 8.51238 4.5 4.48V4"
+        stroke="#171717"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const RadiusBottomRightIcon = () => {
+  return (
+    <svg
+      width="21"
+      height="20"
+      viewBox="0 0 21 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.5 16H4.98C9.01238 16 11.0286 16 12.5687 15.2152C13.9235 14.525 15.025 13.4235 15.7152 12.0687C16.5 10.5286 16.5 8.51238 16.5 4.48V4"
+        stroke="#171717"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const ReadyBlocks = () => {
   return (
     <svg

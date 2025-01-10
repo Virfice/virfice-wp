@@ -45,7 +45,7 @@ const FontAndSize = ({ element, eleArr }) => {
   return (
     <>
       <SelectField
-        label={"Font family"}
+        label={"Font"}
         value={getSelectOptionsValueFromOptions(
           FONT_FAMILY_LIST,
           getElementComputedStyle(element, "font-family")

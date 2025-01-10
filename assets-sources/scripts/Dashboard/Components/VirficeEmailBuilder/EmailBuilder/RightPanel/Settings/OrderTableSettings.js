@@ -18,7 +18,6 @@ import {
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 
 const OrderTableSettings = ({ element }) => {
-  const order_table = getAllElementsUsingSelector(element, "order_table");
   const order_table_headers = getAllElementsUsingSelector(
     element,
     "order_table_header"
@@ -77,6 +76,10 @@ const OrderTableSettings = ({ element }) => {
                   onChange={(v) => {
                     order_details_title[0].style.textAlign = v;
                   }}
+                />
+                <Divider
+                  style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+                  extraWidth={"40px"}
                 />
               </>
             )}
@@ -137,11 +140,20 @@ const OrderTableSettings = ({ element }) => {
                     ).innerText = v;
                   }}
                 />
+                <Divider
+                  style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+                  extraWidth={"40px"}
+                />
               </>
             )}
 
             <div className="title__medium">Table data</div>
             <Reusable element={element} type="font-and-size" />
+
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
 
             {order_table_summary.length > 0 && (
               <>
@@ -217,23 +229,31 @@ const OrderTableSettings = ({ element }) => {
               </>
             )}
 
+            <Divider
+              style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
+              extraWidth={"40px"}
+            />
             <div className="title__medium">Layout</div>
-            {order_table.length > 0 && (
-              <>
-                <ToggleButton
-                  label={"Alignment"}
-                  value={getElementComputedStyle(order_table[0], "text-align")}
-                  options={[
-                    { value: "left", component: <AlignLeftIcon /> },
-                    { value: "center", component: <AlignCenterIcon /> },
-                    { value: "right", component: <AlignRightIcon /> },
-                  ]}
-                  onChange={(v) => {
-                    order_table[0].style.textAlign = v;
-                  }}
-                />
-              </>
-            )}
+            <ToggleButton
+              label={"Alignment"}
+              value={getElementComputedStyle(element, "text-align")}
+              options={[
+                { value: "left", component: <AlignLeftIcon /> },
+                { value: "center", component: <AlignCenterIcon /> },
+                { value: "right", component: <AlignRightIcon /> },
+              ]}
+              onChange={(v) => {
+                element.style.textAlign = v;
+              }}
+            />
+            <Reusable
+              element={element}
+              type="border"
+              borderConf={{
+                widthTitle: "Border width",
+                colorTitle: "Border color",
+              }}
+            />
           </div>
         </TabContent>
         <TabContent index={1}>

@@ -3,19 +3,38 @@ import Background from "./Background";
 import Padding from "./Padding";
 import BorderRadius from "./BorderRadius";
 import FontAndSize from "./FontAndSize";
+import Border from "./Border";
 
-const Reusable = ({ element, type, eleArr }) => {
+const Reusable = ({
+  element,
+  type,
+  eleArr,
+  disableTitle,
+  borderRadiusConf,
+  borderConf,
+  title,
+}) => {
   switch (type) {
     case "background": {
-      return <Background element={element} />;
+      return <Background element={element} disableTitle={disableTitle} />;
+    }
+
+    case "border": {
+      return <Border element={element} borderConf={borderConf} />;
     }
 
     case "padding": {
-      return <Padding element={element} />;
+      return <Padding element={element} title={title} />;
     }
 
     case "border-radius": {
-      return <BorderRadius element={element} />;
+      return (
+        <BorderRadius
+          element={element}
+          borderRadiusConf={borderRadiusConf}
+          title={title}
+        />
+      );
     }
 
     case "font-and-size": {
