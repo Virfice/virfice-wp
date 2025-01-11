@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
-import RightControl from "./RightControls";
 import AddSectionButton from "./AddSectionButton";
+import { getVirficeElementFromId } from "../../../utils";
 import useElementPositionTracker from "./useElementPositionTracker";
 
-const Border = ({ element }) => {
+const HoveredSection = () => {
   const borderDiv = useRef(null);
+  const hoveredSectionId = useSelector(
+    (state) => state.builder?.hoveredSectionId
+  );
 
+  const element = getVirficeElementFromId(hoveredSectionId);
   const position = useElementPositionTracker(element);
 
   useEffect(() => {
@@ -24,10 +29,13 @@ const Border = ({ element }) => {
 
   if (!element) return null;
   return (
-    <div className={VIRFICE_APP_PREFIX + "-element-border"} ref={borderDiv}>
-      <RightControl element={element} />
+    <div
+      className={VIRFICE_APP_PREFIX + "-element-hover-border"}
+      ref={borderDiv}
+    >
+      <AddSectionButton element={element} />
     </div>
   );
 };
 
-export default Border;
+export default HoveredSection;

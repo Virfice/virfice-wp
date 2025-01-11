@@ -3,13 +3,13 @@ import { createPortal } from "react-dom";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { useSelector } from "react-redux";
 import {
-  getChildElements,
   getVirficeElementFromId,
   isBrandSettingsElementSelected,
 } from "../../../utils";
 import Border from "./Border";
 import { hasQueryParamValue } from "@functions";
 import AddSectionButton from "./AddSectionButton";
+import HoveredSection from "./HoveredSection";
 
 const EditorControls = () => {
   const selectedSectionId = useSelector(
@@ -18,6 +18,7 @@ const EditorControls = () => {
   const selectedElementId = useSelector(
     (state) => state.builder?.selectedElementId
   );
+
   const [element, setElement] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(false);
   const templateWrapper = document.getElementById("virfice-email-preview");
@@ -55,6 +56,7 @@ const EditorControls = () => {
       {!isCanvasEmpty && (selectedElementId || selectedSectionId) && (
         <Border element={element} />
       )}
+      {!isCanvasEmpty && <HoveredSection />}
       {templateWrapper &&
         isCanvasEmpty &&
         !selectedElementId &&

@@ -13,11 +13,25 @@ const AddSectionButton = ({ element }) => {
   useEffect(() => {
     setOpen(false);
   }, [element]);
+
+  useEffect(() => {
+    window.AddSectionButtonOpen = open;
+  }, [open]);
+
   return (
-    <div className={VIRFICE_APP_PREFIX + "-add-section-button-wrapper"}>
+    <div
+      className={
+        VIRFICE_APP_PREFIX +
+        "-add-section-button-wrapper " +
+        `${
+          open ? VIRFICE_APP_PREFIX + "-add-section-button-wrapper-opened" : ""
+        }`
+      }
+    >
       {!open && (
         <div
           className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-8`}
+          style={{ pointerEvents: "all" }}
         >
           <Button
             leftIcon={<AddIcon />}
@@ -41,7 +55,10 @@ const AddSectionButton = ({ element }) => {
         </div>
       )}
       {open && (
-        <div className={VIRFICE_APP_PREFIX + "-add-section-items-wrapper"}>
+        <div
+          className={VIRFICE_APP_PREFIX + "-add-section-items-wrapper"}
+          style={{ pointerEvents: "all" }}
+        >
           <Header
             onClose={() => {
               setOpen(false);

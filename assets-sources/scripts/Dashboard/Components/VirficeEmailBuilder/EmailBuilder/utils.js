@@ -1,6 +1,7 @@
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { dispatchDashboardAction, generateRandomId } from "@functions";
 import {
+  onHoverSection,
   onSelectElement,
   onSelectSection,
   setBuilderData,
@@ -68,11 +69,13 @@ export const selectElementUsingID = (id) => {
 const initHoverEvent = (ele) => {
   ele.addEventListener("mouseover", (e) => {
     e.stopPropagation();
-    ele.classList.add(`${VIRFICE_APP_PREFIX}-hover-border`);
+
+    if (window.AddSectionButtonOpen) return;
+    const sectionEle = getParentSection(ele);
+    dispatchDashboardAction(onHoverSection, getVirficeAttr(sectionEle, "id"));
   });
   ele.addEventListener("mouseleave", (e) => {
     e.stopPropagation();
-    ele.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
   });
 };
 
@@ -158,12 +161,10 @@ export const cloneElement = (element) => {
   let clone = element.cloneNode(true);
 
   updateVirficeAttr(clone, "id", generateRandomId());
-  clone.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
 
   let allEle = clone.querySelectorAll(`[${VIRFICE_APP_PREFIX}-ele_type]`);
   allEle.forEach((ele) => {
     updateVirficeAttr(ele, "id", generateRandomId());
-    ele.classList.remove(`${VIRFICE_APP_PREFIX}-hover-border`);
   });
 
   return clone;

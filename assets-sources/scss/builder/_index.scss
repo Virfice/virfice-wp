@@ -57,6 +57,24 @@
     }
   }
 
+  .#{$classPrefix}-element-hover-border {
+    // background-color: red;
+    box-shadow: 0 2px 0 0 #e4e4e4ac;
+    /* Border bottom */
+    box-shadow: 0 -2px 0 0 #e4e4e4ac;
+    /* Border top */
+    box-shadow: -2px 0 0 0 #e4e4e4ac;
+    /* Border left */
+    box-shadow: 2px 0 0 0 #e4e4e4ac;
+    /* Border right */
+    box-shadow: 0 0 0 2px #e4e4e4ac;
+    /* All the borders by using the spread properties */
+    pointer-events: none;
+    .#{$classPrefix}-add-section-button-wrapper {
+      opacity: 0;
+    }
+  }
+
   .#{$classPrefix}-empty-add-button {
     position: relative;
     padding: 20px;
@@ -73,8 +91,13 @@
     align-items: center;
     width: 100%;
 
-    .#{$classPrefix}-btn {
-      pointer-events: all;
+    transition: all 0.3s;
+
+    &.#{$classPrefix}-add-section-button-wrapper-opened {
+      opacity: 1;
+    }
+    &:hover {
+      opacity: 1 !important;
     }
 
     .#{$classPrefix}-add-section-items-wrapper {
@@ -158,19 +181,6 @@
     user-select: none;
     cursor: default;
     line-height: 1 !important;
-  }
-
-  .#{$classPrefix}-hover-border {
-    box-shadow: 0 2px 0 0 #e4e4e4ac;
-    /* Border bottom */
-    box-shadow: 0 -2px 0 0 #e4e4e4ac;
-    /* Border top */
-    box-shadow: -2px 0 0 0 #e4e4e4ac;
-    /* Border left */
-    box-shadow: 2px 0 0 0 #e4e4e4ac;
-    /* Border right */
-    box-shadow: 0 0 0 2px #e4e4e4ac;
-    /* All the borders by using the spread properties */
   }
 }
 

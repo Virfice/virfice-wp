@@ -14,6 +14,9 @@ const SingleBlock = ({ title, html, preview }) => {
   const selectedSectionId = useSelector(
     (state) => state.builder?.selectedSectionId
   );
+  const hoveredSectionId = useSelector(
+    (state) => state.builder?.hoveredSectionId
+  );
 
   useEffect(() => {
     //TODO: need to set height
@@ -21,7 +24,9 @@ const SingleBlock = ({ title, html, preview }) => {
   }, []);
   const handleAddReadyBlock = () => {
     const element = cloneElementFromString(html); // This creates the new DOM element.
-    const selected_section = getVirficeElementFromId(selectedSectionId); // Retrieve the selected section.
+    const selected_section = getVirficeElementFromId(
+      hoveredSectionId || selectedSectionId
+    ); // Retrieve the selected section.
 
     if (selected_section && element) {
       // Insert the new element after the selected section.

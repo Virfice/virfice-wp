@@ -8,6 +8,7 @@ const initialState = {
   global_style: ``,
   selectedElementId: false,
   selectedSectionId: false,
+  hoveredSectionId: false,
   post: {},
   showReadyBlocks: false,
 };
@@ -112,6 +113,15 @@ export const onSelectSection = (elementId) => (dispatch) => {
   dispatch(
     setBuilderData({
       key: "selectedSectionId",
+      value: elementId,
+    })
+  );
+};
+
+export const onHoverSection = (elementId) => (dispatch) => {
+  dispatch(
+    setBuilderData({
+      key: "hoveredSectionId",
       value: elementId,
     })
   );
