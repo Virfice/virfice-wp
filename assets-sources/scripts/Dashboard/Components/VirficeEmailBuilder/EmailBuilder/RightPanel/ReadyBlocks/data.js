@@ -8,7 +8,7 @@ export const allBlocks = [
         title: "Header 1",
         html: `<table virfice-title="Columns" virfice-settings_status="disabled" virfice-ele_type="section" virfice-id="m5saj4v030yvwxztr"><tbody virfice-title="Columns" virfice-ele_type="row" virfice-id="m5sey7c16yk5qkmi3" style="background-color: rgb(255, 255, 255);">
         <tr>
-            <td virfice-title="Column 1" virfice-ele_type="column" style="padding-bottom: 32px;padding-top: 32px;text-align: center;padding-left: 32px;" virfice-id="m5sey7c1ty07opab2" class="virfice-hover-border">
+            <td virfice-title="Column 1" virfice-ele_type="column" style="padding-bottom: 32px;padding-top: 32px;text-align: center;padding-left: 32px;" virfice-id="m5sey7c1ty07opab2">
                 <a virfice-ele_type="image" virfice-title="Image" style="width:100%;" virfice-id="m5sey7c1cvlperhzl" class=""><img virfice-my_selector="image" src="${
                   virfice.assetsBase + "/virfice.png"
                 }"></a>

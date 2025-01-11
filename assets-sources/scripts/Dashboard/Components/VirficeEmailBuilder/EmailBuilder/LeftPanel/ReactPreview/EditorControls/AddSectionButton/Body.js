@@ -5,22 +5,35 @@ import wooSections from "../../../../Assets/Sections/Woo";
 import {
   cloneElement,
   cloneElementFromString,
+  getVirficeAttr,
   initEmailBuilder,
+  selectElementUsingID,
 } from "../../../../utils";
 
 const Body = ({ element, onAdd }) => {
+  const templateWrapper = document.getElementById("virfice-email-preview");
   const addSection = (section) => {
     let template = cloneElementFromString(section.template);
-    insertHtmlAfterElement(element, template.outerHTML);
+    if (element) {
+      insertHtmlAfterElement(element, template.outerHTML);
+    } else {
+      templateWrapper.append(template);
+    }
     initEmailBuilder(); //TODO: need to init only for new element
     onAdd();
+
+    selectElementUsingID(getVirficeAttr(template, "id"));
   };
 
   const insertHtmlAfterElement = (element, htmlString) => {
-    if (!element || !htmlString) return;
+    if (!htmlString) return;
 
-    // Insert the HTML string after the target element
-    element.insertAdjacentHTML("afterend", htmlString);
+    if (element) {
+      // Insert the HTML string after the target element
+      element.insertAdjacentHTML("afterend", htmlString);
+    } else {
+      templateWrapper.innerHTML = htmlString;
+    }
   };
 
   return (

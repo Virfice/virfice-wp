@@ -17,7 +17,7 @@ export const initEmailBuilder = () => {
 
 const initAllElementsCommonEvents = (wrapper) => {
   let allEle = wrapper.querySelectorAll(`[${VIRFICE_APP_PREFIX}-ele_type]`);
-  allEle.forEach((ele) => {
+  allEle.forEach((ele, i) => {
     initClickEvent(ele);
     initHoverEvent(ele);
     // initEmptyElement(ele);//not used
@@ -34,24 +34,35 @@ const initClickEvent = (ele) => {
     console.log(e.target.tagName);
     let validEle = e.target;
     let vID = getVirficeAttr(validEle, "id");
-    if (!vID) {
-      validEle = getParentElement(ele);
-    }
+    selectElementUsingID(vID);
+  });
+};
 
-    if (!isSettingsEnabled(validEle)) {
-      //thats mean single basic element selected. like: image, text, button
-      validEle = validEle.querySelector(`[${VIRFICE_APP_PREFIX}-ele_type]`);
-    }
+export const selectElementUsingID = (id) => {
+  let ele = getVirficeElementFromId(id);
+  let validEle = null;
+  if (!id) {
+    validEle = getParentElement(ele);
+  } else {
+    validEle = ele;
+  }
 
+  if (!isSettingsEnabled(validEle)) {
+    //thats mean single basic element selected. like: image, text, button
+    validEle = validEle.querySelector(`[${VIRFICE_APP_PREFIX}-ele_type]`);
+  }
+
+  if (validEle) {
     dispatchDashboardAction(onSelectElement, getVirficeAttr(validEle, "id"));
+  }
 
+  if (ele) {
     let sectionEle = ele;
-
     if (getVirficeAttr(sectionEle, "ele_type") !== "section") {
       sectionEle = getParentSection(sectionEle);
     }
     dispatchDashboardAction(onSelectSection, getVirficeAttr(sectionEle, "id"));
-  });
+  }
 };
 
 const initHoverEvent = (ele) => {

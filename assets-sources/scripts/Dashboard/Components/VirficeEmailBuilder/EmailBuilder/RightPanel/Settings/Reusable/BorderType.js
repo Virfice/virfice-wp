@@ -3,7 +3,7 @@ import { getElementComputedStylePixelValue } from "../utils";
 import RangeField from "@molecules/Rangefield";
 import { VIRFICE_APP_PREFIX } from "@conf";
 
-const BORDER_STYLES = ["solid", "dotted", "dashed", "double"];
+const BORDER_STYLES = ["none", "solid", "dotted", "dashed", "double"];
 const BorderType = ({ element, eleArr }) => {
   const handleBorderStyleChange = (v) => {
     element.style.borderStyle = v;

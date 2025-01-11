@@ -55,90 +55,98 @@
         }
       }
     }
+  }
 
+  .#{$classPrefix}-empty-add-button {
+    position: relative;
+    padding: 20px;
     .#{$classPrefix}-add-section-button-wrapper {
+      position: relative !important;
+      bottom: unset;
+    }
+  }
+  .#{$classPrefix}-add-section-button-wrapper {
+    position: absolute;
+    bottom: -16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .#{$classPrefix}-btn {
+      pointer-events: all;
+    }
+
+    .#{$classPrefix}-add-section-items-wrapper {
       position: absolute;
-      bottom: -16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: #f4f9e1;
       width: 100%;
+      top: -14px;
+      border: 1px dashed #89a31f;
+    }
 
-      .#{$classPrefix}-btn {
+    .#{$classPrefix}-add-section-header {
+      display: flex;
+      padding: 16px;
+      align-items: center;
+      gap: 8px;
+      justify-content: space-between;
+      border-bottom: 1px solid #c9c9c9;
+
+      .#{$classPrefix}-title {
+        color: var(--text-text-headline, #1a1a1a);
+        /* title/medium */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        /* 150% */
+        letter-spacing: 0.15px;
+      }
+    }
+
+    .#{$classPrefix}-add-section-body {
+      padding: 16px;
+
+      // display: flex;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+      gap: 16px;
+
+      .#{$classPrefix}-item {
         pointer-events: all;
-      }
-
-      .#{$classPrefix}-add-section-items-wrapper {
-        position: absolute;
-        background: #f4f9e1;
-        width: 100%;
-        top: -14px;
-        border: 1px dashed #89a31f;
-      }
-
-      .#{$classPrefix}-add-section-header {
         display: flex;
-        padding: 16px;
+        // width: 90px;
+        height: 80px;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        gap: 8px;
-        justify-content: space-between;
-        border-bottom: 1px solid #c9c9c9;
+        gap: var(--spacing, 4px);
+        flex-shrink: 0;
 
-        .#{$classPrefix}-title {
-          color: var(--text-text-headline, #1a1a1a);
-          /* title/medium */
-          font-family: Roboto;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 24px;
-          /* 150% */
-          letter-spacing: 0.15px;
+        border-radius: 16px;
+
+        border: var(--size-0, 1px) solid
+          var(--border-button-border-btn-idle, #949494);
+
+        background: var(--bg-button-bg-btn-secondary-idle, #fcfcfc);
+        /* shadow-button */
+        box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.2);
+
+        cursor: pointer;
+
+        &:hover {
+          background: var(--bg-button-bg-btn-secondary-hover, #f2f2f2);
         }
-      }
 
-      .#{$classPrefix}-add-section-body {
-        padding: 16px;
-
-        // display: flex;
-        // flex-wrap: wrap;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
-        gap: 16px;
-
-        .#{$classPrefix}-item {
-          pointer-events: all;
-          display: flex;
-          // width: 90px;
-          height: 80px;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: var(--spacing, 4px);
-          flex-shrink: 0;
-
-          border-radius: 16px;
-
-          border: var(--size-0, 1px) solid
-            var(--border-button-border-btn-idle, #949494);
-
-          background: var(--bg-button-bg-btn-secondary-idle, #fcfcfc);
-          /* shadow-button */
-          box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.2);
-
-          cursor: pointer;
-
-          &:hover {
-            background: var(--bg-button-bg-btn-secondary-hover, #f2f2f2);
-          }
-
-          .#{$classPrefix}-item-title {
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            max-width: 67px;
-            overflow: hidden;
-          }
+        .#{$classPrefix}-item-title {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 67px;
+          overflow: hidden;
         }
       }
     }

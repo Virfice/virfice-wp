@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import {
   cloneElementFromString,
+  getVirficeAttr,
   getVirficeElementFromId,
   initEmailBuilder,
+  selectElementUsingID,
 } from "../../utils";
 import { useSelector } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
@@ -27,12 +29,12 @@ const SingleBlock = ({ title, html, preview }) => {
         element,
         selected_section.nextSibling
       );
-      initEmailBuilder(); //TODO: need to init only for new element
     } else {
-      console.error(
-        "Failed to find the selected section or the element is null."
-      );
+      const templateWrapper = document.getElementById("virfice-email-preview");
+      templateWrapper.append(element);
     }
+    initEmailBuilder(); //TODO: need to init only for new element
+    selectElementUsingID(getVirficeAttr(element, "id"));
   };
   return (
     <div className={VIRFICE_APP_PREFIX + "-single-ready-block"}>
