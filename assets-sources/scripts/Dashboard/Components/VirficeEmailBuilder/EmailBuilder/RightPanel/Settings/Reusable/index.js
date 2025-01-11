@@ -4,6 +4,7 @@ import Padding from "./Padding";
 import BorderRadius from "./BorderRadius";
 import FontAndSize from "./FontAndSize";
 import Border from "./Border";
+import BorderType from "./BorderType";
 
 const Reusable = ({
   element,
@@ -39,6 +40,10 @@ const Reusable = ({
 
     case "font-and-size": {
       return <FontAndSize element={element} eleArr={eleArr} />;
+    }
+
+    case "border-type": {
+      return <BorderType element={element} eleArr={eleArr} />;
     }
 
     default:

@@ -78,8 +78,7 @@
 
       .#{$classPrefix}-add-section-header {
         display: flex;
-        width: 594px;
-        padding: 12px 16px 12px 40px;
+        padding: 16px;
         align-items: center;
         gap: 8px;
         justify-content: space-between;
@@ -99,15 +98,19 @@
       }
 
       .#{$classPrefix}-add-section-body {
-        padding: 20px 40px;
+        padding: 16px;
+
+        // display: flex;
+        // flex-wrap: wrap;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
         gap: 16px;
 
         .#{$classPrefix}-item {
           pointer-events: all;
           display: flex;
-          width: 90px;
+          // width: 90px;
           height: 80px;
           flex-direction: column;
           justify-content: center;

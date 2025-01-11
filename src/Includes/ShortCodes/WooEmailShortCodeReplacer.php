@@ -74,9 +74,24 @@ class WooEmailShortCodeReplacer
             'subscription_number' => $this->get_subscription_number(),
             'subscription_date' => $this->get_subscription_date(),
             'subscription_total' => $this->get_subscription_total(),
+            'order_notes' => $this->get_order_notes(), // Adding order notes here
         ];
 
         return $short_codes;
+    }
+
+    // Function to get the order notes
+    private function get_order_notes()
+    {
+        $order_id = $this->order->get_id();
+        $notes = wc_get_order_notes(['order_id' => $order_id]);
+        $notes_list = [];
+
+        foreach ($notes as $note) {
+            $notes_list[] = $note->content; // You can customize the output as needed
+        }
+
+        return implode("\n", $notes_list); // Joining notes into a single string
     }
 
     private function replace_conditional_short_codes($content)

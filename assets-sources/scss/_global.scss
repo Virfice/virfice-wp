@@ -334,3 +334,28 @@ a {
     margin-bottom: -12px;
   }
 }
+
+.#{$classPrefix}-border-type-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .#{$classPrefix}-border-type-selection-item {
+    padding: 24px 12px;
+    border-radius: var(--radius-S, 4px);
+    border: 1px solid var(--border-input-border-input-idle, #c9c9c9);
+    background: var(--bg-input-bg-input-idle, #fcfcfc);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--bg-bg-brand, #c8e265);
+      background: var(--bg-button-bg-btn-primary-inverse, #f4f9e1);
+    }
+    span {
+      width: 100%;
+      display: block;
+      border-top-width: 4px;
+      // border-top-style: solid;
+      border-top-color: var(--border-button-border-btn-idle, #949494);
+    }
+  }
+}

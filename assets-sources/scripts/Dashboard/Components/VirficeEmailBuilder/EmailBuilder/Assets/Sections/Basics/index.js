@@ -117,8 +117,8 @@ const Divider = {
   title: "Divider",
   icon: <DividerIcon />,
   template: getBasicEleWrapper(
-    `<div  ${VIRFICE_APP_PREFIX}-title="Divider" ${VIRFICE_APP_PREFIX}-ele_type="divider" style="background:#161A05; width: 100%;height: 1px;"></div>`,
-    { title: "Divider", paddingTop: "16px", paddingBottom: "16px" }
+    `<div  ${VIRFICE_APP_PREFIX}-title="Divider" ${VIRFICE_APP_PREFIX}-ele_type="divider" style="border-top-width:2px;border-style:dashed;width: 100%;"></div>`,
+    { title: "Divider", paddingTop: "48px", paddingBottom: "48px" }
   ),
 };
 

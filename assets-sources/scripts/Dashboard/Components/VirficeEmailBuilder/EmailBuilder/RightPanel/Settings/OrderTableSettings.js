@@ -14,6 +14,7 @@ import DisabledParentSettings from "./DisabledParentSettings";
 import {
   getAllElementsUsingSelector,
   getElementUsingMySelector,
+  getParentSection,
 } from "../../utils";
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 
@@ -181,6 +182,22 @@ const OrderTableSettings = ({ element }) => {
                 />
 
                 <TextField
+                  label={"Discount title"}
+                  value={
+                    getElementUsingMySelector(
+                      element,
+                      "order_table_summary_discount"
+                    ).innerText
+                  }
+                  onChange={(v) => {
+                    getElementUsingMySelector(
+                      element,
+                      "order_table_summary_discount"
+                    ).innerText = v;
+                  }}
+                />
+
+                <TextField
                   label={"Shipping title"}
                   value={
                     getElementUsingMySelector(
@@ -226,6 +243,22 @@ const OrderTableSettings = ({ element }) => {
                     ).innerText = v;
                   }}
                 />
+
+                <TextField
+                  label={"Note title"}
+                  value={
+                    getElementUsingMySelector(
+                      element,
+                      "order_table_summary_order_notes"
+                    ).innerText
+                  }
+                  onChange={(v) => {
+                    getElementUsingMySelector(
+                      element,
+                      "order_table_summary_order_notes"
+                    ).innerText = v;
+                  }}
+                />
               </>
             )}
 
@@ -247,7 +280,7 @@ const OrderTableSettings = ({ element }) => {
               }}
             />
             <Reusable
-              element={element}
+              element={getParentSection(element)}
               type="border"
               borderConf={{
                 widthTitle: "Border width",

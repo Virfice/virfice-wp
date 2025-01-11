@@ -42,12 +42,22 @@ export const getOrderDetailsString = ({ title }) =>
 
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 317px; border: 1px solid #E5E5E5; margin-left: auto; margin-top: 32px; font-size: 13px;">
-    <tbody><tr style="padding: 12px;">
+    <tbody>
+    <tr style="padding: 12px;">
         <td width="50%" style="padding: 12px 16px;">
             <div virfice-selector="order_table_summary" virfice-my_selector="order_table_summary_subtotal" contenteditable="">Subtotal:</div>
         </td>
         <td width="50%" style="padding: 12px 16px;">
-            <div virfice-short_code="order_subtotal">200.00$</div>
+            <div virfice-short_code="order_subtotal">250.00$</div>
+        </td>
+    </tr>
+
+    <tr style="padding: 12px;">
+        <td width="50%" style="padding: 12px 16px;">
+            <div virfice-selector="order_table_summary" virfice-my_selector="order_table_summary_discount" contenteditable="">Discount:</div>
+        </td>
+        <td width="50%" style="padding: 12px 16px;">
+            <div virfice-short_code="discount_amount">50.00$</div>
         </td>
     </tr>
 
@@ -83,7 +93,13 @@ export const getOrderDetailsString = ({ title }) =>
             </div>
         </td>
     </tr>
-</tbody></table>    </div>`;
+    </tbody>
+</table>
+    <div style="margin-top: 32px;">
+        <span virfice-selector="order_table_summary" virfice-my_selector="order_table_summary_order_notes" contenteditable="">Note:</span>
+        <span virfice-short_code="order_notes">Order notes will goes here.</span>
+    </div>
+</div>`;
 
 export const getOrderAddressString = ({ title = "Order Address" }) =>
   `<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 14px;" virfice-title="${title}" virfice-ele_type="woocommerce_email_order_address" class="">
