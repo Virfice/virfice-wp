@@ -20,9 +20,9 @@ export const getOnlyEditableTextString = ({
   }</${tag}>`;
 
 export const getImageString = ({ title }) =>
-  `<a style="width:100%;"><img ${VIRFICE_APP_PREFIX}-title="${
+  `<a ${VIRFICE_APP_PREFIX}-ele_type="image" ${VIRFICE_APP_PREFIX}-title="${
     title || "Image"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="image" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-image.jpg" /></a>`;
+  }" style="width:100%;"><img virfice-my_selector="image" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-image.jpg" /></a>`;
 
 export const getVideoString = ({ title }) =>
   `<img ${VIRFICE_APP_PREFIX}-title="${
@@ -36,24 +36,24 @@ export const getButtonString = ({ title, content }) =>
     content || "Button"
   }</a>`;
 
-export const getSingleColTable = (
-  child,
-  { title, paddingTop, paddingBottom }
-) => {
-  return `<table ${VIRFICE_APP_PREFIX}-title="${
-    title || "Custom Section"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="section">
-      <tbody>
-          <tr>
-              <td ${VIRFICE_APP_PREFIX}-title="Column" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-top: ${
-    paddingTop || "0px"
-  };padding-bottom: ${paddingBottom || "0px"}; text-align:center;">
-                  ${child}
-              </td>
-          </tr>
-      </tbody>
-  </table>`;
-};
+// export const getSingleColTable = (
+//   child,
+//   { title, paddingTop, paddingBottom }
+// ) => {
+//   return `<table ${VIRFICE_APP_PREFIX}-title="${
+//     title || "Custom Section"
+//   }" ${VIRFICE_APP_PREFIX}-ele_type="section">
+//       <tbody>
+//           <tr>
+//               <td ${VIRFICE_APP_PREFIX}-title="Column" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-top: ${
+//     paddingTop || "0px"
+//   };padding-bottom: ${paddingBottom || "0px"}; text-align:center;">
+//                   ${child}
+//               </td>
+//           </tr>
+//       </tbody>
+//   </table>`;
+// };
 
 export const getBasicEleWrapper = (
   child,

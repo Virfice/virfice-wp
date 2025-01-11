@@ -14,8 +14,8 @@ const ReadyBlocks = ({ category = "*" }) => {
     <div className={VIRFICE_APP_PREFIX + "-ready-blocks-wrapper"}>
       {filterData.map((v, i) => (
         <Accordion title={v.title} key={v.id} open={i === 0}>
-          {v.blocks.map(({ title, html }, i) => (
-            <SingleBlock key={i} title={title} html={html} />
+          {v.blocks.map(({ title, html, preview }, i) => (
+            <SingleBlock key={i} title={title} html={html} preview={preview} />
           ))}
           <Divider
             style={{ marginLeft: -20, marginBottom: 0 }}

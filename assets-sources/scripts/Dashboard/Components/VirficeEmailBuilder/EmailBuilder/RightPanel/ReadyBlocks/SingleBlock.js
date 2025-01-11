@@ -7,7 +7,7 @@ import {
 import { useSelector } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
 
-const SingleBlock = ({ title, html }) => {
+const SingleBlock = ({ title, html, preview }) => {
   const wrapperRef = useRef(null);
   const selectedSectionId = useSelector(
     (state) => state.builder?.selectedSectionId
@@ -39,8 +39,10 @@ const SingleBlock = ({ title, html }) => {
       <div
         className={VIRFICE_APP_PREFIX + "-single-ready-block-html-wrapper"}
         onClick={handleAddReadyBlock}
-        dangerouslySetInnerHTML={{ __html: html }}
-      ></div>
+        // dangerouslySetInnerHTML={{ __html: html }}
+      >
+        <img src={preview} />
+      </div>
     </div>
   );
 };

@@ -13,7 +13,6 @@ import {
   getBasicEleWrapper,
   getButtonString,
   getImageString,
-  getSingleColTable,
   getTextString,
   getVideoString,
 } from "../core-ele";
@@ -71,7 +70,7 @@ const ImageWithText = {
   icon: <TextOutdentIcon />,
   template: `<table ${VIRFICE_APP_PREFIX}-title="Image with Text" ${VIRFICE_APP_PREFIX}-ele_type="section">
     <tbody>
-        <tr ${VIRFICE_APP_PREFIX}-title="Row 1" ${VIRFICE_APP_PREFIX}-ele_type="row">
+        <tr>
             <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style"text-align: center;">
                 ${getImageString({ title: "Image" })}
             </td>
@@ -88,11 +87,11 @@ const ImageWithText = {
 };
 
 const Column = {
-  title: "Column",
+  title: "Columns",
   icon: <ColumnIcon />,
-  template: `<table ${VIRFICE_APP_PREFIX}-title="Column" ${VIRFICE_APP_PREFIX}-ele_type="section">
-    <tbody>
-        <tr ${VIRFICE_APP_PREFIX}-title="Row 1" ${VIRFICE_APP_PREFIX}-ele_type="row">
+  template: `<table ${VIRFICE_APP_PREFIX}-title="Columns" ${VIRFICE_APP_PREFIX}-settings_status="disabled" ${VIRFICE_APP_PREFIX}-ele_type="section">
+    <tbody ${VIRFICE_APP_PREFIX}-title="Columns" ${VIRFICE_APP_PREFIX}-ele_type="row">
+        <tr>
             <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-bottom: 16px;text-align: center;">
                 ${getImageString({ title: "Image" })}
                 ${getTextString({
@@ -117,7 +116,7 @@ const Column = {
 const Divider = {
   title: "Divider",
   icon: <DividerIcon />,
-  template: getSingleColTable(
+  template: getBasicEleWrapper(
     `<div  ${VIRFICE_APP_PREFIX}-title="Divider" ${VIRFICE_APP_PREFIX}-ele_type="divider" style="background:#161A05; width: 100%;height: 1px;"></div>`,
     { title: "Divider", paddingTop: "16px", paddingBottom: "16px" }
   ),

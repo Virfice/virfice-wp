@@ -178,7 +178,8 @@ class Dashboard
                 'restBase' => rest_url(),
                 'adminUrl' => Utils::get_current_admin_url(),
                 'nonce' => wp_create_nonce('wp_rest'),
-                'pluginBase' => VIRFICE_PLUGIN_BASE
+                'pluginBase' => VIRFICE_PLUGIN_BASE,
+                'assetsBase' => VIRFICE_STATIC_FILES_BASE,
             ));
 
             wp_enqueue_media();

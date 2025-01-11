@@ -14,6 +14,7 @@ import Reusable from "./Reusable";
 import TextField from "@molecules/TextField";
 import CheckboxField from "@molecules/CheckboxField";
 import DisabledParentSettings from "./DisabledParentSettings";
+import { getElementUsingMySelector } from "../../utils";
 
 const getPosition = (element) => {
   if (
@@ -33,28 +34,30 @@ const getPosition = (element) => {
 };
 
 const ImageSettings = ({ element }) => {
-  const [position, setPosition] = useState(getPosition(element));
+  const image = getElementUsingMySelector(element, "image");
 
+  if (!image) return null;
+
+  const [position, setPosition] = useState(getPosition(element));
   useEffect(() => {
-    setPosition(getPosition(element));
-  }, [element]);
+    setPosition(getPosition(image));
+  }, [image]);
 
   const handleImagePosition = (position) => {
     if (position === "left") {
-      element.style.marginLeft = "0px";
+      image.style.marginLeft = "0px";
     }
     if (position === "right") {
-      element.style.marginLeft = "auto";
-      element.style.marginRight = "0px";
+      image.style.marginLeft = "auto";
+      image.style.marginRight = "0px";
     }
     if (position === "center") {
-      element.style.marginLeft = "auto";
-      element.style.marginRight = "auto";
+      image.style.marginLeft = "auto";
+      image.style.marginRight = "auto";
     }
-    setPosition(getPosition(element));
+    setPosition(getPosition(image));
   };
 
-  console.log(element, element.getAttribute("alt"));
   return (
     <>
       <Tab>
@@ -67,38 +70,38 @@ const ImageSettings = ({ element }) => {
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
             <MediaUploader
               label={"Change Image"}
-              value={element.src}
+              value={image.src}
               onDelete={() => {
                 // settingsChange("woocommerce_email_header_image", "");
               }}
               onSelect={(media) => {
                 // settingsChange("woocommerce_email_header_image", media.url);
-                element.src = media.url;
+                image.src = media.url;
               }}
               info={"An image you want to show in the email header."}
             />
 
             <TextField
               label={"Alt text"}
-              value={element.alt || ""}
+              value={image.alt || ""}
               onChange={(v) => {
                 console.log(v);
-                element.alt = v;
+                image.alt = v;
               }}
             />
 
             <TextField
               label={"URL"}
-              value={element.parentElement.href}
+              value={element.href}
               onChange={(v) => {
-                element.parentElement.href = v;
+                element.href = v;
               }}
             />
             <CheckboxField
               label={"Open in a new tab"}
-              value={element.parentElement.target || false}
+              value={element.target || false}
               onChange={(v) => {
-                element.parentElement.target = v ? "_blank" : "";
+                element.target = v ? "_blank" : "";
               }}
             />
           </div>
@@ -108,9 +111,9 @@ const ImageSettings = ({ element }) => {
             <div className="title__medium">Layout</div>
             <RangeField
               label={"Image size"}
-              value={getElementComputedStylePercentageValue(element, "width")}
+              value={getElementComputedStylePercentageValue(image, "width")}
               onChange={(v) => {
-                element.style.width = `${v}%`;
+                image.style.width = `${v}%`;
               }}
               min={1}
               max={100}
@@ -128,7 +131,7 @@ const ImageSettings = ({ element }) => {
             />
 
             <Reusable
-              element={element}
+              element={image}
               type="border"
               borderConf={{
                 widthTitle: "Image border width",
@@ -140,7 +143,7 @@ const ImageSettings = ({ element }) => {
               extraWidth={"40px"}
             />
             <Reusable
-              element={element}
+              element={image}
               type="border-radius"
               title="Image radius"
             />

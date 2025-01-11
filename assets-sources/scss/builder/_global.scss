@@ -4,6 +4,9 @@
   [contenteditable] {
     outline: 0px solid transparent;
   }
+  a img {
+    pointer-events: none;
+  }
 }
 
 .virfice-template-wrapper {

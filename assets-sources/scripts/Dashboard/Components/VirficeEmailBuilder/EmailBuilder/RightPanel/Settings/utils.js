@@ -12,6 +12,7 @@ export const getElementBasicSettings = (element) => {
 };
 
 export const getElementComputedStyle = (element, key) => {
+  if (!element) return "";
   const computedStyle = window.getComputedStyle(element);
   let v = computedStyle[key];
   // console.log({ key, value: v });

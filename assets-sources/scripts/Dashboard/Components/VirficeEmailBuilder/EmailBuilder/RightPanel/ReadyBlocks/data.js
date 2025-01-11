@@ -9,6 +9,7 @@ export const allBlocks = [
         html: `<div virfice-ele_type="section" virfice-settings_status="disabled" style="padding-top: 16px;padding-bottom: 16px; text-align:center;" virfice-id="m43uygelujy09c1e4" class="">
   <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m43uygelddnt0cklb" class="" style="font-size: 51px;">Logo</p>
   </div>`,
+        preview: virfice.assetsBase + "/ready-blocks/header5.webp",
       },
       {
         id: 2,
@@ -22,6 +23,7 @@ export const allBlocks = [
           </tr>
       </tbody>
   </table>`,
+        preview: virfice.assetsBase + "/ready-blocks/header6.webp",
       },
     ],
   },
@@ -35,6 +37,7 @@ export const allBlocks = [
         html: `<div virfice-ele_type="section" virfice-settings_status="disabled" style="padding-top: 16px;padding-bottom: 16px; text-align:center;" virfice-id="m43uygelujy09c1e4" class="">
   <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m43uygelddnt0cklb" class="" style="font-size: 51px;">Logo</p>
   </div>`,
+        preview: virfice.assetsBase + "/ready-blocks/header5.webp",
       },
       {
         id: 2,
@@ -48,6 +51,7 @@ export const allBlocks = [
           </tr>
       </tbody>
   </table>`,
+        preview: virfice.assetsBase + "/ready-blocks/header5.webp",
       },
     ],
   },
@@ -61,6 +65,7 @@ export const allBlocks = [
         html: `<div virfice-ele_type="section" virfice-settings_status="disabled" style="padding-top: 16px;padding-bottom: 16px; text-align:center;" virfice-id="m43uygelujy09c1e4" class="">
   <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m43uygelddnt0cklb" class="" style="font-size: 51px;">Logo</p>
   </div>`,
+        preview: virfice.assetsBase + "/ready-blocks/header5.webp",
       },
       {
         id: 2,
@@ -74,6 +79,7 @@ export const allBlocks = [
           </tr>
       </tbody>
   </table>`,
+        preview: virfice.assetsBase + "/ready-blocks/header5.webp",
       },
     ],
   },
