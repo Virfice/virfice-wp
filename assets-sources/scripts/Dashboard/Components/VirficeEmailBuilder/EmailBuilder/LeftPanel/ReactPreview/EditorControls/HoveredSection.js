@@ -15,7 +15,11 @@ const HoveredSection = () => {
   const position = useElementPositionTracker(element);
 
   useEffect(() => {
-    updatePosition();
+    if (!borderDiv.current) return;
+    borderDiv.current.style.display = "none";
+    setTimeout(() => {
+      updatePosition();
+    }, 10);
   }, [position]);
   const updatePosition = () => {
     if (!borderDiv.current) return;
@@ -25,6 +29,7 @@ const HoveredSection = () => {
     borderDiv.current.style.width = position.width + "px";
     borderDiv.current.style.height = position.height + "px";
     borderDiv.current.style.position = "fixed"; // Use `absolute` or `fixed` based on your requirement
+    borderDiv.current.style.display = "block";
   };
 
   if (!element) return null;
