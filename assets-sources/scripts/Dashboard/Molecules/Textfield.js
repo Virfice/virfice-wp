@@ -24,7 +24,6 @@ const TextField = ({
   const handleKeyDown = (e) => {
     let v = value * 1;
     if (!Number.isInteger(v)) {
-      console.error("The value is not an integer.", v);
       return;
     }
     if (e.key === "ArrowUp") {

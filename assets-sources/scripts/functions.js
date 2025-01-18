@@ -68,7 +68,7 @@ export const generateRandomId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
 };
 
-export const saveEmailOuterAndInnerBGColor = () => {
+export const saveEmailOuterAndInnerBGColor = async () => {
   const outerPreviewWrapper = document.querySelector("#virfice-editor-wrapper");
   const emailPreviewWrapper = document.querySelector("#virfice-email-preview");
   const outerBgColor = getElementComputedStyle(

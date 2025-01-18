@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SelectField from "@molecules/SelectField";
 import { setWooEmailSingleData } from "../wooEmailSingleSlice";
 import { getSelectOptionsValueFromOptions } from "@functions";
-const escapedHtmlToOriginal = (text) => {
+export const escapedHtmlToOriginal = (text) => {
   if (!text) return "";
   return text
     .replace(/&amp;/g, "&")

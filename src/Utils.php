@@ -343,4 +343,14 @@ HTML;
             echo "Failed to write to log file: " . $e->getMessage();
         }
     }
+
+    public static function get_woo_email_preview_text($email_id)
+    {
+        $meta_name = 'woocommerce_' . $email_id . '_settings';
+        $settings = get_option($meta_name);
+        if (isset($settings['virfice_preview_text'])) {
+            return "<span style='font-size: 0; color: #fff; max-height: 0; max-width: 0; opacity: 0; overflow: hidden;height:0;width:1px;'>" . $settings['virfice_preview_text'] . "</span>";
+        }
+        return '';
+    }
 }

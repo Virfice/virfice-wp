@@ -13,21 +13,21 @@ import {
   emailSingleVirficeAsync,
 } from "./wooEmailSingleSlice";
 import { saveSingleTemplate } from "@components/VirficeEmailBuilder/builderSlice";
+import { initEmailBuilder } from "../../../Components/VirficeEmailBuilder/EmailBuilder/utils";
+import { showNotificationBell } from "../../../Components/componentsSlice";
 
 const VirficeEditor = () => {
   const email_id = getParamValue("email_id");
   const dispatch = useDispatch();
-  const emailSettings = useSelector(
-    (state) => state.wooEmailSingle?.email?.settings
-  );
   const virfice_template = useSelector(
     (state) => state.wooEmailSingle?.virfice_template
   );
 
+  const builderPost = useSelector((state) => state.builder.post);
+
   useEffect(() => {
     dispatch(emailSingleAsync(email_id));
     dispatch(emailSingleVirficeAsync(email_id));
-
     //TODO: need to get all shortCode list from backend.
   }, []);
 
@@ -36,7 +36,14 @@ const VirficeEditor = () => {
   };
 
   const handleDiscardClick = () => {
-    console.log("discard button click");
+    const templateWrapper = document.querySelector("#virfice-email-preview");
+    templateWrapper.innerHTML = builderPost.post_content;
+
+    initEmailBuilder();
+
+    dispatch(
+      showNotificationBell({ title: "Template discarded", type: "success" })
+    );
   };
   const handleSaveClick = () => {
     console.log("save button click");
@@ -60,7 +67,12 @@ const VirficeEditor = () => {
         })
       );
 
-      saveEmailOuterAndInnerBGColor();
+      saveEmailOuterAndInnerBGColor().then(() => {
+        window.location.href = addParams({
+          menu: "woo-email-edit-preview-virfice",
+          email_id: email_id,
+        });
+      });
     }
   };
 
@@ -70,6 +82,7 @@ const VirficeEditor = () => {
         backAction={handleBackActionClick}
         discardAction={handleDiscardClick}
         saveAction={handleSaveClick}
+        saveButtonText="Save & Next ->"
         size1280
         marginBottom={false}
       />

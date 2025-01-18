@@ -8,6 +8,7 @@ const StickyTopNav = ({
   backAction,
   discardAction,
   saveAction,
+  saveButtonText,
   size1280,
   marginBottom = true,
 }) => {
@@ -46,7 +47,11 @@ const StickyTopNav = ({
                   />
                 )}
                 {saveAction && (
-                  <Button type="primary" title="Save" onClick={saveAction} />
+                  <Button
+                    type="primary"
+                    title={saveButtonText || "Save"}
+                    onClick={saveAction}
+                  />
                 )}
               </div>
             </div>

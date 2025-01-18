@@ -19,6 +19,7 @@ use Virfice\AdminNotice;
 use Virfice\API\API;
 use Virfice\Dashboard;
 use Virfice\InitTask;
+use Virfice\Utils;
 use Virfice\WooEmailPreview\Route as WooEmailPreviewRoute;
 use Virfice\WooEmailEditWithButton;
 use Virfice\WooEmailHooks;

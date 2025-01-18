@@ -19,7 +19,8 @@ const Pages = () => {
   }
   if (
     hasQueryParamValue("menu", "woo-email-edit") ||
-    hasQueryParamValue("menu", "woo-email-edit-virfice")
+    hasQueryParamValue("menu", "woo-email-edit-virfice") ||
+    hasQueryParamValue("menu", "woo-email-edit-preview-virfice")
   ) {
     return <EmailEditor />;
   }
