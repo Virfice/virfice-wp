@@ -181,21 +181,26 @@ const OrderTableSettings = ({ element }) => {
                   }}
                 />
 
-                <TextField
-                  label={"Discount title"}
-                  value={
-                    getElementUsingMySelector(
-                      element,
-                      "order_table_summary_discount"
-                    ).innerText
-                  }
-                  onChange={(v) => {
-                    getElementUsingMySelector(
-                      element,
-                      "order_table_summary_discount"
-                    ).innerText = v;
-                  }}
-                />
+                {getElementUsingMySelector(
+                  element,
+                  "order_table_summary_discount"
+                ) && (
+                  <TextField
+                    label={"Discount title"}
+                    value={
+                      getElementUsingMySelector(
+                        element,
+                        "order_table_summary_discount"
+                      ).innerText
+                    }
+                    onChange={(v) => {
+                      getElementUsingMySelector(
+                        element,
+                        "order_table_summary_discount"
+                      ).innerText = v;
+                    }}
+                  />
+                )}
 
                 <TextField
                   label={"Shipping title"}
@@ -244,21 +249,26 @@ const OrderTableSettings = ({ element }) => {
                   }}
                 />
 
-                <TextField
-                  label={"Note title"}
-                  value={
-                    getElementUsingMySelector(
-                      element,
-                      "order_table_summary_order_notes"
-                    ).innerText
-                  }
-                  onChange={(v) => {
-                    getElementUsingMySelector(
-                      element,
-                      "order_table_summary_order_notes"
-                    ).innerText = v;
-                  }}
-                />
+                {getElementUsingMySelector(
+                  element,
+                  "order_table_summary_order_notes"
+                ) && (
+                  <TextField
+                    label={"Note title"}
+                    value={
+                      getElementUsingMySelector(
+                        element,
+                        "order_table_summary_order_notes"
+                      ).innerText
+                    }
+                    onChange={(v) => {
+                      getElementUsingMySelector(
+                        element,
+                        "order_table_summary_order_notes"
+                      ).innerText = v;
+                    }}
+                  />
+                )}
               </>
             )}
 

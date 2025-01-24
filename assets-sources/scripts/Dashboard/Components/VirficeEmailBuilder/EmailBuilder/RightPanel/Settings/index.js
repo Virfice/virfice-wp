@@ -17,10 +17,7 @@ const Settings = ({ element }) => {
     setEleInfo(getElementBasicSettings(element));
   }, [element]);
   return (
-    <div
-      className={VIRFICE_APP_PREFIX + "-settings-wrapper"}
-      style={{ width: "100%" }}
-    >
+    <div className={VIRFICE_APP_PREFIX + "-settings-wrapper"}>
       {eleInfo?.type === "text" && <TextSettings element={element} />}
       {eleInfo?.type === "image" && <ImageSettings element={element} />}
       {eleInfo?.type === "link" && <LinkSettings element={element} />}

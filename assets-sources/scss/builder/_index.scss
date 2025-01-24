@@ -1,15 +1,29 @@
 @import "global";
 
-.#{$classPrefix}-builder-left-panel-wrapper {
-  width: 900px;
-  height: calc(-120px + 100vh);
-  overflow: scroll;
-}
+.#{$classPrefix}-builder-section-main {
+  position: absolute;
+  top: 112px;
+  height: calc(100vh - 112px);
+  overflow: hidden;
+  margin: auto;
+  width: 100%;
 
-.#{$classPrefix}-builder-right-panel-wrapper {
-  width: 380px;
-  height: calc(-120px + 100vh);
-  overflow: scroll;
+  .#{$classPrefix}-builder-left-panel-wrapper {
+    width: 900px;
+    height: calc(-120px + 100vh);
+    // overflow: scroll;
+
+    #virfice-editor-wrapper {
+      height: calc(-112px + 100vh);
+      overflow: scroll;
+    }
+  }
+
+  .#{$classPrefix}-builder-right-panel-wrapper {
+    width: 380px;
+    height: calc(-120px + 100vh);
+    // overflow: scroll;
+  }
 }
 
 .#{$classPrefix}-editor-wrapper {
@@ -185,6 +199,14 @@
 }
 
 .#{$classPrefix}-settings-wrapper {
+  width: 378px;
+  height: calc(100vh - 186px);
+  overflow: scroll;
+  margin-left: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 16px;
+  margin-bottom: -16px;
   .#{$classPrefix}-child-list {
     display: flex;
     flex-direction: column;

@@ -15,10 +15,7 @@ const EmailBGSettings = () => {
         <div className={`title__medium`}>Email background</div>
       </div>
       <Divider style={{ marginLeft: -20 }} extraWidth={"40px"} />
-      <div
-        className={VIRFICE_APP_PREFIX + "-settings-wrapper"}
-        style={{ width: "100%" }}
-      >
+      <div className={VIRFICE_APP_PREFIX + "-settings-wrapper"}>
         <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
           <PaintField
             label={"Body background"}

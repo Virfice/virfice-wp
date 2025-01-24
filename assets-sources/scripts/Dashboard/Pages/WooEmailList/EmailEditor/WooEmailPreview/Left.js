@@ -63,7 +63,9 @@ const Left = () => {
                 className={`${VIRFICE_APP_PREFIX}-inbox-preview-active-sub-title`}
               >
                 {wooEmailSingleChangedSettings["subject"] ||
-                  form_fields.subject.placeholder}
+                  wooEmailSingleChangedSettings["subject_full"] ||
+                  form_fields?.subject?.placeholder ||
+                  form_fields?.subject_full?.placeholder}
               </div>
               <div
                 className={`${VIRFICE_APP_PREFIX}-inbox-preview-active-message`}

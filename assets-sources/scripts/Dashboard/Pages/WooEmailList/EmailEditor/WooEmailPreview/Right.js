@@ -44,7 +44,10 @@ const Right = () => {
     <div style={{ flexGrow: 1 }}>
       <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
         <TextField
-          placeholder={form_fields.subject.placeholder}
+          placeholder={
+            form_fields?.subject?.placeholder ||
+            form_fields?.subject_full?.placeholder
+          }
           label={"Subject"}
           value={wooEmailSingleChangedSettings["subject"] || ""}
           onChange={(v) => {
@@ -54,7 +57,10 @@ const Right = () => {
           helpText={
             <span
               dangerouslySetInnerHTML={{
-                __html: escapedHtmlToOriginal(form_fields.subject.description),
+                __html: escapedHtmlToOriginal(
+                  form_fields?.subject?.description ||
+                    form_fields?.subject_full?.description
+                ),
               }}
             ></span>
           }

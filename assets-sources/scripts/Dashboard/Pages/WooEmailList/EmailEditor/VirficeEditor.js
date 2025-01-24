@@ -86,7 +86,7 @@ const VirficeEditor = () => {
         size1280
         marginBottom={false}
       />
-      <section style={{ position: "relative", top: 64 }}>
+      <section className={`${VIRFICE_APP_PREFIX}-builder-section-main`}>
         {/* <PageHeadingAndSubheading
           heading={emailSettings?.title}
           subHeading={emailSettings?.description}
