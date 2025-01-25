@@ -22,12 +22,12 @@ export const getOnlyEditableTextString = ({
 export const getImageString = ({ title }) =>
   `<a ${VIRFICE_APP_PREFIX}-ele_type="image" ${VIRFICE_APP_PREFIX}-title="${
     title || "Image"
-  }" style="width:100%;"><img virfice-my_selector="image" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-image.jpg" /></a>`;
+  }" style="width:100%;"><img virfice-my_selector="image" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-image.webp" /></a>`;
 
 export const getVideoString = ({ title }) =>
   `<img ${VIRFICE_APP_PREFIX}-title="${
     title || "Video"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="video" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-video.jpg" />`;
+  }" ${VIRFICE_APP_PREFIX}-ele_type="video" src="${VIRFICE_PLUGIN_BASE}/assets/files/demo-video.webp" />`;
 
 export const getButtonString = ({ title, content }) =>
   `<a ${VIRFICE_APP_PREFIX}-title="${

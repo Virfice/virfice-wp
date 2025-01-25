@@ -47,12 +47,12 @@ const Left = () => {
         </div>
         <div>
           <img
-            src={virfice.assetsBase + "/inbox-preview.png"}
+            src={virfice.assetsBase + "/inbox-preview.webp"}
             alt="inbox-preview"
             style={{ width: "100%" }}
           />
           <div className={`${VIRFICE_APP_PREFIX}-inbox-preview-active`}>
-            <img src={virfice.assetsBase + "/v.png"} />
+            <img src={virfice.assetsBase + "/v.webp"} />
             <div>
               <div
                 className={`${VIRFICE_APP_PREFIX}-inbox-preview-active-title`}

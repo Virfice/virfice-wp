@@ -15,18 +15,28 @@ const RangeField = ({
   onChange = () => {},
   icon = null,
 }) => {
-  const [values, setValues] = useState([value]);
+  // Helper to ensure value is within min and max
+  const clampValue = (val) => Math.max(min, Math.min(max, val));
+  const [values, setValues] = useState([clampValue(value)]);
+
   useEffect(() => {
-    setValues([value]);
+    // Ensure the initial value respects min and max
+    setValues([clampValue(value)]);
   }, [value]);
+
   const handleOnChange = (values) => {
-    setValues(values);
-    onChange(values[0]);
+    const clampedValue = clampValue(values[0]);
+    setValues([clampedValue]);
+    onChange(clampedValue);
   };
+
   const onInputChange = (value) => {
-    setValues([value]);
-    onChange(value);
+    const clampedValue = clampValue(value);
+    setValues([clampedValue]);
+    onChange(clampedValue);
   };
+
+  console.log({ values, min, max });
 
   return (
     <div className={`${VIRFICE_APP_PREFIX}-rangefield-wrapper`}>

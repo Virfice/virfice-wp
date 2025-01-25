@@ -10,8 +10,8 @@ const useElementPositionTracker = (element) => {
   });
   useEffect(() => {
     if (!element) return;
-    const leftPanelWrapper = document.querySelector(
-      `#${VIRFICE_APP_PREFIX}-builder-left-panel-wrapper`
+    const editorWrapper = document.querySelector(
+      `#${VIRFICE_APP_PREFIX}-editor-wrapper`
     );
     const parentElement = element.parentNode; // Get the parent of the target element
     // Initial update on component mount
@@ -24,8 +24,8 @@ const useElementPositionTracker = (element) => {
     }
 
     // Safely add scroll and resize listeners
-    if (leftPanelWrapper) {
-      leftPanelWrapper.addEventListener("scroll", updatePosition);
+    if (editorWrapper) {
+      editorWrapper.addEventListener("scroll", updatePosition);
     }
 
     window.addEventListener("resize", updatePosition);
@@ -52,8 +52,8 @@ const useElementPositionTracker = (element) => {
       if (virficeDashboard) {
         virficeDashboard.removeEventListener("scroll", updatePosition);
       }
-      if (leftPanelWrapper) {
-        leftPanelWrapper.removeEventListener("scroll", updatePosition);
+      if (editorWrapper) {
+        editorWrapper.removeEventListener("scroll", updatePosition);
       }
       window.removeEventListener("resize", updatePosition);
 

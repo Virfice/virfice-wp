@@ -10,14 +10,14 @@ $settings = Settings::get_email_settings();
 <div virfice-ele_type="section" virfice-settings_status="disabled" virfice-id="m4e94we0e01ydsfn">
     <div virfice-ele_type="brand-settings" style="text-align:center;" virfice-id="m4e94we0e0192jpyn" class="">
         <div style="padding-top: 26px;padding-bottom: 26px;" class="virfice-email-header">
-            <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/virfice.png" style="width: 90px;margin:auto;">
+            <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/virfice.webp" style="width: 90px;margin:auto;">
         </div>
 
         <table>
             <tbody>
                 <tr>
                     <td style="width: 50%;">
-                        <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg">
+                        <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.webp">
                     </td>
                     <td style="width: 50%;padding: 16px;text-align: center;">
                         <h1
@@ -37,14 +37,14 @@ $settings = Settings::get_email_settings();
 
         <div style="padding: 32px; display: flex; gap: 60px; background: white;">
             <div>
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg"
+                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.webp"
                     style="border-radius: 999px 999px 0px 0px; height: 238px;">
                 <p>Orchid Drop</p>
                 <p><strong>$30.00</strong></p>
             </div>
 
             <div>
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg"
+                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.webp"
                     style="border-radius: 999px 999px 0px 0px; height: 238px;">
                 <p>Orchid Drop</p>
                 <p><strong>$30.00</strong></p>
@@ -58,9 +58,9 @@ $settings = Settings::get_email_settings();
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" style="width: 100%; height: 180px;">
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" style="width: 100%; height: 180px;">
-                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.jpg" style="width: 100%; height: 180px;">
+                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.webp" style="width: 100%; height: 180px;">
+                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.webp" style="width: 100%; height: 180px;">
+                <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/demo-image.webp" style="width: 100%; height: 180px;">
             </div>
         </div>
 
@@ -68,7 +68,7 @@ $settings = Settings::get_email_settings();
         <div style="padding-top: 26px;padding-bottom: 26px;" class="virfice-email-footer">
             <?php echo $social_icons_html; ?>
             <p><?php echo $settings['virfice_website_url']; ?></p>
-            <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/virfice.png" style="width: 90px;margin:auto;">
+            <img src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/virfice.webp" style="width: 90px;margin:auto;">
             <?php echo $store_address_html; ?>
         </div>
 

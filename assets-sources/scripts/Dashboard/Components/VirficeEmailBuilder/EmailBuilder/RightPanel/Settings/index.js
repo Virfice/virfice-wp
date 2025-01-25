@@ -10,6 +10,7 @@ import SectionSettings from "./SectionSettings";
 import DividerSettings from "./DividerSettings";
 import OrderTableSettings from "./OrderTableSettings";
 import OrderAddressSettings from "./OrderAddressSettings";
+import WrapperSettings from "./WrapperSettings";
 
 const Settings = ({ element }) => {
   const [eleInfo, setEleInfo] = useState({});
@@ -25,6 +26,7 @@ const Settings = ({ element }) => {
       {eleInfo?.type === "row" && <RowSettings element={element} />}
       {eleInfo?.type === "column" && <ColumnSettings element={element} />}
       {eleInfo?.type === "section" && <SectionSettings element={element} />}
+      {eleInfo?.type === "wrapper" && <WrapperSettings element={element} />}
       {eleInfo?.type === "woocommerce_email_order_details" && (
         <OrderTableSettings element={element} />
       )}

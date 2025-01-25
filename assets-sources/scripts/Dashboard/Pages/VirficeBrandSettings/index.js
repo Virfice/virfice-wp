@@ -72,7 +72,7 @@ const VirficeBrandSettings = () => {
             className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-20`}
           >
             {template_id && <VirficeEmailBuilder template_id={template_id} />}
-            {!template_id && "Template not found"}
+            {!template_id && "Loading..."}
           </div>
         </Container>
       </section>

@@ -5,11 +5,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = (env, argv) => {
+  const isProd = argv.mode === "production";
   const baseConfig = {
-    mode: argv.mode === "production" ? "production" : "development",
-    // devtool: false,
-    // devtool: "source-map",
-    devtool: "inline-source-map",
+    mode: isProd ? "production" : "development",
+    devtool: isProd ? "source-map" : "eval-source-map",
     entry: {
       "js/virfice": "./assets-sources/scripts/index.js",
       "css/virfice-style": "./assets-sources/scss/style.scss",

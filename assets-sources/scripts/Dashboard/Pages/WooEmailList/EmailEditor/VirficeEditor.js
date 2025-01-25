@@ -95,7 +95,7 @@ const VirficeEditor = () => {
         {virfice_template.id && (
           <VirficeEmailBuilder template_id={virfice_template.id} />
         )}
-        {!virfice_template.id && "Template not found"}
+        {!virfice_template.id && "Loading..."}
       </section>
     </>
   );

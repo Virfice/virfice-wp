@@ -173,9 +173,12 @@ export const cloneElement = (element) => {
 export const getParentElement = (element) => {
   let parent = element;
   let flag = true;
-  while (flag) {
+  while (flag && parent) {
     parent = parent.parentNode;
     let parent_atr = getVirficeAttr(parent, "ele_type");
+
+    if (!parent) return false;
+
     if (parent_atr) {
       return parent;
     }

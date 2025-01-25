@@ -2,14 +2,10 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { useSelector } from "react-redux";
-import {
-  getVirficeElementFromId,
-  isBrandSettingsElementSelected,
-} from "../../../utils";
+import { getVirficeElementFromId } from "../../../utils";
 import Border from "./Border";
 import { hasQueryParamValue } from "@functions";
 import AddSectionButton from "./AddSectionButton";
-import HoveredSection from "./HoveredSection";
 
 const EditorControls = () => {
   const selectedSectionId = useSelector(
@@ -19,12 +15,18 @@ const EditorControls = () => {
     (state) => state.builder?.selectedElementId
   );
 
+  const hoveredSectionId = useSelector(
+    (state) => state.builder?.hoveredSectionId
+  );
+
   const [element, setElement] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(false);
   const templateWrapper = document.getElementById("virfice-email-preview");
   useEffect(() => {
     if (selectedSectionId) {
       setElement(getVirficeElementFromId(selectedSectionId));
+    } else {
+      setElement(false);
     }
   }, [selectedSectionId]);
 
@@ -41,25 +43,28 @@ const EditorControls = () => {
     }
   }, [selectedElementId]);
 
-  if (
-    !element ||
-    isBrandSettingsElementSelected(
-      getVirficeElementFromId(selectedElementId)
-    ) ||
-    hasQueryParamValue("menu", "virfice-brand-settings")
-  ) {
+  console.log({ templateWrapper, isCanvasEmpty, selectedElementId });
+
+  if (hasQueryParamValue("menu", "virfice-brand-settings")) {
     return null;
   }
 
   return (
     <div className={VIRFICE_APP_PREFIX + "-element-controls"}>
-      {!isCanvasEmpty && (selectedElementId || selectedSectionId) && (
-        <Border element={element} />
+      {!isCanvasEmpty && hoveredSectionId && (
+        <Border
+          element={getVirficeElementFromId(hoveredSectionId)}
+          type="hovered"
+        />
       )}
-      {!isCanvasEmpty && <HoveredSection />}
+
+      {!isCanvasEmpty && selectedSectionId && (
+        <Border element={element} type="selected" />
+      )}
+      {/* {!isCanvasEmpty && hoveredSectionId && <HoveredSection />} */}
+
       {templateWrapper &&
         isCanvasEmpty &&
-        !selectedElementId &&
         createPortal(
           <div className={VIRFICE_APP_PREFIX + "-empty-add-button"}>
             <AddSectionButton />

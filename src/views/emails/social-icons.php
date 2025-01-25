@@ -63,7 +63,7 @@ $icons = [
                 if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
                     <td>
                         <a href="<?php echo esc_url($virfice_social_links[$value['key']]); ?>" target="_blank">
-                            <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.png'); ?>"
+                            <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.webp'); ?>"
                                 alt="Hello Virfice" style="object-fit: contain;margin-right: 16px;" />
                         </a>
                     </td>

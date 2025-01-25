@@ -24,6 +24,17 @@
     height: calc(-120px + 100vh);
     // overflow: scroll;
   }
+
+  .#{$classPrefix}-ready-blocks-wrapper {
+    width: 378px;
+    height: calc(100vh - 120px);
+    overflow: scroll;
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    margin-bottom: -16px;
+  }
 }
 
 .#{$classPrefix}-editor-wrapper {
