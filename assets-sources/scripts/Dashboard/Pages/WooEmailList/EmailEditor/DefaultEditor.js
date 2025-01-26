@@ -10,10 +10,10 @@ import {
   saveWooEmailSettings,
   setWooEmailSingleData,
 } from "./wooEmailSingleSlice";
-import Card from "@molecules/Card";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
 import { showNotificationBell } from "@components/componentsSlice";
+import Warning from "./Warning";
 
 const DefalutEditor = () => {
   const email_id = getParamValue("email_id");
@@ -71,6 +71,7 @@ const DefalutEditor = () => {
           </div>
         </Container>
       </section>
+      <Warning />
     </>
   );
 };

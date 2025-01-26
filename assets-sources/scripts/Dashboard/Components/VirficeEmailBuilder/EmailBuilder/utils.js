@@ -243,3 +243,19 @@ export const saveBuilderDataToRedux = (element) => {
     value: wrapper.innerHTML,
   });
 };
+
+export const scrollToCanvasElement = ({
+  element,
+  behavior = "smooth",
+  block = "center",
+}) => {
+  if (!element || !(element instanceof HTMLElement)) {
+    console.error("Invalid element passed to scrollToCanvasElement");
+    return;
+  }
+
+  element.scrollIntoView({
+    behavior, // Options: 'auto' or 'smooth'
+    block, // Options: 'start', 'center', 'end', 'nearest'
+  });
+};

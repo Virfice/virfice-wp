@@ -5,8 +5,10 @@ import { duplicateElement } from "./utils";
 import {
   getParentElement,
   getVirficeAttr,
+  getVirficeElementFromId,
   // initEmptyElement,
   saveBuilderDataToRedux,
+  scrollToCanvasElement,
 } from "../../../utils";
 import { dispatchDashboardAction } from "@functions";
 import { onSelectElement, setBuilderData } from "../../../../builderSlice";
@@ -32,8 +34,12 @@ const RightControl = ({ element }) => {
   const dispatch = useDispatch();
 
   const handleDuplicate = () => {
-    duplicateElement(element);
+    let vID = duplicateElement(element);
+
+    // scrollToCanvasElement();
     saveBuilderDataToRedux();
+
+    scrollToCanvasElement({ element: getVirficeElementFromId(vID) });
   };
   const handleDelete = () => {
     if (element.id === VIRFICE_APP_PREFIX + "-root") {

@@ -43,15 +43,15 @@
 
   .#{$classPrefix}-element-controls {
     .#{$classPrefix}-element-border {
-      box-shadow: 0 2px 0 0 #deeda1;
+      box-shadow: 0 2px 0 0 #02732d;
       /* Border bottom */
-      box-shadow: 0 -2px 0 0 #deeda1;
+      box-shadow: 0 -2px 0 0 #02732d;
       /* Border top */
-      box-shadow: -2px 0 0 0 #deeda1;
+      box-shadow: -2px 0 0 0 #02732d;
       /* Border left */
-      box-shadow: 2px 0 0 0 #deeda1;
+      box-shadow: 2px 0 0 0 #02732d;
       /* Border right */
-      box-shadow: 0 0 0 2px #deeda1;
+      box-shadow: 0 0 0 2px #02732d;
       /* All the borders by using the spread properties */
       pointer-events: none;
     }
@@ -84,15 +84,15 @@
 
   .#{$classPrefix}-element-hover-border {
     // background-color: red;
-    box-shadow: 0 2px 0 0 #e4e4e4ac;
+    box-shadow: 0 2px 0 0 #03c04a;
     /* Border bottom */
-    box-shadow: 0 -2px 0 0 #e4e4e4ac;
+    box-shadow: 0 -2px 0 0 #03c04a;
     /* Border top */
-    box-shadow: -2px 0 0 0 #e4e4e4ac;
+    box-shadow: -2px 0 0 0 #03c04a;
     /* Border left */
-    box-shadow: 2px 0 0 0 #e4e4e4ac;
+    box-shadow: 2px 0 0 0 #03c04a;
     /* Border right */
-    box-shadow: 0 0 0 2px #e4e4e4ac;
+    box-shadow: 0 0 0 2px #03c04a;
     /* All the borders by using the spread properties */
     pointer-events: none;
     .#{$classPrefix}-add-section-button-wrapper {

@@ -43,8 +43,6 @@ const EditorControls = () => {
     }
   }, [selectedElementId]);
 
-  console.log({ templateWrapper, isCanvasEmpty, selectedElementId });
-
   if (hasQueryParamValue("menu", "virfice-brand-settings")) {
     return null;
   }

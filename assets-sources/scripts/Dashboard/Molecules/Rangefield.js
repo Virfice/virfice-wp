@@ -36,8 +36,6 @@ const RangeField = ({
     onChange(clampedValue);
   };
 
-  console.log({ values, min, max });
-
   return (
     <div className={`${VIRFICE_APP_PREFIX}-rangefield-wrapper`}>
       <div

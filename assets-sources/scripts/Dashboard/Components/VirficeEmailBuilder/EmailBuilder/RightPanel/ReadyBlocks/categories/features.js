@@ -5,8 +5,8 @@ export const allFeatures = [
     html: `<table virfice-title="Image with Text" virfice-ele_type="section" virfice-id="m6ccq4aka2kyz754w">
     <tbody>
         <tr>
-            <td virfice-title="Column 1" virfice-ele_type="column" style"text-align:="" center;"="" virfice-id="m6ccq4akpns3qt9p1" style="padding: 32px 16px 32px 32px;">
-                <a virfice-ele_type="image" virfice-title="Image" style="width: 257px;height: 257px;" virfice-id="m6ccq4akosnj9o7g5"><img virfice-my_selector="image" src="${virfice.assetsBase}/demo-image.webp" style="height: 100%; border-radius: 15px;"></a>
+            <td virfice-title="Column 1" virfice-ele_type="column" style"text-align:left;" virfice-id="m6ccq4akpns3qt9p1" style="padding: 32px 16px 32px 32px;">
+                <a virfice-ele_type="image" virfice-title="Image" style="width: 100%;" virfice-id="m6ccq4akosnj9o7g5"><img virfice-my_selector="image" src="${virfice.assetsBase}/demo-image.webp" style="height: 100%; border-radius: 15px;"></a>
             </td>
             <td virfice-title="Column 2" virfice-ele_type="column" style="padding: 32px 32px 32px 16px; text-align: left;" virfice-id="m6ccq4akhfbp9z476">
                 <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m6ccq4ak0va9w8p7" style="text-align: left; font-size: 14px; margin-bottom: 8px; color: rgb(0, 0, 255);">Enterprise only</p><p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m6ccq4ak0vaw38p7" style="text-align: left;font-size: 20px;margin-bottom: 8px;font-weight: 700;">Enterprise-Grade features</p><p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m6ccq4ak0va9w38p7" style="text-align: left;font-size: 14px;margin-bottom: 24px;color: rgb(98, 98, 98);line-height: 18px;letter-spacing: 2px;">The AI Cover Letter Generator is a tool that uses artificial intelligence algorithms to The AI Cover Letter Generator is a tool that uses artificial intelligence</p>
@@ -27,7 +27,7 @@ export const allFeatures = [
       <tr style="
   padding: 40px;
 ">
-          <td virfice-title="Column 1" virfice-ele_type="column" style="padding: 69px 19px; text-align: center; flex-direction: row;" virfice-id="m613fe1a7vptcmtsb">
+          <td virfice-title="Column 1" virfice-ele_type="column" style="padding: 69px 19px; text-align: left; flex-direction: row;" virfice-id="m613fe1a7vptcmtsb">
               
               <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable="" virfice-id="m613fe1aagunfwc6c" style="text-align: left; color: rgb(87, 91, 253); font-family: verdana; font-size: 24px;">Free <br>Worldwide<br>Shipping</p><div><br></div><p></p>
               <a virfice-title="Button" virfice-ele_type="link" style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px; background-color: rgb(255, 255, 255); color: rgb(87, 91, 253); border-width: 2px; border-style: solid; border-color: rgb(87, 91, 253); font-family: verdana;" contenteditable="" virfice-id="m613fe1az6o6kd4vb">Shop Now</a>

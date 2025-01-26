@@ -13,6 +13,7 @@ const Modal = ({
   showCloseButton = true,
   onClose,
   closeOnBackdropClick = false,
+  hideHeader = false,
 }) => {
   const [show, setShow] = useState(open);
 
@@ -39,19 +40,21 @@ const Modal = ({
         onClick={handleBackdropClick}
       ></div>
       <div className={`${VIRFICE_APP_PREFIX}-modal-wrapper`}>
-        <div className={`${VIRFICE_APP_PREFIX}-modal-header`}>
-          <div>
-            <div className="title__small">{heading}</div>
-          </div>
-          {showCloseButton && (
-            <div
-              className={`${VIRFICE_APP_PREFIX}-modal-close`}
-              onClick={closeModal}
-            >
-              <CloseIcon />
+        {!hideHeader && (
+          <div className={`${VIRFICE_APP_PREFIX}-modal-header`}>
+            <div>
+              <div className="title__small">{heading}</div>
             </div>
-          )}
-        </div>
+            {showCloseButton && (
+              <div
+                className={`${VIRFICE_APP_PREFIX}-modal-close`}
+                onClick={closeModal}
+              >
+                <CloseIcon />
+              </div>
+            )}
+          </div>
+        )}
         <div className={`${VIRFICE_APP_PREFIX}-modal-body`}>{children}</div>
         <div className={`${VIRFICE_APP_PREFIX}-modal-footer`}>
           <div

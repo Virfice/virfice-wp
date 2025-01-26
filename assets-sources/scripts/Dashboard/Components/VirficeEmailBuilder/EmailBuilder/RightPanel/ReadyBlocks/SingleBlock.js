@@ -4,6 +4,7 @@ import {
   getVirficeAttr,
   getVirficeElementFromId,
   initEmailBuilder,
+  scrollToCanvasElement,
   selectElementUsingID,
 } from "../../utils";
 import { useSelector } from "react-redux";
@@ -39,7 +40,11 @@ const SingleBlock = ({ title, html, preview }) => {
       templateWrapper.append(element);
     }
     initEmailBuilder(); //TODO: need to init only for new element
-    selectElementUsingID(getVirficeAttr(element, "id"));
+
+    const vID = getVirficeAttr(element, "id");
+    selectElementUsingID(vID);
+
+    scrollToCanvasElement({ element: getVirficeElementFromId(vID) });
   };
   return (
     <div className={VIRFICE_APP_PREFIX + "-single-ready-block"}>

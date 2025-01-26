@@ -6,7 +6,9 @@ import {
   cloneElement,
   cloneElementFromString,
   getVirficeAttr,
+  getVirficeElementFromId,
   initEmailBuilder,
+  scrollToCanvasElement,
   selectElementUsingID,
 } from "../../../../utils";
 
@@ -22,7 +24,10 @@ const Body = ({ element, onAdd }) => {
     initEmailBuilder(); //TODO: need to init only for new element
     onAdd();
 
-    selectElementUsingID(getVirficeAttr(template, "id"));
+    const vID = getVirficeAttr(template, "id");
+    selectElementUsingID(vID);
+
+    scrollToCanvasElement({ element: getVirficeElementFromId(vID) });
   };
 
   const insertHtmlAfterElement = (element, htmlString) => {
