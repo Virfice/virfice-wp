@@ -39,7 +39,10 @@ const RightControl = ({ element }) => {
     // scrollToCanvasElement();
     saveBuilderDataToRedux();
 
-    scrollToCanvasElement({ element: getVirficeElementFromId(vID) });
+    scrollToCanvasElement({
+      element: getVirficeElementFromId(vID),
+      parent: document.getElementById("virfice-editor-wrapper"),
+    });
   };
   const handleDelete = () => {
     if (element.id === VIRFICE_APP_PREFIX + "-root") {

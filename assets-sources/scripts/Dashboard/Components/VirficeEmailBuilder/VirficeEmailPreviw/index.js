@@ -9,6 +9,7 @@ import { LaptopIcon, MobileIcon, CloseIcon } from "@svg-icons";
 
 const VirficeEmailPreview = ({ template_id, onClose }) => {
   const dispatch = useDispatch();
+  const preview_url = useSelector((state) => state.builder.preview_url);
   const global_style = useSelector((state) => state.builder.global_style);
   const html = useSelector((state) => state.builder.html);
   const [activeDevice, setActiveDevice] = useState("desktop");
@@ -32,7 +33,8 @@ const VirficeEmailPreview = ({ template_id, onClose }) => {
       >
         {activeDevice === "desktop" && <DesktopTopBar />}
         <Iframe
-          srcDoc={global_style + html}
+          //   srcDoc={global_style + html}
+          src={preview_url}
           style={{ width: activeDevice === "desktop" ? 600 : 400 }}
         />
       </div>

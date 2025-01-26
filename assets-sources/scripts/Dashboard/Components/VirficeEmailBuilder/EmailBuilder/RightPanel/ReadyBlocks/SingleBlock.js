@@ -44,7 +44,10 @@ const SingleBlock = ({ title, html, preview }) => {
     const vID = getVirficeAttr(element, "id");
     selectElementUsingID(vID);
 
-    scrollToCanvasElement({ element: getVirficeElementFromId(vID) });
+    scrollToCanvasElement({
+      element: getVirficeElementFromId(vID),
+      parent: document.getElementById("virfice-editor-wrapper"),
+    });
   };
   return (
     <div className={VIRFICE_APP_PREFIX + "-single-ready-block"}>

@@ -27,7 +27,10 @@ const Body = ({ element, onAdd }) => {
     const vID = getVirficeAttr(template, "id");
     selectElementUsingID(vID);
 
-    scrollToCanvasElement({ element: getVirficeElementFromId(vID) });
+    scrollToCanvasElement({
+      element: getVirficeElementFromId(vID),
+      parent: document.getElementById("virfice-editor-wrapper"),
+    });
   };
 
   const insertHtmlAfterElement = (element, htmlString) => {

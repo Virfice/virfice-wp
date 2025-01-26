@@ -271,6 +271,7 @@ class Utils
         } 
         .virfice-template-wrapper{
             width: " . $email_body_width . "px;
+            max-width: 100%;
             margin: auto;
             background-color: $email_background_color;
         }
@@ -302,9 +303,7 @@ class Utils
     {
         // Ensure the template is stripped of unnecessary slashes
         $template = stripslashes($template);
-
         $common_css = self::get_template_common_global_css();
-
         // Wrap the template in standard HTML structure
         $html_template = <<<HTML
 <!DOCTYPE html>
@@ -321,12 +320,20 @@ class Utils
 </body>
 </html>
 HTML;
+        try {
+            // Check if the class WC_Email exists
+            if (!class_exists('WC_Email')) {
+                // Include the file containing the WC_Email class
+                include_once WP_PLUGIN_DIR . '/woocommerce/includes/emails/class-wc-email.php';
+            }
+            // Create an instance of WC_Email
+            $email = new WC_Email();
 
-        // Create an instance of WC_Email
-        $email = new WC_Email();
-        // Apply custom CSS to the email template
-        $html_template = $email->style_inline($html_template);
-
+            // Apply custom CSS to the email template
+            $html_template = $email->style_inline($html_template);
+        } catch (\Throwable $th) {
+            // Handle exceptions gracefully
+        }
         return $html_template;
     }
 

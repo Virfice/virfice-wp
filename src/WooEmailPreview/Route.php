@@ -2,6 +2,8 @@
 
 namespace Virfice\WooEmailPreview;
 
+use Virfice\Utils;
+
 // Security check to prevent direct access to the script
 if (!defined('ABSPATH')) {
     exit;
@@ -21,6 +23,7 @@ class Route
     public function __construct()
     {
         add_action('init', [$this, 'handle_email_preview_generation']);
+        add_action('woocommerce_init', [$this, 'handle_email_preview_generation_using_template_id']);
     }
 
     /**
@@ -47,6 +50,28 @@ class Route
         $wooEmailPreview = new WooEmailPreview($email_id, $sanitize_get);
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo $wooEmailPreview->generate_preview(['order_id' => $order_id]);
+        exit;
+    }
+
+    /**
+     * Handles the generation of email previews when the preview button is clicked.
+     *
+     * @return void
+     */
+    public function handle_email_preview_generation_using_template_id()
+    {
+        if (!isset($_REQUEST['template_id'], $_REQUEST['virfice_template_preview_nonce'])) {
+            return;
+        }
+
+        if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['virfice_template_preview_nonce'])), 'template_id_' . sanitize_text_field($_REQUEST['template_id']))) {
+            return;
+        }
+        $template_id = (int) sanitize_text_field($_REQUEST['template_id']);
+        $template = get_post($template_id);
+
+        $template = Utils::wrap_template_with_html_tag($template->post_content);
+        echo $template;
         exit;
     }
 

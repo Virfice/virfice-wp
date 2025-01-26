@@ -246,6 +246,7 @@ export const saveBuilderDataToRedux = (element) => {
 
 export const scrollToCanvasElement = ({
   element,
+  parent,
   behavior = "smooth",
   block = "center",
 }) => {
@@ -254,8 +255,13 @@ export const scrollToCanvasElement = ({
     return;
   }
 
-  element.scrollIntoView({
-    behavior, // Options: 'auto' or 'smooth'
-    block, // Options: 'start', 'center', 'end', 'nearest'
-  });
+  // Scroll only the specified parent container
+  if (parent && parent instanceof HTMLElement) {
+    const offsetTop = element.offsetTop - parent.offsetTop;
+    const scrollOptions = { top: offsetTop, behavior };
+    parent.scrollTo(scrollOptions);
+  } else {
+    // Fallback to scrollIntoView for direct element scrolling
+    element.scrollIntoView({ behavior, block });
+  }
 };

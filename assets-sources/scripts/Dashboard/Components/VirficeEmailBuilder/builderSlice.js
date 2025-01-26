@@ -6,6 +6,7 @@ import { showNotificationBell } from "../componentsSlice";
 const initialState = {
   html: ``,
   global_style: ``,
+  preview_url: ``,
   selectedElementId: false,
   selectedSectionId: false,
   hoveredSectionId: false,
@@ -48,6 +49,13 @@ export const getSingleTemplate = (template_id) => (dispatch) => {
         setBuilderData({
           key: "global_style",
           value: d.global_style,
+        })
+      );
+
+      dispatch(
+        setBuilderData({
+          key: "preview_url",
+          value: d.preview_url,
         })
       );
 

@@ -70,6 +70,12 @@ class VirficeTemplate extends WP_REST_Controller
         $template_id = (int) sanitize_text_field($request->get_param('id'));
         $template = get_post($template_id);
         $template->global_style = Utils::get_template_common_global_css();
+
+        $template->preview_url = add_query_arg(array(
+            'template_id' => $template_id,
+            'virfice_template_preview_nonce' => wp_create_nonce('template_id_' . $template_id),
+        ), home_url('/'));
+
         return $template;
     }
 
