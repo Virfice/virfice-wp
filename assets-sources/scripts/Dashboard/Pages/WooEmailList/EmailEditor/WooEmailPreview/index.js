@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StickyTopNav from "@components/StickyTopNav";
 import { addParams, getParamValue } from "@functions";
 import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import Container from "@molecules/Container";
 import Button from "@molecules/Button";
-import { emailSingleAsync, saveWooEmailSettings } from "../wooEmailSingleSlice";
+import {
+  emailSingleAsync,
+  emailSingleVirficeAsync,
+  saveWooEmailSettings,
+} from "../wooEmailSingleSlice";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import Left from "./Left";
@@ -13,21 +17,29 @@ import {
   globalSettingsAsync,
   saveGlobalSettings,
 } from "../../../Settings/globalSettingsSlice";
+import VirficeEmailPreview from "../../../../Components/VirficeEmailBuilder/VirficeEmailPreviw";
 
 const WooEmailPreview = () => {
   const dispatch = useDispatch();
   const store = useStore();
   const email_id = getParamValue("email_id");
   const loaded = useSelector((state) => state.wooEmailSingle?.email?.loaded);
+  const [preview, setPreview] = useState(false);
   const settingsLoaded = useSelector(
     (state) => state.globalSettings.email.loaded
   );
   const emailSettings = useSelector(
     (state) => state.wooEmailSingle?.email?.settings
   );
+
+  const virfice_template = useSelector(
+    (state) => state.wooEmailSingle?.virfice_template
+  );
+
   useEffect(() => {
     dispatch(emailSingleAsync(email_id));
     dispatch(globalSettingsAsync(["email"]));
+    dispatch(emailSingleVirficeAsync(email_id));
   }, []);
 
   const handleBackActionClick = () => {
@@ -57,6 +69,16 @@ const WooEmailPreview = () => {
 
   if (!loaded) return <>loading</>;
 
+  if (preview)
+    return (
+      <VirficeEmailPreview
+        template_id={virfice_template.id}
+        onClose={() => {
+          setPreview(false);
+        }}
+      />
+    );
+
   return (
     <>
       <StickyTopNav
@@ -72,7 +94,11 @@ const WooEmailPreview = () => {
         <Container>
           <div style={{ marginTop: 36 }}>
             <div className={`${VIRFICE_APP_PREFIX}-flex`} style={{ gap: 64 }}>
-              <Left />
+              <Left
+                onPreviewButtonClick={() => {
+                  setPreview(true);
+                }}
+              />
               {settingsLoaded && <Right />}
             </div>
             <div

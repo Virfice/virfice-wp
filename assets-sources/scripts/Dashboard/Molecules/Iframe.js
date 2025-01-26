@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
 
-const Iframe = ({ src, id }) => {
+const Iframe = ({ srcDoc = false, src, id, style = {} }) => {
   const [debounceSrc, setDebounceSrc] = useState(src); // Initialize with initial src
   const [iframeHeight, setIframeHeight] = useState(658); // Initial height
   const iframeRef = useRef(null);
@@ -23,7 +23,6 @@ const Iframe = ({ src, id }) => {
   useEffect(() => {
     const resizeIframe = () => {
       if (iframeRef.current) {
-
         setTimeout(() => {
           // Get the height of the iframe content
           const contentHeight =
@@ -31,7 +30,6 @@ const Iframe = ({ src, id }) => {
           // Set the height of the iframe
           setIframeHeight(contentHeight);
         }, 100);
-        
       }
     };
 
@@ -53,7 +51,20 @@ const Iframe = ({ src, id }) => {
     };
   }, [debounceSrc]);
 
-  return <iframe id={id} src={debounceSrc} style={{ height: iframeHeight }} ref={iframeRef} />;
+  let attr = {
+    id,
+    style: { height: iframeHeight, ...style },
+    ref: iframeRef,
+  };
+
+  if (src) {
+    attr.src = src;
+  }
+  if (srcDoc) {
+    attr.srcDoc = srcDoc;
+  }
+
+  return <iframe {...attr} />;
 };
 
 export default Iframe;

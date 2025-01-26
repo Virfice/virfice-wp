@@ -368,23 +368,16 @@ export const BadgeActiveIcon = () => {
 export const CloseIcon = () => {
   return (
     <svg
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
+      width={16}
+      height={17}
+      viewBox="0 0 16 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M18.5 9.5L9.5 18.5"
-        stroke="#666666"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M18.5 18.5L9.5 9.5"
-        stroke="#666666"
-        strokeWidth="1.5"
+        d="M11.3337 5.1665L4.66699 11.8332M4.66699 5.1665L11.3337 11.8332"
+        stroke="#171717"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />
