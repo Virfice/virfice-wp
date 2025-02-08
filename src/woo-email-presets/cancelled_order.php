@@ -26,6 +26,12 @@
     </div>
 </div>
 
+<div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 0px 40px 40px; text-align: center;"
+    virfice-id="m6wm9uns1emtyg680">
+    <div virfice-title="Divider" virfice-ele_type="divider" style="border-bottom: 1px solid #E5E5E5; width: 100%;"
+        virfice-id="m6wm9unsefl7jhvte"></div>
+</div>
+
 
 <div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 0px 40px 36px 40px; text-align:left;"
     virfice-id="m58eqnj78lwhy96t" class="">

@@ -14,7 +14,6 @@ import DisabledParentSettings from "./DisabledParentSettings";
 import {
   getAllElementsUsingSelector,
   getElementUsingMySelector,
-  getParentSection,
 } from "../../utils";
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 
@@ -36,6 +35,16 @@ const OrderTableSettings = ({ element }) => {
   const order_table_summary = getAllElementsUsingSelector(
     element,
     "order_table_summary"
+  );
+
+  const order_table_summary_wrapper = getElementUsingMySelector(
+    element,
+    "order_table_summary_wrapper"
+  );
+
+  const order_table_summary_total_wrapper = getElementUsingMySelector(
+    element,
+    "order_table_summary_total_wrapper"
   );
   return (
     <>
@@ -272,7 +281,7 @@ const OrderTableSettings = ({ element }) => {
               </>
             )}
 
-            <Divider
+            {/* <Divider
               style={{ marginLeft: -20, marginTop: 8, marginBottom: 8 }}
               extraWidth={"40px"}
             />
@@ -296,7 +305,7 @@ const OrderTableSettings = ({ element }) => {
                 widthTitle: "Border width",
                 colorTitle: "Border color",
               }}
-            />
+            /> */}
           </div>
         </TabContent>
         <TabContent index={1}>
@@ -364,8 +373,62 @@ const OrderTableSettings = ({ element }) => {
               }}
             />
 
-            <Reusable element={element} type="border-radius" />
-            <Reusable element={element} type="padding" />
+            <div className="title__medium">Order summary</div>
+            {order_table_summary_wrapper && (
+              <>
+                <PaintField
+                  label={"Order summary font color"}
+                  value={getElementComputedStyle(
+                    order_table_summary_wrapper,
+                    "color"
+                  )}
+                  onChange={(v) => {
+                    order_table_summary_wrapper.style.color = v;
+                  }}
+                />
+
+                <PaintField
+                  label={"Order summary background color"}
+                  value={getElementComputedStyle(
+                    order_table_summary_wrapper,
+                    "background-color"
+                  )}
+                  onChange={(v) => {
+                    order_table_summary_wrapper.style.backgroundColor = v;
+                  }}
+                />
+              </>
+            )}
+
+            {order_table_summary_total_wrapper && (
+              <>
+                <PaintField
+                  label={"Order total font color"}
+                  value={getElementComputedStyle(
+                    order_table_summary_total_wrapper,
+                    "color"
+                  )}
+                  onChange={(v) => {
+                    order_table_summary_total_wrapper.style.color = v;
+                  }}
+                />
+
+                <PaintField
+                  label={"Order total background color"}
+                  value={getElementComputedStyle(
+                    order_table_summary_total_wrapper,
+                    "background-color"
+                  )}
+                  onChange={(v) => {
+                    order_table_summary_total_wrapper.style.backgroundColor = v;
+                  }}
+                />
+              </>
+            )}
+
+            <DisabledParentSettings element={element} />
+            {/* <Reusable element={element} type="border-radius" />
+            <Reusable element={element} type="padding" /> */}
           </div>
         </TabContent>
       </Tab>

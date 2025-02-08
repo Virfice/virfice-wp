@@ -370,9 +370,6 @@ class WooEmail extends WP_REST_Controller
 		if (!empty($data['email_body_button_color'])) {
 			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_button_color', $data['email_body_button_color']);
 		}
-		if (!empty($data['email_link_color'])) {
-			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_link_color', $data['email_link_color']);
-		}
 		if (!empty($data['header_text_color'])) {
 			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_text_color', $data['header_text_color']);
 		}

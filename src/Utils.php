@@ -169,8 +169,6 @@ class Utils
         $email_settings['email_body_button_bg'] = MetaHelper::get_meta(0, 'brand-settings', 'email_body_button_bg', $brand_settings['woocommerce_email_base_color']);
         $email_settings['email_body_button_color'] = MetaHelper::get_meta(0, 'brand-settings', 'email_body_button_color', $brand_settings['woocommerce_email_text_color']);
 
-        $email_settings['email_link_color'] = MetaHelper::get_meta(0, 'brand-settings', 'email_link_color', $brand_settings['woocommerce_email_base_color']);
-
         $email_settings['header_text_color'] = MetaHelper::get_meta(0, 'brand-settings', 'header_text_color', $brand_settings['woocommerce_email_text_color']);
         $email_settings['header_icons_color'] = MetaHelper::get_meta(0, 'brand-settings', 'header_icons_color', $brand_settings['woocommerce_email_text_color']);
         $email_settings['header_background_color'] = MetaHelper::get_meta(0, 'brand-settings', 'header_background_color', $brand_settings['woocommerce_email_base_color']);
@@ -232,7 +230,6 @@ class Utils
 
         $email_body_button_bg = $global_settings['email_body_button_bg'];
         $email_body_button_color = $global_settings['email_body_button_color'];
-        $email_link_color = $global_settings['email_link_color'];
         $header_text_color = $global_settings['header_text_color'];
         $header_icons_color = $global_settings['header_icons_color'];
         $header_background_color = $global_settings['header_background_color'];

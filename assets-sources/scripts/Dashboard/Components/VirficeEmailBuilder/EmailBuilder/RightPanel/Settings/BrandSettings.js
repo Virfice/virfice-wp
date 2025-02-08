@@ -47,7 +47,6 @@ const BrandSettings = ({ element }) => {
       email_body_text,
       email_body_button_bg,
       email_body_button_color,
-      email_link_color,
       header_text_color,
       header_icons_color,
       header_background_color,
@@ -184,17 +183,10 @@ const BrandSettings = ({ element }) => {
               settingsChange("email_body_button_color", v);
             }}
           />
-          <PaintField
-            label={"Link"}
-            value={changedSettings.email_link_color}
-            onChange={(v) => {
-              settingsChange("email_link_color", v);
-            }}
-          />
         </div>
       </Card>
 
-      <Card className={`${VIRFICE_APP_PREFIX}-flex-col`} style={{ gap: 0 }}>
+      {/* <Card className={`${VIRFICE_APP_PREFIX}-flex-col`} style={{ gap: 0 }}>
         <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
           <div className="title__medium">Header colors</div>
           <PaintField
@@ -253,7 +245,7 @@ const BrandSettings = ({ element }) => {
             }}
           />
         </div>
-      </Card>
+      </Card> */}
     </>
   );
 };

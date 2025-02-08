@@ -42,9 +42,9 @@ const initAllElementsCommonEvents = (wrapper) => {
 const initClickEvent = (ele) => {
   ele.addEventListener("click", (e) => {
     e.stopPropagation();
-    console.log(e.target.tagName);
-    let validEle = e.target;
-    let vID = getVirficeAttr(validEle, "id");
+    // console.log(e.target.tagName);
+    // let validEle = e.target;
+    let vID = getVirficeAttr(ele, "id");
     selectElementUsingID(vID);
   });
 };
