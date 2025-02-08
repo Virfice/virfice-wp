@@ -13,7 +13,9 @@ const VirficeCommonHeader = () => {
           className={`${VIRFICE_APP_PREFIX}-flex-space-between ${VIRFICE_APP_PREFIX}-flex-align-center`}
         >
           <div>
-            <VirficeIcon />
+            <div style={{ height: 30 }}>
+              <VirficeIcon />
+            </div>
             <p>Email Customizer for WooCommerce</p>
           </div>
           <div>
