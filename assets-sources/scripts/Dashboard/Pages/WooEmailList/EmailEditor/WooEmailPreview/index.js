@@ -8,16 +8,41 @@ import {
   emailSingleAsync,
   emailSingleVirficeAsync,
   saveWooEmailSettings,
+  setWooEmailSingleData,
 } from "../wooEmailSingleSlice";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import Left from "./Left";
 import Right from "./Right";
+import CheckboxField from "@molecules/CheckboxField";
 import {
   globalSettingsAsync,
   saveGlobalSettings,
 } from "../../../Settings/globalSettingsSlice";
 import VirficeEmailPreview from "../../../../Components/VirficeEmailBuilder/VirficeEmailPreviw";
+
+const EnableDisable = () => {
+  const dispatch = useDispatch();
+  let wooEmailSingleChangedSettings = useSelector(
+    (state) => state.wooEmailSingle?.changedSettings
+  );
+
+  const handleStatusChange = (v) => {
+    dispatch(
+      setWooEmailSingleData({
+        key: "changedSettings",
+        value: { ...wooEmailSingleChangedSettings, enabled: v ? "yes" : "no" },
+      })
+    );
+  };
+  return (
+    <CheckboxField
+      value={wooEmailSingleChangedSettings["enabled"] === "yes" || false}
+      onChange={handleStatusChange}
+      type="toggle"
+    />
+  );
+};
 
 const WooEmailPreview = () => {
   const dispatch = useDispatch();
@@ -90,6 +115,7 @@ const WooEmailPreview = () => {
         <PageHeadingAndSubheading
           heading={emailSettings?.title}
           subHeading={emailSettings?.description}
+          quickAction={<EnableDisable />}
         />
         <Container>
           <div style={{ marginTop: 36 }}>
