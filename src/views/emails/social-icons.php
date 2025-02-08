@@ -54,7 +54,7 @@ $icons = [
 ?>
 <div>
     <?php if ($title) { ?>
-        <p style="text-align: center;margin-bottom: 0;color:#616161;"><strong><?php echo esc_html($title); ?></strong></p>
+        <p style="text-align: center;margin-bottom: 0;"><strong><?php echo esc_html($title); ?></strong></p>
     <?php } ?>
     <table style="width: max-content; margin:auto; text-align: center; ">
         <tr>

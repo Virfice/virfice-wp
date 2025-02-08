@@ -7,6 +7,7 @@ import TextField from "@molecules/TextField";
 import Card from "@molecules/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setVirficeBrandSettingsData } from "../../../../../Pages/VirficeBrandSettings/virficeBrandSettingsSlice";
+import { setBuilderData } from "../../../builderSlice";
 
 const BrandSettings = ({ element }) => {
   const dispatch = useDispatch();
@@ -14,18 +15,93 @@ const BrandSettings = ({ element }) => {
     (state) => state.virficeBrandSettings.changedSettings
   );
 
-  console.log(changedSettings);
-
   const templateWrapper = document.getElementById("virfice-email-preview");
   const editorWrapper = document.getElementById("virfice-editor-wrapper");
 
   const settingsChange = (key, value) => {
+    const c = { ...changedSettings, [key]: value };
     dispatch(
       setVirficeBrandSettingsData({
         key: "changedSettings",
-        value: { ...changedSettings, [key]: value },
+        value: c,
       })
     );
+
+    dispatch(
+      setBuilderData({
+        key: "global_style",
+        value: getGlobalStyleStyleTag(c),
+      })
+    );
+
+    // console.log(getGlobalStyleStyleTag(c));
+
+    // console.log(key, value);
+  };
+
+  const getGlobalStyleStyleTag = (changedSettings) => {
+    const {
+      email_outer_background_color,
+      email_background_color,
+      email_body_width,
+      email_body_text,
+      email_body_button_bg,
+      email_body_button_color,
+      email_link_color,
+      header_text_color,
+      header_icons_color,
+      header_background_color,
+      footer_text_color,
+      footer_icons_color,
+      footer_link_color,
+      footer_background_color,
+    } = changedSettings;
+
+    return `<style>
+        .virfice-editor-wrapper {
+            margin: 0;
+            padding: 0;
+            background-color: ${email_outer_background_color};
+            color: ${email_body_text};
+        }
+        .virfice-template-wrapper{
+            width: ${email_body_width}px;
+            max-width: 100%;
+            margin: auto;
+            background-color: ${email_background_color};
+        }
+        .virfice-template-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+       .virfice-template-wrapper h2 {
+            font-size: 20px;
+            color: inherit;
+        }
+        .virfice-template-wrapper p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .virfice-template-wrapper a{
+            display: inline-block;
+            color: ${email_body_button_color};
+            background-color: ${email_body_button_bg};
+        }
+        .virfice-template-wrapper img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 0;
+        }
+        .virfice-template-wrapper .virfice-email-header{
+            color: ${header_text_color};
+            background-color: ${header_background_color};
+        }
+        .virfice-template-wrapper .virfice-email-footer{
+            color: ${footer_text_color};
+            background-color: ${footer_background_color};
+        }
+        </style>`;
   };
   return (
     <>

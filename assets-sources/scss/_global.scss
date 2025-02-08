@@ -323,6 +323,10 @@ a {
     margin-bottom: 12px;
     overflow: hidden;
 
+    img {
+      width: 100%;
+    }
+
     // .#{$classPrefix}-single-ready-block-html-wrapper {
     //   width: 600px;
     //   transform: scale(0.46333333333); //278/600

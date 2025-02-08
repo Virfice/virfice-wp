@@ -59,13 +59,13 @@ class InitTask
          */
         //create brand settings dummy template
 
-        // $brand_settings_template_id = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
-        // if ($brand_settings_template_id) {
-        //     $template_content = $this->get_virfice_brand_settings_template_preset();
-        //     Templates::update_template($brand_settings_template_id, 'Virfice - Brand settings', $template_content);
-        // } else {
-        //     $this->create_template_for_brand_settings();
-        // }
+        $brand_settings_template_id = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
+        if ($brand_settings_template_id) {
+            $template_content = $this->get_virfice_brand_settings_template_preset();
+            Templates::update_template($brand_settings_template_id, 'Virfice - Brand settings', $template_content);
+        } else {
+            $this->create_template_for_brand_settings();
+        }
         /**
          * dummy code end
          */

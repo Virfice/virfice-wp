@@ -59,6 +59,7 @@ const VirficeBrandSettings = () => {
         backAction={handleBackActionClick}
         discardAction={handleDiscardClick}
         saveAction={handleSaveClick}
+        size1280
       />
       <section>
         <PageHeadingAndSubheading
@@ -66,15 +67,14 @@ const VirficeBrandSettings = () => {
           subHeading={
             "Customize the look and feel of all WooCommerce emails globally. Let your emails represent your store."
           }
+          size1280
         />
-        <Container>
-          <div
-            className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-20`}
-          >
-            {template_id && <VirficeEmailBuilder template_id={template_id} />}
-            {!template_id && "Loading..."}
-          </div>
-        </Container>
+        <section
+          className={`${VIRFICE_APP_PREFIX}-builder-section-main ${VIRFICE_APP_PREFIX}-builder-section-main-brand-settings`}
+        >
+          {template_id && <VirficeEmailBuilder template_id={template_id} />}
+          {!template_id && "Loading..."}
+        </section>
       </section>
     </>
   );

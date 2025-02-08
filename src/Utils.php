@@ -241,46 +241,48 @@ class Utils
         $footer_link_color = $global_settings['footer_link_color'];
         $footer_background_color = $global_settings['footer_background_color'];
         return "
-        <style>
+       <style>
         .virfice-editor-wrapper {
             margin: 0;
             padding: 0;
             background-color: $email_outer_background_color;
             color: $email_body_text;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        h2 {
-            font-size: 20px;
-            color: inherit;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        a{
-            display: inline-block;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border: 0;
-        } 
         .virfice-template-wrapper{
             width: " . $email_body_width . "px;
             max-width: 100%;
             margin: auto;
             background-color: $email_background_color;
         }
-        .virfice-email-header{
-            color: $$header_text_color;
+        .virfice-template-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+       .virfice-template-wrapper h2 {
+            font-size: 20px;
+            color: inherit;
+        }
+        .virfice-template-wrapper p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .virfice-template-wrapper a{
+            display: inline-block;
+            color: $email_body_button_color;
+            background-color: $email_body_button_bg;
+        }
+        .virfice-template-wrapper img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border: 0;
+        }
+        .virfice-template-wrapper .virfice-email-header{
+            color: $header_text_color;
             background-color: $header_background_color;
         }
-        .virfice-email-footer{
-            color: $$footer_text_color;
+        .virfice-template-wrapper .virfice-email-footer{
+            color: $footer_text_color;
             background-color: $footer_background_color;
         }
         </style>";

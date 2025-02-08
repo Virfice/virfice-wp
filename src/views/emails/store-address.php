@@ -10,7 +10,7 @@ if (!isset($settings['virfice_address'])) {
 $title = isset($settings['virfice_store_name']) ? $settings['virfice_store_name'] : '';
 ?>
 <div>
-    <p style="text-align: center;margin-top: 8px;margin-bottom: 0; color: #616161;">
+    <p style="text-align: center;margin-top: 8px;margin-bottom: 0;">
         <strong><?php echo esc_html($title); ?></strong>
     </p>
 

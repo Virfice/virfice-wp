@@ -28,8 +28,7 @@ $settings = Settings::get_email_settings();
                             A creative who loves to create<br>
                             online spaces powered by<br>
                             WordPress</p>
-                        <a
-                            style="border-radius: 36px; padding: 8px 16px;background: #014B1E; margin-top: 16px;">Explore</a>
+                        <a style="border-radius: 36px; padding: 8px 16px; margin-top: 16px;">Explore</a>
                     </td>
                 </tr>
             </tbody>
@@ -54,7 +53,7 @@ $settings = Settings::get_email_settings();
         <div style="padding: 24px; display: flex; gap: 60px;">
             <div style="width: 150px;display: flex; flex-direction:column; justify-content:space-between;">
                 <h1 style="font-size: 24px; font-style: normal; line-height: normal;">Free Worldwide Shipping</h1>
-                <a style="border-radius: 36px; padding: 8px 16px;background: #014B1E;">Explore</a>
+                <a style="border-radius: 36px; padding: 8px 16px;">Explore</a>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
