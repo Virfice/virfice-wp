@@ -11,48 +11,49 @@ const TextField = ({
   onChange = () => {},
   multiline = false,
 }) => {
-  const [v, setV] = useState(value);
+  const [v, setV] = useState(value || ""); // Maintain state for input value
 
   useEffect(() => {
-    setV(value);
+    setV(value || ""); // Sync local state with external value changes
   }, [value]);
+
   const handleOnChange = (e) => {
-    setV(e.target.value);
-    onChange(e.target.value);
+    const newValue = e.target.value;
+    setV(newValue);
+    onChange(newValue); // Allow any string or number input
   };
 
   const handleKeyDown = (e) => {
-    let v = value * 1;
-    if (!Number.isInteger(v)) {
-      return;
+    // Only increment/decrement if the value is a valid number
+    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      let numericValue = Number(v); // Convert to number
+
+      if (!isNaN(numericValue) && Number.isInteger(numericValue)) {
+        numericValue += e.key === "ArrowUp" ? 1 : -1;
+        setV(numericValue.toString()); // Convert back to string
+        onChange(numericValue.toString()); // Ensure it's always a string
+      }
     }
-    if (e.key === "ArrowUp") {
-      v += 1; // Increment the v
-    } else if (e.key === "ArrowDown") {
-      v -= 1; // Decrement the v
-    }
-    setV(v);
-    onChange(v);
   };
 
   return (
     <div className={`${VIRFICE_APP_PREFIX}-textfileld-wrapper`}>
       {label && <label className="body__medium">{label}</label>}
-      {!multiline && (
+      {!multiline ? (
         <input
           placeholder={placeholder || label}
           value={v}
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
+          type="text"
         />
-      )}
-      {multiline && (
+      ) : (
         <textarea
           placeholder={placeholder || label}
           value={v}
           onChange={handleOnChange}
           rows={multiline}
-        ></textarea>
+        />
       )}
       {error && (
         <span

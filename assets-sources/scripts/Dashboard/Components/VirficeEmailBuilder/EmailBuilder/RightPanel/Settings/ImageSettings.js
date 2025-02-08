@@ -39,6 +39,9 @@ const ImageSettings = ({ element }) => {
   if (!image) return null;
 
   const [position, setPosition] = useState(getPosition(element));
+  const [href, setHref] = useState(element.href);
+  const [alt, setAlt] = useState(image.alt);
+  const [target, setTarget] = useState(element.target);
   useEffect(() => {
     setPosition(getPosition(image));
   }, [image]);
@@ -83,25 +86,27 @@ const ImageSettings = ({ element }) => {
 
             <TextField
               label={"Alt text"}
-              value={image.alt || ""}
+              value={alt || ""}
               onChange={(v) => {
-                console.log(v);
                 image.alt = v;
+                setAlt(v);
               }}
             />
 
             <TextField
               label={"URL"}
-              value={element.href}
+              value={href}
               onChange={(v) => {
                 element.href = v;
+                setHref(v);
               }}
             />
             <CheckboxField
               label={"Open in a new tab"}
-              value={element.target || false}
+              value={target === "_blank"}
               onChange={(v) => {
                 element.target = v ? "_blank" : "";
+                setTarget(v ? "_blank" : false);
               }}
             />
           </div>

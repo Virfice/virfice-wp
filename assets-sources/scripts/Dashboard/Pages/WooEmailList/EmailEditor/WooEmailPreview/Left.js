@@ -71,7 +71,7 @@ const Left = ({ onPreviewButtonClick }) => {
         </div>
       </div>
 
-      <div style={{ marginTop: 24 }}>
+      {/* <div style={{ marginTop: 24 }}>
         <svg
           width="303"
           height="29"
@@ -109,7 +109,7 @@ const Left = ({ onPreviewButtonClick }) => {
           />
         </svg>
         <Button title={"Edit plain text"} type="secondary" onClick={() => {}} />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -23,6 +23,16 @@ const initAllElementsCommonEvents = (wrapper) => {
     initHoverEvent(ele);
     // initEmptyElement(ele);//not used
   });
+
+  // Disable all anchor element clicks
+  let allAnchors = wrapper.querySelectorAll("a");
+  allAnchors.forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent navigation
+      event.stopPropagation(); // Stop event from bubbling up
+    });
+  });
+
   const editorWrapper = document.getElementById("virfice-editor-wrapper");
   editorWrapper.addEventListener("click", () => {
     dispatchDashboardAction(onSelectElement, null);

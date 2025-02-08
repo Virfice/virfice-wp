@@ -202,6 +202,10 @@ class WooEmail extends WP_REST_Controller
 		$formatted_email_lists = array();
 		foreach ($email_lists as $email_key => $email_obj) {
 
+			if ($email_key === 'WC_Email_Customer_Reset_Password' || $email_key === 'WC_Email_Customer_New_Account') {
+				continue;
+			}
+
 			$url = add_query_arg(array(
 				'email_id' => $email_obj->id,
 				'woo_preview_nonce' => wp_create_nonce('email_id_' . $email_obj->id),

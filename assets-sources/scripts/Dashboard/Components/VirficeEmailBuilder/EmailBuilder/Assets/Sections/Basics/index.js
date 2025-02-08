@@ -56,7 +56,7 @@ const Button = {
   template: getBasicEleWrapper(
     getButtonString({
       title: "Button",
-      content: "Button",
+      content: "Shop now!",
     }),
     {
       paddingTop: "16px",
