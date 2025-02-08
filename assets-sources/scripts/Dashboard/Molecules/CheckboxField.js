@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { VIRFICE_APP_PREFIX } from "@conf";
+import { ToggleDisabledIcon, ToggleEnabledIcon } from "@svg-icons";
 import HelpText from "./HelpText";
 
 const CheckboxField = ({
@@ -8,6 +9,7 @@ const CheckboxField = ({
   value,
   helpText,
   onChange = () => {},
+  type = "checkbox",
 }) => {
   const [v, setV] = useState(value);
 
@@ -15,8 +17,12 @@ const CheckboxField = ({
     setV(value);
   }, [value]);
   const handleOnChange = (e) => {
-    setV(e.target.checked);
-    onChange(e.target.checked);
+    setValue(e.target.checked);
+  };
+
+  const setValue = (bool) => {
+    setV(bool);
+    onChange(bool);
   };
 
   return (
@@ -29,12 +35,39 @@ const CheckboxField = ({
       {title && <label className="body__medium">{title}</label>}
       <div>
         <label className="body__medium">
-          <input
-            type="checkbox"
-            checked={v === true || v == true || v == 1}
-            onChange={handleOnChange}
-          />{" "}
-          {label}
+          {type === "toggle" && (
+            <>
+              {v === true || v == true || v == 1 ? (
+                <div
+                  onClick={() => {
+                    setValue(false);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <ToggleEnabledIcon />
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    setValue(true);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <ToggleDisabledIcon />
+                </div>
+              )}
+            </>
+          )}
+          {type === "checkbox" && (
+            <>
+              <input
+                type="checkbox"
+                checked={v === true || v == true || v == 1}
+                onChange={handleOnChange}
+              />{" "}
+              {label}
+            </>
+          )}
         </label>
         <div style={{ paddingLeft: 24 }}>
           {helpText && <HelpText text={helpText} />}

@@ -23,9 +23,9 @@ const Table = () => {
         data={[
           { title: "Emails", width: 420 },
           { title: "Status" },
-          { title: "Virfice template" },
           { title: "Content type" },
           { title: "Recipient(s)" },
+          { title: "Virfice template" },
           { title: "" },
         ]}
       />

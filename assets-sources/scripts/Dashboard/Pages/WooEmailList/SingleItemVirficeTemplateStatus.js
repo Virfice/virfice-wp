@@ -14,9 +14,9 @@ const SingleItemVirficeTemplateStatus = ({
   };
   return (
     <CheckboxField
-      label={"Enable"}
       value={email.virfice_template_status || false}
       onChange={handleStatusChange}
+      type="toggle"
     />
   );
 };

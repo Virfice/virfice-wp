@@ -1238,3 +1238,44 @@ export const PaddingIcon = () => {
     </svg>
   );
 };
+
+export const ToggleDisabledIcon = () => (
+  <svg
+    width={44}
+    height={36}
+    viewBox="0 0 44 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x={6.75}
+      y={6.75}
+      width={36.5}
+      height={22.5}
+      rx={11.25}
+      fill="#E6E6E6"
+    />
+    <rect
+      x={6.75}
+      y={6.75}
+      width={36.5}
+      height={22.5}
+      rx={11.25}
+      stroke="#C9C9C9"
+      strokeWidth={1.5}
+    />
+    <rect x={12} y={12} width={12} height={12} rx={6} fill="#CCCCCC" />
+  </svg>
+);
+export const ToggleEnabledIcon = () => (
+  <svg
+    width={44}
+    height={36}
+    viewBox="0 0 44 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y={6} width={38} height={24} rx={12} fill="#B5D72D" />
+    <rect x={17} y={9} width={18} height={18} rx={9} fill="#FFFEFA" />
+  </svg>
+);

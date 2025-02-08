@@ -46,14 +46,16 @@ const SingleItem = ({ email }) => {
           <Badge type="active" title="Manual" leftIcon={<BadgeActiveIcon />} />
         )}
       </td>
+
+      <td>{email.email_type === "html" ? "text/html" : "palin text"}</td>
+      <td>{email.recipient || "Customer"}</td>
+
       <td>
         <SingleItemVirficeTemplateStatus
           email={email}
           setVirfice_template_status={setVirfice_template_status}
         />
       </td>
-      <td>{email.email_type === "html" ? "text/html" : "palin text"}</td>
-      <td>{email.recipient || "Customer"}</td>
       <td>
         <div className={`${VIRFICE_APP_PREFIX}-action-buttons`}>
           <Button
