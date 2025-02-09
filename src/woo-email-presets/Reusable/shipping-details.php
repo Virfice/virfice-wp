@@ -14,7 +14,7 @@
                                 <div>Virfice</div>
                                 <div>7400 Edwards Rd</div>
                                 <div>Edwards rd</div>
-                                <div>(910) 529-1147</div>
+                                <div>(910) XXX-XXXX</div>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <div>Virfice</div>
                                 <div>7400 Edwards Rd</div>
                                 <div>Edwards rd</div>
-                                <div>(910) 529-1147</div>
+                                <div>(910) XXX-XXXX</div>
                             </div>
                         </div>
                     </div>

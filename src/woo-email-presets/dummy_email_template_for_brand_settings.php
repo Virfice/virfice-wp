@@ -187,7 +187,7 @@ $settings = Settings::get_email_settings();
                                             <div>Virfice</div>
                                             <div>7400 Edwards Rd</div>
                                             <div>Edwards rd</div>
-                                            <div>(910) 529-1147</div>
+                                            <div>(910) XXX-XXXX</div>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ $settings = Settings::get_email_settings();
                                             <div>Virfice</div>
                                             <div>7400 Edwards Rd</div>
                                             <div>Edwards rd</div>
-                                            <div>(910) 529-1147</div>
+                                            <div>(910) XXX-XXXX</div>
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@ $settings = Settings::get_email_settings();
 
 
                         <a virfice-title="Button" virfice-ele_type="link"
-                            style="border-radius: 0px; padding: 18px 16px; color: rgb(249, 252, 238); width: 247px; text-align: center; max-width: 100%; margin-bottom: 8px; font-size: 20px;"
+                            style="border-radius: 0px; padding: 18px 16px; width: 247px; text-align: center; max-width: 100%; margin-bottom: 8px; font-size: 20px;"
                             contenteditable="" virfice-id="m6wn0var6y2e6i85e">SHOP NOW</a>
                         <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
                             virfice-id="m6wn0var0nze7xnbk" style="font-size: 10px;">T&amp;C’s apply*</p>

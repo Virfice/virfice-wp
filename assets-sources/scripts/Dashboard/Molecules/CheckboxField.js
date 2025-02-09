@@ -42,7 +42,7 @@ const CheckboxField = ({
                   onClick={() => {
                     setValue(false);
                   }}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", width: 38 }}
                 >
                   <ToggleEnabledIcon />
                 </div>
@@ -51,7 +51,7 @@ const CheckboxField = ({
                   onClick={() => {
                     setValue(true);
                   }}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", width: 38 }}
                 >
                   <ToggleDisabledIcon />
                 </div>

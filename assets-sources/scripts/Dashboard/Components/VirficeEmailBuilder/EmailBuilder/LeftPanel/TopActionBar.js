@@ -3,8 +3,12 @@ import Button from "@molecules/Button";
 import { VIRFICE_APP_PREFIX, VIRFICE_RESPONSIVE_BREAKPOINTS } from "@conf";
 import { LaptopIcon, MobileIcon } from "@svg-icons";
 import SendButtonRecipientsPopup from "./SendButtonRecipientsPopup";
+import { useSelector } from "react-redux";
 
 const TopActionBar = () => {
+  const emailSettings = useSelector(
+    (state) => state.wooEmailSingle?.email?.settings
+  );
   const [activeDevice, setActiveDevice] = useState("Laptop");
 
   const changeIframeWidth = (deviceName) => {
@@ -25,6 +29,14 @@ const TopActionBar = () => {
     <div
       className={`${VIRFICE_APP_PREFIX}-card-header ${VIRFICE_APP_PREFIX}-flex-space-between ${VIRFICE_APP_PREFIX}-w-100`}
     >
+      {emailSettings.title && (
+        <div
+          className={`title__medium`}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          {emailSettings.title}
+        </div>
+      )}
       <div className={`${VIRFICE_APP_PREFIX}-flex`}>
         <Button
           type={"tertiary"}

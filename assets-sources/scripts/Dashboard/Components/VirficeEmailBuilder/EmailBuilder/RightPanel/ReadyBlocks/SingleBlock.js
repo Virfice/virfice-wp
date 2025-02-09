@@ -12,6 +12,10 @@ import { VIRFICE_APP_PREFIX } from "@conf";
 
 const SingleBlock = ({ title, html, preview }) => {
   const wrapperRef = useRef(null);
+  const changedSettings = useSelector(
+    (state) => state.virficeBrandSettings.changedSettings
+  );
+
   const selectedSectionId = useSelector(
     (state) => state.builder?.selectedSectionId
   );
@@ -24,7 +28,8 @@ const SingleBlock = ({ title, html, preview }) => {
     // wrapperRef.current.height =
   }, []);
   const handleAddReadyBlock = () => {
-    const element = cloneElementFromString(html); // This creates the new DOM element.
+    let element = cloneElementFromString(html); // This creates the new DOM element.
+    element = applyShortCode(element);
     const selected_section = getVirficeElementFromId(
       hoveredSectionId || selectedSectionId
     ); // Retrieve the selected section.
@@ -48,6 +53,15 @@ const SingleBlock = ({ title, html, preview }) => {
       element: getVirficeElementFromId(vID),
       parent: document.getElementById("virfice-editor-wrapper"),
     });
+  };
+
+  const applyShortCode = (element) => {
+    console.log(element, changedSettings);
+    if (changedSettings.logo) {
+      element.querySelector('[virfice-short_code="store_logo"]').src =
+        changedSettings.logo;
+    }
+    return element;
   };
   return (
     <div className={VIRFICE_APP_PREFIX + "-single-ready-block"}>

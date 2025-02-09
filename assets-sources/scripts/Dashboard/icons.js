@@ -280,6 +280,77 @@ export const HandTapIcon = () => (
   </svg>
 );
 
+export const OrderTableIcon = () => (
+  <svg
+    width={20}
+    height={20}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.5 4.375H17.5V15C17.5 15.1658 17.4342 15.3247 17.3169 15.4419C17.1997 15.5592 17.0408 15.625 16.875 15.625H3.125C2.95924 15.625 2.80027 15.5592 2.68306 15.4419C2.56585 15.3247 2.5 15.1658 2.5 15V4.375Z"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M2.5 8.125H17.5"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M2.5 11.875H17.5"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6.875 8.125V15.625"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const OrderAddressIcon = () => (
+  <svg
+    width={20}
+    height={20}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4.375 18.125H15.625"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10 10.625C11.3807 10.625 12.5 9.50571 12.5 8.125C12.5 6.74429 11.3807 5.625 10 5.625C8.61929 5.625 7.5 6.74429 7.5 8.125C7.5 9.50571 8.61929 10.625 10 10.625Z"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M16.25 8.125C16.25 13.75 10 18.125 10 18.125C10 18.125 3.75 13.75 3.75 8.125C3.75 6.4674 4.40848 4.87769 5.58058 3.70558C6.75269 2.53348 8.3424 1.875 10 1.875C11.6576 1.875 13.2473 2.53348 14.4194 3.70558C15.5915 4.87769 16.25 6.4674 16.25 8.125Z"
+      stroke="#666666"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const ImageIcon = () => (
   <svg
     width="20"
@@ -1240,13 +1311,7 @@ export const PaddingIcon = () => {
 };
 
 export const ToggleDisabledIcon = () => (
-  <svg
-    width={44}
-    height={36}
-    viewBox="0 0 44 36"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect
       x={6.75}
       y={6.75}
@@ -1268,13 +1333,7 @@ export const ToggleDisabledIcon = () => (
   </svg>
 );
 export const ToggleEnabledIcon = () => (
-  <svg
-    width={44}
-    height={36}
-    viewBox="0 0 44 36"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect y={6} width={38} height={24} rx={12} fill="#B5D72D" />
     <rect x={17} y={9} width={18} height={18} rx={9} fill="#FFFEFA" />
   </svg>

@@ -111,7 +111,7 @@ export const getOrderDetailsString = ({ title }) =>
 </table>
     <div style="margin-top: 32px;">
         <span virfice-selector="order_table_summary" virfice-my_selector="order_table_summary_order_notes" contenteditable="">Note:</span>
-        <span virfice-short_code="order_notes">Order notes will goes here.</span>
+        <span virfice-short_code="order_notes">The order note will appear here.</span>
     </div>
 </div>`;
 
@@ -128,7 +128,7 @@ export const getOrderAddressString = ({ title = "Order Address" }) =>
                             <div>Virfice</div>
                             <div>7400 Edwards Rd</div>
                             <div>Edwards rd</div>
-                            <div>(910) 529-1147</div>
+                            <div>(910) XXX-XXXX</div>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ export const getOrderAddressString = ({ title = "Order Address" }) =>
                             <div>Virfice</div>
                             <div>7400 Edwards Rd</div>
                             <div>Edwards rd</div>
-                            <div>(910) 529-1147</div>
+                            <div>(910) XXX-XXXX</div>
                         </div>
                     </div>
                 </div>

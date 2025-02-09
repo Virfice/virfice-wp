@@ -1,11 +1,11 @@
 import React from "react";
-import { HandTapIcon } from "@svg-icons";
+import { OrderAddressIcon, OrderTableIcon } from "@svg-icons";
 import { getBasicEleWrapper } from "../core-ele";
 import { getOrderAddressString, getOrderDetailsString } from "./woo-core-ele";
 
 const OrderTable = {
   title: "Order Table",
-  icon: <HandTapIcon />,
+  icon: <OrderTableIcon />,
   template: getBasicEleWrapper(
     getOrderDetailsString({
       title: "Order Table",
@@ -21,7 +21,7 @@ const OrderTable = {
 };
 const OrderAddress = {
   title: "Order Address",
-  icon: <HandTapIcon />,
+  icon: <OrderAddressIcon />,
   template: getBasicEleWrapper(
     getOrderAddressString({
       title: "Order Address",
