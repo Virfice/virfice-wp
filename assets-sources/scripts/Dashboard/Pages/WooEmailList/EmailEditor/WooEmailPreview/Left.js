@@ -1,10 +1,9 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "@conf";
-import Button from "@molecules/Button";
 import { useSelector } from "react-redux";
 import { EnvelopIcon } from "@svg-icons";
 
-const Left = ({ onPreviewButtonClick }) => {
+const Left = () => {
   const changedSettings = useSelector(
     (state) => state.globalSettings["changedSettings-email"]
   );
@@ -23,18 +22,10 @@ const Left = ({ onPreviewButtonClick }) => {
         <div style={{ marginBottom: 16 }}>
           <div
             className={`${VIRFICE_APP_PREFIX}-flex`}
-            style={{ gap: 64, alignItems: "center" }}
+            style={{ alignItems: "center" }}
           >
-            <div>
-              <EnvelopIcon />
-              <span style={{ marginLeft: 4 }}>Inbox Preview</span>
-            </div>
-            <Button
-              small
-              type={"secondary"}
-              title="See Preview"
-              onClick={onPreviewButtonClick}
-            />
+            <EnvelopIcon />
+            <span style={{ marginLeft: 4 }}>Inbox Preview</span>
           </div>
         </div>
         <div>

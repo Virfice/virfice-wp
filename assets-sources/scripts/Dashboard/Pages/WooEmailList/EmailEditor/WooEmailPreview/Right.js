@@ -1,12 +1,14 @@
 import React from "react";
 import TextField from "@molecules/TextField";
+import Button from "@molecules/Button";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalSettingsData } from "../../../Settings/globalSettingsSlice";
 import { escapedHtmlToOriginal } from "../RightPanel/SettingsGenerator";
 import { setWooEmailSingleData } from "../wooEmailSingleSlice";
+import { DevicesIcon } from "@svg-icons";
 
-const Right = () => {
+const Right = ({ onPreviewButtonClick }) => {
   const dispatch = useDispatch();
   let form_fields = useSelector(
     (state) => state.wooEmailSingle?.email?.settings?.form_fields
@@ -19,10 +21,6 @@ const Right = () => {
   );
 
   if (!form_fields) return;
-
-  const handlePreviewTextChange = () => {
-    console.log("Subject changed");
-  };
 
   const settingsChange = (key, value) => {
     dispatch(
@@ -42,6 +40,15 @@ const Right = () => {
   };
   return (
     <div style={{ flexGrow: 1 }}>
+      <div style={{ marginBottom: 24 }}>
+        <Button
+          small
+          type={"secondary"}
+          title="Preview Email"
+          onClick={onPreviewButtonClick}
+          leftIcon={<DevicesIcon />}
+        />
+      </div>
       <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
         <TextField
           placeholder={

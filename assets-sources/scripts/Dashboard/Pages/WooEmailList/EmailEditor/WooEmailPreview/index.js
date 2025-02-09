@@ -74,11 +74,11 @@ const WooEmailPreview = () => {
     });
   };
 
-  const handleCancelActionClick = () => {
-    window.location.href = addParams({
-      menu: "woo-email-list",
-    });
-  };
+  // const handleCancelActionClick = () => {
+  //   window.location.href = addParams({
+  //     menu: "woo-email-list",
+  //   });
+  // };
   const handleSaveClick = () => {
     const s = store.getState();
     const emailSettings = s.wooEmailSingle.email.settings;
@@ -90,6 +90,12 @@ const WooEmailPreview = () => {
     );
     dispatch(saveGlobalSettings("email"));
     // handleCancelActionClick();
+  };
+
+  const handleDiscardClick = () => {
+    window.location.href = addParams({
+      menu: "woo-email-list",
+    });
   };
 
   if (!loaded) return <>loading</>;
@@ -108,8 +114,9 @@ const WooEmailPreview = () => {
     <>
       <StickyTopNav
         backAction={handleBackActionClick}
-        saveButtonText="Save"
-        size1280
+        discardAction={handleDiscardClick}
+        discardButtonText="Cancel"
+        saveAction={handleSaveClick}
       />
       <section>
         <PageHeadingAndSubheading
@@ -120,33 +127,14 @@ const WooEmailPreview = () => {
         <Container>
           <div style={{ marginTop: 36 }}>
             <div className={`${VIRFICE_APP_PREFIX}-flex`} style={{ gap: 64 }}>
-              <Left
-                onPreviewButtonClick={() => {
-                  setPreview(true);
-                }}
-              />
-              {settingsLoaded && <Right />}
-            </div>
-            <div
-              style={{
-                marginTop: 24,
-                display: "flex",
-                justifyContent: "end",
-              }}
-            >
-              <div style={{ display: "inline-flex", gap: 8 }}>
-                <Button
-                  title={"Cancel"}
-                  type="secondary"
-                  onClick={handleCancelActionClick}
+              <Left />
+              {settingsLoaded && (
+                <Right
+                  onPreviewButtonClick={() => {
+                    setPreview(true);
+                  }}
                 />
-
-                <Button
-                  title={"Save"}
-                  type="primary"
-                  onClick={handleSaveClick}
-                />
-              </div>
+              )}
             </div>
           </div>
         </Container>

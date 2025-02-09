@@ -7,6 +7,7 @@ import Button from "@molecules/Button";
 const StickyTopNav = ({
   backAction,
   discardAction,
+  discardButtonText,
   saveAction,
   saveButtonText,
   size1280,
@@ -42,7 +43,7 @@ const StickyTopNav = ({
                 {discardAction && (
                   <Button
                     type="secondary"
-                    title="Discard"
+                    title={discardButtonText || "Discard"}
                     onClick={discardAction}
                   />
                 )}

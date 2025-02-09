@@ -1311,30 +1311,76 @@ export const PaddingIcon = () => {
 };
 
 export const ToggleDisabledIcon = () => (
-  <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    viewBox="-1 0 46 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      margin: 0,
+      padding: 0,
+      display: "block",
+    }}
+  >
+    <rect x={0} y={6} width={38} height={24} rx={12} fill="#E6E6E6" />
     <rect
-      x={6.75}
-      y={6.75}
-      width={36.5}
-      height={22.5}
-      rx={11.25}
-      fill="#E6E6E6"
-    />
-    <rect
-      x={6.75}
-      y={6.75}
-      width={36.5}
-      height={22.5}
-      rx={11.25}
+      x={0}
+      y={6}
+      width={38}
+      height={24}
+      rx={12}
       stroke="#C9C9C9"
       strokeWidth={1.5}
     />
-    <rect x={12} y={12} width={12} height={12} rx={6} fill="#CCCCCC" />
+    <rect x={8} y={12} width={12} height={12} rx={6} fill="#CCCCCC" />
   </svg>
 );
 export const ToggleEnabledIcon = () => (
-  <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect y={6} width={38} height={24} rx={12} fill="#B5D72D" />
+  <svg
+    viewBox="-1 0 46 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      margin: 0,
+      padding: 0,
+      display: "block",
+    }}
+  >
+    <rect x={0} y={6} width={38} height={24} rx={12} fill="#B5D72D" />
     <rect x={17} y={9} width={18} height={18} rx={9} fill="#FFFEFA" />
+  </svg>
+);
+
+export const DevicesIcon = () => (
+  <svg
+    width={12}
+    height={13}
+    viewBox="0 0 12 13"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11.25 9.5V5C11.25 4.58579 10.9142 4.25 10.5 4.25H8.25C7.83579 4.25 7.5 4.58579 7.5 5V9.5C7.5 9.91421 7.83579 10.25 8.25 10.25H10.5C10.9142 10.25 11.25 9.91421 11.25 9.5Z"
+      stroke="#666666"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6 10.25H4.125"
+      stroke="#666666"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.5 8.75H1.875C1.67609 8.75 1.48532 8.67098 1.34467 8.53033C1.20402 8.38968 1.125 8.19891 1.125 8V3.5C1.125 3.30109 1.20402 3.11032 1.34467 2.96967C1.48532 2.82902 1.67609 2.75 1.875 2.75H8.625C8.82391 2.75 9.01468 2.82902 9.15533 2.96967C9.29598 3.11032 9.375 3.30109 9.375 3.5V4.25"
+      stroke="#666666"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9 5.75H9.75"
+      stroke="#666666"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
