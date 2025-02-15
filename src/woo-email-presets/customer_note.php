@@ -1,8 +1,9 @@
 <div virfice-ele_type="section" virfice-settings_status="disabled"
-    style="padding-top: 0px; padding-bottom: 0px; text-align: center;" virfice-id="m58e705klg2ri1fb7" class="">
+    style="padding-top: 0px; padding-bottom: 0px; text-align: center; background-color: #FFC900;"
+    virfice-id="m58e705klg2ri1fb7" class="">
     <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
         virfice-id="m58e705kkmilhca7o" class=""
-        style="text-align: left; padding: 36px 48px 36px 48px; background-color: #FFC900; color: #000000;font-size: 30px;">
+        style="text-align: left; padding: 36px 48px 36px 48px; color: #000000;font-size: 30px;">
         A note has been added to your order</div>
 </div>
 

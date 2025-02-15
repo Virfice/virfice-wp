@@ -70,16 +70,17 @@ export const generateRandomId = () => {
 };
 
 export const saveEmailOuterAndInnerBGColor = async () => {
-  const outerPreviewWrapper = getIframe().templateWrapper;
-  const emailPreviewWrapper = getIframe().editorWrapper;
+  const editorWrapper = getIframe().editorWrapper;
+  const templateWrapper = getIframe().templateWrapper;
   const outerBgColor = getElementComputedStyle(
-    outerPreviewWrapper,
+    editorWrapper,
     "background-color"
   );
   const innerBgColor = getElementComputedStyle(
-    emailPreviewWrapper,
+    templateWrapper,
     "background-color"
   );
+
   dispatchDashboardAction(saveVirficeBrandSettings, {
     email_outer_background_color: rgbToHex(outerBgColor),
     email_background_color: rgbToHex(innerBgColor),
