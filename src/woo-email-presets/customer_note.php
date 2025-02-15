@@ -16,7 +16,7 @@
             The following note has been added to your order.</div>
 
         <div virfice-short_code="order_note" style="text-align: left;font-size: 14px;margin-bottom:8px;">
-            This is the note</div>
+            The order note will appear here.</div>
 
         <div virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
             virfice-id="m58e705kkmi" class="" style="text-align: left;font-size: 14px;margin-bottom:8px;">

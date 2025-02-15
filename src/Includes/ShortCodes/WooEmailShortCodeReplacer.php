@@ -26,25 +26,24 @@ class WooEmailShortCodeReplacer
         if (!$this->order) {
             return $content;
         }
+        $short_codes = $this->get_short_codes();
+
+
         // Handle conditional short_codes
         $content = $this->replace_conditional_short_codes($content);
-        $short_codes = $this->get_short_codes();
         // Replace simple short_codes
         foreach ($short_codes as $short_code => $value) {
             $content = str_replace("{" . $short_code . "}", $value, $content);
         }
 
-        $content = $this->replace_dom_short_code($content);
+        $content = $this->replace_dom_short_code($content, $short_codes);
         // Replace item-specific shortcodes if applicable
         $content = $this->replace_order_item_short_codes($content);
-
-        Utils::LOG($content);
         return $content;
     }
 
-    private function replace_dom_short_code($content)
+    private function replace_dom_short_code($content, $short_codes)
     {
-        $short_codes = $this->get_short_codes();
         $content = DomShortCode::run($content, $short_codes);
         return $content;
     }
@@ -53,7 +52,6 @@ class WooEmailShortCodeReplacer
     {
         // Define the short_codes and their replacements
         $short_codes = [
-            'site_title' => get_bloginfo('name'),
             'order_date' => $this->order->get_date_created()->date('F j, Y'),
             'order_number' => $this->order->get_order_number(),
             'order_total' => \wc_price($this->order->get_total()),
@@ -65,9 +63,6 @@ class WooEmailShortCodeReplacer
             'customer_last_name' => $this->order->get_billing_last_name(),
             'customer_full_name' => $this->order->get_billing_first_name() . ' ' . $this->order->get_billing_last_name(),
             'customer_email' => $this->order->get_billing_email(),
-            'store_url' => get_home_url(),
-            'store_address' => $this->get_store_address(),
-            'store_phone' => get_option('woocommerce_store_phone'),
             'discount_amount' => \wc_price($this->get_order_discount()),
             'shipping_method' => $this->order->get_shipping_method(),
             'tracking_number' => $this->get_tracking_number(),
@@ -76,6 +71,8 @@ class WooEmailShortCodeReplacer
             'subscription_total' => $this->get_subscription_total(),
             'order_notes' => $this->get_order_notes(), // Adding order notes here
         ];
+
+        $short_codes = array_merge($short_codes, ShortCodes::common_short_codes());
 
         return $short_codes;
     }
@@ -126,18 +123,6 @@ class WooEmailShortCodeReplacer
             $short_codes_arr[] = $item_data;
         }
         return DomShortCode::run_items('[virfice-short_code="order_items_wrapper"]', '[virfice-short_code="order_item_wrapper"]', $template, $short_codes_arr);
-    }
-
-    private function get_store_address()
-    {
-        $address = [
-            get_option('woocommerce_store_address'),
-            get_option('woocommerce_store_address_2'),
-            get_option('woocommerce_store_city'),
-            get_option('woocommerce_store_postcode')
-        ];
-
-        return implode(', ', array_filter($address));
     }
 
     private function get_order_discount()

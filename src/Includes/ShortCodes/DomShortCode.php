@@ -27,6 +27,35 @@ class DomShortCode
         return $template;
     }
 
+    public static function remove_element_using_my_selector($template, $my_selector)
+    {
+        $crawler = new Crawler($template);
+
+        // Filter elements that have the given attribute and remove them
+        $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) {
+            foreach ($node as $domElement) {
+                $domElement->parentNode->removeChild($domElement);
+            }
+        });
+
+        return $crawler->html();
+    }
+
+
+    public static function set_attribute_value_using_my_selector($template, $my_selector, $attr_name, $attr_value)
+    {
+        $crawler = new Crawler($template);
+
+        // Select elements with the attribute virfice-my_selector="$my_selector"
+        $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) use ($attr_name, $attr_value) {
+            foreach ($node as $domElement) {
+                $domElement->setAttribute($attr_name, $attr_value);
+            }
+        });
+
+        return $crawler->html();
+    }
+
     public static function run_items($parent_selector, $item_selector, $template, $short_codes_arr)
     {
         $template = new Crawler($template); // Initialize the Crawler with the HTML template

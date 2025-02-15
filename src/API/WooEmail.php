@@ -202,9 +202,9 @@ class WooEmail extends WP_REST_Controller
 		$formatted_email_lists = array();
 		foreach ($email_lists as $email_key => $email_obj) {
 
-			if ($email_key === 'WC_Email_Customer_Reset_Password' || $email_key === 'WC_Email_Customer_New_Account') {
-				continue;
-			}
+			// if ($email_key === 'WC_Email_Customer_Reset_Password' || $email_key === 'WC_Email_Customer_New_Account') {
+			// 	continue;
+			// }
 
 			$url = add_query_arg(array(
 				'email_id' => $email_obj->id,
@@ -348,7 +348,7 @@ class WooEmail extends WP_REST_Controller
 			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_width', $data['email_body_width']);
 		}
 
-		if (!empty($data['logo'])) {
+		if (isset($data['logo'])) {
 			MetaHelper::add_or_update_meta(0, 'brand-settings', 'logo', $data['logo']);
 		}
 

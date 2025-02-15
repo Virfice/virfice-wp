@@ -81,7 +81,7 @@ const BrandSettings = ({ element }) => {
             font-size: 16px;
             line-height: 1.5;
         }
-        .virfice-template-wrapper a{
+        .virfice-template-wrapper [virfice-ele_type='link']{
             display: inline-block;
             color: ${email_body_button_color};
             background-color: ${email_body_button_bg};
