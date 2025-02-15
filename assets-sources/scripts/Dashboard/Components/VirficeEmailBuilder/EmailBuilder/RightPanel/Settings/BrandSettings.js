@@ -50,7 +50,7 @@ const BrandSettings = ({ element }) => {
     } = changedSettings;
 
     return `<style>
-        .virfice-editor-wrapper {
+       body{
             margin: 0;
             padding: 0;
             background-color: ${email_outer_background_color};

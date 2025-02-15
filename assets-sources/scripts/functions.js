@@ -70,12 +70,9 @@ export const generateRandomId = () => {
 };
 
 export const saveEmailOuterAndInnerBGColor = async () => {
-  const editorWrapper = getIframe().editorWrapper;
+  const body = getIframe().body;
   const templateWrapper = getIframe().templateWrapper;
-  const outerBgColor = getElementComputedStyle(
-    editorWrapper,
-    "background-color"
-  );
+  const outerBgColor = getElementComputedStyle(body, "background-color");
   const innerBgColor = getElementComputedStyle(
     templateWrapper,
     "background-color"

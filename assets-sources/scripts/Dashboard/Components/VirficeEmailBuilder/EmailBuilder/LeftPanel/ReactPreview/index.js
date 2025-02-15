@@ -6,6 +6,9 @@ import EditorControls from "./EditorControls";
 import { getIframe, initEmailBuilder } from "../../utils";
 
 const defaultStyle = `<style>
+  html{
+    padding-bottom: 280px;
+  }
   html, body, .virfice-editor-wrapper{
     min-height: 100vh;
   }

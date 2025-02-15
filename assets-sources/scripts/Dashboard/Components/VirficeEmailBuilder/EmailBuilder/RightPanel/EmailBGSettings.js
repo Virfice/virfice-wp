@@ -7,9 +7,9 @@ import { getIframe } from "../utils";
 
 const EmailBGSettings = () => {
   const templateWrapper = getIframe().templateWrapper;
-  const editorWrapper = getIframe().editorWrapper;
+  const body = getIframe().body;
 
-  if (!templateWrapper || !editorWrapper) return null;
+  if (!templateWrapper || !body) return null;
   return (
     <div style={{ width: "100%" }}>
       <div className={`${VIRFICE_APP_PREFIX}-flex`}>
@@ -28,9 +28,9 @@ const EmailBGSettings = () => {
 
           <PaintField
             label={"Outer background"}
-            value={getElementComputedStyle(editorWrapper, "background-color")}
+            value={getElementComputedStyle(body, "background-color")}
             onChange={(v) => {
-              editorWrapper.style.backgroundColor = v;
+              body.style.backgroundColor = v;
             }}
           />
         </div>

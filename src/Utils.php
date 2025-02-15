@@ -246,7 +246,7 @@ class Utils
         $footer_background_color = $global_settings['footer_background_color'];
         return "
        <style>
-        .virfice-editor-wrapper {
+        body{
             margin: 0;
             padding: 0;
             background-color: $email_outer_background_color;
