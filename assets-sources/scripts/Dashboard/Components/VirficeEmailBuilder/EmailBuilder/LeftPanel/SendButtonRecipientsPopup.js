@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { globalSettingsAsync } from "../../../../Pages/Settings/globalSettingsSlice";
 import axios from "axios";
 import { getIframe } from "../utils";
+import { showNotificationBell } from "../../../componentsSlice";
 
 const SendButtonRecipientsPopup = () => {
   const [testMailPopupOpen, setTestMailPopupOpen] = useState(false);
@@ -80,21 +81,21 @@ const SendButtonRecipientsPopup = () => {
       .then((res) => {
         d = res.data;
         // setTestMailPopupOpen(false);
-        // dispatch(
-        //   showNotificationBell({
-        //     title: "Test email sent! Check your inbox.",
-        //     type: "success",
-        //   })
-        // );
+        dispatch(
+          showNotificationBell({
+            title: "Test email sent! Check your inbox.",
+            type: "success",
+          })
+        );
       })
       .catch((error) => {
         console.log(error);
-        // dispatch(
-        //   showNotificationBell({
-        //     title: "Failed to send test email!",
-        //     type: "danger",
-        //   })
-        // );
+        dispatch(
+          showNotificationBell({
+            title: "Failed to send test email!",
+            type: "danger",
+          })
+        );
       });
     handlePopupClose();
   };

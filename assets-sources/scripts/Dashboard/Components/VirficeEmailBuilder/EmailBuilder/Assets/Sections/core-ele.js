@@ -32,7 +32,7 @@ export const getVideoString = ({ title }) =>
 export const getButtonString = ({ title, content }) =>
   `<a ${VIRFICE_APP_PREFIX}-title="${
     title || "Button"
-  }" ${VIRFICE_APP_PREFIX}-ele_type="link" style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px; background-color: #161A05; color: #F9FCEE;" contentEditable>${
+  }" ${VIRFICE_APP_PREFIX}-ele_type="link" style="display: inline-flex; gap: 8px; border-radius: 4px; padding: 8px 16px;" contentEditable>${
     content || "Button"
   }</a>`;
 

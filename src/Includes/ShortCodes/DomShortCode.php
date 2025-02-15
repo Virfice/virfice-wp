@@ -17,43 +17,60 @@ class DomShortCode
 
     public static function run($template, $short_codes)
     {
-        $template = new Crawler($template);
-        // Iterate over the short_codes array
-        foreach ($short_codes as $key => $value) {
-            $template = self::set_inner_html_using_short_code_data_attribute($template, $key, $value);
+        try {
+            $template = new Crawler($template);
+            // Iterate over the short_codes array
+            foreach ($short_codes as $key => $value) {
+                $template = self::set_inner_html_using_short_code_data_attribute($template, $key, $value);
+            }
+
+            $template = $template->html();
+        } catch (\Throwable $th) {
+            //throw $th;
         }
 
-        $template = $template->html();
         return $template;
     }
 
     public static function remove_element_using_my_selector($template, $my_selector)
     {
-        $crawler = new Crawler($template);
+        try {
+            $crawler = new Crawler($template);
 
-        // Filter elements that have the given attribute and remove them
-        $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) {
-            foreach ($node as $domElement) {
-                $domElement->parentNode->removeChild($domElement);
-            }
-        });
+            // Filter elements that have the given attribute and remove them
+            $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) {
+                foreach ($node as $domElement) {
+                    $domElement->parentNode->removeChild($domElement);
+                }
+            });
 
-        return $crawler->html();
+            $template = $crawler->html();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+        return $template;
     }
 
 
     public static function set_attribute_value_using_my_selector($template, $my_selector, $attr_name, $attr_value)
     {
-        $crawler = new Crawler($template);
+        try {
+            $crawler = new Crawler($template);
 
-        // Select elements with the attribute virfice-my_selector="$my_selector"
-        $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) use ($attr_name, $attr_value) {
-            foreach ($node as $domElement) {
-                $domElement->setAttribute($attr_name, $attr_value);
-            }
-        });
+            // Select elements with the attribute virfice-my_selector="$my_selector"
+            $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) use ($attr_name, $attr_value) {
+                foreach ($node as $domElement) {
+                    $domElement->setAttribute($attr_name, $attr_value);
+                }
+            });
 
-        return $crawler->html();
+            $template = $crawler->html();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+        return $template;
     }
 
     public static function run_items($parent_selector, $item_selector, $template, $short_codes_arr)

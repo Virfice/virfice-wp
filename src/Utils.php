@@ -39,10 +39,17 @@ class Utils
         return null; // Return null if no matching email is found
     }
 
+
     public static function isVirficeTemplateEnabled($email_id)
     {
-        return Utils::get_boolean_value(MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_status', false));
+        $metaValue = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_status', false);
+        // Return false if the meta value is empty, null, or false
+        if (empty($metaValue)) {
+            return false;
+        }
+        return Utils::get_boolean_value($metaValue);
     }
+
 
     /**
      * Gets the current admin URL based on the request URI.

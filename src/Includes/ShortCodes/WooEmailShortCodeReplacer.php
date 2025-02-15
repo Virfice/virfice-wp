@@ -77,18 +77,22 @@ class WooEmailShortCodeReplacer
         return $short_codes;
     }
 
-    // Function to get the order notes
-    private function get_order_notes()
+    private function get_order_notes($take_only_note = null)
     {
         $order_id = $this->order->get_id();
         $notes = wc_get_order_notes(['order_id' => $order_id]);
         $notes_list = [];
 
         foreach ($notes as $note) {
-            $notes_list[] = $note->content; // You can customize the output as needed
+            $notes_list[] = $note->content;
         }
 
-        return implode("\n", $notes_list); // Joining notes into a single string
+        // If $take_only_note is set, return only that many notes
+        if ($take_only_note !== null && is_numeric($take_only_note)) {
+            $notes_list = array_slice($notes_list, 0, $take_only_note);
+        }
+
+        return implode("\n", $notes_list);
     }
 
     private function replace_conditional_short_codes($content)

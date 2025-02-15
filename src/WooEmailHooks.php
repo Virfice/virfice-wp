@@ -27,30 +27,47 @@ class WooEmailHooks
     }
 
 
-    public function my_plugin_override_woocommerce_email_template($template, $template_name, $template_path)
-    {
-        $plugin_path = VIRFICE_PLUGIN_VIEWS_ROOT . "/woocommerce/$template_name";
-        // Return the custom template if it exists
-        if (file_exists($plugin_path)) {
-            return $plugin_path;
-        }
-        // Return the default template if no custom template found
-        return $template;
-    }
-
     public function disable_woo_emails_if_virfice_enabled()
     {
-        // Get all email lists using WooCommerce's email functionality
-        $email_lists = WC()->mailer()->get_emails();
+        add_filter('woocommerce_locate_template', [$this, 'my_plugin_override_woocommerce_email_template'], 10, 3);
+    }
 
-        foreach ($email_lists as $email_key => $email_obj) {
-            $email_id = $email_obj->id;
-            $virfice_template_status = Utils::isVirficeTemplateEnabled($email_id);
+    public function my_plugin_override_woocommerce_email_template($template, $template_name, $template_path)
+    {
+        // Ensure we're only modifying WooCommerce email templates
+        if (strpos($template_name, 'emails/') === false) {
+            return $template;
+        }
 
-            if ($virfice_template_status) {
-                add_filter('woocommerce_locate_template', [$this, 'my_plugin_override_woocommerce_email_template'], 10, 3);
+        // Get the actual email ID from WooCommerce’s email registry
+        $email_id = $this->get_email_id_from_template($template_name);
+
+        if ($email_id && Utils::isVirficeTemplateEnabled($email_id)) {
+            $custom_template_path = VIRFICE_PLUGIN_VIEWS_ROOT . "/woocommerce/$template_name";
+
+            if (file_exists($custom_template_path)) {
+                return $custom_template_path; // Use the custom Virfice template
             }
         }
+
+        return $template; // Use the default WooCommerce template
+    }
+
+    /**
+     * Retrieve WooCommerce email ID based on template name.
+     */
+    private function get_email_id_from_template($template_name)
+    {
+        $mailer = WC()->mailer();
+        $emails = $mailer->get_emails();
+
+        foreach ($emails as $email) {
+            if ($email->template_html === $template_name) {
+                return $email->id; // Return the correct WooCommerce email ID
+            }
+        }
+
+        return null; // Return null if not found
     }
 
     public function replace_woo_email_footer_text($string)

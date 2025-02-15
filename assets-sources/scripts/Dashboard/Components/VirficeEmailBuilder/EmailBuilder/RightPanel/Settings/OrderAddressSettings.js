@@ -6,16 +6,10 @@ import TabHead from "../../../../Tab/TabHead";
 import Divider from "@molecules/Divider";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import PaintField from "@molecules/Paintfield";
-import TextField from "@molecules/TextField";
 import ToggleButton from "@molecules/ToggleButton";
 import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
-import DisabledParentSettings from "./DisabledParentSettings";
-import {
-  getAllElementsUsingSelector,
-  getElementUsingMySelector,
-  getParentSection,
-} from "../../utils";
+import { getParentSection } from "../../utils";
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
 
 const OrderAddressSettings = ({ element }) => {
@@ -57,6 +51,7 @@ const OrderAddressSettings = ({ element }) => {
             />
 
             <Reusable element={parentSection} type="background" />
+            <Reusable element={parentSection} type="border-radius" />
             <Reusable element={parentSection} type="padding" />
           </div>
         </TabContent>
