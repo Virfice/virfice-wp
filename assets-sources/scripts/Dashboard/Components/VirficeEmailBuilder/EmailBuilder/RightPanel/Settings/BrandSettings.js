@@ -15,9 +15,6 @@ const BrandSettings = ({ element }) => {
     (state) => state.virficeBrandSettings.changedSettings
   );
 
-  const templateWrapper = document.getElementById("virfice-email-preview");
-  const editorWrapper = document.getElementById("virfice-editor-wrapper");
-
   const settingsChange = (key, value) => {
     const c = { ...changedSettings, [key]: value };
     dispatch(
@@ -33,10 +30,6 @@ const BrandSettings = ({ element }) => {
         value: getGlobalStyleStyleTag(c),
       })
     );
-
-    // console.log(getGlobalStyleStyleTag(c));
-
-    // console.log(key, value);
   };
 
   const getGlobalStyleStyleTag = (changedSettings) => {

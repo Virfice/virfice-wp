@@ -3,6 +3,7 @@ import { VIRFICE_APP_PREFIX } from "@conf";
 import Card from "@molecules/Card";
 import { useSelector } from "react-redux";
 import {
+  getIframe,
   getVirficeElementFromId,
   isBrandSettingsElementSelected,
 } from "../utils";
@@ -22,6 +23,7 @@ const RightPanel = () => {
     (state) => state.builder?.showReadyBlocks
   );
   const [element, setElement] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (selectedElementId) {
@@ -31,6 +33,13 @@ const RightPanel = () => {
     }
   }, [selectedElementId]);
 
+  useEffect(() => {
+    if (getIframe().editorWrapper) {
+      setLoaded(true);
+    }
+  }, [getIframe().editorWrapper]);
+
+  if (!loaded) return null;
   return (
     <div className={`${VIRFICE_APP_PREFIX}-builder-right-panel-wrapper`}>
       {/* {!selectedElementId && <Loading />} */}

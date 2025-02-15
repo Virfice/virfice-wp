@@ -5,6 +5,7 @@ import wooSections from "../../../../Assets/Sections/Woo";
 import {
   cloneElement,
   cloneElementFromString,
+  getIframe,
   getVirficeAttr,
   getVirficeElementFromId,
   initEmailBuilder,
@@ -13,7 +14,7 @@ import {
 } from "../../../../utils";
 
 const Body = ({ element, onAdd }) => {
-  const templateWrapper = document.getElementById("virfice-email-preview");
+  const templateWrapper = getIframe().templateWrapper;
   const addSection = (section) => {
     let template = cloneElementFromString(section.template);
     if (element) {
@@ -29,7 +30,7 @@ const Body = ({ element, onAdd }) => {
 
     scrollToCanvasElement({
       element: getVirficeElementFromId(vID),
-      parent: document.getElementById("virfice-editor-wrapper"),
+      parent: getIframe().body,
     });
   };
 

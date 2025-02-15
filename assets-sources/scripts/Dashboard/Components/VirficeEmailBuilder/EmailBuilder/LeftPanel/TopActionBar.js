@@ -4,6 +4,7 @@ import { VIRFICE_APP_PREFIX, VIRFICE_RESPONSIVE_BREAKPOINTS } from "@conf";
 import { LaptopIcon, MobileIcon } from "@svg-icons";
 import SendButtonRecipientsPopup from "./SendButtonRecipientsPopup";
 import { useSelector } from "react-redux";
+import { getIframe } from "../utils";
 
 const TopActionBar = () => {
   const emailSettings = useSelector(
@@ -12,7 +13,7 @@ const TopActionBar = () => {
   const [activeDevice, setActiveDevice] = useState("Laptop");
 
   const changeIframeWidth = (deviceName) => {
-    let iframe = document.getElementById(VIRFICE_APP_PREFIX + "-email-preview");
+    const iframe = getIframe().templateWrapper;
 
     if (deviceName === "Laptop") {
       iframe.style.width = VIRFICE_RESPONSIVE_BREAKPOINTS.desktop;

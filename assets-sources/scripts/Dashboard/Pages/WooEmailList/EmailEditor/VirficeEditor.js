@@ -13,7 +13,10 @@ import {
   emailSingleVirficeAsync,
 } from "./wooEmailSingleSlice";
 import { saveSingleTemplate } from "@components/VirficeEmailBuilder/builderSlice";
-import { initEmailBuilder } from "../../../Components/VirficeEmailBuilder/EmailBuilder/utils";
+import {
+  getIframe,
+  initEmailBuilder,
+} from "../../../Components/VirficeEmailBuilder/EmailBuilder/utils";
 import { showNotificationBell } from "../../../Components/componentsSlice";
 
 const VirficeEditor = () => {
@@ -36,7 +39,7 @@ const VirficeEditor = () => {
   };
 
   const handleDiscardClick = () => {
-    const templateWrapper = document.querySelector("#virfice-email-preview");
+    const templateWrapper = getIframe().templateWrapper;
     templateWrapper.innerHTML = builderPost.post_content;
 
     initEmailBuilder();
@@ -48,7 +51,7 @@ const VirficeEditor = () => {
   const handleSaveClick = () => {
     console.log("save button click");
     if (virfice_template.id) {
-      const templateWrapper = document.querySelector("#virfice-email-preview");
+      const templateWrapper = getIframe().templateWrapper;
 
       // Create a clone of the wrapper's content
       const templateContent = templateWrapper.cloneNode(true);

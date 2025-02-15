@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import {
   cloneElementFromString,
+  getIframe,
   getVirficeAttr,
   getVirficeElementFromId,
   initEmailBuilder,
@@ -41,7 +42,7 @@ const SingleBlock = ({ title, html, preview }) => {
         selected_section.nextSibling
       );
     } else {
-      const templateWrapper = document.getElementById("virfice-email-preview");
+      const templateWrapper = getIframe().templateWrapper;
       templateWrapper.append(element);
     }
     initEmailBuilder(); //TODO: need to init only for new element
@@ -51,13 +52,15 @@ const SingleBlock = ({ title, html, preview }) => {
 
     scrollToCanvasElement({
       element: getVirficeElementFromId(vID),
-      parent: document.getElementById("virfice-editor-wrapper"),
+      parent: getIframe().body,
     });
   };
 
   const applyShortCode = (element) => {
-    console.log(element, changedSettings);
-    if (changedSettings.logo) {
+    if (
+      changedSettings.logo &&
+      element.querySelector('[virfice-short_code="store_logo"]')
+    ) {
       element.querySelector('[virfice-short_code="store_logo"]').src =
         changedSettings.logo;
     }

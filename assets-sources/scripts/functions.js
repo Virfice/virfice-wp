@@ -3,6 +3,7 @@ import { store } from "./Dashboard/store";
 import { getElementComputedStyle } from "./Dashboard/Components/VirficeEmailBuilder/EmailBuilder/RightPanel/Settings/utils";
 import { saveVirficeBrandSettings } from "./Dashboard/Pages/VirficeBrandSettings/virficeBrandSettingsSlice";
 import { rgbToHex } from "./Dashboard/Molecules/Paintfield";
+import { getIframe } from "./Dashboard/Components/VirficeEmailBuilder/EmailBuilder/utils";
 
 export const hasQueryParamValue = (
   field,
@@ -69,8 +70,8 @@ export const generateRandomId = () => {
 };
 
 export const saveEmailOuterAndInnerBGColor = async () => {
-  const outerPreviewWrapper = document.querySelector("#virfice-editor-wrapper");
-  const emailPreviewWrapper = document.querySelector("#virfice-email-preview");
+  const outerPreviewWrapper = getIframe().templateWrapper;
+  const emailPreviewWrapper = getIframe().editorWrapper;
   const outerBgColor = getElementComputedStyle(
     outerPreviewWrapper,
     "background-color"

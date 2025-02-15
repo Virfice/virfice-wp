@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "@conf";
+import { useEffect, useState, useCallback } from "react";
+import { getIframe } from "../../../utils";
 
 const useElementPositionTracker = (element) => {
   const [position, setPosition] = useState({
@@ -8,75 +8,69 @@ const useElementPositionTracker = (element) => {
     width: 0,
     height: 0,
   });
-  useEffect(() => {
+
+  // Function to update position considering iframe offset
+  const updatePosition = useCallback(() => {
     if (!element) return;
-    const editorWrapper = document.querySelector(
-      `#${VIRFICE_APP_PREFIX}-editor-wrapper`
-    );
-    const parentElement = element.parentNode; // Get the parent of the target element
-    // Initial update on component mount
-    updatePosition();
+    // Calculate the correct position in the main document
+    const { iframe, document: iframeDoc, window: iframeWin } = getIframe();
 
-    const virficeDashboard = document.querySelector("#virfice-dashboard");
-    // Safely add scroll and resize listeners
-    if (virficeDashboard) {
-      virficeDashboard.addEventListener("scroll", updatePosition);
-    }
-
-    // Safely add scroll and resize listeners
-    if (editorWrapper) {
-      editorWrapper.addEventListener("scroll", updatePosition);
-    }
-
-    window.addEventListener("resize", updatePosition);
-
-    // Using ResizeObserver to track element resizing
-    const resizeObserver = new ResizeObserver(updatePosition);
-    resizeObserver.observe(element);
-
-    // Use MutationObserver to track changes in the parent element (e.g., reordering, moving up/down)
-    const mutationObserver = new MutationObserver(() => {
-      updatePosition();
-    });
-
-    // Observe the parent element to detect changes in its child nodes (e.g., element moves)
-    if (parentElement) {
-      mutationObserver.observe(parentElement, {
-        childList: true, // Detect changes in the parent's child elements
-        subtree: false, // No need to observe deeper in the DOM tree
-      });
-    }
-
-    // Cleanup the event listeners and observers on unmount
-    return () => {
-      if (virficeDashboard) {
-        virficeDashboard.removeEventListener("scroll", updatePosition);
-      }
-      if (editorWrapper) {
-        editorWrapper.removeEventListener("scroll", updatePosition);
-      }
-      window.removeEventListener("resize", updatePosition);
-
-      // Disconnect the observers
-      resizeObserver.disconnect();
-      if (parentElement) {
-        mutationObserver.disconnect();
-      }
-    };
-  }, [element]); // Re-run the effect when the `element` changes
-
-  // Function to update the border's position to match the element
-  const updatePosition = () => {
-    // Get the bounding box of the target element
+    // Get bounding box of the element inside the iframe
     const rect = element.getBoundingClientRect();
 
+    // Get iframe's position relative to the main document
+    const iframeRect = iframe.getBoundingClientRect();
+
+    // Set the correct position
     setPosition({
-      left: rect.left + window.scrollX,
-      top: rect.top + window.scrollY,
+      left: rect.left + iframeRect.left, // Add iframe's left offset
+      top: rect.top + iframeRect.top, // Add iframe's top offset
       width: rect.width,
       height: rect.height,
     });
-  };
+  }, [element]);
+
+  useEffect(() => {
+    if (!element) return;
+
+    const iframeData = getIframe();
+    if (!iframeData || !iframeData.iframe || !iframeData.document) return;
+
+    const { iframe, document: iframeDoc, window: iframeWin } = iframeData;
+    const parentElement = element.parentNode; // More specific tracking
+
+    // Ensure position updates on mount
+    setTimeout(updatePosition, 100);
+
+    // Add event listeners inside the iframe
+    iframeWin.addEventListener("scroll", updatePosition);
+    iframeWin.addEventListener("resize", updatePosition);
+    iframeDoc.body.addEventListener("scroll", updatePosition);
+
+    // Observe element size changes
+    const resizeObserver = new ResizeObserver(updatePosition);
+    resizeObserver.observe(element);
+
+    // Observe changes in parent element (to track moves)
+    const mutationObserver = new MutationObserver(updatePosition);
+    if (parentElement) {
+      mutationObserver.observe(parentElement, {
+        childList: true,
+        subtree: false, // No need to track deep changes
+      });
+    }
+
+    // Cleanup event listeners on unmount
+    return () => {
+      iframeWin.removeEventListener("scroll", updatePosition);
+      iframeWin.removeEventListener("resize", updatePosition);
+      iframeDoc.body.removeEventListener("scroll", updatePosition);
+
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [element, updatePosition]); // Re-run effect when `element` changes
+
   return position;
 };
 

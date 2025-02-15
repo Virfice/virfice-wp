@@ -7,10 +7,41 @@ import {
   setBuilderData,
 } from "../builderSlice";
 
+export const getIframe = () => {
+  const editorWrapper = document.getElementById("virfice-editor-wrapper");
+
+  if (!editorWrapper) {
+    return {};
+  }
+
+  const iframe = editorWrapper.querySelector("iframe");
+
+  if (!iframe || !iframe.contentWindow) {
+    console.error("Iframe not found or not loaded yet");
+    return {};
+  }
+  const obj = {
+    iframe,
+    document: iframe.contentWindow.document,
+    body: iframe.contentWindow.document.body,
+    templateWrapper: iframe.contentWindow.document.getElementById(
+      "virfice-email-preview"
+    ),
+    editorWrapper: iframe.contentWindow.document.getElementById(
+      "virfice-editor-wrapper"
+    ),
+    window: iframe.contentWindow,
+  };
+  return obj;
+};
+
 export const initEmailBuilder = () => {
-  const wrapper = document.getElementById(
-    VIRFICE_APP_PREFIX + "-email-preview"
-  );
+  const iframeData = getIframe();
+
+  if (!iframeData) return;
+  const wrapper = iframeData.templateWrapper;
+  if (!wrapper) return;
+
   setTimeout(() => {
     initAllElementsCommonEvents(wrapper);
   }, 100);
@@ -33,7 +64,7 @@ const initAllElementsCommonEvents = (wrapper) => {
     });
   });
 
-  const editorWrapper = document.getElementById("virfice-editor-wrapper");
+  const editorWrapper = getIframe().editorWrapper;
   editorWrapper.addEventListener("click", () => {
     dispatchDashboardAction(onSelectElement, null);
   });
@@ -84,8 +115,29 @@ const initHoverEvent = (ele) => {
     const sectionEle = getParentSection(ele);
     dispatchDashboardAction(onHoverSection, getVirficeAttr(sectionEle, "id"));
   });
+
+  let timeoutId; // Declare timeoutId variable globally or at the top of your function
+  // Add the event listener to `ele`
   ele.addEventListener("mouseleave", (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent event bubbling
+    // Get the controls element
+    // const controlsElement = document.querySelector(".virfice-right-control");
+
+    // controlsElement.addEventListener("mouseover", (e) => {
+    //   clearTimeout(timeoutId);
+    // });
+
+    // controlsElement.addEventListener("mouseleave", (e) => {
+    //   // Set timeout to remove the hover section after 2 seconds delay
+    //   timeoutId = setTimeout(() => {
+    //     dispatchDashboardAction(onHoverSection, false);
+    //   }, 1000);
+    // });
+
+    // Set timeout to remove the hover section after 2 seconds delay
+    // timeoutId = setTimeout(() => {
+    //   dispatchDashboardAction(onHoverSection, false);
+    // }, 2000);
   });
 };
 
@@ -119,7 +171,7 @@ const initHoverEvent = (ele) => {
 // };
 
 export const getVirficeElementFromId = (elementId) => {
-  const wrapper = document.getElementById(
+  const wrapper = getIframe().document.getElementById(
     VIRFICE_APP_PREFIX + "-email-preview"
   );
   return wrapper.querySelector(`[${VIRFICE_APP_PREFIX}-id="${elementId}"]`);
@@ -245,7 +297,7 @@ export const getParentSection = (element) => {
 };
 
 export const saveBuilderDataToRedux = (element) => {
-  const wrapper = document.getElementById(
+  const wrapper = getIframe().document.getElementById(
     VIRFICE_APP_PREFIX + "-email-preview"
   );
   dispatchDashboardAction(setBuilderData, {
@@ -260,7 +312,13 @@ export const scrollToCanvasElement = ({
   behavior = "smooth",
   block = "center",
 }) => {
-  if (!element || !(element instanceof HTMLElement)) {
+  // console.log(element);
+  // if (!element || !(element instanceof HTMLElement)) {
+  //   console.error("Invalid element passed to scrollToCanvasElement");
+  //   return;
+  // }
+
+  if (!element) {
     console.error("Invalid element passed to scrollToCanvasElement");
     return;
   }

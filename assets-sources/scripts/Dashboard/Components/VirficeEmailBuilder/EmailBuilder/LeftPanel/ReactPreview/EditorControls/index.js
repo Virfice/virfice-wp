@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { useSelector } from "react-redux";
-import { getVirficeElementFromId } from "../../../utils";
+import { getIframe, getVirficeElementFromId } from "../../../utils";
 import Border from "./Border";
 import { hasQueryParamValue } from "@functions";
 import AddSectionButton from "./AddSectionButton";
+import classNames from "classnames";
 
 const EditorControls = () => {
   const selectedSectionId = useSelector(
@@ -21,7 +22,7 @@ const EditorControls = () => {
 
   const [element, setElement] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(false);
-  const templateWrapper = document.getElementById("virfice-email-preview");
+  const templateWrapper = getIframe().templateWrapper;
   useEffect(() => {
     if (selectedSectionId) {
       setElement(getVirficeElementFromId(selectedSectionId));
@@ -47,8 +48,13 @@ const EditorControls = () => {
     return null;
   }
 
+  const cn = classNames({
+    [VIRFICE_APP_PREFIX + "-element-controls"]: true,
+    [VIRFICE_APP_PREFIX + "-empty-canvas"]: templateWrapper && isCanvasEmpty,
+  });
+
   return (
-    <div className={VIRFICE_APP_PREFIX + "-element-controls"}>
+    <div className={cn}>
       {!isCanvasEmpty && hoveredSectionId && (
         <Border
           element={getVirficeElementFromId(hoveredSectionId)}
@@ -61,14 +67,11 @@ const EditorControls = () => {
       )}
       {/* {!isCanvasEmpty && hoveredSectionId && <HoveredSection />} */}
 
-      {templateWrapper &&
-        isCanvasEmpty &&
-        createPortal(
-          <div className={VIRFICE_APP_PREFIX + "-empty-add-button"}>
-            <AddSectionButton />
-          </div>,
-          templateWrapper
-        )}
+      {templateWrapper && isCanvasEmpty && (
+        <div className={VIRFICE_APP_PREFIX + "-empty-add-button"}>
+          <AddSectionButton />
+        </div>
+      )}
     </div>
   );
 };

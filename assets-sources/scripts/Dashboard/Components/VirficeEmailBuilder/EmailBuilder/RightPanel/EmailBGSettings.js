@@ -3,10 +3,11 @@ import Divider from "@molecules/Divider";
 import PaintField from "@molecules/PaintField";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { getElementComputedStyle } from "./Settings/utils";
+import { getIframe } from "../utils";
 
 const EmailBGSettings = () => {
-  const templateWrapper = document.getElementById("virfice-email-preview");
-  const editorWrapper = document.getElementById("virfice-editor-wrapper");
+  const templateWrapper = getIframe().templateWrapper;
+  const editorWrapper = getIframe().editorWrapper;
 
   if (!templateWrapper || !editorWrapper) return null;
   return (

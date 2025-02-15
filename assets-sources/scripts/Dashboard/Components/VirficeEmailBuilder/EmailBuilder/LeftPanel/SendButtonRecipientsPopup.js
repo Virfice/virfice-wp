@@ -13,6 +13,7 @@ import FormInfo from "../../../FormInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { globalSettingsAsync } from "../../../../Pages/Settings/globalSettingsSlice";
 import axios from "axios";
+import { getIframe } from "../utils";
 
 const SendButtonRecipientsPopup = () => {
   const [testMailPopupOpen, setTestMailPopupOpen] = useState(false);
@@ -48,9 +49,7 @@ const SendButtonRecipientsPopup = () => {
       return;
     }
     setErrorMessage(false);
-    const emailWrapper = document.getElementById(
-      VIRFICE_APP_PREFIX + "-email-preview"
-    );
+    const emailWrapper = getIframe().templateWrapper;
     const htmlWithoutStyle = emailWrapper.innerHTML.replace(
       /<style[^>]*>[\s\S]*?<\/style>/gi,
       ""

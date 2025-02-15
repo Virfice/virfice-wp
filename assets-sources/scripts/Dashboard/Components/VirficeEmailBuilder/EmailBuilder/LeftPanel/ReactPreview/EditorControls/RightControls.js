@@ -3,15 +3,22 @@ import { VIRFICE_APP_PREFIX } from "@conf";
 import { DeleteIcon, DownIcon, DuplicateIcon, UpIcon } from "@svg-icons";
 import { duplicateElement } from "./utils";
 import {
+  getIframe,
   getParentElement,
   getVirficeAttr,
   getVirficeElementFromId,
+  initEmailBuilder,
   // initEmptyElement,
   saveBuilderDataToRedux,
   scrollToCanvasElement,
+  selectElementUsingID,
 } from "../../../utils";
 import { dispatchDashboardAction } from "@functions";
-import { onSelectElement, setBuilderData } from "../../../../builderSlice";
+import {
+  onHoverSection,
+  onSelectElement,
+  setBuilderData,
+} from "../../../../builderSlice";
 import { useDispatch } from "react-redux";
 import { showNotificationBell } from "../../../../../componentsSlice";
 
@@ -38,11 +45,15 @@ const RightControl = ({ element }) => {
 
     // scrollToCanvasElement();
     saveBuilderDataToRedux();
+    selectElementUsingID(vID);
+    initEmailBuilder();
 
-    scrollToCanvasElement({
-      element: getVirficeElementFromId(vID),
-      parent: document.getElementById("virfice-editor-wrapper"),
-    });
+    setTimeout(() => {
+      scrollToCanvasElement({
+        element: getVirficeElementFromId(vID),
+        parent: getIframe().body,
+      });
+    }, 100);
   };
   const handleDelete = () => {
     if (element.id === VIRFICE_APP_PREFIX + "-root") {
@@ -52,7 +63,8 @@ const RightControl = ({ element }) => {
 
     element.remove();
     dispatchDashboardAction(onSelectElement, getVirficeAttr(parentEle, "id"));
-    // initEmptyElement(parentEle);
+
+    dispatchDashboardAction(onHoverSection, false);
   };
 
   // Move element up by adjusting its position in the DOM

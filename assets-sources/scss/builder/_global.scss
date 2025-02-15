@@ -1,49 +1,49 @@
-.virfice-editor-wrapper {
-  background-color: #ffe60033;
+// .virfice-editor-wrapper {
+//   background-color: #ffe60033;
 
-  [contenteditable] {
-    outline: 0px solid transparent;
-  }
-  a img {
-    pointer-events: none;
-  }
-}
+//   [contenteditable] {
+//     outline: 0px solid transparent;
+//   }
+//   a img {
+//     pointer-events: none;
+//   }
+// }
 
-.virfice-template-wrapper {
-  max-width: 600px;
-  margin: auto;
-  background-color: white;
+// .virfice-template-wrapper {
+//   max-width: 600px;
+//   margin: auto;
+//   background-color: white;
 
-  *:not(.virfice-btn) {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    cursor: default;
-  }
+//   *:not(.virfice-btn) {
+//     margin: 0;
+//     padding: 0;
+//     border: 0;
+//     cursor: default;
+//   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+//   table {
+//     width: 100%;
+//     border-collapse: collapse;
+//   }
 
-  h2 {
-    font-size: 20px;
-    color: inherit;
-  }
+//   h2 {
+//     font-size: 20px;
+//     color: inherit;
+//   }
 
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+//   p {
+//     font-size: 16px;
+//     line-height: 1.5;
+//   }
 
-  a {
-    display: inline-block;
-  }
+//   a {
+//     display: inline-block;
+//   }
 
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border: 0;
-  }
-}
+//   img {
+//     max-width: 100%;
+//     height: auto;
+//     display: block;
+//     border: 0;
+//   }
+// }

@@ -4,7 +4,7 @@
   position: absolute;
   top: 112px;
   height: calc(100vh - 112px);
-  overflow: hidden;
+  // overflow: hidden;
   margin: auto;
   width: 100%;
 
@@ -17,12 +17,10 @@
 
   .#{$classPrefix}-builder-left-panel-wrapper {
     width: 880px;
-    height: calc(-120px + 100vh);
-    // overflow: scroll;
-
     #virfice-editor-wrapper {
-      height: calc(-112px + 100vh);
-      overflow: scroll;
+      height: calc(-200px + 100vh);
+      // overflow: scroll;
+      text-align: center;
     }
   }
 
@@ -46,9 +44,17 @@
 
 .#{$classPrefix}-editor-wrapper {
   position: relative;
-  padding-bottom: 460px !important;
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
 
   .#{$classPrefix}-element-controls {
+    &.#{$classPrefix}-empty-canvas {
+      width: 100%;
+      position: absolute;
+      top: 20px;
+    }
     .#{$classPrefix}-element-border {
       box-shadow: 0 2px 0 0 #02732d;
       /* Border bottom */
