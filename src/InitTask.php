@@ -21,11 +21,11 @@ class InitTask
      */
     public function __construct()
     {
-        // Hook for plugin activation
+        // // Hook for plugin activation
         register_activation_hook(__FILE__, [$this, 'on_plugin_activation']);
 
-        // Hook for plugin updates
-        add_action('plugins_loaded', [$this, 'check_for_update']);
+        // // Hook for plugin updates
+        add_action('init', [$this, 'check_for_update']);
     }
 
     /**
@@ -58,7 +58,6 @@ class InitTask
          * dummy code start
          */
         //create brand settings dummy template
-
         $brand_settings_template_id = MetaHelper::get_meta(0, 'brand-settings', 'template_id', false);
         if ($brand_settings_template_id) {
             $template_content = $this->get_virfice_brand_settings_template_preset();

@@ -3,7 +3,7 @@
 .#{$classPrefix}-builder-section-main {
   position: absolute;
   top: 112px;
-  height: calc(100vh - 112px);
+  // height: calc(100vh - 112px);
   // overflow: hidden;
   margin: auto;
   width: 100%;
@@ -18,7 +18,7 @@
   .#{$classPrefix}-builder-left-panel-wrapper {
     width: 880px;
     #virfice-editor-wrapper {
-      height: calc(-200px + 100vh);
+      height: calc(-204px + 100vh);
       // overflow: scroll;
       text-align: center;
     }
@@ -169,19 +169,19 @@
 
     .#{$classPrefix}-add-section-body {
       padding: 16px;
-
-      // display: flex;
-      // flex-wrap: wrap;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
+      // display: grid;
+      // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       gap: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
 
       .#{$classPrefix}-item {
         pointer-events: all;
         display: flex;
-        // width: 90px;
         height: 80px;
+        width: 100px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -206,7 +206,7 @@
         .#{$classPrefix}-item-title {
           white-space: nowrap;
           text-overflow: ellipsis;
-          max-width: 67px;
+          max-width: 90px;
           overflow: hidden;
         }
       }

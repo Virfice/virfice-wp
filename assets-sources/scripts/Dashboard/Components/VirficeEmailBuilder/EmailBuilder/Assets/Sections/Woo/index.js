@@ -27,7 +27,7 @@ const OrderAddress = {
       title: "Order Address",
     }),
     {
-      paddingTop: "0",
+      paddingTop: "36px",
       paddingBottom: "36px",
       paddingLeft: "40px",
       paddingRight: "40px",
