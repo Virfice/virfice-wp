@@ -1,5 +1,12 @@
 export const allCTA = [
   {
+    id: 1,
+    title: "CTA 1",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/cta=1.webp",
+    isComingSoon: true,
+  },
+  {
     id: 2,
     title: "CTA 2",
     html: `<table virfice-title="Columns" virfice-settings_status="disabled" virfice-ele_type="section" virfice-id="m659qmbo5paadavh5">
@@ -20,7 +27,21 @@ export const allCTA = [
       </tr>
   </tbody>
 </table>`,
-    preview: virfice.assetsBase + "/ready-blocks/CTA-2.webp",
+    preview: virfice.assetsBase + "/ready-blocks/cta=2.webp",
+  },
+  {
+    id: 3,
+    title: "CTA 3",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/cta=3.webp",
+    isComingSoon: true,
+  },
+  {
+    id: 4,
+    title: "CTA 4",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/cta=4.webp",
+    isComingSoon: true,
   },
 
   {
@@ -44,6 +65,13 @@ export const allCTA = [
       </tr>
   </tbody>
 </table>`,
-    preview: virfice.assetsBase + "/ready-blocks/CTA-5.webp",
+    preview: virfice.assetsBase + "/ready-blocks/cta=5.webp",
+  },
+  {
+    id: 6,
+    title: "CTA 6",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/cta=6.webp",
+    isComingSoon: true,
   },
 ];

@@ -1,5 +1,12 @@
 export const allFeatures = [
   {
+    id: 1,
+    title: "Feature 1",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=1.webp",
+    isComingSoon: true,
+  },
+  {
     id: 2,
     title: "Feature 2",
     html: `<table virfice-title="Image with Text" virfice-ele_type="section" virfice-id="m6ccq4aka2kyz754w">
@@ -15,7 +22,28 @@ export const allFeatures = [
         </tr>
     </tbody>
 </table>`,
-    preview: virfice.assetsBase + "/ready-blocks/feature-2.webp",
+    preview: virfice.assetsBase + "/ready-blocks/feature=2.webp",
+  },
+  {
+    id: 3,
+    title: "Feature 3",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=3.webp",
+    isComingSoon: true,
+  },
+  {
+    id: 4,
+    title: "Feature 4",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=4.webp",
+    isComingSoon: true,
+  },
+  {
+    id: 5,
+    title: "Feature 5",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=5.webp",
+    isComingSoon: true,
   },
   {
     id: 6,
@@ -48,6 +76,27 @@ export const allFeatures = [
           </td></tr>
   </tbody>
 </table>`,
-    preview: virfice.assetsBase + "/ready-blocks/feature-6.webp",
+    preview: virfice.assetsBase + "/ready-blocks/feature=6.webp",
+  },
+  {
+    id: 7,
+    title: "Feature 7",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=7.webp",
+    isComingSoon: true,
+  },
+  {
+    id: 8,
+    title: "Feature 8",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=8.webp",
+    isComingSoon: true,
+  },
+  {
+    id: 9,
+    title: "Feature 9",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/feature=9.webp",
+    isComingSoon: true,
   },
 ];

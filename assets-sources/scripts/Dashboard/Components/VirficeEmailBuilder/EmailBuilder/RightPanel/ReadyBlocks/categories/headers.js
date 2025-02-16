@@ -7,7 +7,7 @@ export const allHeaders = [
       virfice.assetsBase + "/virfice.webp"
     }" style="margin-left: auto; margin-right: auto;"></a>
 </div>`,
-    preview: virfice.assetsBase + "/ready-blocks/header-1.webp",
+    preview: virfice.assetsBase + "/ready-blocks/header=1.webp",
   },
 
   {
@@ -34,7 +34,7 @@ export const allHeaders = [
           </td>
       </tr>
   </tbody></table>`,
-    preview: virfice.assetsBase + "/ready-blocks/header-2.webp",
+    preview: virfice.assetsBase + "/ready-blocks/header=2.webp",
   },
 
   {
@@ -63,9 +63,15 @@ export const allHeaders = [
           
       </tr>
   </tbody></table>`,
-    preview: virfice.assetsBase + "/ready-blocks/header-3.webp",
+    preview: virfice.assetsBase + "/ready-blocks/header=3.webp",
   },
-
+  {
+    id: 4,
+    title: "Header 4",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/header=4.webp",
+    isComingSoon: true,
+  },
   {
     id: 5,
     title: "Header 5",
@@ -97,9 +103,15 @@ export const allHeaders = [
         </tr>
     </tbody>
 </table>`,
-    preview: virfice.assetsBase + "/ready-blocks/header-5.webp",
+    preview: virfice.assetsBase + "/ready-blocks/header=5.webp",
   },
-
+  {
+    id: 6,
+    title: "Header 6",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/header=6.webp",
+    isComingSoon: true,
+  },
   {
     id: 7,
     title: "Header 7",
@@ -129,6 +141,20 @@ export const allHeaders = [
           </td>
       </tr>
   </tbody></table>`,
-    preview: virfice.assetsBase + "/ready-blocks/header-7.webp",
+    preview: virfice.assetsBase + "/ready-blocks/header=7.webp",
+  },
+  {
+    id: 8,
+    title: "Header 8",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/header=8.webp",
+    isComingSoon: true,
+  },
+  {
+    id: 9,
+    title: "Header 9",
+    html: ``,
+    preview: virfice.assetsBase + "/ready-blocks/header=9.webp",
+    isComingSoon: true,
   },
 ];
