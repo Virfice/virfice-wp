@@ -6,4 +6,4 @@ export const VIRFICE_RESPONSIVE_BREAKPOINTS = {
   desktop: "",
 };
 export const VIRFICE_ASSETS_BASE =
-  "https://assets.virfice.com/wp-json/virfice/v1";
+  "https://assets.virfice.com/?rest_route=/virfice/v1";
