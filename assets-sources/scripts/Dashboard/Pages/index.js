@@ -5,6 +5,7 @@ import WooEmailList from "./WooEmailList";
 import Settings from "./Settings";
 import EmailEditor from "./WooEmailList/EmailEditor";
 import VirficeBrandSettings from "./VirficeBrandSettings";
+import VirficeTemplateEditor from "./VirficeTemplateEditor";
 
 //Need to implement route for every dashboard menu
 const Pages = () => {
@@ -24,6 +25,11 @@ const Pages = () => {
   ) {
     return <EmailEditor />;
   }
+
+  if (hasQueryParamValue("menu", "virfice-template-edit")) {
+    return <VirficeTemplateEditor />;
+  }
+
   if (hasQueryParamValue("menu", "settings")) {
     return <Settings />;
   }

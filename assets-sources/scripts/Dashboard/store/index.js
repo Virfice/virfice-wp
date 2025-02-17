@@ -7,6 +7,7 @@ import wooEmailSingleSlice from "../Pages/WooEmailList/EmailEditor/wooEmailSingl
 import globalSettingsSlice from "../Pages/Settings/globalSettingsSlice";
 import componentsSlice from "@components/componentsSlice";
 import builderSlice from "@components/VirficeEmailBuilder/builderSlice";
+import readyBlockSlice from "../../Dashboard/Components/VirficeEmailBuilder/EmailBuilder/RightPanel/ReadyBlocks/readyBlockSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     components: componentsSlice,
     globalSettings: globalSettingsSlice,
     builder: builderSlice,
+    readyBlocks: readyBlockSlice,
   },
 });

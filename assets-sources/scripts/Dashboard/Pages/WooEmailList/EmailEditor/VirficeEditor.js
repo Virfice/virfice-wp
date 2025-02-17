@@ -15,6 +15,7 @@ import {
 import { saveSingleTemplate } from "@components/VirficeEmailBuilder/builderSlice";
 import {
   getIframe,
+  getVirficeTemplateContent,
   initEmailBuilder,
 } from "../../../Components/VirficeEmailBuilder/EmailBuilder/utils";
 import { showNotificationBell } from "../../../Components/componentsSlice";
@@ -51,25 +52,11 @@ const VirficeEditor = () => {
   const handleSaveClick = () => {
     console.log("save button click");
     if (virfice_template.id) {
-      const templateWrapper = getIframe().templateWrapper;
-
-      // Create a clone of the wrapper's content
-      const templateContent = templateWrapper.cloneNode(true);
-
-      // Remove the specific style node from the cloned content
-      const clonedStyleElement = templateContent.querySelector(
-        `#${VIRFICE_APP_PREFIX}-global-style`
-      );
-      if (clonedStyleElement) {
-        clonedStyleElement.remove();
-      }
-
       dispatch(
         saveSingleTemplate(virfice_template.id, {
-          post_content: templateContent.innerHTML,
+          post_content: getVirficeTemplateContent(),
         })
       );
-
       saveEmailOuterAndInnerBGColor().then(() => {
         window.location.href = addParams({
           menu: "woo-email-edit-preview-virfice",

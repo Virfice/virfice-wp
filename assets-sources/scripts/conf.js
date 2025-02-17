@@ -5,3 +5,5 @@ export const VIRFICE_RESPONSIVE_BREAKPOINTS = {
   mobile: "380px",
   desktop: "",
 };
+export const VIRFICE_ASSETS_BASE =
+  "https://assets.virfice.com/wp-json/virfice/v1";

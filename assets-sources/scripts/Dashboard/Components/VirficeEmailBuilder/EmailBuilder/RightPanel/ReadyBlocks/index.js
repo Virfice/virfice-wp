@@ -1,15 +1,38 @@
-import React from "react";
-import { allBlocks } from "./data";
+import React, { useEffect } from "react";
 import Accordion from "@molecules/Accordion";
 import SingleBlock from "./SingleBlock";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import Divider from "@molecules/Divider";
+import { useDispatch, useSelector } from "react-redux";
+import { readyBlocksAsync } from "./readyBlockSlice";
 
-const ReadyBlocks = ({ category = "*" }) => {
-  const filterData =
-    category === "*"
-      ? allBlocks
-      : allBlocks.filter((v) => category.includes(v.id));
+const ReadyBlocks = () => {
+  const dispatch = useDispatch();
+  const blockLoaded = useSelector((state) => state.readyBlocks.loaded);
+  const allBlocks = useSelector((state) => state.readyBlocks.data);
+
+  useEffect(() => {
+    if (!blockLoaded) {
+      dispatch(readyBlocksAsync());
+    }
+  }, []);
+
+  if (!blockLoaded) return "Loading...";
+
+  const filterData = allBlocks.map((v) => {
+    return {
+      title: v.tag,
+      id: v.tag,
+      blocks: v.templates.map((t) => {
+        return {
+          title: t.title,
+          html: t.content,
+          preview: t.image,
+          isComingSoon: t.isComingSoon,
+        };
+      }),
+    };
+  });
   return (
     <div className={VIRFICE_APP_PREFIX + "-ready-blocks-wrapper"}>
       {filterData.map((v, i) => (

@@ -333,3 +333,20 @@ export const scrollToCanvasElement = ({
     element.scrollIntoView({ behavior, block });
   }
 };
+
+export const getVirficeTemplateContent = () => {
+  const templateWrapper = getIframe().templateWrapper;
+
+  // Create a clone of the wrapper's content
+  const templateContent = templateWrapper.cloneNode(true);
+
+  // Remove the specific style node from the cloned content
+  const clonedStyleElement = templateContent.querySelector(
+    `#${VIRFICE_APP_PREFIX}-global-style`
+  );
+  if (clonedStyleElement) {
+    clonedStyleElement.remove();
+  }
+
+  return templateContent.innerHTML;
+};
