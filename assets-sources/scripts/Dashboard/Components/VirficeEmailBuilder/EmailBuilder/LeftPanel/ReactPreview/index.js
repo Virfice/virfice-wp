@@ -16,6 +16,7 @@ const defaultStyle = `<style>
 
 const ReactPreview = () => {
   const iframeRef = useRef(null);
+  const templateWrapperRef = useRef(null);
   const [iframeBody, setIframeBody] = useState(null);
   const [showControl, setShowControl] = useState(false);
 
@@ -25,12 +26,23 @@ const ReactPreview = () => {
     (state) => state.virficeBrandSettings.changedSettings
   );
 
+  // useEffect(() => {
+  //   if (getIframe()?.document) {
+  //     initEmailBuilder();
+  //   }
+  // }, [getIframe()?.document]);
+  //
+  //
   useEffect(() => {
-    if (getIframe()?.document) {
-      initEmailBuilder();
-      setShowControl(true);
+    console.log(templateWrapperRef.current);
+    if (templateWrapperRef.current) {
+      setTimeout(() => {
+        setShowControl(true);
+        initEmailBuilder();
+        console.log("initEmailBuilder");
+      }, 100);
     }
-  }, [getIframe()?.document]);
+  }, [templateWrapperRef.current]);
 
   return (
     <>
@@ -46,9 +58,10 @@ const ReactPreview = () => {
             if (iframeRef.current?.contentWindow) {
               const iframeDocument = iframeRef.current.contentWindow.document;
               setIframeBody(iframeDocument.body);
-              setTimeout(() => {
-                initEmailBuilder();
-              }, 100);
+              // setTimeout(() => {
+              //   setShowControl(true);
+              //   initEmailBuilder();
+              // }, 2000);
             }
           }}
         />
@@ -75,6 +88,7 @@ const ReactPreview = () => {
                   backgroundColor: changedSettings.email_background_color,
                   width: changedSettings.email_body_width,
                 }}
+                ref={templateWrapperRef}
               />
             </div>
           </>,

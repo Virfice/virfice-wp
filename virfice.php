@@ -59,7 +59,7 @@ function virfice_check_woocommerce_activation()
 register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
 
 // Define plugin constants for easier reference
-define('VIRFICE_VERISION', '1.0.1'); // Plugin version
+define('VIRFICE_VERISION', '2.0.beta3'); // Plugin version
 define('VIRFICE_APP_NAME', 'Virfice'); // Plugin name
 define('VIRFICE_APP_PREFIX', 'virfice'); // Prefix for naming consistency
 define('VIRFICE_PLUGIN_ROOT', plugin_dir_path(__FILE__)); // Path to the plugin directory
