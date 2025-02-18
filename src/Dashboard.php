@@ -31,7 +31,7 @@ class Dashboard
         add_action('admin_print_styles', [$this, 'my_plugin_admin_inline_css']);
 
         // Add a custom rewrite rule
-        add_action('init', [$this, 'rewrite_route']);
+        // add_action('init', [$this, 'rewrite_route']);
         add_action('admin_head', [$this, 'my_plugin_highlight_submenu']);
         add_action('admin_footer', [$this, 'my_plugin_custom_script']);
     }
@@ -99,7 +99,7 @@ class Dashboard
      */
     public function rewrite_route()
     {
-        add_rewrite_rule('^(.+)', 'admin.php?page=' . VIRFICE_APP_PREFIX, 'top');
+        // add_rewrite_rule('^(.+)', 'admin.php?page=' . VIRFICE_APP_PREFIX, 'top');
     }
 
     /**

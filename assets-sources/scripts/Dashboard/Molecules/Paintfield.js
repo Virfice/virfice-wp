@@ -8,6 +8,29 @@ const getColorCode = (color) => {
   return color?.hex ? color.hex : color;
 };
 
+export const rgbToHex = (color) => {
+  color = "" + color;
+  if (!color || color.indexOf("rgb") < 0) {
+    return color;
+  }
+
+  if (color.charAt(0) == "#") {
+    return color;
+  }
+
+  var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
+    r = parseInt(nums[2], 10).toString(16),
+    g = parseInt(nums[3], 10).toString(16),
+    b = parseInt(nums[4], 10).toString(16);
+
+  return (
+    "#" +
+    ((r.length == 1 ? "0" + r : r) +
+      (g.length == 1 ? "0" + g : g) +
+      (b.length == 1 ? "0" + b : b))
+  );
+};
+
 const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState(value);
