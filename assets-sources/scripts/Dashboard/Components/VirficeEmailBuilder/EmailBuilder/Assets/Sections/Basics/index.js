@@ -122,4 +122,4 @@ const Divider = {
   ),
 };
 
-export default [Column, Text, Button, Image, Video, ImageWithText, Divider];
+export default [Column, Text, Button, Image, ImageWithText, Divider];

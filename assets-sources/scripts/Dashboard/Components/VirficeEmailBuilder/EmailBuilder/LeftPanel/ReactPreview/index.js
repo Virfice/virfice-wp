@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useSelector } from "react-redux";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import EditorControls from "./EditorControls";
-import { getIframe, initEmailBuilder } from "../../utils";
+import { initEmailBuilder } from "../../utils";
 
 const defaultStyle = `<style>
   html{
@@ -34,7 +34,6 @@ const ReactPreview = () => {
   //
   //
   useEffect(() => {
-    console.log(templateWrapperRef.current);
     if (templateWrapperRef.current) {
       setTimeout(() => {
         setShowControl(true);
