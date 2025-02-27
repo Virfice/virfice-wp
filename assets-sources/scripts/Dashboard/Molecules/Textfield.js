@@ -11,10 +11,10 @@ const TextField = ({
   onChange = () => {},
   multiline = false,
 }) => {
-  const [v, setV] = useState(value || ""); // Maintain state for input value
+  const [v, setV] = useState(value ?? ""); // Use nullish coalescing to handle undefined/null
 
   useEffect(() => {
-    setV(value || ""); // Sync local state with external value changes
+    setV(value ?? ""); // Ensure 0 is not replaced with an empty string
   }, [value]);
 
   const handleOnChange = (e) => {
