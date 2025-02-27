@@ -34,7 +34,8 @@ $store_name = $brand_settings['store_name'];
     virfice-id="m754x4ua1cwc2gdif">
     <p virfice-title="Text" virfice-ele_type="text" virfice-selector="" contenteditable=""
         virfice-id="m754x4uatqlm5qc7a" style="text-align: left;">Thanks for creating an account on {site_title}.
-        Your username is . You can access your account area to view orders, change your password, and more at:
+        Your username is {user_login}. You can access your account area to view orders, change your password, and more
+        at:
         {store_url}</p>
 </div>
 <div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 16px 50px; text-align: center;"

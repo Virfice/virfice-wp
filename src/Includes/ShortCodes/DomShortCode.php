@@ -53,13 +53,13 @@ class DomShortCode
     }
 
 
-    public static function set_attribute_value_using_my_selector($template, $my_selector, $attr_name, $attr_value)
+    public static function set_attribute_value_using_shortcode($template, $short_code, $attr_name, $attr_value)
     {
         try {
             $crawler = new Crawler($template);
 
-            // Select elements with the attribute virfice-my_selector="$my_selector"
-            $crawler->filter("[virfice-my_selector=\"$my_selector\"]")->each(function ($node) use ($attr_name, $attr_value) {
+            // Select elements with the attribute virfice-short_code="$short_code"
+            $crawler->filter("[virfice-short_code=\"$short_code\"]")->each(function ($node) use ($attr_name, $attr_value) {
                 foreach ($node as $domElement) {
                     $domElement->setAttribute($attr_name, $attr_value);
                 }

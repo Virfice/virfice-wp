@@ -26,10 +26,19 @@ class ShortCodes
             $order_id = $this->context['order_id'];
             $woo_replacer = new WooEmailShortCodeReplacer($order_id);
             $this->string = $woo_replacer->replace_short_codes($this->string);
-        } else if ($this->context['type'] === 'woo_email_customer_new_account' || $this->context['type'] === 'woo_email_customer_reset_password') {
+        } else if ($this->context['type'] === 'woo_email_customer_new_account') {
             $info = [
                 'show_set_password' => $this->context['show_set_password'],
                 'set_password_url' => $this->context['set_password_url'],
+                'user_login' => $this->context['user_login'],
+            ];
+
+            $woo_replacer = new WooEmailUtilityShortCodeReplacer();
+            $this->string = $woo_replacer->replace_short_codes($this->string, $info);
+        } else if ($this->context['type'] === 'woo_email_customer_reset_password') {
+            $info = [
+                'show_reset_password' => $this->context['show_reset_password'],
+                'reset_password_url' => $this->context['reset_password_url'],
                 'user_login' => $this->context['user_login'],
             ];
 

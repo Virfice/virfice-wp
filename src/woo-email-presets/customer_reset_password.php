@@ -44,10 +44,10 @@ $store_name = $brand_settings['store_name'];
         email. If you'd like to proceed:</p>
 </div>
 <div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 16px 50px; text-align: center;"
-    virfice-id="m754xqamavmayjxvn" virfice-my_selector="set_password_wrapper">
+    virfice-id="m754xqamavmayjxvn" virfice-my_selector="reset_password_wrapper">
     <a virfice-title="Button" virfice-ele_type="link"
         style="display: inline-flex;gap: 8px;border-radius: 4px;padding: 10px 16px;font-weight: 600;" contenteditable=""
-        virfice-id="m754xqambd7n4a38e" virfice-short_code="set_password_link">Click here to
+        virfice-id="m754xqambd7n4a38e" virfice-short_code="reset_password_link">Click here to
         reset your password</a>
 </div>
 
