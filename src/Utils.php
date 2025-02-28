@@ -5,6 +5,7 @@ namespace Virfice;
 use Exception;
 use Virfice\API\Settings;
 use Virfice\Includes\Logger;
+use Virfice\Includes\Templates;
 use WC_Email;
 // Security check to prevent direct access
 if (!defined('ABSPATH')) {
@@ -365,5 +366,46 @@ HTML;
             return "<span style='font-size: 0; color: #fff; max-height: 0; max-width: 0; opacity: 0; overflow: hidden;height:0;width:1px;'>" . $settings['virfice_preview_text'] . "</span>";
         }
         return '';
+    }
+
+    public static function update_woo_email_preset_template_data_to_db($email_id, $status)
+    {
+        MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_status', $status);
+
+        if ($status == true) {
+            //insert a template if not exists
+            $_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
+            if ($_virfice_template_id == false) {
+                $template_content = self::get_woo_email_virfice_template_preset($email_id);
+                $template_id = Templates::insert_template($email_id . ' - Virfice', $template_content);
+                if ($template_id) {
+                    MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_id', $template_id);
+                }
+            } else if (VIRFICE_DEBUG) {
+                //always reset to new template on disable to enable
+                $template_content = self::get_woo_email_virfice_template_preset($email_id);
+                Templates::update_template($_virfice_template_id, $email_id . ' - Virfice', $template_content);
+            }
+        }
+    }
+
+    private static function get_woo_email_virfice_template_preset($email_id)
+    {
+        $templateFilePath = VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/$email_id.php";
+        // Check if the template file exists
+        if (!file_exists($templateFilePath)) {
+            return false; // Handle error (e.g., file not found)
+        }
+
+        // Start output buffering
+        ob_start();
+
+        // Include the template file, and its output will be captured
+        include $templateFilePath;
+
+        // Get the content of the buffer and clean the buffer
+        $templateContent = ob_get_clean();
+
+        return $templateContent;
     }
 }

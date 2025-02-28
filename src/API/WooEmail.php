@@ -468,47 +468,12 @@ class WooEmail extends WP_REST_Controller
 		return $changedSettings;
 	}
 
-	public function update_virfice_template_status($changedSettings)
+	public function update_virfice_template_status()
 	{
 		$email_id = sanitize_text_field($_REQUEST['email_id']);
 		$status = Utils::get_boolean_value(sanitize_text_field($_REQUEST['status']));
-		MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_status', $status);
-
-		if ($status == true) {
-			//insert a template if not exists
-			$_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
-			if ($_virfice_template_id == false) {
-				$template_content = $this->get_woo_email_virfice_template_preset($email_id);
-				$template_id = Templates::insert_template($email_id . ' - Virfice', $template_content);
-				if ($template_id) {
-					MetaHelper::add_or_update_meta(0, 'woo-email', $email_id . '_virfice_template_id', $template_id);
-				}
-			} else {
-				$template_content = $this->get_woo_email_virfice_template_preset($email_id);
-				Templates::update_template($_virfice_template_id, $email_id . ' - Virfice', $template_content);
-			}
-		}
+		Utils::update_woo_email_preset_template_data_to_db($email_id, $status);
 		return true;
-	}
-
-	private function get_woo_email_virfice_template_preset($email_id)
-	{
-		$templateFilePath = VIRFICE_PLUGIN_ROOT . "/src/woo-email-presets/$email_id.php";
-		// Check if the template file exists
-		if (!file_exists($templateFilePath)) {
-			return false; // Handle error (e.g., file not found)
-		}
-
-		// Start output buffering
-		ob_start();
-
-		// Include the template file, and its output will be captured
-		include $templateFilePath;
-
-		// Get the content of the buffer and clean the buffer
-		$templateContent = ob_get_clean();
-
-		return $templateContent;
 	}
 
 	/**

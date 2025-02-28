@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Accordion from "@molecules/Accordion";
 import SingleBlock from "./SingleBlock";
 import { VIRFICE_APP_PREFIX } from "@conf";
@@ -10,6 +10,7 @@ const ReadyBlocks = () => {
   const dispatch = useDispatch();
   const blockLoaded = useSelector((state) => state.readyBlocks.loaded);
   const allBlocks = useSelector((state) => state.readyBlocks.data);
+  const [openedAccordion, setOpenedAccordion] = useState(0);
 
   useEffect(() => {
     if (!blockLoaded) {
@@ -36,7 +37,14 @@ const ReadyBlocks = () => {
   return (
     <div className={VIRFICE_APP_PREFIX + "-ready-blocks-wrapper"}>
       {filterData.map((v, i) => (
-        <Accordion title={v.title} key={v.id} open={i === 0}>
+        <Accordion
+          title={v.title}
+          key={v.id}
+          open={i === openedAccordion}
+          onOpen={() => {
+            setOpenedAccordion(i);
+          }}
+        >
           {v.blocks.map(({ title, html, preview, isComingSoon }, i) => (
             <SingleBlock
               key={i}
