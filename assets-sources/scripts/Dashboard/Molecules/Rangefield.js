@@ -15,25 +15,45 @@ const RangeField = ({
   onChange = () => {},
   icon = null,
 }) => {
-  // Helper to ensure value is within min and max
-  const clampValue = (val) => Math.max(min, Math.min(max, val));
-  const [values, setValues] = useState([clampValue(value)]);
+  // Only clamp when updating the slider UI, not when setting from props
+  const [values, setValues] = useState([value]);
 
   useEffect(() => {
-    // Ensure the initial value respects min and max
-    setValues([clampValue(value)]);
+    // Just use the value as provided, don't clamp it
+    setValues([value]);
   }, [value]);
 
-  const handleOnChange = (values) => {
-    const clampedValue = clampValue(values[0]);
+  const handleRangeChange = (newValues) => {
+    // Apply constraints when dragging the slider
+    const clampedValue = Math.max(min, Math.min(max, newValues[0]));
     setValues([clampedValue]);
     onChange(clampedValue);
   };
 
-  const onInputChange = (value) => {
-    const clampedValue = clampValue(value);
-    setValues([clampedValue]);
-    onChange(clampedValue);
+  const onInputChange = (inputValue) => {
+    // For text input, allow any value to be entered
+    const numValue = Number(inputValue);
+
+    // Check if the input is a valid number before setting state
+    if (!isNaN(numValue)) {
+      setValues([numValue]);
+      onChange(numValue);
+    } else if (inputValue === "") {
+      // Handle empty input case
+      setValues([0]);
+      onChange(0);
+    }
+  };
+
+  const handleInputBlur = () => {
+    // On blur, enforce minimum value
+    const currentValue = values[0];
+    const numValue = Number(currentValue);
+
+    if (!isNaN(numValue) && numValue < min) {
+      setValues([min]);
+      onChange(min);
+    }
   };
 
   return (
@@ -52,8 +72,7 @@ const RangeField = ({
           step={step}
           min={min}
           max={max}
-          // rtl={rtl}
-          onChange={handleOnChange}
+          onChange={handleRangeChange}
           renderTrack={({ props, children }) => (
             <div
               onMouseDown={props.onMouseDown}
@@ -76,7 +95,6 @@ const RangeField = ({
                     colors: ["#191700", "rgba(0, 0, 0, 0.10)"],
                     min: min,
                     max: max,
-                    // rtl,
                   }),
                   alignSelf: "center",
                 }}
@@ -104,7 +122,12 @@ const RangeField = ({
             ></div>
           )}
         />
-        <TextField value={values[0]} onChange={onInputChange} />
+        <TextField
+          value={values[0]}
+          onChange={onInputChange}
+          onBlur={handleInputBlur}
+          min={min}
+        />
       </div>
 
       {error && (

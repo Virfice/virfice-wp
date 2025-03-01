@@ -10,6 +10,9 @@ const TextField = ({
   error = false,
   onChange = () => {},
   multiline = false,
+  min,
+  max,
+  onBlur = () => {},
 }) => {
   const [v, setV] = useState(value ?? ""); // Use nullish coalescing to handle undefined/null
 
@@ -20,7 +23,19 @@ const TextField = ({
   const handleOnChange = (e) => {
     const newValue = e.target.value;
     setV(newValue);
-    onChange(newValue); // Allow any string or number input
+    onChange(newValue); // Pass the raw input value without validation
+  };
+
+  const handleBlur = (e) => {
+    // On blur, check if min is defined and apply it
+    if (min !== undefined) {
+      const numValue = Number(v);
+      if (!isNaN(numValue) && numValue < min) {
+        setV(min.toString());
+        onChange(min);
+      }
+    }
+    onBlur(e);
   };
 
   const handleKeyDown = (e) => {
@@ -45,6 +60,7 @@ const TextField = ({
           value={v}
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
+          onBlur={handleBlur}
           type="text"
         />
       ) : (
@@ -52,6 +68,7 @@ const TextField = ({
           placeholder={placeholder || label}
           value={v}
           onChange={handleOnChange}
+          onBlur={handleBlur}
           rows={multiline}
         />
       )}
