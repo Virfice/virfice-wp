@@ -66,6 +66,10 @@ const BrandSettings = ({ element }) => {
             width: 100%;
             border-collapse: collapse;
         }
+        .virfice-template-wrapper a {
+            text-decoration: none;
+            color: inherit;
+        }
        .virfice-template-wrapper h2 {
             font-size: 20px;
             color: inherit;
