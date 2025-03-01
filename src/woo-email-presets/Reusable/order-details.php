@@ -115,5 +115,5 @@
 <div style="margin-top: 32px;">
     <span virfice-selector="order_table_summary" virfice-my_selector="order_table_summary_order_notes"
         contenteditable="">Note:</span>
-    <span virfice-short_code="order_notes">The order note will appear here.</span>
+    <span virfice-short_code="customer_message">The order note will appear here.</span>
 </div>

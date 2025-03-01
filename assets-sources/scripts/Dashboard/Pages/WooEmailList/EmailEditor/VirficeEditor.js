@@ -49,8 +49,19 @@ const VirficeEditor = () => {
       showNotificationBell({ title: "Template discarded", type: "success" })
     );
   };
+
   const handleSaveClick = () => {
-    console.log("save button click");
+    if (virfice_template.id) {
+      dispatch(
+        saveSingleTemplate(virfice_template.id, {
+          post_content: getVirficeTemplateContent(),
+        })
+      );
+      saveEmailOuterAndInnerBGColor().then(() => {});
+    }
+  };
+
+  const handleSaveAndNextClick = () => {
     if (virfice_template.id) {
       dispatch(
         saveSingleTemplate(virfice_template.id, {
@@ -72,7 +83,9 @@ const VirficeEditor = () => {
         backAction={handleBackActionClick}
         discardAction={handleDiscardClick}
         saveAction={handleSaveClick}
-        saveButtonText="Save & Next ->"
+        saveButtonText="Save"
+        saveAndNextAction={handleSaveAndNextClick}
+        saveAndNextButtonText="Save & Next"
         size1280
         marginBottom={false}
       />

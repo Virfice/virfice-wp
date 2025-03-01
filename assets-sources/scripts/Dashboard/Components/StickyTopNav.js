@@ -12,6 +12,8 @@ const StickyTopNav = ({
   saveButtonText,
   size1280,
   marginBottom = true,
+  saveAndNextAction,
+  saveAndNextButtonText,
 }) => {
   let styles = {};
 
@@ -42,9 +44,16 @@ const StickyTopNav = ({
               >
                 {discardAction && (
                   <Button
-                    type="secondary"
+                    type={saveAndNextAction ? "tertiary" : "secondary"}
                     title={discardButtonText || "Discard"}
                     onClick={discardAction}
+                  />
+                )}
+                {saveAndNextAction && (
+                  <Button
+                    type="secondary"
+                    title={saveAndNextButtonText || "Save & Next"}
+                    onClick={saveAndNextAction}
                   />
                 )}
                 {saveAction && (
