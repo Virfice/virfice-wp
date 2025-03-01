@@ -174,6 +174,7 @@ export const getVirficeElementFromId = (elementId) => {
   const wrapper = getIframe().document.getElementById(
     VIRFICE_APP_PREFIX + "-email-preview"
   );
+  if (!wrapper) return;
   return wrapper.querySelector(`[${VIRFICE_APP_PREFIX}-id="${elementId}"]`);
 };
 
@@ -183,6 +184,7 @@ export const getVirficeAttr = (element, attr) => {
 };
 
 export const updateVirficeAttr = (element, attr, value) => {
+  if (!element) return;
   element.setAttribute(VIRFICE_APP_PREFIX + "-" + attr, value);
 };
 

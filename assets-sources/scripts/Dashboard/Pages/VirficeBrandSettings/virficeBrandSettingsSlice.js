@@ -50,25 +50,28 @@ export const virficeBrandSettingsAsync = () => (dispatch) => {
     });
 };
 
-export const saveVirficeBrandSettings = (data) => (dispatch) => {
-  let d = null;
+export const saveVirficeBrandSettings = (data) => (dispatch, getState) => {
   let apiSlug = "virfice/v1/woo-email/virfice-brand-settings";
   const formData = new FormData();
+
   formData.append("data", JSON.stringify(data));
 
   axios
     .post(`${virfice.restBase}${apiSlug}`, formData, {
       headers: {
-        // 'Content-Type': 'multipart/form-data',
         "X-WP-Nonce": virfice.nonce,
       },
     })
     .then((res) => {
-      d = res.data;
+      // Get the previous settings from state
+      const prevSettings = getState().virficeBrandSettings.settings.data || {};
+
+      // Merge previous settings with new data
+      const mergedData = { ...prevSettings, ...data };
       dispatch(
         setVirficeBrandSettingsData({
           key: "settings",
-          value: { loaded: true, data: data },
+          value: { loaded: true, data: mergedData }, // Store merged settings
         })
       );
       dispatch(showNotificationBell({ title: "Settings saved" }));
@@ -76,7 +79,7 @@ export const saveVirficeBrandSettings = (data) => (dispatch) => {
     .catch((error) => {
       console.log(error);
       dispatch(
-        showNotificationBell({ title: "Settings saved failed", type: "danger" })
+        showNotificationBell({ title: "Settings save failed", type: "danger" })
       );
     });
 };

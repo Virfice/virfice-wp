@@ -29,7 +29,6 @@ export const readyBlocksAsync = () => (dispatch) => {
     })
     .then((res) => {
       d = res.data;
-      console.log(d);
       dispatch(
         setReadyBlockStateData({
           key: "loaded",
