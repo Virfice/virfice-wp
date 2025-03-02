@@ -1,93 +1,107 @@
 .#{$classPrefix}-btn {
-    width: max-content;
-    display: flex;
-    padding: var(--V-Padding, 6px) var(--H-Padding, 12px);
-    justify-content: center;
-    align-items: center;
-    gap: var(--Spacing, 4px);
-    border-radius: var(--Radius, 999px);
-    background: var(--bg-button-bg-btn-primary-idle);
-    box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.20);
-    border: 1px solid var(--Greyscale-Border-Pressed, #949494);
+  width: max-content;
+  display: flex;
+  padding: var(--V-Padding, 6px) var(--H-Padding, 12px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing, 4px);
+  border-radius: var(--Radius, 999px);
+  background: var(--bg-button-bg-btn-primary-idle);
+  box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--Greyscale-Border-Pressed, #949494);
 
-    color: var(--Greyscale-Text-Body, #303030);
+  color: var(--Greyscale-Text-Body, #303030);
 
-    cursor: pointer;
+  cursor: pointer;
 
-    &.#{$classPrefix}-btn-primary {
-        &:hover {
-            background: var(--bg-button-bg-btn-primary-hover, rgba(169, 201, 44, 1));
-        }
+  &:disabled {
+    background: var(--bg-button-bg-btn-disabled, #e6e6e6);
+    pointer-events: none;
+  }
+  &.#{$classPrefix}-btn-primary {
+    &:hover {
+      background: var(--bg-button-bg-btn-primary-hover, rgba(169, 201, 44, 1));
+    }
+  }
+
+  &.#{$classPrefix}-small {
+    padding: 4px 8px;
+  }
+
+  &.#{$classPrefix}-btn-danger {
+    border: 1px solid var(--border-button-border-btn-error-idle, #ff0d00);
+    background: var(--bg-button-bg-btn-error-inverse-idle, #ffe7e5);
+
+    &:hover {
+      border: 1px solid var(--border-button-border-btn-error-hover, #cc0a00);
+      background: var(--bg-button-bg-btn-error-inverse-hover, #ffcfcc);
     }
 
+    &:focus {
+      border: 1px solid var(--border-button-border-btn-error-active, #990800);
+      background: var(--Bg-button-bg-btn-error-inverse-idle, #ffe7e5);
+    }
+  }
 
+  &.#{$classPrefix}-btn-secondary {
+    background: rgba(252, 252, 252, 1);
 
-    &.#{$classPrefix}-small {
-        padding: 4px 8px;
+    &:hover {
+      background: rgba(242, 242, 242, 1);
     }
 
-    &.#{$classPrefix}-btn-danger {
-        border: 1px solid var(--border-button-border-btn-error-idle, #FF0D00);
-        background: var(--bg-button-bg-btn-error-inverse-idle, #FFE7E5);
+    &:focus {
+      background: rgba(252, 252, 252, 1);
+    }
+  }
 
-        &:hover {
-            border: 1px solid var(--border-button-border-btn-error-hover, #CC0A00);
-            background: var(--bg-button-bg-btn-error-inverse-hover, #FFCFCC);
-        }
+  &.#{$classPrefix}-btn-tertiary {
+    border-radius: none;
+    background: none;
+    box-shadow: unset;
+    border: 1px solid transparent;
 
-        &:focus {
-            border: 1px solid var(--border-button-border-btn-error-active, #990800);
-            background: var(--Bg-button-bg-btn-error-inverse-idle, #FFE7E5);
-        }
+    &.#{$classPrefix}-active,
+    &:hover {
+      background: rgba(242, 242, 242, 1) !important;
     }
 
-    &.#{$classPrefix}-btn-secondary {
-        background: rgba(252, 252, 252, 1);
+    &:focus {
+      background: rgba(252, 252, 252, 1);
+    }
+  }
 
-        &:hover {
-            background: rgba(242, 242, 242, 1);
-        }
-
-        &:focus {
-            background: rgba(252, 252, 252, 1);
-        }
+  &.#{$classPrefix}-btn-outline {
+    background: none;
+    &.#{$classPrefix}-active,
+    &:hover {
+      background: rgba(242, 242, 242, 1) !important;
     }
 
-    &.#{$classPrefix}-btn-tertiary {
-        border-radius: none;
-        background: none;
-        box-shadow: unset;
-        border: 1px solid transparent;
+    &:focus {
+      background: rgba(252, 252, 252, 1);
+    }
+  }
 
-        &.#{$classPrefix}-active,
-        &:hover {
-            background: rgba(242, 242, 242, 1) !important;
-        }
+  &.#{$classPrefix}-btn-plain {
+    background: transparent;
+    color: rgba(0, 102, 204, 1);
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
 
-        &:focus {
-            background: rgba(252, 252, 252, 1);
-        }
+    &:hover {
+      color: rgba(0, 77, 153, 1);
+      text-decoration: underline;
     }
 
-    &.#{$classPrefix}-btn-plain {
-        background: transparent;
-        color: rgba(0, 102, 204, 1);
-        border: none;
-        box-shadow: none;
-        padding-left: 0;
-
-        &:hover {
-            color: rgba(0, 77, 153, 1);
-            text-decoration: underline;
-        }
-
-        &:focus {
-            color: rgba(0, 51, 102, 1);
-            text-decoration: underline;
-        }
+    &:focus {
+      color: rgba(0, 51, 102, 1);
+      text-decoration: underline;
     }
+  }
 
-    &.#{$classPrefix}-icon {
-        padding: 6px !important;
-    }
+  &.#{$classPrefix}-icon {
+    padding: 6px !important;
+  }
 }

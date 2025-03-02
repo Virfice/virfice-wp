@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SelectField from "../Molecules/SelectField";
+import SelectField from "@molecules/SelectField";
 import axios from "axios";
 
 let initialValue = [{ value: "", title: "Value not selected" }];
@@ -31,8 +31,8 @@ const OrderSearch = ({ onOrderSelect }) => {
   };
 
   const handleOnChange = (value) => {
-    if(onOrderSelect){
-        onOrderSelect(value);
+    if (onOrderSelect) {
+      onOrderSelect(value);
     }
   };
 

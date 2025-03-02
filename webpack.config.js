@@ -5,9 +5,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = (env, argv) => {
+  const isProd = argv.mode === "production";
   const baseConfig = {
-    mode: argv.mode === "production" ? "production" : "development",
-    devtool: false,
+    mode: isProd ? "production" : "development",
+    devtool: isProd ? "source-map" : "eval-source-map",
     entry: {
       "js/virfice": "./assets-sources/scripts/index.js",
       "css/virfice-style": "./assets-sources/scss/style.scss",
@@ -53,7 +54,29 @@ module.exports = (env, argv) => {
         },
       ],
     },
-    resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },
+    resolve: {
+      extensions: [".tsx", ".ts", ".jsx", ".js"],
+      alias: {
+        "@molecules": path.resolve(
+          __dirname,
+          "./assets-sources/scripts/Dashboard/Molecules"
+        ),
+        "@components": path.resolve(
+          __dirname,
+          "./assets-sources/scripts/Dashboard/Components"
+        ),
+        "@functions": path.resolve(
+          __dirname,
+          "assets-sources/scripts/functions"
+        ),
+        "@conf": path.resolve(__dirname, "assets-sources/scripts/conf"),
+        "@svg-icons": path.resolve(
+          __dirname,
+          "assets-sources/scripts/Dashboard/icons"
+        ),
+      },
+    },
+
     output: {
       path: path.resolve(__dirname, "assets"),
       filename: "[name].min.js",

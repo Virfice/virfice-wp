@@ -1,8 +1,8 @@
 import React from "react";
-import Iframe from "../../../../Molecules/Iframe";
+import Iframe from "@molecules/Iframe";
 import { useSelector } from "react-redux";
-import { addParams } from "../../../../../functions";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
+import { addParams } from "@functions";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
 const Preview = () => {
   let previewUrl = useSelector(
@@ -19,7 +19,7 @@ const Preview = () => {
 
   previewUrl = addParams({ order_id: selectedOrder?.id || "" }, previewUrl);
   previewUrl = addParams(changedSettings, previewUrl);
-  
+
   return <Iframe src={previewUrl} id={VIRFICE_APP_PREFIX + "-email-preview"} />;
 };
 

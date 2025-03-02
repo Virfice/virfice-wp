@@ -1,0 +1,26 @@
+.#{$classPrefix}-tab-container {
+    width: 100%;
+
+    .#{$classPrefix}-tab-head {
+        display: flex;
+        gap: 4px;
+        width: 100%;
+
+        .#{$classPrefix}-tab-header {
+            display: flex;
+            height: 24px;
+            padding: 2px 8px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 6px;
+            background-color: #ffffff;
+            width: 100%;
+
+            &.active,
+            &:hover {
+                background-color: #0000000D;
+            }
+        }
+    }
+}

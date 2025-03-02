@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import HelpText from "./HelpText";
 
 const TextField = ({
@@ -10,37 +10,77 @@ const TextField = ({
   error = false,
   onChange = () => {},
   multiline = false,
+  min,
+  max,
+  onBlur = () => {},
 }) => {
-  const [v, setV] = useState(value);
+  const [v, setV] = useState(value ?? ""); // Use nullish coalescing to handle undefined/null
 
   useEffect(() => {
-    setV(value);
+    setV(value ?? ""); // Ensure 0 is not replaced with an empty string
   }, [value]);
+
   const handleOnChange = (e) => {
-    setV(e.target.value);
-    onChange(e.target.value);
+    const newValue = e.target.value;
+    setV(newValue);
+    onChange(newValue); // Pass the raw input value without validation
+  };
+
+  const handleBlur = (e) => {
+    // On blur, check if min is defined and apply it
+    if (min !== undefined) {
+      const numValue = Number(v);
+      if (!isNaN(numValue) && numValue < min) {
+        setV(min.toString());
+        onChange(min);
+      }
+    }
+    onBlur(e);
+  };
+
+  const handleKeyDown = (e) => {
+    // Only increment/decrement if the value is a valid number
+    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      let numericValue = Number(v); // Convert to number
+
+      if (!isNaN(numericValue) && Number.isInteger(numericValue)) {
+        numericValue += e.key === "ArrowUp" ? 1 : -1;
+        setV(numericValue.toString()); // Convert back to string
+        onChange(numericValue.toString()); // Ensure it's always a string
+      }
+    }
   };
 
   return (
     <div className={`${VIRFICE_APP_PREFIX}-textfileld-wrapper`}>
       {label && <label className="body__medium">{label}</label>}
-      {!multiline && (
+      {!multiline ? (
         <input
           placeholder={placeholder || label}
           value={v}
           onChange={handleOnChange}
+          onKeyDown={handleKeyDown}
+          onBlur={handleBlur}
+          type="text"
         />
-      )}
-      {multiline && (
+      ) : (
         <textarea
           placeholder={placeholder || label}
           value={v}
           onChange={handleOnChange}
+          onBlur={handleBlur}
           rows={multiline}
-        ></textarea>
+        />
       )}
       {error && (
-        <span style={{ color: "var(--text-text-error)", display:'flex', alignItems:'center', gap:4 }}>
+        <span
+          style={{
+            color: "var(--text-text-error)",
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+          }}
+        >
           <svg
             width="16"
             height="16"

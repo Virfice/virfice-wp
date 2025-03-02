@@ -1,8 +1,8 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import Card from "../../../Molecules/Card";
-import Button from "../../../Molecules/Button";
-import { addParams } from "../../../../functions";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import Card from "@molecules/Card";
+import Button from "@molecules/Button";
+import { addParams } from "@functions";
 
 const BrandSettings = () => {
   return (
@@ -16,7 +16,7 @@ const BrandSettings = () => {
           <Button
             type="secondary"
             title="Customize"
-            link={addParams({ menu: "brand-settings" })}
+            link={addParams({ menu: "virfice-brand-settings" })}
           />
         </div>
       </div>

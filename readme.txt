@@ -4,8 +4,8 @@ Contributors: Virfice
 Donate link: [https://www.virfice.com](https://www.virfice.com)
 Tags: Email Customizer for WooCommerce, Email editor, WooCommerce emails, WooCommerce Email Template Customizer, WooCommerce Email Customizer
 Requires at least: WordPress 5.5
-Tested up to: 6.6
-Stable tag: 1.0.3
+Tested up to: 6.7.2
+Stable tag: 1.1.0
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
@@ -88,11 +88,25 @@ Yes, please report any issues you face or request any features you may feel requ
 3. WooCmmerce email customization
 4. Manage WooCommerce emails
 5. Virfice Email Customizer dashboard
-6. Sent test emails to your preferred email addresses
+6. Send test emails to your preferred email addresses
 7. Add social media links to WooCommerce emails
+8. Email builder elements
+9. Ready blocks
+10. Header variations
+11. Email preview
+
 
 
 == Changelog ==
+= 1.1.0 =
+* New: Intuitive email builder
+* New: 8 email elements
+* New: 15+ ready block designs
+* New: 12 custom email templates for WooCommerce emails
+* Update: Revamped brand settings
+* Update: Improved email preview
+* Update: Enhanced overall experience
+* Fix: Various bug fixes
 = 1.0.3 =
 * Fix: Disable add_rewrite_rule method
 * Update: Added Telegram, VK, and phone as social links

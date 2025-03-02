@@ -1,6 +1,6 @@
 import React from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../../conf";
-import Card from "../../../../Molecules/Card";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import Card from "@molecules/Card";
 import OrderSelection from "./OrderSelection";
 import SettingsGenerator from "./SettingsGenerator";
 
@@ -14,7 +14,7 @@ const RightPanel = () => {
           <OrderSelection />
         </Card>
         <Card>
-         <SettingsGenerator />
+          <SettingsGenerator />
         </Card>
       </div>
     </div>

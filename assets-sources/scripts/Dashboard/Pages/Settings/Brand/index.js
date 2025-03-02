@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 import { useDispatch, useSelector } from "react-redux";
 import { globalSettingsAsync } from "../globalSettingsSlice";
-import Loading from "../../../Molecules/Loading";
+import Loading from "@molecules/Loading";
 import SocialLinks from "./SocialLinks";
 import BrandSettings from "./BrandSettings";
 // import CronJob from "./CronJob";

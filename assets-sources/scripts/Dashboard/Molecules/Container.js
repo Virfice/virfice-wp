@@ -1,15 +1,23 @@
 import React from "react";
 import classnames from "classnames";
-import { VIRFICE_APP_PREFIX } from "../../conf";
+import { VIRFICE_APP_PREFIX } from "@conf";
 
-const Container = ({
-    children
-}) =>{
+const Container = ({ children, size1280 }) => {
+  const className = classnames({
+    [VIRFICE_APP_PREFIX + "-container"]: true,
+  });
 
-    const className = classnames({
-        [VIRFICE_APP_PREFIX + '-container'] : true
-    });
-    return <div className={className}>{children}</div>
-}
+  let styles = {};
+
+  if (size1280) {
+    styles.width = 1280;
+  }
+
+  return (
+    <div className={className} style={styles}>
+      {children}
+    </div>
+  );
+};
 
 export default Container;

@@ -92,7 +92,7 @@ class Settings extends WP_REST_Controller
 			'virfice_address' => get_option('virfice_address'),
 			'virfice_country' => get_option('virfice_country'),
 			'virfice_city' => get_option('virfice_city'),
-			'virfice_store_name' => get_option('virfice_store_name'),
+			'virfice_store_name' => get_option('virfice_store_name', get_option('blogname')),
 			'virfice_website_url' => get_option('virfice_website_url'),
 			'virfice_sending_frequency_email' => get_option('virfice_sending_frequency_email', 10),
 			'virfice_sending_frequency_delay' => get_option('virfice_sending_frequency_delay', 1),

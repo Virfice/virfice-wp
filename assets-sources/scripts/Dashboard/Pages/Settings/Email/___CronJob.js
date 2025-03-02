@@ -1,13 +1,13 @@
 import React from "react";
-import TextField from "../../../Molecules/TextField";
-import FormInfo from "../../../Components/FormInfo";
-import { FormInfoIllustration } from "../../../icons";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import Card from "../../../Molecules/Card";
+import TextField from "@molecules/TextField";
+import FormInfo from "@components/FormInfo";
+import { FormInfoIllustration } from "@svg-icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import Card from "@molecules/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalSettingsData } from "../globalSettingsSlice";
-import SelectField from "../../../Molecules/SelectField";
-import { getSelectOptionsValueFromOptions } from "../../../../functions";
+import SelectField from "@molecules/SelectField";
+import { getSelectOptionsValueFromOptions } from "@functions";
 
 const frequency_email_options = [
   { value: 10, title: "10 Emails" },

@@ -1,24 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
-import { VIRFICE_APP_PREFIX } from "../../conf";
-import { MediaBG, MediaIcon } from "../icons";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { MediaBG, MediaIcon } from "@svg-icons";
 import Button from "./Button";
 
-const MediaUploader = ({ info="Add image",label,value, onSelect, onDelete }) => {
+const MediaUploader = ({
+  info = "Add image",
+  label,
+  value,
+  onSelect,
+  onDelete,
+}) => {
   const mediaFrameRef = useRef(null);
-  const [selectedImage, setSelectedImage] = useState({url:''});
+  const [selectedImage, setSelectedImage] = useState({ url: "" });
   const [onSelectToggler, setOnSelectToggler] = useState(false);
 
+  useEffect(() => {
+    setSelectedImage({ url: value });
+  }, [value]);
 
-  useEffect(()=>{
-    setSelectedImage({url: value});
-  },[value])
-  
-  useEffect(()=>{
+  useEffect(() => {
     if (onSelect && onSelectToggler) {
-        onSelect(selectedImage);
-        setOnSelectToggler(false);
+      onSelect(selectedImage);
+      setOnSelectToggler(false);
     }
-  },[onSelectToggler])
+  }, [onSelectToggler]);
 
   useEffect(() => {
     if (typeof wp !== "undefined" && wp.media) {
@@ -61,7 +66,7 @@ const MediaUploader = ({ info="Add image",label,value, onSelect, onDelete }) => 
     }
   };
   const handleDeleteMedia = () => {
-    setSelectedImage({url:''})
+    setSelectedImage({ url: "" });
     if (onDelete) {
       onDelete();
     }
@@ -72,24 +77,21 @@ const MediaUploader = ({ info="Add image",label,value, onSelect, onDelete }) => 
       {label && <label className="body__medium">{label}</label>}
 
       {!selectedImage.url && (
-        <div
-          className={`${VIRFICE_APP_PREFIX}-media-uploader-empty`}
-          
-        >
+        <div className={`${VIRFICE_APP_PREFIX}-media-uploader-empty`}>
           <MediaIcon />
-          <div className="body__medium">
-            {info}
-          </div>
-          <Button title="Upload" type="secondary" onClick={openMediaFrame}/>
+          <div className="body__medium">{info}</div>
+          <Button title="Upload" type="secondary" onClick={openMediaFrame} />
         </div>
       )}
 
       {selectedImage.url && (
         <div className={`${VIRFICE_APP_PREFIX}-media-uploader-has-media`}>
           <img src={selectedImage.url} alt={selectedImage.alt} width={150} />
-          <div className={`${VIRFICE_APP_PREFIX}-media-uploader-has-media-actions`}>
-            <Button title="Change" type="secondary" onClick={openMediaFrame}/>
-            <Button title="Delete" type="danger" onClick={handleDeleteMedia}/>
+          <div
+            className={`${VIRFICE_APP_PREFIX}-media-uploader-has-media-actions`}
+          >
+            <Button title="Change" type="secondary" onClick={openMediaFrame} />
+            <Button title="Delete" type="danger" onClick={handleDeleteMedia} />
           </div>
         </div>
       )}

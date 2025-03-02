@@ -1,10 +1,18 @@
 import React from "react";
-import Container from "../Molecules/Container";
+import Container from "@molecules/Container";
 
-const PageHeadingAndSubheading = ({ heading, subHeading }) => {
+const PageHeadingAndSubheading = ({
+  heading,
+  subHeading,
+  size1280,
+  quickAction,
+}) => {
   return (
-    <Container>
-      <h1>{heading}</h1>
+    <Container size1280={size1280}>
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <h1>{heading}</h1>
+        {quickAction}
+      </div>
       <p>{subHeading}</p>
     </Container>
   );

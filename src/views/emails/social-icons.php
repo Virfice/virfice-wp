@@ -3,7 +3,7 @@
 use Virfice\API\Settings;
 
 $virfice_social_links = Settings::get_social_links();
-$title = $title ? $title : 'Follow us on';
+$title = $title !== false ? $title : 'Follow us on';
 $icons = [
     [
         'name' => 'facebook',
@@ -68,23 +68,20 @@ $icons = [
 ];
 ?>
 <div>
-    <p style="text-align: center;margin-bottom: 0;color:#616161;"><strong><?php echo esc_html($title); ?></strong></p>
-
+    <?php if ($title) { ?>
+        <p style="text-align: center;margin-bottom: 0;"><strong><?php echo esc_html($title); ?></strong></p>
+    <?php } ?>
     <table style="width: max-content; margin:auto; text-align: center; ">
         <tr>
             <?php
             foreach ($icons as $key => $value) {
-                if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { 
-                    $href = esc_url($virfice_social_links[$value['key']]);
-                    if($value['name'] === 'phone'){
-                        $href= "tel:" . $virfice_social_links[$value['key']];
-                    }
-                    ?>
-            <td>
-                <a href="<?php echo $href; ?>" target="_blank" rel="noopener">
-                    <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.png'); ?>"
-                        alt="<?php echo $value['name'];?>" style="object-fit: contain;margin-right: 16px;" /></a>
-            </td>
+if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
+                    <td>
+                        <a href="<?php echo esc_url($virfice_social_links[$value['key']]); ?>" target="_blank">
+                            <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.webp'); ?>"
+                                alt="Hello Virfice" style="object-fit: contain;margin-right: 16px;" />
+                        </a>
+                    </td>
             <?php
                 }
             }

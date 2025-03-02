@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@molecules": "./assets-sources/scripts/Dashboard/Molecules",
+          "@components": "./assets-sources/scripts/Dashboard/Components",
+          "@functions": "./assets-sources/scripts/functions",
+          "@conf": "./assets-sources/scripts/conf",
+          "@svg-icons": "./assets-sources/scripts/Dashboard/icons"
+        }
+      }
+    ]
+  ]
+}

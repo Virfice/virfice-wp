@@ -1,9 +1,9 @@
 import React from "react";
-import Card from "../../Molecules/Card";
-import Button from "../../Molecules/Button";
-import { VIRFICE_APP_PREFIX } from "../../../conf";
-import FeatureListItem from "../../Molecules/FeatureListItem";
-import { addParams } from "../../../functions";
+import Card from "@molecules/Card";
+import Button from "@molecules/Button";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import FeatureListItem from "@molecules/FeatureListItem";
+import { addParams } from "@functions";
 
 const FeatureBanner = () => {
   return (
@@ -168,72 +168,13 @@ const FeatureBanner = () => {
           <Button
             type="primary"
             title="Customize now!"
-            link={addParams({ menu: "brand-settings" })}
+            link={addParams({ menu: "virfice-brand-settings" })}
+            disabled={!virfice.isWooActive}
           />
           {/* https://www.virfice.com/docs */}
         </div>
       </div>
       <div className={`${VIRFICE_APP_PREFIX}-feature-list-wrapper`}>
-        <FeatureListItem
-          title={"Send test email"}
-          Illustration={
-            <svg
-              width="80"
-              height="80"
-              viewBox="0 0 80 80"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="80" height="80" rx="6" fill="#F4F9E1" />
-              <path
-                d="M26.7878 41.9522L29.5687 37.5222L61.7505 27.7623L44.6042 46.0511L34.6702 47.8693L26.956 54L26.7897 42.1581L26.7873 42.1533L26.7897 42.1523L26.7873 41.9527L26.7878 41.9522Z"
-                fill="#89A31F"
-              />
-              <path
-                d="M60.5487 28.3486L26.9607 42.0821L26.7877 41.9519L16.1504 33.9669L63.2375 26.9999L42.0521 53.4111L34.6701 47.8695L30.1769 44.4967L60.5487 28.3486Z"
-                fill="#B5D72D"
-              />
-            </svg>
-          }
-        />
-        <FeatureListItem
-          title={"Live preview"}
-          Illustration={
-            <svg
-              width="80"
-              height="80"
-              viewBox="0 0 80 80"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="80" height="80" rx="6" fill="#F4F9E1" />
-              <path
-                d="M54.3575 49.6311L26.9837 51.4346L19.2378 26.7135L53.2963 23L54.3575 49.6311Z"
-                fill="#8EAA1D"
-              />
-              <path
-                d="M36.5848 52.63L46.5476 51.7685L46.5848 55.2685L36.585 55.7685L36.5848 52.63Z"
-                fill="#8EAA1D"
-              />
-              <path
-                d="M22.585 28.7686L52.085 24.7686L54.085 47.2686L27.585 50.2686L22.585 28.7686Z"
-                fill="#B5D72D"
-              />
-              <path
-                d="M50.1033 30.2473L60.1024 30.7469L58.0334 46.1373L48.5851 45.6918L50.1033 30.2473Z"
-                fill="#89A31F"
-              />
-              <rect
-                x="52.9274"
-                y="32.1846"
-                width="4"
-                height="1"
-                transform="rotate(3.71754 52.9274 32.1846)"
-                fill="#FFFEFA"
-              />
-            </svg>
-          }
-        />
         <FeatureListItem
           title={"Customize"}
           Illustration={
@@ -307,6 +248,66 @@ const FeatureBanner = () => {
               />
               <path
                 d="M27.7115 28.3303L20.2323 25.8986L18.7404 23.7432L16.8035 23.9116L16.0882 24.0468L15.8866 24.6307L13.7135 24.0488L13.2805 25.1514L15.6334 25.8996L15.6713 26.5081L17.5946 28.2358L19.5601 27.9018L19.562 27.9023L19.8587 27.397L27.4565 29.7385L27.7138 28.329L27.7115 28.3303ZM18.6512 26.7528L18.0969 26.9332L17.7231 27.0575L17.2763 26.6013L16.8009 26.1196L16.8093 26.0884L17.1098 25.0468L18.2116 24.8359L18.3611 24.807L18.5808 25.0745L18.6134 25.1147L19.1924 25.8269L18.6493 26.7524L18.6512 26.7528Z"
+                fill="#FFFEFA"
+              />
+            </svg>
+          }
+        />
+        <FeatureListItem
+          title={"Send test email"}
+          Illustration={
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="80" height="80" rx="6" fill="#F4F9E1" />
+              <path
+                d="M26.7878 41.9522L29.5687 37.5222L61.7505 27.7623L44.6042 46.0511L34.6702 47.8693L26.956 54L26.7897 42.1581L26.7873 42.1533L26.7897 42.1523L26.7873 41.9527L26.7878 41.9522Z"
+                fill="#89A31F"
+              />
+              <path
+                d="M60.5487 28.3486L26.9607 42.0821L26.7877 41.9519L16.1504 33.9669L63.2375 26.9999L42.0521 53.4111L34.6701 47.8695L30.1769 44.4967L60.5487 28.3486Z"
+                fill="#B5D72D"
+              />
+            </svg>
+          }
+        />
+        <FeatureListItem
+          title={"Live preview"}
+          Illustration={
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="80" height="80" rx="6" fill="#F4F9E1" />
+              <path
+                d="M54.3575 49.6311L26.9837 51.4346L19.2378 26.7135L53.2963 23L54.3575 49.6311Z"
+                fill="#8EAA1D"
+              />
+              <path
+                d="M36.5848 52.63L46.5476 51.7685L46.5848 55.2685L36.585 55.7685L36.5848 52.63Z"
+                fill="#8EAA1D"
+              />
+              <path
+                d="M22.585 28.7686L52.085 24.7686L54.085 47.2686L27.585 50.2686L22.585 28.7686Z"
+                fill="#B5D72D"
+              />
+              <path
+                d="M50.1033 30.2473L60.1024 30.7469L58.0334 46.1373L48.5851 45.6918L50.1033 30.2473Z"
+                fill="#89A31F"
+              />
+              <rect
+                x="52.9274"
+                y="32.1846"
+                width="4"
+                height="1"
+                transform="rotate(3.71754 52.9274 32.1846)"
                 fill="#FFFEFA"
               />
             </svg>

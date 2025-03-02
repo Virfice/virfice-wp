@@ -1,20 +1,24 @@
 <?php
+
+use Virfice\MetaHelper;
 /*
 Plugin Name: Virfice
 Description: Customize WooCommerce emails easily. Ensure your emails represent your store brand.
 Author: Virfice
 Author URI: https://virfice.com/
-Version: 1.0.3
+Version: 1.1.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 7.2
 */
+
 if (!defined('ABSPATH')) exit; // Exit if accessed directly 
 
 use Virfice\AdminNotice;
 use Virfice\API\API;
 use Virfice\Dashboard;
+use Virfice\InitTask;
 use Virfice\WooEmailPreview\Route as WooEmailPreviewRoute;
 use Virfice\WooEmailEditWithButton;
 use Virfice\WooEmailHooks;
@@ -29,8 +33,7 @@ function virfice_check_woocommerce_activation()
         // Set the flag in the database
         update_option('virfice_first_install', true);
     }
-
-    // If WooCommerce class does not exist, WooCommerce is not installed or activated
+// If WooCommerce class does not exist, WooCommerce is not installed or activated
     if (!class_exists('WooCommerce')) {
         // Deactivate the current plugin
         deactivate_plugins(plugin_basename(__FILE__));
@@ -57,7 +60,6 @@ function virfice_check_woocommerce_activation()
     //     );
     // }
     // flush_rewrite_rules(); // Saves changes to .htaccess
-    
 }
 
 /**
@@ -76,19 +78,29 @@ register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
 
 
 // Define plugin constants for easier reference
-define('VIRFICE_VERISION', '1.0.3'); // Plugin version
+define('VIRFICE_VERISION', '1.1.0'); // Plugin version
+define('VIRFICE_DEBUG', false); // Plugin version
 define('VIRFICE_APP_NAME', 'Virfice'); // Plugin name
 define('VIRFICE_APP_PREFIX', 'virfice'); // Prefix for naming consistency
 define('VIRFICE_PLUGIN_ROOT', plugin_dir_path(__FILE__)); // Path to the plugin directory
-define('VIRFICE_PLUGIN_VIEWS_ROOT', VIRFICE_PLUGIN_ROOT . '/src/views'); // Path to the plugin directory
+define('VIRFICE_PLUGIN_VIEWS_ROOT', VIRFICE_PLUGIN_ROOT . 'src/views'); // Path to the plugin directory
 define('VIRFICE_PLUGIN_BASE', plugin_dir_url(__FILE__)); // URL of the plugin directory
 define('VIRFICE_STATIC_FILES_BASE', VIRFICE_PLUGIN_BASE . 'assets/files'); // URL of the plugin directory
 
 // Initialize the core components of the plugin
+new MetaHelper();
+new InitTask();
 new AdminNotice();
 new Dashboard(); // Initialize the Dashboard component
 new WooEmailPreviewRoute(); // Initialize routing for the plugin
 new WooEmailEditWithButton(); // Initialize WooCommerce email editing with a button feature
 new API(); // Initialize API functionality for the plugin
 
+// update footer text
 new WooEmailHooks();
+
+
+
+//TODO: need to remove in production
+// require_once __DIR__ . '/__test.php';
+// die();

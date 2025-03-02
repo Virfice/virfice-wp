@@ -1,13 +1,23 @@
-import { VIRFICE_PLUGIN_BASE } from "./conf";
+import { VIRFICE_PLUGIN_BASE } from "@conf";
+import { store } from "./Dashboard/store";
+import { getElementComputedStyle } from "./Dashboard/Components/VirficeEmailBuilder/EmailBuilder/RightPanel/Settings/utils";
+import { saveVirficeBrandSettings } from "./Dashboard/Pages/VirficeBrandSettings/virficeBrandSettingsSlice";
+import { rgbToHex } from "./Dashboard/Molecules/Paintfield";
+import { getIframe } from "./Dashboard/Components/VirficeEmailBuilder/EmailBuilder/utils";
 
 export const hasQueryParamValue = (
   field,
   value,
   url = window.location.href
 ) => {
-  if (url.indexOf("?" + field + "=" + value) != -1) return true;
-  else if (url.indexOf("&" + field + "=" + value) != -1) return true;
-  return false;
+  // Create a URL object and URLSearchParams instance
+  const urlParams = new URLSearchParams(new URL(url).search);
+
+  // Get the value of the query parameter for the given field
+  const paramValue = urlParams.get(field);
+
+  // Check if the value exists and matches exactly
+  return paramValue === value;
 };
 export const addParams = (paramsObj, url = window.location.href) => {
   let urlObj = new URL(url);
@@ -49,4 +59,27 @@ export const validateCommaSeparatedEmails = (emailString) => {
   }
 
   return true; // All emails are valid or empty strings are ignored
+};
+
+export function dispatchDashboardAction(action, payload) {
+  store.dispatch(action(payload)); // Dispatch action using the store's dispatch method
+}
+
+export const generateRandomId = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+};
+
+export const saveEmailOuterAndInnerBGColor = async () => {
+  const body = getIframe().body;
+  const templateWrapper = getIframe().templateWrapper;
+  const outerBgColor = getElementComputedStyle(body, "background-color");
+  const innerBgColor = getElementComputedStyle(
+    templateWrapper,
+    "background-color"
+  );
+
+  dispatchDashboardAction(saveVirficeBrandSettings, {
+    email_outer_background_color: rgbToHex(outerBgColor),
+    email_background_color: rgbToHex(innerBgColor),
+  });
 };

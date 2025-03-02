@@ -1,16 +1,18 @@
 <?php
+
 namespace Virfice\API;
 
 // Security check to ensure this file is not accessed directly
 if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
+    exit; // Exit if accessed directly.
 }
 
 /**
  * Class API
  * Registers custom REST API endpoints for the Virfice plugin.
  */
-class API{
+class API
+{
     /**
      * API constructor.
      * Adds action to register custom REST API endpoints when WordPress REST API is initialized.
@@ -33,5 +35,7 @@ class API{
         // Register routes for handling WooCommerce order related requests
         (new WooOrder())->register_routes();
         (new Settings())->register_routes();
+        (new VirficeTemplate())->register_routes();
+        (new VirficeTestEmailSend())->register_routes();
     }
 }

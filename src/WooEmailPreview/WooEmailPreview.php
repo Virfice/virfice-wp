@@ -194,7 +194,7 @@ class WooEmailPreview
         // Trigger the email based on its key and order ID
         if ($email_key === 'WC_Email_Customer_Note') {
             // Handle customer note email separately
-            $customer_note = 'This is a customer note. Virfice test demo note.';
+            $customer_note = 'This is a customer note. Virfice test demo note.'; //TODO: //need to change customer note
             $args = array(
                 'order_id' => $order_id,
                 'customer_note' => $customer_note,

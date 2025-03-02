@@ -2,6 +2,9 @@
 
 namespace Virfice\API;
 
+use Virfice\Includes\Templates;
+use Virfice\MetaHelper;
+
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
@@ -66,6 +69,21 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 
+		// Register a REST API endpoint to get a single email's settings
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/single-virfice',
+			array(
+				array(
+					'methods'             => 'GET',
+					'callback'            => array($this, 'get_single_email_virfice'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
+
 		// Register a REST API endpoint to get WooCommerce brand settings
 		register_rest_route(
 			$this->namespace,
@@ -81,6 +99,20 @@ class WooEmail extends WP_REST_Controller
 			)
 		);
 
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/virfice-brand-settings',
+			array(
+				array(
+					'methods'             => 'GET',
+					'callback'            => array($this, 'get_virfice_brand_settings'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
+
 		// Register a REST API endpoint to update WooCommerce brand settings
 		register_rest_route(
 			$this->namespace,
@@ -89,6 +121,21 @@ class WooEmail extends WP_REST_Controller
 				array(
 					'methods'             => 'POST',
 					'callback'            => array($this, 'save_brand_settings'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
+
+		// Register a REST API endpoint to update WooCommerce brand settings
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/virfice-brand-settings',
+			array(
+				array(
+					'methods'             => 'POST',
+					'callback'            => array($this, 'save_virfice_brand_settings'),
 					'permission_callback' => array($this, 'get_item_permissions_check'),
 					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
 				),
@@ -125,6 +172,20 @@ class WooEmail extends WP_REST_Controller
 				'schema' => array($this, 'get_item_schema'),
 			)
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/update-virfice-template-status',
+			array(
+				array(
+					'methods'             => 'POST',
+					'callback'            => array($this, 'update_virfice_template_status'),
+					'permission_callback' => array($this, 'get_item_permissions_check'),
+					'args'                => $this->get_endpoint_args_for_item_schema(WP_REST_Server::READABLE),
+				),
+				'schema' => array($this, 'get_item_schema'),
+			)
+		);
 	}
 
 	/**
@@ -141,11 +202,14 @@ class WooEmail extends WP_REST_Controller
 		$formatted_email_lists = array();
 		foreach ($email_lists as $email_key => $email_obj) {
 
+			// if ($email_key === 'WC_Email_Customer_Reset_Password' || $email_key === 'WC_Email_Customer_New_Account') {
+			// 	continue;
+			// }
+
 			$url = add_query_arg(array(
 				'email_id' => $email_obj->id,
 				'woo_preview_nonce' => wp_create_nonce('email_id_' . $email_obj->id),
 			), home_url('/'));
-
 
 			$formatted_email_lists[] = array(
 				'id' => $email_obj->id,
@@ -154,7 +218,8 @@ class WooEmail extends WP_REST_Controller
 				'email_type' => $email_obj->get_email_type(),
 				'recipient' => $email_obj->get_recipient(),
 				'previewUrl' => $url,
-				'enabled' => $email_obj->enabled
+				'enabled' => $email_obj->enabled,
+				'virfice_template_status' => Utils::isVirficeTemplateEnabled($email_obj->id)
 				// You can add more data as needed
 			);
 		}
@@ -183,6 +248,24 @@ class WooEmail extends WP_REST_Controller
 		return $email;
 	}
 
+	public function get_single_email_virfice()
+	{
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
+		$email_id = sanitize_text_field($_REQUEST['email_id']); // Email obj id.
+
+		$_virfice_template_id = MetaHelper::get_meta(0, 'woo-email', $email_id . '_virfice_template_id', false);
+
+		if ($_virfice_template_id) {
+			$template = get_post($_virfice_template_id);
+			if (!$template) {
+				return false;
+			}
+			return array('id' => $template->ID, 'title' => $template->post_title);
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * Retrieves the WooCommerce brand settings.
 	 *
@@ -191,6 +274,16 @@ class WooEmail extends WP_REST_Controller
 	public function get_brand_settings()
 	{
 		return Utils::get_brand_settings();
+	}
+
+	/**
+	 * Retrieves the WooCommerce brand settings.
+	 *
+	 * @return array Brand settings for WooCommerce email templates.
+	 */
+	public function get_virfice_brand_settings()
+	{
+		return Utils::get_virfice_brand_settings();
 	}
 
 	/**
@@ -236,6 +329,67 @@ class WooEmail extends WP_REST_Controller
 		}
 		if (isset($data['virfice_social_icons_heading'])) {
 			update_option('virfice_social_icons_heading', sanitize_text_field($data['virfice_social_icons_heading']), false);
+		}
+		return true;
+	}
+
+	/**
+	 * Updates the WooCommerce brand settings with new values.
+	 *
+	 * @return bool True if successful.
+	 */
+	public function save_virfice_brand_settings()
+	{
+		//verified in get_item_permissions_check method
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended 
+		$data = json_decode(stripslashes($_REQUEST['data']), true);
+
+		if (!empty($data['email_body_width'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_width', $data['email_body_width']);
+		}
+
+		if (isset($data['logo'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'logo', $data['logo']);
+		}
+
+		if (!empty($data['store_name'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'store_name', $data['store_name']);
+		}
+		if (!empty($data['email_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_background_color', $data['email_background_color']);
+		}
+		if (!empty($data['email_outer_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_outer_background_color', $data['email_outer_background_color']);
+		}
+		if (!empty($data['email_body_text'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_text', $data['email_body_text']);
+		}
+		if (!empty($data['email_body_button_bg'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_button_bg', $data['email_body_button_bg']);
+		}
+		if (!empty($data['email_body_button_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'email_body_button_color', $data['email_body_button_color']);
+		}
+		if (!empty($data['header_text_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_text_color', $data['header_text_color']);
+		}
+		if (!empty($data['header_icons_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_icons_color', $data['header_icons_color']);
+		}
+		if (!empty($data['header_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'header_background_color', $data['header_background_color']);
+		}
+		if (!empty($data['footer_text_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_text_color', $data['footer_text_color']);
+		}
+		if (!empty($data['footer_icons_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_icons_color', $data['footer_icons_color']);
+		}
+		if (!empty($data['footer_link_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_link_color', $data['footer_link_color']);
+		}
+		if (!empty($data['footer_background_color'])) {
+			MetaHelper::add_or_update_meta(0, 'brand-settings', 'footer_background_color', $data['footer_background_color']);
 		}
 		return true;
 	}
@@ -312,6 +466,14 @@ class WooEmail extends WP_REST_Controller
 		}
 
 		return $changedSettings;
+	}
+
+	public function update_virfice_template_status()
+	{
+		$email_id = sanitize_text_field($_REQUEST['email_id']);
+		$status = Utils::get_boolean_value(sanitize_text_field($_REQUEST['status']));
+		Utils::update_woo_email_preset_template_data_to_db($email_id, $status);
+		return true;
 	}
 
 	/**

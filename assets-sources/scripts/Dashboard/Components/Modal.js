@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { VIRFICE_APP_PREFIX } from "../../conf";
-import { CloseIcon } from "../icons";
-import Button from "../Molecules/Button";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import { CloseIcon } from "@svg-icons";
+import Button from "@molecules/Button";
 
 const Modal = ({
   children,
@@ -13,6 +13,7 @@ const Modal = ({
   showCloseButton = true,
   onClose,
   closeOnBackdropClick = false,
+  hideHeader = false,
 }) => {
   const [show, setShow] = useState(open);
 
@@ -22,14 +23,14 @@ const Modal = ({
 
   const handleBackdropClick = () => {
     if (closeOnBackdropClick) {
-        closeModal();
+      closeModal();
     }
   };
 
-  const closeModal = () =>{
+  const closeModal = () => {
     setShow(false);
     onClose();
-  }
+  };
 
   if (!show) return null;
   return createPortal(
@@ -39,19 +40,21 @@ const Modal = ({
         onClick={handleBackdropClick}
       ></div>
       <div className={`${VIRFICE_APP_PREFIX}-modal-wrapper`}>
-        <div className={`${VIRFICE_APP_PREFIX}-modal-header`}>
-          <div>
-            <div className="title__small">{heading}</div>
-          </div>
-          {showCloseButton && (
-            <div
-              className={`${VIRFICE_APP_PREFIX}-modal-close`}
-              onClick={closeModal}
-            >
-              <CloseIcon />
+        {!hideHeader && (
+          <div className={`${VIRFICE_APP_PREFIX}-modal-header`}>
+            <div>
+              <div className="title__small">{heading}</div>
             </div>
-          )}
-        </div>
+            {showCloseButton && (
+              <div
+                className={`${VIRFICE_APP_PREFIX}-modal-close`}
+                onClick={closeModal}
+              >
+                <CloseIcon />
+              </div>
+            )}
+          </div>
+        )}
         <div className={`${VIRFICE_APP_PREFIX}-modal-body`}>{children}</div>
         <div className={`${VIRFICE_APP_PREFIX}-modal-footer`}>
           <div
@@ -62,10 +65,10 @@ const Modal = ({
                 title={secondaryActionProps.title}
                 leftIcon={secondaryActionProps.leftIcon}
                 type="secondary"
-                onClick={()=>{
-                    if(!secondaryActionProps.onClick)return;
-                    closeModal();
-                    secondaryActionProps.onClick();
+                onClick={() => {
+                  if (!secondaryActionProps.onClick) return;
+                  closeModal();
+                  secondaryActionProps.onClick();
                 }}
               />
             )}
@@ -74,9 +77,9 @@ const Modal = ({
                 title={primaryActionProps.title}
                 leftIcon={primaryActionProps.leftIcon}
                 type="primary"
-                onClick={()=>{
-                    if(!primaryActionProps.onClick)return;
-                    primaryActionProps.onClick();
+                onClick={() => {
+                  if (!primaryActionProps.onClick) return;
+                  primaryActionProps.onClick();
                 }}
               />
             )}

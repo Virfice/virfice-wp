@@ -1,7 +1,7 @@
 import React from "react";
-import TextField from "../../../Molecules/TextField";
-import { VIRFICE_APP_PREFIX } from "../../../../conf";
-import Card from "../../../Molecules/Card";
+import TextField from "@molecules/TextField";
+import { VIRFICE_APP_PREFIX } from "@conf";
+import Card from "@molecules/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setGlobalSettingsData } from "../globalSettingsSlice";
 
@@ -19,8 +19,6 @@ const StoreDetails = () => {
       })
     );
   };
-
-
 
   return (
     <Card>
@@ -80,8 +78,6 @@ const StoreDetails = () => {
               }}
             />
           </div>
-
-          
         </div>
       </div>
     </Card>
