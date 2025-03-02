@@ -31,31 +31,45 @@ const SingleBlock = ({ title, html, preview, isComingSoon }) => {
   }, []);
   const handleAddReadyBlock = () => {
     if (isComingSoon) return;
-    let element = cloneElementFromString(html); // This creates the new DOM element.
-    element = applyShortCode(element);
+
+    // Convert the HTML string into a DocumentFragment (multiple elements)
+    const fragment = document.createElement("div");
+    fragment.innerHTML = html;
+    let elements = Array.from(fragment.children).map(applyShortCode); // Apply shortcode to each child
+
+    if (elements.length === 0) return; // If no elements, exit.
+
     const selected_section = getVirficeElementFromId(
       hoveredSectionId || selectedSectionId
     ); // Retrieve the selected section.
 
-    if (selected_section && element) {
-      // Insert the new element after the selected section.
-      selected_section.parentNode.insertBefore(
-        element,
-        selected_section.nextSibling
-      );
+    if (selected_section) {
+      // Insert all elements after the selected section
+      elements.reverse().forEach((el) => {
+        selected_section.parentNode.insertBefore(
+          el,
+          selected_section.nextSibling
+        );
+      });
     } else {
+      // Append all elements to the template wrapper
       const templateWrapper = getIframe().templateWrapper;
-      templateWrapper.append(element);
+      elements.forEach((el) => templateWrapper.append(el));
     }
-    initEmailBuilder(); //TODO: need to init only for new element
 
-    const vID = getVirficeAttr(element, "id");
-    selectElementUsingID(vID);
+    initEmailBuilder(); //TODO: Need to init only for new elements
 
-    scrollToCanvasElement({
-      element: getVirficeElementFromId(vID),
-      parent: getIframe().body,
-    });
+    // Select and scroll to the first inserted element
+    const firstElement = elements[0];
+    if (firstElement) {
+      const vID = getVirficeAttr(firstElement, "id");
+      selectElementUsingID(vID);
+
+      scrollToCanvasElement({
+        element: getVirficeElementFromId(vID),
+        parent: getIframe().body,
+      });
+    }
   };
 
   const applyShortCode = (element) => {

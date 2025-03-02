@@ -31,7 +31,11 @@ const AddSectionButton = ({ element }) => {
       {!open && (
         <div
           className={`${VIRFICE_APP_PREFIX}-flex ${VIRFICE_APP_PREFIX}-gap-8`}
-          style={{ pointerEvents: "all" }}
+          style={{
+            pointerEvents: "all",
+            justifyContent: "center",
+            width: "100%",
+          }}
         >
           <Button
             leftIcon={<AddIcon />}
