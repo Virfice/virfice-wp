@@ -33,10 +33,49 @@ function virfice_check_woocommerce_activation()
         // Set the flag in the database
         update_option('virfice_first_install', true);
     }
+// If WooCommerce class does not exist, WooCommerce is not installed or activated
+    if (!class_exists('WooCommerce')) {
+        // Deactivate the current plugin
+        deactivate_plugins(plugin_basename(__FILE__));
+
+        // Display an error message and stop execution
+        wp_die(
+            wp_kses(
+                // Error message with instructions to install WooCommerce and a link back to the plugins page
+                '<strong>Virfice:</strong> WooCommerce is required for this plugin to work. Please install and activate WooCommerce. <br><br> <a href="' . admin_url('plugins.php') . '">Go Back</a>',
+                array(
+                    'strong' => array(), // Allowed HTML tags
+                    'br'     => array(),
+                    'a'      => array('href'),
+                )
+            )
+        );
+    }
+
+    // if (is_admin()) { // Check if in the admin area
+    //     add_rewrite_rule(
+    //         '^virfice$', // Custom URL: https://wordpress.test/virfice
+    //         'wp-admin/admin.php?page=virfice', // Redirect target
+    //         'top'
+    //     );
+    // }
+    // flush_rewrite_rules(); // Saves changes to .htaccess
 }
+
+/**
+ * Deactivates the plugin and removes rewrite rules.
+ */
+// function virfice_deactivation_plugin()
+// {
+//     flush_rewrite_rules(); // Removes changes from .htaccess
+// }
 
 // Register the activation hook to check WooCommerce before activating the plugin
 register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
+// Plugin deactivation hook to clean up
+// register_deactivation_hook(__FILE__, 'deactivate_plugin');
+
+
 
 // Define plugin constants for easier reference
 define('VIRFICE_VERISION', '1.1.0'); // Plugin version

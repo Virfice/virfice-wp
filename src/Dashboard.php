@@ -72,7 +72,7 @@ class Dashboard
         }
     }
 
-    public function my_plugin_custom_script()
+public function my_plugin_custom_script()
     {
 ?>
         <script type="text/javascript">

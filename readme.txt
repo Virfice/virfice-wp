@@ -98,7 +98,6 @@ Yes, please report any issues you face or request any features you may feel requ
 
 
 == Changelog ==
-
 = 1.1.0 =
 * New: Intuitive email builder
 * New: 8 email elements
@@ -108,7 +107,6 @@ Yes, please report any issues you face or request any features you may feel requ
 * Update: Improved email preview
 * Update: Enhanced overall experience
 * Fix: Various bug fixes
-
 = 1.0.3 =
 * Fix: Disable add_rewrite_rule method
 * Update: Added Telegram, VK, and phone as social links

@@ -48,7 +48,22 @@ $icons = [
     [
         'name' => 'vimeo',
         'key' => 'virfice_vimeo_url',
-        'icon' => 'vimeo'
+        'icon' => 'vimeo-icon'
+    ],
+    [
+        'name' => 'telegram',
+        'key' => 'virfice_telegram_url',
+        'icon' => 'telegram'
+    ],
+    [
+        'name' => 'vk',
+        'key' => 'virfice_vk_url',
+        'icon' => 'vk'
+    ],
+    [
+        'name' => 'phone',
+        'key' => 'virfice_phone_url',
+        'icon' => 'phone'
     ]
 ];
 ?>
@@ -60,7 +75,7 @@ $icons = [
         <tr>
             <?php
             foreach ($icons as $key => $value) {
-                if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
+if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
                     <td>
                         <a href="<?php echo esc_url($virfice_social_links[$value['key']]); ?>" target="_blank">
                             <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.webp'); ?>"
