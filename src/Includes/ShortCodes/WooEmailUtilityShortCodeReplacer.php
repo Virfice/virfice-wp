@@ -2,8 +2,6 @@
 
 namespace Virfice\Includes\ShortCodes;
 
-use Virfice\Utils;
-
 // Security check to ensure this file is not accessed directly
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.

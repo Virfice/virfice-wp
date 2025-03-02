@@ -11,7 +11,11 @@
         }
     ],
     "require": {
-        "symfony/dom-crawler": "^7.1",
-        "symfony/css-selector": "^7.1"
+        "symfony/dom-crawler": "^7.1"
+    },
+    "config": {
+        "platform": {
+            "php": "7.2.0"
+        }
     }
 }

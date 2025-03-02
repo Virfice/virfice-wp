@@ -4,7 +4,7 @@ Contributors: Virfice
 Donate link: [https://www.virfice.com](https://www.virfice.com)
 Tags: Email Customizer for WooCommerce, Email editor, WooCommerce emails, WooCommerce Email Template Customizer, WooCommerce Email Customizer
 Requires at least: WordPress 5.5
-Tested up to: 6.6
+Tested up to: 6.7.2
 Stable tag: 1.0.1
 Requires PHP: 7.3
 License: GPLv2 or later
