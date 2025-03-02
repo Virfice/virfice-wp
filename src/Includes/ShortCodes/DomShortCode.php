@@ -171,9 +171,11 @@ class DomShortCode
             ->each(function (Crawler $node) use ($value) {
                 $element = $node->getNode(0); // Access the underlying DOMElement
 
+                $value = str_replace(['<bdi>', '</bdi>'], '', $value);
+                libxml_use_internal_errors(true);
                 // Parse $value as HTML, wrapping it to ensure it's valid HTML
                 $doc = new \DOMDocument();
-                $doc->loadHTML('<div>' . $value . '</div>'); // Wrap in <div> to avoid HTML parsing issues
+                $doc->loadHTML('<div>' . $value . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD); // Wrap in <div> to avoid HTML parsing issues
 
                 // Import each child node from $value into the main document
                 $fragment = $element->ownerDocument->createDocumentFragment();
@@ -185,7 +187,12 @@ class DomShortCode
                 while ($element->hasChildNodes()) {
                     $element->removeChild($element->firstChild);
                 }
-                $element->appendChild($fragment);
+                // Append only if the fragment is not empty
+                if ($fragment->hasChildNodes()) {
+                    $element->appendChild($fragment);
+                }
+
+                libxml_clear_errors();
             });
 
         return $template;

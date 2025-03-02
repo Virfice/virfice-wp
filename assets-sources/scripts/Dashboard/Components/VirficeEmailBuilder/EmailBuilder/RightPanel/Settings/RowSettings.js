@@ -8,8 +8,8 @@ import {
 import ChildList from "./Components/ChildList";
 import Divider from "@molecules/Divider";
 import RangeField from "@molecules/RangeField";
-import Reusable from "./Reusable";
 import { getChildElements } from "../../utils";
+import DisabledParentSettings from "./DisabledParentSettings";
 
 const RowSettings = ({ element }) => {
   const childs = getChildElements(element);
@@ -25,7 +25,6 @@ const RowSettings = ({ element }) => {
             element.style.color = v;
           }}
         />
-        <Reusable element={element} type="background" />
 
         <Divider
           style={{ marginLeft: -20, marginBottom: 0 }}
@@ -63,6 +62,7 @@ const RowSettings = ({ element }) => {
           max={150}
           step={1}
         />
+        <DisabledParentSettings element={element} />
       </div>
     </>
   );

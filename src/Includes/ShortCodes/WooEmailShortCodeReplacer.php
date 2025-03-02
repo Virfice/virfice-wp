@@ -70,7 +70,8 @@ class WooEmailShortCodeReplacer
             'subscription_date' => $this->get_subscription_date(),
             'subscription_total' => $this->get_subscription_total(),
             'order_notes' => $this->get_order_notes(), // Adding order notes here
-            'customer_message' => $this->order->customer_message, // Adding order notes here
+            // $customer_message = $order->customer_message; 
+            'customer_message' => $this->order->get_customer_note(), // Adding order notes here
         ];
 
         $short_codes = array_merge($short_codes, ShortCodes::common_short_codes());

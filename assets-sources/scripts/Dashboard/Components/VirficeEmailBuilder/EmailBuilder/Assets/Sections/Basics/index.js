@@ -68,8 +68,9 @@ const Button = {
 const ImageWithText = {
   title: "Image with Text",
   icon: <TextOutdentIcon />,
-  template: `<table ${VIRFICE_APP_PREFIX}-title="Image with Text" ${VIRFICE_APP_PREFIX}-ele_type="section">
-    <tbody>
+  template: getBasicEleWrapper(
+    `<table>
+    <tbody ${VIRFICE_APP_PREFIX}-title="Columns" ${VIRFICE_APP_PREFIX}-ele_type="row">
         <tr>
             <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style"text-align: center;">
                 ${getImageString({ title: "Image" })}
@@ -84,12 +85,19 @@ const ImageWithText = {
         </tr>
     </tbody>
 </table>`,
+    {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+      title: "Image with Text",
+    }
+  ),
 };
 
 const Column = {
   title: "Columns",
   icon: <ColumnIcon />,
-  template: `<table ${VIRFICE_APP_PREFIX}-title="Columns" ${VIRFICE_APP_PREFIX}-settings_status="disabled" ${VIRFICE_APP_PREFIX}-ele_type="section">
+  template: getBasicEleWrapper(
+    `<table>
     <tbody ${VIRFICE_APP_PREFIX}-title="Columns" ${VIRFICE_APP_PREFIX}-ele_type="row">
         <tr>
             <td ${VIRFICE_APP_PREFIX}-title="Column 1" ${VIRFICE_APP_PREFIX}-ele_type="column" style="padding-bottom: 16px;text-align: center;">
@@ -111,6 +119,11 @@ const Column = {
         </tr>
     </tbody>
 </table>`,
+    {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    }
+  ),
 };
 
 const Divider = {

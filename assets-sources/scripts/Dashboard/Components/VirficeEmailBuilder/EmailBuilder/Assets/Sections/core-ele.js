@@ -57,9 +57,11 @@ export const getButtonString = ({ title, content }) =>
 
 export const getBasicEleWrapper = (
   child,
-  { paddingTop, paddingBottom, paddingLeft, paddingRight, textAlign }
+  { paddingTop, paddingBottom, paddingLeft, paddingRight, textAlign, title }
 ) => {
-  return `<div ${VIRFICE_APP_PREFIX}-ele_type="section" ${VIRFICE_APP_PREFIX}-settings_status="disabled"  style="padding-top: ${
+  return `<div ${VIRFICE_APP_PREFIX}-title="${
+    title || "Section"
+  }" ${VIRFICE_APP_PREFIX}-ele_type="section" ${VIRFICE_APP_PREFIX}-settings_status="disabled"  style="padding-top: ${
     paddingTop || "16px"
   };padding-bottom: ${paddingBottom || "16px"}; padding-left: ${
     paddingLeft || "0px"
