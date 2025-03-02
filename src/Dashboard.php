@@ -133,9 +133,12 @@ class Dashboard
             'dashicons-' . VIRFICE_APP_PREFIX,
             '58.00' // Position (this places it near WooCommerce which is at position 55)
         );
-
-        // Emails
         add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Dashboard', 'Dashboard', 'manage_woocommerce', 'virfice&menu=dashboard', [$this, 'my_plugin_page']);
+
+        if (!Utils::is_woocommerce_activated()) {
+            return;
+        }
+        // Emails
         add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Emails', 'Emails', 'manage_woocommerce', 'virfice&menu=woo-email-list', [$this, 'my_plugin_page']);
         add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Settings', 'Settings', 'manage_woocommerce', 'virfice&menu=settings', [$this, 'my_plugin_page']);
         // add_submenu_page(VIRFICE_APP_PREFIX, VIRFICE_APP_NAME . ' - Builder', 'Builder', 'manage_woocommerce', 'virfice&menu=builder', [$this, 'my_plugin_page']);
@@ -149,12 +152,6 @@ class Dashboard
      */
     public function my_plugin_page()
     {
-        if (!Utils::is_woocommerce_activated()) {
-            wp_die(
-                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                '<strong>' . VIRFICE_APP_NAME . ':</strong> WooCommerce is required for this plugin to work. Please install and activate WooCommerce. <br><br> <a href="' . admin_url('plugins.php') . '">Go Back</a>'
-            );
-        }
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo wp_kses_post('<div id="' . VIRFICE_APP_PREFIX . '-dashboard"></div>');
     }
@@ -181,6 +178,8 @@ class Dashboard
                 'nonce' => wp_create_nonce('wp_rest'),
                 'pluginBase' => VIRFICE_PLUGIN_BASE,
                 'assetsBase' => VIRFICE_STATIC_FILES_BASE,
+                'isWooActive' => Utils::is_woocommerce_activated(),
+                'wooPluginSearchUrl' => esc_url(admin_url('plugin-install.php?s=woocommerce&tab=search&type=term'))
             ));
 
             wp_enqueue_media();

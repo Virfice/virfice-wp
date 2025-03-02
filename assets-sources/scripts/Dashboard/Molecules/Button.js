@@ -12,6 +12,7 @@ const Button = ({
   onClick = () => {},
   link = false,
   target = false,
+  disabled = false,
 }) => {
   const _onClick = (e) => {
     e.stopPropagation();
@@ -40,7 +41,7 @@ const Button = ({
     ["label__mediumprominent"]: true,
   });
   return (
-    <button className={className} onClick={_onClick}>
+    <button className={className} onClick={_onClick} disabled={disabled}>
       {leftIcon}
       {icon}
       {title}

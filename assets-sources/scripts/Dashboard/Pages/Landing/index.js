@@ -35,6 +35,7 @@ const Landing = () => {
                   type="secondary"
                   title="Configure now!"
                   link={addParams({ menu: "settings" })}
+                  disabled={!virfice.isWooActive}
                 />
               }
               Illustration={<img src={createAssetUrl(brandCustomizeSRC)} />}
@@ -50,6 +51,7 @@ const Landing = () => {
                   type="secondary"
                   title="Customize and test!"
                   link={addParams({ menu: "woo-email-list" })}
+                  disabled={!virfice.isWooActive}
                 />
               }
               Illustration={<img src={createAssetUrl(testMailSRC)} />}

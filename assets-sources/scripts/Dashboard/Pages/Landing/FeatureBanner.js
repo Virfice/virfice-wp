@@ -169,6 +169,7 @@ const FeatureBanner = () => {
             type="primary"
             title="Customize now!"
             link={addParams({ menu: "virfice-brand-settings" })}
+            disabled={!virfice.isWooActive}
           />
           {/* https://www.virfice.com/docs */}
         </div>
