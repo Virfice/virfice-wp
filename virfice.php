@@ -6,7 +6,7 @@ Plugin Name: Virfice
 Description: Customize WooCommerce emails easily. Ensure your emails represent your store brand.
 Author: Virfice
 Author URI: https://virfice.com/
-Version: 1.0.2
+Version: 1.1.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
@@ -19,7 +19,6 @@ use Virfice\AdminNotice;
 use Virfice\API\API;
 use Virfice\Dashboard;
 use Virfice\InitTask;
-use Virfice\Utils;
 use Virfice\WooEmailPreview\Route as WooEmailPreviewRoute;
 use Virfice\WooEmailEditWithButton;
 use Virfice\WooEmailHooks;
@@ -34,32 +33,14 @@ function virfice_check_woocommerce_activation()
         // Set the flag in the database
         update_option('virfice_first_install', true);
     }
-
-    // If WooCommerce class does not exist, WooCommerce is not installed or activated
-    if (!class_exists('WooCommerce')) {
-        // Deactivate the current plugin
-        deactivate_plugins(plugin_basename(__FILE__));
-
-        // Display an error message and stop execution
-        wp_die(
-            wp_kses(
-                // Error message with instructions to install WooCommerce and a link back to the plugins page
-                '<strong>Virfice:</strong> WooCommerce is required for this plugin to work. Please install and activate WooCommerce. <br><br> <a href="' . admin_url('plugins.php') . '">Go Back</a>',
-                array(
-                    'strong' => array(), // Allowed HTML tags
-                    'br'     => array(),
-                    'a'      => array('href'),
-                )
-            )
-        );
-    }
 }
 
 // Register the activation hook to check WooCommerce before activating the plugin
 register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
 
 // Define plugin constants for easier reference
-define('VIRFICE_VERISION', '2.0.beta3'); // Plugin version
+define('VIRFICE_VERISION', '1.1.0'); // Plugin version
+define('VIRFICE_DEBUG', true); // Plugin version
 define('VIRFICE_APP_NAME', 'Virfice'); // Plugin name
 define('VIRFICE_APP_PREFIX', 'virfice'); // Prefix for naming consistency
 define('VIRFICE_PLUGIN_ROOT', plugin_dir_path(__FILE__)); // Path to the plugin directory
