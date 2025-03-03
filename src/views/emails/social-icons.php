@@ -3,7 +3,6 @@
 use Virfice\API\Settings;
 
 $virfice_social_links = Settings::get_social_links();
-$title = $title !== false ? $title : 'Follow us on';
 $icons = [
     [
         'name' => 'facebook',
@@ -75,7 +74,7 @@ $icons = [
         <tr>
             <?php
             foreach ($icons as $key => $value) {
-if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
+                if (isset($virfice_social_links[$value['key']]) && $virfice_social_links[$value['key']] !== '' && $virfice_social_links[$value['key']] !== false) { ?>
                     <td>
                         <a href="<?php echo esc_url($virfice_social_links[$value['key']]); ?>" target="_blank">
                             <img src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE . '/social-icons/' . $value['icon'] . '.webp'); ?>"

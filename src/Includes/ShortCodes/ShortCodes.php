@@ -2,6 +2,8 @@
 
 namespace Virfice\Includes\ShortCodes;
 
+use Virfice\API\Settings;
+
 // Security check to ensure this file is not accessed directly
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -61,13 +63,18 @@ class ShortCodes
 
     public static function get_store_address()
     {
-        $address = [
-            get_option('woocommerce_store_address'),
-            get_option('woocommerce_store_address_2'),
-            get_option('woocommerce_store_city'),
-            get_option('woocommerce_store_postcode')
-        ];
+        $settings = Settings::get_email_settings();
 
-        return implode(', ', array_filter($address));
+        if (!isset($settings['virfice_address']) || empty($settings['virfice_address'])) {
+            return '';
+        }
+        $address_parts = array_filter([
+            $settings['virfice_address'] ?? '',
+            $settings['virfice_city'] ?? '',
+            $settings['virfice_country'] ?? ''
+        ]);
+
+        $address = implode(', ', $address_parts);
+        return $address;
     }
 }

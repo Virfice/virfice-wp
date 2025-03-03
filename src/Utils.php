@@ -145,6 +145,8 @@ class Utils
         $email_settings['woocommerce_merchant_email_notifications'] = get_option('woocommerce_merchant_email_notifications');
         $email_settings['virfice_show_social_icons'] = get_option('virfice_show_social_icons');
         $email_settings['virfice_social_icons_heading'] = get_option('virfice_social_icons_heading', 'Follow us on');
+        $email_settings['virfice_reply_to_name'] = get_option('virfice_reply_to_name', '');
+        $email_settings['virfice_reply_to_email'] = get_option('virfice_reply_to_email', '');
 
         return $email_settings;
     }
