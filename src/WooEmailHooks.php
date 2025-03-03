@@ -2,7 +2,6 @@
 
 namespace Virfice;
 
-use Virfice\Includes\WooEmailToVirficeEmail;
 
 // Security check to prevent direct access to the script
 if (!defined('ABSPATH')) {
@@ -23,7 +22,28 @@ class WooEmailHooks
     {
         add_action('init', [$this, 'disable_woo_emails_if_virfice_enabled']);
 
+        add_filter('woocommerce_email_headers', array($this, 'change_reply_to_email'), 10, 3);
         add_filter('woocommerce_email_footer_text', array($this, 'replace_woo_email_footer_text'));
+    }
+
+    public function change_reply_to_email($headers, $email_id, $order)
+    {
+        $brand_settings = Utils::get_brand_settings();
+
+        if (!empty($brand_settings['virfice_reply_to_email']) && !empty($brand_settings['virfice_reply_to_name'])) {
+            $name = sanitize_text_field($brand_settings['virfice_reply_to_name']);
+            $email = sanitize_email($brand_settings['virfice_reply_to_email']);
+
+            if (is_email($email)) {
+                // Remove any existing "Reply-To" header
+                $headers = preg_replace("/Reply-To: [^\r\n]*\r\n/i", '', $headers);
+
+                // Add the new "Reply-To" header
+                $headers .= "Reply-To: $name <$email>\r\n";
+            }
+        }
+
+        return $headers;
     }
 
 

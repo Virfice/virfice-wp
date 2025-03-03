@@ -5,7 +5,7 @@ Donate link: [https://www.virfice.com](https://www.virfice.com)
 Tags: Email Customizer for WooCommerce, Email editor, WooCommerce emails, WooCommerce Email Template Customizer, WooCommerce Email Customizer
 Requires at least: WordPress 5.5
 Tested up to: 6.7.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
@@ -98,6 +98,11 @@ Yes, please report any issues you face or request any features you may feel requ
 
 
 == Changelog ==
+= 1.1.1 =
+Fix: Reply-to email address not working issue
+Fixed: Empty address fields no longer leave extra spaces or commas in regular customizer
+Improved: The Social Media section heading is now hidden if left blank, while keeping the icons visible in regular customizer
+
 = 1.1.0 =
 * New: Intuitive email builder
 * New: 8 email elements

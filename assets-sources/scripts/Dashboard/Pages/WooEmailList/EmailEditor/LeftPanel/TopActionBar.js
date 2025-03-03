@@ -12,6 +12,8 @@ const TopActionBar = () => {
 
     if (deviceName === "Laptop") {
       iframe.style.width = VIRFICE_RESPONSIVE_BREAKPOINTS.desktop;
+      iframe.style.marginLeft = "unset";
+      iframe.style.marginRight = "unset";
     } else if (deviceName === "Mobile") {
       iframe.style.width = VIRFICE_RESPONSIVE_BREAKPOINTS.mobile;
       iframe.style.marginLeft = "auto";
