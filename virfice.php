@@ -6,7 +6,7 @@ Plugin Name: Virfice
 Description: Customize WooCommerce emails easily. Ensure your emails represent your store brand.
 Author: Virfice
 Author URI: https://virfice.com/
-Version: 1.1.0
+Version: 1.1.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
@@ -33,7 +33,7 @@ function virfice_check_woocommerce_activation()
         // Set the flag in the database
         update_option('virfice_first_install', true);
     }
-// If WooCommerce class does not exist, WooCommerce is not installed or activated
+    // If WooCommerce class does not exist, WooCommerce is not installed or activated
     if (!class_exists('WooCommerce')) {
         // Deactivate the current plugin
         deactivate_plugins(plugin_basename(__FILE__));
@@ -78,7 +78,7 @@ register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
 
 
 // Define plugin constants for easier reference
-define('VIRFICE_VERISION', '1.1.0'); // Plugin version
+define('VIRFICE_VERISION', '1.1.1'); // Plugin version
 define('VIRFICE_DEBUG', false); // Plugin version
 define('VIRFICE_APP_NAME', 'Virfice'); // Plugin name
 define('VIRFICE_APP_PREFIX', 'virfice'); // Prefix for naming consistency
