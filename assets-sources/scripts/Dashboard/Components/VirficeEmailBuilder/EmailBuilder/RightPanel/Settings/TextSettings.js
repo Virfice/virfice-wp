@@ -7,11 +7,7 @@ import Divider from "@molecules/Divider";
 import TextField from "@molecules/TextField";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import PaintField from "@molecules/Paintfield";
-import {
-  getElementComputedStyle,
-  getElementComputedStylePixelValue,
-} from "./utils";
-import RangeField from "@molecules/Rangefield";
+import { getElementComputedStyle } from "./utils";
 import Reusable from "./Reusable";
 import ToggleButton from "@molecules/ToggleButton";
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "@svg-icons";
@@ -30,11 +26,12 @@ const TextSettings = ({ element }) => {
           <div className={`${VIRFICE_APP_PREFIX}-form-group`}>
             <TextField
               label={"Text"}
-              value={element.innerText}
+              value={element.innerHTML}
               onChange={(v) => {
-                element.innerText = v;
+                element.innerHTML = v;
               }}
               multiline={6}
+              richText
             />
             <Reusable element={element} type="font-and-size" />
             <ToggleButton

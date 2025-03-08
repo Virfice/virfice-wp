@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import HelpText from "./HelpText";
+import RichTextEditor from "./RichTextEditor";
 
 const TextField = ({
   placeholder,
@@ -13,6 +14,7 @@ const TextField = ({
   min,
   max,
   onBlur = () => {},
+  richText = false,
 }) => {
   const [v, setV] = useState(value ?? ""); // Use nullish coalescing to handle undefined/null
 
@@ -50,6 +52,18 @@ const TextField = ({
       }
     }
   };
+
+  if (richText) {
+    return (
+      <RichTextEditor
+        value={value}
+        onChange={(v) => {
+          setV(v);
+          onChange(v);
+        }}
+      />
+    );
+  }
 
   return (
     <div className={`${VIRFICE_APP_PREFIX}-textfileld-wrapper`}>
