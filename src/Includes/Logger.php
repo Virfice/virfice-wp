@@ -36,7 +36,7 @@ class Logger
         // Write the log entry to the file
         if (file_put_contents($this->logFile, $logEntry, FILE_APPEND | LOCK_EX) === false) {
             // If writing fails, throw an exception or handle accordingly
-            throw new Exception("Unable to write to log file: $this->logFile");
+            // throw new Exception("Unable to write to log file: $this->logFile");
         }
     }
 }

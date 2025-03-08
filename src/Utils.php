@@ -381,7 +381,7 @@ HTML;
         try {
             $logger->logError($message);
         } catch (Exception $e) {
-            echo "Failed to write to log file: " . $e->getMessage();
+            echo esc_html("Failed to write to log file: " . $e->getMessage());
         }
     }
 

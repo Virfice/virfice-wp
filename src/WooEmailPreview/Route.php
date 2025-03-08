@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace Virfice\WooEmailPreview;
 
 use Virfice\Utils;

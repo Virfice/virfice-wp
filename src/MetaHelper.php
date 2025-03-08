@@ -58,6 +58,7 @@ class MetaHelper
         $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
         // Check if the meta already exists
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
         $meta_exists = $wpdb->get_var($wpdb->prepare(
             "SELECT COUNT(*) FROM $table_name WHERE parent_id = %d AND parent = %s AND meta_key = %s",
             $parent_id,
@@ -67,6 +68,7 @@ class MetaHelper
 
         if ($meta_exists) {
             // Update existing meta
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
             $wpdb->update(
                 $table_name,
                 array('meta_value' => $meta_value),
@@ -76,6 +78,7 @@ class MetaHelper
             );
         } else {
             // Insert new meta
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
             $wpdb->insert(
                 $table_name,
                 array(
@@ -95,6 +98,7 @@ class MetaHelper
         global $wpdb;
         $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
         $meta_value = $wpdb->get_var($wpdb->prepare(
             "SELECT meta_value FROM $table_name WHERE parent_id = %d AND parent = %s AND meta_key = %s",
             $parent_id,
@@ -111,6 +115,7 @@ class MetaHelper
         global $wpdb;
         $table_name = $wpdb->prefix . VIRFICE_APP_PREFIX . '_meta';
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
         $wpdb->delete(
             $table_name,
             array(

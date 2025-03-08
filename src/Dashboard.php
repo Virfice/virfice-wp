@@ -89,8 +89,8 @@ class Dashboard
             (function($) {
                 var currentUrl = window.location.href;
 
-                $('#toplevel_page_<?php echo VIRFICE_APP_PREFIX; ?> .wp-submenu .wp-first-item').remove();
-                $('#toplevel_page_<?php echo VIRFICE_APP_PREFIX; ?> .wp-submenu a').each(function() {
+                $('#toplevel_page_<?php echo esc_html(VIRFICE_APP_PREFIX); ?> .wp-submenu .wp-first-item').remove();
+                $('#toplevel_page_<?php echo esc_html(VIRFICE_APP_PREFIX); ?> .wp-submenu a').each(function() {
                     if (currentUrl.indexOf($(this).attr('href')) !== -1) {
                         $(this).parent().addClass('current');
                         $(this).closest('.wp-has-submenu').addClass('current wp-menu-open');
