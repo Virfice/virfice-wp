@@ -55,6 +55,7 @@ const StickyTopNav = ({
                             window.location.href = v.link;
                           }
                         }}
+                        key={i}
                       >
                         <span>
                           {i + 1}. {v.title}

@@ -296,6 +296,7 @@ class Utils
         .virfice-template-wrapper p {
             font-size: 16px;
             line-height: 1.5;
+            margin: 0;
         }
         .virfice-template-wrapper [virfice-ele_type='link']{
             display: inline-block;
