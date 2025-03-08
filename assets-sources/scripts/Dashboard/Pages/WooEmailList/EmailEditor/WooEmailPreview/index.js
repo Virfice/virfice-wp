@@ -117,6 +117,17 @@ const WooEmailPreview = () => {
         discardAction={handleDiscardClick}
         discardButtonText="Cancel"
         saveAction={handleSaveClick}
+        breadCrumb={[
+          {
+            title: "Design",
+            isActive: false,
+            link: addParams({
+              menu: "woo-email-edit-virfice",
+              email_id: email_id,
+            }),
+          },
+          { title: "Settings", isActive: true },
+        ]}
       />
       <section>
         <PageHeadingAndSubheading

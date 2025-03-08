@@ -34,8 +34,18 @@ class Dashboard
         // add_action('init', [$this, 'rewrite_route']);
         add_action('admin_head', [$this, 'my_plugin_highlight_submenu']);
         add_action('admin_footer', [$this, 'my_plugin_custom_script']);
+
+        add_filter('plugin_action_links_' . VIRFICE_PLUGIN_BASE_FILE, [$this, 'my_plugin_action_links']);
     }
 
+    public function my_plugin_action_links($links)
+    {
+        $settings_link = '<a href="admin.php?page=virfice&menu=settings">Settings</a>';
+        $docs_link = '<a href="https://virfice.com/docs" target="_blank">Documentation</a>';
+
+        array_unshift($links, $settings_link, $docs_link);
+        return $links;
+    }
 
 
     public function my_plugin_highlight_submenu()
@@ -72,7 +82,7 @@ class Dashboard
         }
     }
 
-public function my_plugin_custom_script()
+    public function my_plugin_custom_script()
     {
 ?>
         <script type="text/javascript">

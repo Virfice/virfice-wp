@@ -88,6 +88,10 @@ const VirficeEditor = () => {
         saveAndNextButtonText="Save & Next"
         size1280
         marginBottom={false}
+        breadCrumb={[
+          { title: "Design", isActive: true },
+          { title: "Settings", isActive: false },
+        ]}
       />
       <section className={`${VIRFICE_APP_PREFIX}-builder-section-main`}>
         {/* <PageHeadingAndSubheading

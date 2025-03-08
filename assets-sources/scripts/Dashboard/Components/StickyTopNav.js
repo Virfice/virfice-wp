@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "@conf";
-import { BackIcon } from "@svg-icons";
+import { BackIcon, ChevronRightIcon } from "@svg-icons";
 import Button from "@molecules/Button";
 
 const StickyTopNav = ({
@@ -14,6 +14,7 @@ const StickyTopNav = ({
   marginBottom = true,
   saveAndNextAction,
   saveAndNextButtonText,
+  breadCrumb = false,
 }) => {
   let styles = {};
 
@@ -26,16 +27,47 @@ const StickyTopNav = ({
         <div
           className={`${VIRFICE_APP_PREFIX}-action-wrapper ${VIRFICE_APP_PREFIX}-flex-space-between ${VIRFICE_APP_PREFIX}-flex-align-center`}
         >
-          {backAction && (
-            <div
-              className={`${VIRFICE_APP_PREFIX}-flex-center-center ${VIRFICE_APP_PREFIX}-gap-6 ${VIRFICE_APP_PREFIX}-cursor-pointer`}
-              style={{ width: "max-content" }}
-              onClick={backAction}
-            >
-              <BackIcon />
-              <span className={`${VIRFICE_APP_PREFIX}-back`}>Back</span>
-            </div>
-          )}
+          <div
+            className={`${VIRFICE_APP_PREFIX}-flex-center-center`}
+            style={{ gap: "50px" }}
+          >
+            {backAction && (
+              <div
+                className={`${VIRFICE_APP_PREFIX}-flex-center-center ${VIRFICE_APP_PREFIX}-gap-6 ${VIRFICE_APP_PREFIX}-cursor-pointer`}
+                style={{ width: "max-content" }}
+                onClick={backAction}
+              >
+                <BackIcon />
+                <span className={`${VIRFICE_APP_PREFIX}-back`}>Back</span>
+              </div>
+            )}
+            {breadCrumb && (
+              <div className={`${VIRFICE_APP_PREFIX}-bread-crumb`}>
+                {breadCrumb.map((v, i) => {
+                  return (
+                    <>
+                      <div
+                        className={`${VIRFICE_APP_PREFIX}-bread-crumb-item ${
+                          v.isActive ? `${VIRFICE_APP_PREFIX}-active` : ""
+                        } ${v.link ? `${VIRFICE_APP_PREFIX}-has-link` : ""}`}
+                        onClick={() => {
+                          if (v.link) {
+                            window.location.href = v.link;
+                          }
+                        }}
+                      >
+                        <span>
+                          {i + 1}. {v.title}
+                        </span>
+                      </div>
+                      {i !== breadCrumb.length - 1 && <ChevronRightIcon />}
+                    </>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
           {(discardAction || saveAction) && (
             <div>
               <div
