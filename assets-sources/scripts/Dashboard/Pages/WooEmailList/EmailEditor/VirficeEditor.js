@@ -90,7 +90,7 @@ const VirficeEditor = () => {
         marginBottom={false}
         breadCrumb={[
           { title: "Design", isActive: true },
-          { title: "Settings", isActive: false },
+          { title: "Settings", callBack: handleSaveAndNextClick },
         ]}
       />
       <section className={`${VIRFICE_APP_PREFIX}-builder-section-main`}>

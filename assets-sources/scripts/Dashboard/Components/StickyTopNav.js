@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Container from "@molecules/Container";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { BackIcon, ChevronRightIcon } from "@svg-icons";
@@ -45,24 +45,30 @@ const StickyTopNav = ({
               <div className={`${VIRFICE_APP_PREFIX}-bread-crumb`}>
                 {breadCrumb.map((v, i) => {
                   return (
-                    <>
+                    <Fragment key={i}>
                       <div
                         className={`${VIRFICE_APP_PREFIX}-bread-crumb-item ${
                           v.isActive ? `${VIRFICE_APP_PREFIX}-active` : ""
-                        } ${v.link ? `${VIRFICE_APP_PREFIX}-has-link` : ""}`}
+                        } ${
+                          v.link || v.callBack
+                            ? `${VIRFICE_APP_PREFIX}-has-link`
+                            : ""
+                        }`}
                         onClick={() => {
                           if (v.link) {
                             window.location.href = v.link;
                           }
+                          if (v.callBack) {
+                            v.callBack();
+                          }
                         }}
-                        key={i}
                       >
                         <span>
                           {i + 1}. {v.title}
                         </span>
                       </div>
                       {i !== breadCrumb.length - 1 && <ChevronRightIcon />}
-                    </>
+                    </Fragment>
                   );
                 })}
               </div>

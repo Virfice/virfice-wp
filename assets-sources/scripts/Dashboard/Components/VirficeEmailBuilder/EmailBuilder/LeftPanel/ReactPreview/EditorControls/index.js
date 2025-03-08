@@ -53,6 +53,7 @@ const EditorControls = () => {
     [VIRFICE_APP_PREFIX + "-empty-canvas"]: templateWrapper && isCanvasEmpty,
   });
 
+  if (!selectedElementId) return null;
   return (
     <div className={cn}>
       {!isCanvasEmpty && hoveredSectionId && (
