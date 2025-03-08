@@ -65,7 +65,6 @@ const EditorControls = () => {
       {!isCanvasEmpty && selectedSectionId && (
         <Border element={element} type="selected" />
       )}
-      {/* {!isCanvasEmpty && hoveredSectionId && <HoveredSection />} */}
 
       {templateWrapper && isCanvasEmpty && (
         <div className={VIRFICE_APP_PREFIX + "-empty-add-button"}>
