@@ -33,7 +33,7 @@ const LinkSettings = ({ element }) => {
               onChange={(v) => {
                 element.innerText = v;
               }}
-              multiline={6}
+              // multiline={6}
             />
             <TextField
               label={"URL"}
