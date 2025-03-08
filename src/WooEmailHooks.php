@@ -28,22 +28,7 @@ class WooEmailHooks
 
     public function change_reply_to_email($headers, $email_id, $order)
     {
-        $brand_settings = Utils::get_brand_settings();
-
-        if (!empty($brand_settings['virfice_reply_to_email']) && !empty($brand_settings['virfice_reply_to_name'])) {
-            $name = sanitize_text_field($brand_settings['virfice_reply_to_name']);
-            $email = sanitize_email($brand_settings['virfice_reply_to_email']);
-
-            if (is_email($email)) {
-                // Remove any existing "Reply-To" header
-                $headers = preg_replace("/Reply-To: [^\r\n]*\r\n/i", '', $headers);
-
-                // Add the new "Reply-To" header
-                $headers .= "Reply-To: $name <$email>\r\n";
-            }
-        }
-
-        return $headers;
+        return Utils::add_reply_to_headers($headers);
     }
 
 

@@ -206,6 +206,26 @@ class Utils
         return $social_icons_html;
     }
 
+    public static function add_reply_to_headers($headers)
+    {
+        $brand_settings = self::get_brand_settings();
+
+        if (!empty($brand_settings['virfice_reply_to_email']) && !empty($brand_settings['virfice_reply_to_name'])) {
+            $name = sanitize_text_field($brand_settings['virfice_reply_to_name']);
+            $email = sanitize_email($brand_settings['virfice_reply_to_email']);
+
+            if (is_email($email)) {
+                // Remove any existing "Reply-To" header
+                $headers = preg_replace("/Reply-To: [^\r\n]*\r\n/i", '', $headers);
+
+                // Add the new "Reply-To" header
+                $headers .= "Reply-To: $name <$email>\r\n";
+            }
+        }
+
+        return $headers;
+    }
+
     /**
      * Retrieves the HTML for store address.
      *

@@ -75,7 +75,9 @@ class VirficeTestEmailSend extends WP_REST_Controller
 			//else send test email
 			$template = Utils::wrap_template_with_html_tag($template);
 			$headers      = "Content-Type: text/html\r\n";
-			wp_mail($emails, 'Test Email from Virfice - Brand Settings', $template, $headers);
+			$headers = Utils::add_reply_to_headers($headers);
+
+			wp_mail($emails, '[Test] - Brand Settings', $template, $headers);
 		}
 
 		return $_REQUEST;
@@ -88,6 +90,8 @@ class VirficeTestEmailSend extends WP_REST_Controller
 		$email_obj = $email_obj['object'];
 		$subject = $email_obj->get_option('subject', $email_obj->subject);
 		$subject = apply_filters('woocommerce_email_subject_' . $email_id, $subject, $email_obj);
+
+		$subject = "[Test] - $subject";
 
 		// Clean up slashes in the template
 		$template = Utils::wrap_template_with_html_tag($template);
