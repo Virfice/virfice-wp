@@ -1,27 +1,28 @@
 import { useState, useEffect } from "react";
 
 const useChildChangeTracker = (element) => {
-  const [childElements, setChildElements] = useState([]);
+  const [changeDetected, setChangeDetected] = useState(false);
 
   useEffect(() => {
     if (!element) return;
 
-    // Function to update child elements
-    const updateChildren = () => {
-      setChildElements(Array.from(element.children)); // Convert HTMLCollection to Array
+    // Function to handle mutations
+    const handleMutation = () => {
+      setChangeDetected((prev) => !prev); // Toggle state to trigger re-render
     };
 
-    // Initial population of child elements
-    updateChildren();
-
-    // Set up MutationObserver to track child changes
-    const observer = new MutationObserver(updateChildren);
-    observer.observe(element, { childList: true });
+    // Set up MutationObserver to track ALL changes
+    const observer = new MutationObserver(handleMutation);
+    observer.observe(element, {
+      childList: true, // Detect direct child add/remove
+      subtree: true, // Detect nested child changes
+      attributes: true, // Detect attribute changes
+    });
 
     return () => observer.disconnect(); // Cleanup on unmount
-  }, [element]); // Runs when parentElement changes
+  }, [element]); // Runs when element changes
 
-  return childElements; // Return the updated child list
+  return changeDetected; // Return toggle state indicating change
 };
 
 export default useChildChangeTracker;

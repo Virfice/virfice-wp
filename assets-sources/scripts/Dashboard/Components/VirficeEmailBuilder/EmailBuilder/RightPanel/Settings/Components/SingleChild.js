@@ -37,11 +37,9 @@ const SingleChild = ({ element }) => {
             small
             onClick={() => {
               const vID = duplicateElement(element);
-              setTimeout(() => {
-                saveBuilderDataToRedux();
-                selectElementUsingID(vID);
-                initEmailBuilder();
-              }, 200);
+              saveBuilderDataToRedux();
+              // selectElementUsingID(vID);
+              initEmailBuilder();
             }}
           />
         </div>

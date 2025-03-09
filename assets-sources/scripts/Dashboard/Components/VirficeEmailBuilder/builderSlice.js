@@ -12,6 +12,7 @@ const initialState = {
   hoveredSectionId: false,
   post: {},
   showReadyBlocks: false,
+  forceUpdateToogler: false,
 };
 
 export const builderSlice = createSlice({

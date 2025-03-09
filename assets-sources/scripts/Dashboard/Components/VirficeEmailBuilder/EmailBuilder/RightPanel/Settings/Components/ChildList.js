@@ -1,31 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import SingleChild from "./SingleChild";
 import { getChildElements } from "../../../utils";
 import useChildChangeTracker from "../../../../../../../Hooks/useChildChangeTracker";
+import { setBuilderData } from "../../../../builderSlice";
+import { useDispatch } from "react-redux";
 
 const ChildList = ({ element }) => {
-  const [childrens, setChildrens] = useState(null);
-  const childElements = useChildChangeTracker(element); // Track child changes
+  const dispatch = useDispatch();
+  const [childrens, setChildrens] = useState([]);
+  const toggler = useChildChangeTracker(element); // Track child changes
 
   useEffect(() => {
-    if (element) setChildrens(getChildrens());
-  }, [element, childElements]);
-  const getChildrens = () => {
-    let childs = [];
-    const childList = getChildElements(element);
-    for (var i = 0; i < childList.length; i++) {
-      let child = childList[i];
-      childs.push(<SingleChild element={child} key={i} />);
+    // if (element) setChildrens(element);
+    if (element) {
+      setChildrens(getChildElements(element));
     }
+  }, [element]);
 
-    return childs;
-  };
-
+  useEffect(() => {
+    dispatch(
+      setBuilderData({
+        key: "forceUpdateToogler",
+        value: Math.random(),
+      })
+    );
+  }, [toggler]);
   return (
-    <>
-      <div className={`${VIRFICE_APP_PREFIX}-child-list`}>{childrens}</div>
-    </>
+    <div className={`${VIRFICE_APP_PREFIX}-child-list`}>
+      {childrens.map((child, i) => (
+        <SingleChild element={child} key={i} />
+      ))}
+    </div>
   );
 };
 

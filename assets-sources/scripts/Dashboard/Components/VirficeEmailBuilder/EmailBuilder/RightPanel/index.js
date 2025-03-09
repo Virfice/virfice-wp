@@ -14,10 +14,14 @@ import ReadyBlocks from "./ReadyBlocks";
 import EmailBGSettings from "./EmailBGSettings";
 import BrandSettings from "./Settings/BrandSettings";
 import { hasQueryParamValue } from "@functions";
+// import useChildChangeTracker from "../../../../../Hooks/useChildChangeTracker";
 
 const RightPanel = () => {
   const selectedElementId = useSelector(
     (state) => state.builder?.selectedElementId
+  );
+  const forceUpdateToogler = useSelector(
+    (state) => state.builder?.forceUpdateToogler
   );
   const showReadyBlocks = useSelector(
     (state) => state.builder?.showReadyBlocks
@@ -25,13 +29,15 @@ const RightPanel = () => {
   const [element, setElement] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
+  // const toggler = useChildChangeTracker(element); // Track child changes
+
   useEffect(() => {
     if (selectedElementId) {
       setElement(getVirficeElementFromId(selectedElementId));
     } else {
       setElement(false);
     }
-  }, [selectedElementId]);
+  }, [selectedElementId, forceUpdateToogler]);
 
   useEffect(() => {
     if (getIframe().editorWrapper) {
