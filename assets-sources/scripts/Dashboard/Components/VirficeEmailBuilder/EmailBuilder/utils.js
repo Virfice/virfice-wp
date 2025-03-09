@@ -108,37 +108,47 @@ export const selectElementUsingID = (id) => {
 };
 
 const initHoverEvent = (ele) => {
-  ele.addEventListener("mouseover", (e) => {
-    e.stopPropagation();
+  ele.addEventListener("mouseover", mouseOverHandler);
+  ele.addEventListener("mouseleave", mouseLeaveHandler);
+};
 
-    if (window.AddSectionButtonOpen) return;
-    const sectionEle = getParentSection(ele);
-    dispatchDashboardAction(onHoverSection, getVirficeAttr(sectionEle, "id"));
+let timeoutId; // Global variable for timeout reference
+
+const mouseOverHandler = (e) => {
+  e.stopPropagation();
+  const ele = e.target;
+
+  if (window.AddSectionButtonOpen) return;
+
+  const sectionEle = getParentSection(ele);
+
+  // 🛑 Clear any existing timeout when hovering again
+  clearTimeout(timeoutId);
+
+  dispatchDashboardAction(onHoverSection, getVirficeAttr(sectionEle, "id"));
+};
+
+const mouseLeaveHandler = (e) => {
+  e.stopPropagation();
+  const controlsElement = document.querySelector(".virfice-right-control");
+
+  // Clear timeout if mouse re-enters the element
+  controlsElement?.addEventListener("mouseover", () => {
+    clearTimeout(timeoutId);
   });
 
-  let timeoutId; // Declare timeoutId variable globally or at the top of your function
-  // Add the event listener to `ele`
-  ele.addEventListener("mouseleave", (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    // Get the controls element
-    // const controlsElement = document.querySelector(".virfice-right-control");
-
-    // controlsElement.addEventListener("mouseover", (e) => {
-    //   clearTimeout(timeoutId);
-    // });
-
-    // controlsElement.addEventListener("mouseleave", (e) => {
-    //   // Set timeout to remove the hover section after 2 seconds delay
-    //   timeoutId = setTimeout(() => {
-    //     dispatchDashboardAction(onHoverSection, false);
-    //   }, 1000);
-    // });
-
-    // Set timeout to remove the hover section after 2 seconds delay
-    // timeoutId = setTimeout(() => {
-    //   dispatchDashboardAction(onHoverSection, false);
-    // }, 2000);
+  controlsElement?.addEventListener("mouseleave", () => {
+    timeoutId = setTimeout(() => {
+      dispatchDashboardAction(onHoverSection, false);
+    }, 1000);
   });
+
+  // 🛑 Clear timeout if mouse re-enters `.virfice-right-control`
+  clearTimeout(timeoutId);
+
+  timeoutId = setTimeout(() => {
+    dispatchDashboardAction(onHoverSection, false);
+  }, 2000);
 };
 
 // export const initEmptyElement = (ele) => {
