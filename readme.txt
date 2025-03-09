@@ -5,7 +5,7 @@ Donate link: [https://www.virfice.com](https://www.virfice.com)
 Tags: Email Customizer for WooCommerce, Email editor, WooCommerce emails, WooCommerce Email Template Customizer, WooCommerce Email Customizer
 Requires at least: WordPress 5.5
 Tested up to: 6.7.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
@@ -98,6 +98,23 @@ Yes, please report any issues you face or request any features you may feel requ
 
 
 == Changelog ==
+= 1.1.2 =
+New: Option to remove selected color in the color picker
+New: Validation to prevent email width from being set below 400px or above 800px
+New: [Test] label added before every test email
+New: Settings & Documentation links in the plugin list
+Update: Default logo size in header-ready blocks optimized for design
+Update: Dashboard notification when Virfice is installed without WooCommerce
+Fix: Virfice deactivating after updating to a new version
+Fix: Brand settings inaccessible when email width exceeds 800px
+Fix: Extra 4px padding applied when background top-bottom padding is set to 0
+Fix: Green mark overlapping issue when applying top-bottom background padding to elements
+Fix: Image delete option not working in columns
+Fix: Green area overlapping issue on scroll-top
+Fix: Various security issues
+Fix: Several known bugs
+Fix: Reply to email address in test email not working
+
 = 1.1.1 =
 Fix: Reply-to email address not working issue
 Fixed: Empty address fields no longer leave extra spaces or commas in regular customizer
