@@ -3,7 +3,6 @@ import StickyTopNav from "@components/StickyTopNav";
 import { addParams, getParamValue } from "@functions";
 import PageHeadingAndSubheading from "@components/PageHeadingAndSubheading";
 import Container from "@molecules/Container";
-import Button from "@molecules/Button";
 import {
   emailSingleAsync,
   emailSingleVirficeAsync,
@@ -117,6 +116,17 @@ const WooEmailPreview = () => {
         discardAction={handleDiscardClick}
         discardButtonText="Cancel"
         saveAction={handleSaveClick}
+        breadCrumb={[
+          {
+            title: "Design",
+            isActive: false,
+            link: addParams({
+              menu: "woo-email-edit-virfice",
+              email_id: email_id,
+            }),
+          },
+          { title: "Settings", isActive: true },
+        ]}
       />
       <section>
         <PageHeadingAndSubheading

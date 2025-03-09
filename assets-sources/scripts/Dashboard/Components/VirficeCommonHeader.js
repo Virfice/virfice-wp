@@ -39,12 +39,12 @@ const VirficeCommonHeader = () => {
                 />
               </svg>
               <span style={{ fontSize: 13, fontWeight: 500 }}>
-                WooCommerce s required
+                WooCommerce Required
               </span>
             </div>
             <span>
-              To use this plugin WooCommerce is required, Please install &
-              activate WooCommerce!
+              This plugin requires WooCommerce to function. Please install and
+              activate WooCommerce to continue.
             </span>
             <Button
               type="outline"

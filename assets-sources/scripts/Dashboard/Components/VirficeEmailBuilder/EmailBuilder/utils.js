@@ -257,7 +257,6 @@ export const getParentElement = (element) => {
 
 export const getChildElements = (element) => {
   if (!element) {
-    console.error("Element is null or undefined.");
     return [];
   }
 

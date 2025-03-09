@@ -36,4 +36,26 @@
     position: relative;
     top: 34px;
   }
+  .#{$classPrefix}-color-none {
+    position: absolute;
+    bottom: 2px;
+    left: 10px;
+    background: transparent;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+    overflow: hidden;
+    div {
+      height: 1px;
+      width: 22px;
+      background: red;
+      left: -4px;
+      transform: rotate(-45deg);
+      top: 8px;
+      position: relative;
+    }
+  }
 }

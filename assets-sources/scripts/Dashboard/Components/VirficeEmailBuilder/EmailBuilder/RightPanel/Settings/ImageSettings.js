@@ -75,10 +75,9 @@ const ImageSettings = ({ element }) => {
               label={"Change Image"}
               value={image.src}
               onDelete={() => {
-                // settingsChange("woocommerce_email_header_image", "");
+                image.src = "";
               }}
               onSelect={(media) => {
-                // settingsChange("woocommerce_email_header_image", media.url);
                 image.src = media.url;
               }}
               info={"An image you want to show in the email header."}

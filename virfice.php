@@ -6,7 +6,7 @@ Plugin Name: Virfice
 Description: Customize WooCommerce emails easily. Ensure your emails represent your store brand.
 Author: Virfice
 Author URI: https://virfice.com/
-Version: 1.1.1
+Version: 1.1.2
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
@@ -33,33 +33,6 @@ function virfice_check_woocommerce_activation()
         // Set the flag in the database
         update_option('virfice_first_install', true);
     }
-    // If WooCommerce class does not exist, WooCommerce is not installed or activated
-    if (!class_exists('WooCommerce')) {
-        // Deactivate the current plugin
-        deactivate_plugins(plugin_basename(__FILE__));
-
-        // Display an error message and stop execution
-        wp_die(
-            wp_kses(
-                // Error message with instructions to install WooCommerce and a link back to the plugins page
-                '<strong>Virfice:</strong> WooCommerce is required for this plugin to work. Please install and activate WooCommerce. <br><br> <a href="' . admin_url('plugins.php') . '">Go Back</a>',
-                array(
-                    'strong' => array(), // Allowed HTML tags
-                    'br'     => array(),
-                    'a'      => array('href'),
-                )
-            )
-        );
-    }
-
-    // if (is_admin()) { // Check if in the admin area
-    //     add_rewrite_rule(
-    //         '^virfice$', // Custom URL: https://wordpress.test/virfice
-    //         'wp-admin/admin.php?page=virfice', // Redirect target
-    //         'top'
-    //     );
-    // }
-    // flush_rewrite_rules(); // Saves changes to .htaccess
 }
 
 /**
@@ -76,13 +49,13 @@ register_activation_hook(__FILE__, 'virfice_check_woocommerce_activation');
 // register_deactivation_hook(__FILE__, 'deactivate_plugin');
 
 
-
 // Define plugin constants for easier reference
-define('VIRFICE_VERISION', '1.1.1'); // Plugin version
+define('VIRFICE_VERISION', '1.1.2'); // Plugin version
 define('VIRFICE_DEBUG', false); // Plugin version
 define('VIRFICE_APP_NAME', 'Virfice'); // Plugin name
 define('VIRFICE_APP_PREFIX', 'virfice'); // Prefix for naming consistency
 define('VIRFICE_PLUGIN_ROOT', plugin_dir_path(__FILE__)); // Path to the plugin directory
+define('VIRFICE_PLUGIN_BASE_FILE', plugin_basename(__FILE__)); // plugin base file: virfice/virfice.php
 define('VIRFICE_PLUGIN_VIEWS_ROOT', VIRFICE_PLUGIN_ROOT . 'src/views'); // Path to the plugin directory
 define('VIRFICE_PLUGIN_BASE', plugin_dir_url(__FILE__)); // URL of the plugin directory
 define('VIRFICE_STATIC_FILES_BASE', VIRFICE_PLUGIN_BASE . 'assets/files'); // URL of the plugin directory

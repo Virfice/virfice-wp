@@ -244,6 +244,42 @@ svg {
       /* 142.857% */
     }
   }
+
+  .#{$classPrefix}-bread-crumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--text-text-display, #303030);
+    /* Caption/lg/Medium */
+    font-family: var(--family-caption, Inter);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 18px */
+    .#{$classPrefix}-bread-crumb-item {
+      padding: var(--ui-spacing-spacing-2, 2px) var(--ui-spacing-spacing-8, 8px);
+      &:hover,
+      &.#{$classPrefix}-active {
+        border-radius: var(--radius-sm, 6px);
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        gap: var(--ui-spacing-spacing-0, 0px);
+      }
+      &.#{$classPrefix}-active {
+        background-color: #0000000d;
+      }
+      &.#{$classPrefix}-has-link {
+        cursor: pointer;
+        &:hover {
+          background-color: #0000000d;
+        }
+      }
+    }
+  }
 }
 
 .#{$classPrefix}-card-header {
@@ -383,6 +419,7 @@ svg {
     height: 107px;
     top: 118px;
     left: -13px;
+    max-width: 100%;
     img {
       width: 37px;
       height: 37px;

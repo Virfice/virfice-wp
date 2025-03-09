@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import { useSelector } from "react-redux";
-import { getIframe, getVirficeElementFromId } from "../../../utils";
+import {
+  getIframe,
+  getVirficeAttr,
+  getVirficeElementFromId,
+  selectElementUsingID,
+} from "../../../utils";
 import Border from "./Border";
 import { hasQueryParamValue } from "@functions";
 import AddSectionButton from "./AddSectionButton";
 import classNames from "classnames";
+import useSiblingNavigation from "../../../../../../../Hooks/useSiblingNavigation";
 
 const EditorControls = () => {
   const selectedSectionId = useSelector(
@@ -23,6 +28,8 @@ const EditorControls = () => {
   const [element, setElement] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(false);
   const templateWrapper = getIframe().templateWrapper;
+  const currentElement = useSiblingNavigation(element, getIframe().window);
+
   useEffect(() => {
     if (selectedSectionId) {
       setElement(getVirficeElementFromId(selectedSectionId));
@@ -30,6 +37,10 @@ const EditorControls = () => {
       setElement(false);
     }
   }, [selectedSectionId]);
+
+  useEffect(() => {
+    selectElementUsingID(getVirficeAttr(currentElement, "id"));
+  }, [currentElement]);
 
   useEffect(() => {
     if (templateWrapper) {
@@ -53,6 +64,7 @@ const EditorControls = () => {
     [VIRFICE_APP_PREFIX + "-empty-canvas"]: templateWrapper && isCanvasEmpty,
   });
 
+  if (!selectedElementId) return null;
   return (
     <div className={cn}>
       {!isCanvasEmpty && hoveredSectionId && (
@@ -65,7 +77,6 @@ const EditorControls = () => {
       {!isCanvasEmpty && selectedSectionId && (
         <Border element={element} type="selected" />
       )}
-      {/* {!isCanvasEmpty && hoveredSectionId && <HoveredSection />} */}
 
       {templateWrapper && isCanvasEmpty && (
         <div className={VIRFICE_APP_PREFIX + "-empty-add-button"}>

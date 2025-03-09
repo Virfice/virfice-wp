@@ -17,11 +17,11 @@ $store_name = $brand_settings['store_name'];
 <div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 26px 0px; text-align: center;"
     virfice-id="m6c9744tsdk97ahbb">
     <?php if ($store_logo) { ?>
-        <a virfice-ele_type="image" virfice-title="Image" style="width:100%;" virfice-id="m6c9744t1tyq8ef9s"><img
-                virfice-my_selector="image" virfice-short_code="store_logo" src="<?php echo $store_logo; ?>"
-                style="margin-left: auto; margin-right: auto;"></a>
+    <a virfice-ele_type="image" virfice-title="Image" style="width:100%;" virfice-id="m6c9744t1tyq8ef9s"><img
+            virfice-my_selector="image" virfice-short_code="store_logo" src="<?php echo esc_url($store_logo); ?>"
+            style="margin-left: auto; margin-right: auto;"></a>
     <?php } else if ($store_name) { ?>
-        <p><?php echo $store_name; ?></p>
+    <p><?php echo esc_url($store_name); ?></p>
     <?php } ?>
 </div>
 <div virfice-ele_type="section" virfice-settings_status="disabled" virfice-id="m4e94we0e01ydsfn">

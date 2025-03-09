@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { VIRFICE_APP_PREFIX } from "@conf";
 import RightControl from "./RightControls";
 import AddSectionButton from "./AddSectionButton";
@@ -11,17 +11,18 @@ const Border = ({ element, type }) => {
 
   useEffect(() => {
     if (!borderDiv.current || !element) return;
-    // Set the borderDiv's position, width, and height to match the target element
+
+    // Apply the position to the border div
     borderDiv.current.style.left = `${position.left}px`;
     borderDiv.current.style.top = `${position.top}px`;
     borderDiv.current.style.width = `${position.width}px`;
     borderDiv.current.style.height = `${position.height}px`;
-    borderDiv.current.style.position = "fixed"; // Ensure it moves inside iframe correctly
+    borderDiv.current.style.position = "absolute"; // Use the provided position type
 
     if (type === "hovered") {
       borderDiv.current.style.zIndex = 1;
     }
-  }, [position, element]); // Depend on position & element to update correctly
+  }, [position, element]); // Include positionType in dependencies
 
   const className = classNames({
     [`${VIRFICE_APP_PREFIX}-element-border`]: type === "selected",

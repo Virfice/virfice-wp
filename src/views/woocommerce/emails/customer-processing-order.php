@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 use Virfice\Includes\ShortCodes\ShortCodes;
 use Virfice\Utils;
 

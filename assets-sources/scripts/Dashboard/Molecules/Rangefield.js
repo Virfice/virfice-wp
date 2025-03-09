@@ -55,6 +55,11 @@ const RangeField = ({
       onChange(min);
     }
   };
+  const getRangeValues = (values) => {
+    return values.map(
+      (value) => Math.max(min, Math.min(max, value)) // Clamps value between min and max
+    );
+  };
 
   return (
     <div className={`${VIRFICE_APP_PREFIX}-rangefield-wrapper`}>
@@ -68,7 +73,7 @@ const RangeField = ({
 
       <div className={`${VIRFICE_APP_PREFIX}-range-and-input-wrapper`}>
         <Range
-          values={values}
+          values={getRangeValues(values)}
           step={step}
           min={min}
           max={max}

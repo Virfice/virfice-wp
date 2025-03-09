@@ -9,7 +9,7 @@ $store_name = $brand_settings['store_name'];
 <div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 26px 0px; text-align: center;"
     virfice-id="m75577s6wwes9m6fa">
     <a virfice-ele_type="image" virfice-title="Image" style="width:100%;" virfice-id="m75577s6yg6hurgwm"><img
-            virfice-my_selector="image" virfice-short_code="store_logo" src="<?php echo $store_logo; ?>"
+            virfice-my_selector="image" virfice-short_code="store_logo" src="<?php echo esc_url($store_logo); ?>"
             style="margin-left: auto; margin-right: auto;"></a>
 </div>
 <div virfice-ele_type="section" virfice-settings_status="disabled"
@@ -17,7 +17,7 @@ $store_name = $brand_settings['store_name'];
     virfice-id="m75r94wzossfd1c8v">
     <a virfice-ele_type="image" virfice-title="Image" style="width:100%;" virfice-id="m75r94wzd4iua9muc"><img
             virfice-my_selector="image"
-            src="<?php echo VIRFICE_STATIC_FILES_BASE; ?>/woo-email-presets/set-new-password.png"
+            src="<?php echo esc_url(VIRFICE_STATIC_FILES_BASE); ?>/woo-email-presets/set-new-password.png"
             style="margin-left: auto;margin-right: auto;width: 128px;"></a>
 </div>
 <div virfice-ele_type="section" virfice-settings_status="disabled" style="padding: 16px 50px; text-align: center;"

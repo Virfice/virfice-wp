@@ -108,12 +108,38 @@ const PaintField = ({ label, value = "#000000", onChange = () => {} }) => {
                 color={getColorCode(color)}
                 onChange={handleChange}
                 disableAlpha
+                presetColors={[
+                  { color: "none", title: "None" },
+                  "#F47373",
+                  "#697689",
+                  "#37D67A",
+                  "#2CCCE4",
+                  "#555555",
+                  "#dce775",
+                  "#ff8a65",
+                  "#ba68c8",
+                  "#FF6900",
+                  "#FCB900",
+                  "#7BDCB5",
+                  "#00D084",
+                  "#EB144C",
+                  "#F78DA7",
+                  "#9900EF",
+                ]}
               />
+              <div
+                className={`${VIRFICE_APP_PREFIX}-color-none`}
+                onClick={() => {
+                  handleChange("");
+                }}
+              >
+                <div></div>
+              </div>
             </div>
           )}
         </div>
         <TextField
-          placeholder={"code"}
+          placeholder={"No color"}
           value={getColorCode(color)}
           onChange={handleChange}
         />
