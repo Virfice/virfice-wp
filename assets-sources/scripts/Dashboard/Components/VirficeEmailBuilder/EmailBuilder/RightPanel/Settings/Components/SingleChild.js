@@ -30,7 +30,10 @@ const SingleChild = ({ element }) => {
         <div>{getVirficeAttr(element, "title")}</div>
       </div>
       <div className={`${VIRFICE_APP_PREFIX}-item-action-wrapper`}>
-        <div className={`${VIRFICE_APP_PREFIX}-item-action`}>
+        <div
+          className={`${VIRFICE_APP_PREFIX}-item-action`}
+          style={{ display: "none" }}
+        >
           <Button
             type="tertiary"
             icon={<DuplicateIcon />}
@@ -43,7 +46,10 @@ const SingleChild = ({ element }) => {
             }}
           />
         </div>
-        <div className={`${VIRFICE_APP_PREFIX}-item-action`}>
+        <div
+          className={`${VIRFICE_APP_PREFIX}-item-action`}
+          style={{ display: "none" }}
+        >
           <Button
             type="tertiary"
             icon={<DeleteIcon />}
