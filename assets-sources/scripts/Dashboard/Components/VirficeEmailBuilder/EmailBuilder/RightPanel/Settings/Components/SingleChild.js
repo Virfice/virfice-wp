@@ -1,9 +1,21 @@
 import React from "react";
 import { VIRFICE_APP_PREFIX } from "@conf";
-import { getVirficeAttr } from "../../../utils";
-import { ChevronRightIcon, EyeIcon, GrabIcon } from "@svg-icons";
+import {
+  getVirficeAttr,
+  initEmailBuilder,
+  saveBuilderDataToRedux,
+  selectElementUsingID,
+} from "../../../utils";
+import {
+  ChevronRightIcon,
+  DeleteIcon,
+  DuplicateIcon,
+  GrabIcon,
+} from "@svg-icons";
 import { dispatchDashboardAction } from "@functions";
 import { onSelectElement } from "../../../../builderSlice";
+import Button from "@molecules/Button";
+import { duplicateElement } from "../../../LeftPanel/ReactPreview/EditorControls/utils";
 
 const SingleChild = ({ element }) => {
   const handleSelectItem = () => {
@@ -19,12 +31,32 @@ const SingleChild = ({ element }) => {
       </div>
       <div className={`${VIRFICE_APP_PREFIX}-item-action-wrapper`}>
         <div className={`${VIRFICE_APP_PREFIX}-item-action`}>
-          <EyeIcon />
+          <Button
+            type="tertiary"
+            icon={<DuplicateIcon />}
+            small
+            onClick={() => {
+              const vID = duplicateElement(element);
+              setTimeout(() => {
+                saveBuilderDataToRedux();
+                selectElementUsingID(vID);
+                initEmailBuilder();
+              }, 200);
+            }}
+          />
+        </div>
+        <div className={`${VIRFICE_APP_PREFIX}-item-action`}>
+          <Button
+            type="tertiary"
+            icon={<DeleteIcon />}
+            small
+            onClick={() => {
+              element.remove();
+            }}
+          />
         </div>
 
-        <div className={`${VIRFICE_APP_PREFIX}-item-action`}>
-          <ChevronRightIcon />
-        </div>
+        <ChevronRightIcon />
       </div>
     </div>
   );

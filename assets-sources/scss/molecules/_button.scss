@@ -103,5 +103,8 @@
 
   &.#{$classPrefix}-icon {
     padding: 6px !important;
+    &.#{$classPrefix}-small {
+      padding: 0 !important;
+    }
   }
 }

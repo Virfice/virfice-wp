@@ -970,19 +970,19 @@ export const EyeIcon = () => {
 export const ChevronRightIcon = () => {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
-      viewBox="0 0 20 20"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
     >
       <path
-        d="M7.5 3.75L13.75 10L7.5 16.25"
-        stroke="#666666"
-        strokeWidth="1.5"
+        stroke="#666"
         strokeLinecap="round"
         strokeLinejoin="round"
-      />
+        strokeWidth="1.5"
+        d="M7.5 3.75 13.75 10 7.5 16.25"
+      ></path>
     </svg>
   );
 };
